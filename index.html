@@ -1,199 +1,222 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Projekt Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moderne Ausbildungsseite</title>
   <style>
+    :root {
+      --rot: #c1121f;
+      --dunkelrot: #8a0e17;
+      --text: #ffffff;
+      --hintergrund: #000000;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0d0d0d;
-      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--hintergrund);
+      color: var(--text);
       overflow-x: hidden;
     }
 
     header {
+      padding: 1rem;
       text-align: center;
-      padding: 4rem 1rem 2rem;
       position: relative;
       z-index: 2;
-    }
-
-    .typing {
-      font-size: 2.5rem;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #f00;
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      animation: typing 3s steps(30) 1 normal both, blink 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .hexagon-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: url('https://assets.codepen.io/1462889/hexagons.svg') repeat;
-      background-size: 250px;
-      opacity: 0.1;
-      animation: rotateBg 120s linear infinite;
-    }
-
-    @keyframes rotateBg {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
 
     nav {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 2;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
     }
 
     nav a {
       text-decoration: none;
-      background: #b30000;
-      color: white;
-      padding: 0.7rem 1.5rem;
+      color: var(--text);
+      background-color: var(--dunkelrot);
+      padding: 0.5rem 1rem;
       border-radius: 30px;
-      transition: background 0.3s, transform 0.3s;
+      transition: background-color 0.3s ease;
     }
 
     nav a:hover {
-      background: #800000;
-      transform: scale(1.05);
+      background-color: var(--rot);
     }
 
-    .buttons {
+    h1 {
+      font-size: 2rem;
+      margin: 1rem auto;
+      width: fit-content;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--text);
+      animation: typing 3s steps(30, end), blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    .button-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 1rem;
+      align-items: center;
       margin-top: 2rem;
-      z-index: 2;
       position: relative;
+      z-index: 2;
     }
 
-    .buttons a {
-      background: #b30000;
+    .button-container a {
+      background-color: var(--rot);
       color: white;
       padding: 1rem 2rem;
-      border: none;
-      border-radius: 30px;
       text-decoration: none;
+      border-radius: 30px;
       font-size: 1.1rem;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
-    .buttons a:hover {
-      background: #990000;
-      transform: translateY(-3px);
+    .button-container a:hover {
+      transform: scale(1.05);
+      background-color: var(--dunkelrot);
     }
 
-    .contact-form {
-      max-width: 600px;
+    .hexagon-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: url('https://www.transparenttextures.com/patterns/hexellence.png');
+      opacity: 0.08;
+      animation: rotateBG 60s linear infinite;
+    }
+
+    @keyframes rotateBG {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .kontaktformular {
       margin: 4rem auto;
-      background: rgba(255, 255, 255, 0.05);
       padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-      z-index: 2;
+      background-color: #111111cc;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
       position: relative;
+      z-index: 2;
     }
 
-    .contact-form h2 {
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
+    .kontaktformular input,
+    .kontaktformular textarea {
       width: 100%;
       padding: 0.8rem;
       margin-bottom: 1rem;
-      border-radius: 10px;
       border: none;
-      background: #222;
-      color: white;
+      border-radius: 10px;
     }
 
-    .contact-form button {
-      background: #b30000;
-      color: white;
+    .kontaktformular button {
       padding: 0.8rem 2rem;
+      background-color: var(--rot);
       border: none;
+      color: white;
+      font-size: 1rem;
       border-radius: 30px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background-color 0.3s ease;
     }
 
-    .contact-form button:hover {
-      background: #800000;
+    .kontaktformular button:hover {
+      background-color: var(--dunkelrot);
     }
 
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      color: #ccc;
-      z-index: 2;
+      color: #888;
       position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .button-container a {
+        width: 80%;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="hexagon-bg"></div>
 
-  <nav>
-    <a href="#">Start</a>
-    <a href="mailto:mar.hoepfler@icloud.com">Kontakt</a>
-  </nav>
-
   <header>
-    <div class="typing">Willkommen auf meiner Website!</div>
-    <p style="margin-top: 1rem; font-size: 1.1rem; color: #ccc;">Diese Website dient als Projekt für meine Ausbildung und wird täglich aktualisiert.</p>
+    <nav>
+      <a href="#start">Start</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <h1 id="start">Willkommen auf meiner Website!</h1>
   </header>
 
-  <section class="buttons">
+  <section class="button-container">
     <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier geht's zu meinem Geschäftspartner</a>
-    <a href="https://vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic in Landau a.d. Isar</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier gehts zu meinem Geschäftspartner</a>
+    <a href="https://vionic.de/" target="_blank">Meine Ausbildungsstätte: Vionic Landau a.d. Isar</a>
   </section>
 
-  <section class="contact-form">
-    <h2>Kontaktformular</h2>
+  <section id="kontakt" class="kontaktformular">
+    <h2>Kontakt</h2>
     <form>
-      <input type="text" placeholder="Dein Name" required />
-      <input type="email" placeholder="Deine E-Mail" required />
-      <textarea rows="5" placeholder="Deine Nachricht" required></textarea>
-      <button type="submit">Absenden</button>
+      <input type="text" placeholder="Dein Name" required>
+      <input type="email" placeholder="Deine E-Mail" required>
+      <textarea placeholder="Deine Nachricht" rows="5" required></textarea>
+      <button type="submit">Senden</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 M. Höpfler</p>
+    <p>© 2025 M. Höpfler</p>
   </footer>
 </body>
+
 </html>
