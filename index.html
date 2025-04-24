@@ -55,13 +55,21 @@
     }
 
     .ferrari {
-      position: absolute;
-      bottom: 60px;
-      left: -400px;
-      width: 300px;
-      animation: drive 10s linear infinite;
-      transform: scaleX(-1);
-    }
+  position: absolute;
+  bottom: 50px;
+  left: -300px;
+  width: 200px;
+  animation: drive 8s linear infinite;
+}
+
+@keyframes drive {
+  0% {
+    left: -300px;
+  }
+  100% {
+    left: 100%;
+  }
+}
 
     @keyframes drive {
       0% { left: -400px; }
