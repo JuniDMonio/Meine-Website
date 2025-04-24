@@ -3,112 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine moderne Website</title>
+  <title>Meine Projektwebsite</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
-      color: white;
+      color: #fff;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
       padding: 2rem 1rem 1rem;
+      font-size: 2.5rem;
+      color: #ff2b2b;
+      animation: fadeInDown 1s ease-in-out;
     }
 
-    h1 {
-      font-size: 3rem;
-      color: #ff0000;
-      text-shadow: 0 0 10px #ff0000;
-      margin-bottom: 0.5rem;
-    }
-
-    p.subtitle {
-      font-size: 1.2rem;
-      color: #aaa;
+    .description {
       text-align: center;
-      margin-top: 0;
+      font-size: 1.2rem;
+      margin-top: -1rem;
+      animation: fadeInUp 1s ease-in-out 0.5s both;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      gap: 1rem;
+      animation: fadeInUp 1.2s ease-in-out 1s both;
+    }
+
+    .fancy-button {
+      background-color: #ff2b2b;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff2b2b, 0 0 40px #ff2b2b44;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .fancy-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff2b2b, 0 0 50px #ff2b2b88;
+    }
+
+    .ferrari {
+      position: absolute;
+      bottom: 60px;
+      left: -400px;
+      width: 300px;
+      animation: drive 10s linear infinite;
+      transform: scaleX(-1);
+    }
+
+    @keyframes drive {
+      0% { left: -400px; }
+      100% { left: 110%; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+      animation: fadeInUp 1s ease-in-out 1.5s both;
     }
 
     nav {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 2rem 0;
-      gap: 1rem;
+      justify-content: center;
+      gap: 2rem;
+      background-color: #111;
+      padding: 1rem 0;
     }
 
-    .button {
-      padding: 1rem 2rem;
-      background-color: #ff0000;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-size: 1.1rem;
-      cursor: pointer;
+    nav a {
+      color: #fff;
       text-decoration: none;
-      box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000 inset;
-      transition: all 0.3s ease;
+      font-weight: bold;
+      transition: color 0.3s;
     }
 
-    .button:hover {
-      background-color: #cc0000;
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #ff3333, 0 0 25px #ff3333 inset;
-    }
-
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: radial-gradient(circle at center, rgba(255,0,0,0.1), transparent);
-      pointer-events: none;
-      animation: glow 4s ease-in-out infinite;
-    }
-
-    @keyframes glow {
-      0%, 100% {
-        background: radial-gradient(circle at center, rgba(255,0,0,0.1), transparent);
-      }
-      50% {
-        background: radial-gradient(circle at center, rgba(255,0,0,0.3), transparent);
-      }
-    }
-
-    .car {
-      position: absolute;
-      bottom: 50px;
-      left: -300px;
-      width: 200px;
-      transform: scaleX(-1); /* ← Hier wird das Bild gespiegelt */
-      animation: moveCar 10s linear infinite;
-      filter: drop-shadow(0 0 12px red) brightness(1.2);
-    }
-
-    @keyframes moveCar {
-      0% { left: -300px; }
-      100% { left: 100vw; }
+    nav a:hover {
+      color: #ff2b2b;
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
-
-  <header>
-    <h1>Willkommen auf meiner Website!</h1>
-    <p class="subtitle">Diese Website dient als Projekt für meine Ausbildung und wird täglich aktualisiert.</p>
-  </header>
-
   <nav>
-    <a href="https://vionic.de" class="button" target="_blank">Meine Ausbildungsstätte – VIONIC</a>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" class="button" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button" target="_blank">Hier geht's zu meinem Geschäftspartner</a>
+    <a href="#start">Start</a>
+    <a href="mailto:mar.hoepfler@icloud.com">Kontakt</a>
   </nav>
 
-  <img src="img/ferrari_flipped.jpg" alt="Ferrari" class="car" />
+  <header id="start">Willkommen auf meiner Website!</header>
+  <div class="description">Diese Website dient als Projekt für meine Ausbildung und wird sich täglich aktualisieren.</div>
+
+  <div class="button-container">
+    <a href="https://www.vionic.de" target="_blank">
+      <button class="fancy-button">Hier geht's zu VIONIC – meiner Ausbildungsstätte</button>
+    </a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+      <button class="fancy-button">Hier geht's zu meinem Geschäftspartner</button>
+    </a>
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">
+      <button class="fancy-button">Die Formel 1 unter den Fahrschulen</button>
+    </a>
+  </div>
+
+  <img class="ferrari" src="img/ferrari_flipped_final.jpg" alt="Ferrari" />
+
+  <footer>© 2025 – Projektseite von M. Höpfler</footer>
 </body>
 </html>
