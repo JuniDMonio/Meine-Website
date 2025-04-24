@@ -1,234 +1,256 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Projekt-Website</title>
+  <title>Projekt Website</title>
   <style>
     :root {
-      --ferrari-rot: #c40000;
-      --dunkel: #121212;
-      --hell: #f0f0f0;
+      --ferrari-red: #b30000;
+      --dark-bg: #0f0f0f;
+      --light-bg: #ffffff;
+      --text-color-dark: #f0f0f0;
+      --text-color-light: #202020;
     }
 
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--dunkel);
-      color: var(--hell);
-      overflow-x: hidden;
+      background-color: var(--dark-bg);
+      color: var(--text-color-dark);
       scroll-behavior: smooth;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    body.light-mode {
-      background-color: var(--hell);
-      color: #000;
-    }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.85);
-      display: flex;
-      justify-content: center;
-      padding: 0.75rem 0;
-      z-index: 999;
-      backdrop-filter: blur(5px);
-    }
-
-    .navbar a {
-      margin: 0 1.5rem;
-      color: var(--hell);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    body.light-mode .navbar {
-      background-color: rgba(255, 255, 255, 0.85);
-    }
-
-    body.light-mode .navbar a {
-      color: #000;
     }
 
     header {
-      text-align: center;
-      margin-top: 100px;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header nav a {
+      color: var(--text-color-dark);
+      margin: 0 1rem;
+      text-decoration: none;
+      position: relative;
+    }
+
+    header nav a:hover::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -3px;
+      left: 0;
+      background-color: var(--ferrari-red);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .toggle-mode {
+      background-color: transparent;
+      border: 2px solid var(--ferrari-red);
+      color: var(--ferrari-red);
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .toggle-mode:hover {
+      background-color: var(--ferrari-red);
+      color: white;
     }
 
     h1 {
-      font-size: 2.5rem;
-      animation: pulseGlow 2s infinite;
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 2rem;
+      position: relative;
+      animation: flicker 2s infinite alternate;
     }
 
-    @keyframes pulseGlow {
-      0%, 100% { text-shadow: 0 0 5px red, 0 0 10px red; }
-      50% { text-shadow: 0 0 20px red, 0 0 40px darkred; }
+    @keyframes flicker {
+      from {
+        text-shadow: 0 0 10px red, 0 0 20px red;
+      }
+      to {
+        text-shadow: 0 0 20px crimson, 0 0 30px crimson;
+      }
     }
 
     .intro {
       text-align: center;
-      margin: 2rem;
+      margin-bottom: 3rem;
       font-size: 1.2rem;
     }
 
-    .button-container {
+    .ferrari-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.05;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      margin: 3rem 0;
-    }
-
-    .button-container a {
-      padding: 1rem 2rem;
-      background-color: var(--ferrari-rot);
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-weight: bold;
-      font-size: 1rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .button-container a:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 10px var(--ferrari-rot);
-    }
-
-    #kontakt {
-      position: relative;
-      background-color: rgba(0, 0, 0, 0.85);
-      padding: 3rem 1rem;
-      margin: 2rem;
-      border-radius: 12px;
-    }
-
-    #kontakt img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      opacity: 0.08;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    #kontakt form {
+      margin-bottom: 4rem;
       position: relative;
       z-index: 1;
+    }
+
+    .buttons a {
+      background-color: var(--ferrari-red);
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .buttons a:hover {
+      transform: scale(1.05);
+      background-color: #8c0000;
+    }
+
+    .contact {
+      background-color: #1c1c1c;
+      padding: 3rem 2rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      border-radius: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact h2 {
+      text-align: center;
+      color: var(--ferrari-red);
+    }
+
+    .contact form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      max-width: 500px;
-      margin: auto;
     }
 
-    #kontakt input, #kontakt textarea {
-      padding: 1rem;
-      border-radius: 8px;
+    .contact input,
+    .contact textarea {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
       border: none;
-      font-size: 1rem;
+      border-radius: 0.5rem;
     }
 
-    #kontakt button {
-      background-color: var(--ferrari-rot);
+    .contact button {
+      background-color: var(--ferrari-red);
       color: white;
-      font-weight: bold;
+      border: none;
+      padding: 1rem;
+      border-radius: 0.5rem;
       cursor: pointer;
     }
 
-    .scroll-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--ferrari-rot);
-      color: white;
-      padding: 0.75rem;
-      border-radius: 50%;
-      display: none;
-      cursor: pointer;
-      z-index: 1000;
+    .contact button:hover {
+      background-color: #8c0000;
     }
 
     footer {
       text-align: center;
-      margin-top: 4rem;
-      padding: 2rem 0;
+      padding: 2rem;
+      font-size: 0.9rem;
       background-color: #0a0a0a;
-      color: #888;
+      color: #999;
+      margin-top: 5rem;
     }
 
-    .toggle-mode {
+    #scrollToTopBtn {
       position: fixed;
-      top: 20px;
+      bottom: 20px;
       right: 20px;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      border: none;
-      background-color: #333;
+      padding: 10px;
+      background-color: var(--ferrari-red);
       color: white;
-      font-size: 0.9rem;
+      border: none;
+      border-radius: 50%;
       cursor: pointer;
-      z-index: 9999;
+      display: none;
+      z-index: 999;
     }
   </style>
 </head>
+
 <body>
-  <button class="toggle-mode" onclick="toggleMode()">🌙 / ☀️</button>
-  <nav class="navbar">
-    <a href="#start">Start</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
-
-  <header id="start">
-    <h1>Willkommen auf meiner Website!</h1>
+  <header>
+    <nav>
+      <a href="#start">Start</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button class="toggle-mode" onclick="toggleMode()">🌙/☀️</button>
   </header>
-  <div class="intro">
-    Diese Website dient als Projekt für meine Ausbildung und wird regelmäßig aktualisiert.
-  </div>
-  <div class="button-container">
-    <a href="https://vionic.de" target="_blank">Hier geht's zu meiner Ausbildungsstätte Vionic</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Mein Geschäftspartner</a>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-  </div>
 
-  <section id="kontakt">
-    <img src="img/ferrari_flipped_final.jpg" alt="Ferrari" />
+  <h1 id="start">Willkommen auf meiner Website!</h1>
+  <p class="intro">Diese Website dient als Projekt für meine Ausbildung und wird regelmäßig aktualisiert.</p>
+
+  <img class="ferrari-bg" src="img/ferrari_flipped_final.jpg" alt="Ferrari Hintergrund" width="600">
+
+  <section class="buttons">
+    <a href="https://vionic.de" target="_blank">Meine Ausbildungsstätte Vionic</a>
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier gehts zu meinem Geschäftspartner</a>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <h2>Kontaktformular</h2>
     <form>
-      <input type="text" placeholder="Dein Name" required />
-      <input type="email" placeholder="Deine E-Mail" required />
-      <textarea rows="5" placeholder="Deine Nachricht" required></textarea>
-      <button type="submit">Nachricht senden</button>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Deine Nachricht" rows="5" required></textarea>
+      <button type="submit">Absenden</button>
     </form>
   </section>
 
-  <div class="scroll-top" onclick="scrollToTop()">⬆️</div>
-
   <footer>
-    &copy; 2025 M. Höpfler
+    © 2025 M. Höpfler
   </footer>
 
+  <button id="scrollToTopBtn" onclick="scrollToTop()">⬆</button>
+
   <script>
-    function toggleMode() {
-      document.body.classList.toggle('light-mode');
-    }
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+    window.onscroll = () => {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
 
     function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    const scrollBtn = document.querySelector('.scroll-top');
-    window.addEventListener('scroll', () => {
-      scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
+    function toggleMode() {
+      const body = document.body;
+      if (body.style.backgroundColor === 'white') {
+        body.style.backgroundColor = 'var(--dark-bg)';
+        body.style.color = 'var(--text-color-dark)';
+      } else {
+        body.style.backgroundColor = 'white';
+        body.style.color = 'var(--text-color-light)';
+      }
+    }
   </script>
 </body>
+
 </html>
