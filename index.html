@@ -4,192 +4,221 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projektseite M. Höpfler</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --ferrari-red: #b3001b;
+      --background-dark: #000;
+      --text-light: #fff;
+      --accent: #e60023;
+      --button-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background-color: black;
-      color: white;
+
+    html, body {
+      height: 100%;
+      background-color: var(--background-dark);
+      color: var(--text-light);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
+
     header {
+      padding: 2rem 1rem;
       text-align: center;
-      padding: 3rem 1rem 2rem;
       position: relative;
-      z-index: 2;
     }
+
     header h1 {
       font-size: 2.5rem;
-      animation: typing 4s steps(40, end), blink .75s step-end infinite;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: .15em solid red;
+      animation: glow 2s ease-in-out infinite alternate;
+      position: relative;
     }
+
     header p {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       font-size: 1rem;
-      opacity: 0.8;
+      color: #ccc;
     }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: red; }
-    }
+
     nav {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2rem;
+      padding: 1rem;
       flex-wrap: wrap;
-      z-index: 2;
-      position: relative;
     }
+
     nav a {
-      padding: 0.75rem 1.5rem;
-      background-color: #a40000;
+      background-color: var(--ferrari-red);
       color: white;
+      padding: 0.8rem 1.5rem;
       border: none;
-      text-decoration: none;
-      font-size: 1rem;
       border-radius: 8px;
-      transition: transform 0.3s, background-color 0.3s;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: var(--button-shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
     nav a:hover {
-      background-color: #ff1e1e;
-      transform: scale(1.1);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
     }
-    .contact-form {
-      max-width: 500px;
-      margin: 3rem auto;
-      background: rgba(255, 255, 255, 0.05);
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+
+    form {
+      background: #111;
       padding: 2rem;
-      border-radius: 1rem;
-      backdrop-filter: blur(10px);
-      z-index: 2;
-      position: relative;
+      margin: 2rem auto;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
     }
-    .contact-form h2 {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-    .contact-form input,
-    .contact-form textarea {
+
+    form input, form textarea, form button {
       width: 100%;
       padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 0.5rem;
+      margin-top: 1rem;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 5px;
+      color: #fff;
       font-size: 1rem;
     }
-    .contact-form button {
-      background-color: #a40000;
-      color: white;
-      padding: 0.75rem 1.5rem;
+
+    form button {
+      background-color: var(--ferrari-red);
       border: none;
-      border-radius: 8px;
-      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: var(--button-shadow);
+      transition: 0.3s;
     }
-    .contact-form button:hover {
-      background-color: #ff1e1e;
-      transform: scale(1.05);
+
+    form button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
     }
-    .matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      z-index: 0;
-      background: black;
-      overflow: hidden;
-    }
-    canvas {
-      display: block;
-    }
+
     footer {
       text-align: center;
       padding: 1rem;
       color: #aaa;
       font-size: 0.9rem;
-      z-index: 2;
-      position: relative;
-      margin-top: 2rem;
+      margin-top: 5rem;
     }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+      to { text-shadow: 0 0 20px #ff4d4d, 0 0 30px #ff4d4d; }
+    }
+
+    /* Matrix effect */
+    canvas#matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background-color: black;
+    }
+
     @media (max-width: 768px) {
       header h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
-      nav a {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
+
+      nav, .buttons, form {
+        padding: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="matrix">
-    <canvas id="matrixCanvas"></canvas>
-  </div>
-
-  <nav>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier gehts zu meinem Geschäftspartner</a>
-    <a href="https://vionic.de" target="_blank">Vionic Ausbildungsstätte</a>
-  </nav>
+  <canvas id="matrix"></canvas>
 
   <header>
-    <h1>Willkommen auf meiner Website!</h1>
-    <p>Diese Website ist mein Ausbildungsprojekt und wird täglich aktualisiert.</p>
+    <h1 id="typing"></h1>
+    <p>Diese Website ist ein Projekt für meine Ausbildung und wird täglich aktualisiert.</p>
   </header>
 
-  <section class="contact-form">
-    <h2>Kontakt</h2>
-    <form action="mailto:mar.hoepfler@icloud.com" method="POST" enctype="text/plain">
-      <input type="text" name="name" placeholder="Dein Name" required />
-      <input type="email" name="email" placeholder="Deine E-Mail" required />
-      <textarea name="message" rows="4" placeholder="Deine Nachricht" required></textarea>
-      <button type="submit">Senden</button>
-    </form>
-  </section>
+  <nav>
+    <a href="#start">Start</a>
+    <a href="mailto:mar.hoepfler@icloud.com">Kontakt</a>
+  </nav>
+
+  <div class="buttons">
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/">Die Formel 1 unter den Fahrschulen</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Mein Geschäftspartner</a>
+    <a href="https://www.vionic.de/">Meine Ausbildungsstätte: Vionic</a>
+  </div>
+
+  <form id="contact">
+    <h2>Kontaktiere mich</h2>
+    <input type="text" placeholder="Dein Name" required />
+    <input type="email" placeholder="Deine E-Mail" required />
+    <textarea rows="5" placeholder="Deine Nachricht" required></textarea>
+    <button type="submit">Absenden</button>
+  </form>
 
   <footer>
-    &copy; 2025 M. Höpfler. Alle Rechte vorbehalten.
+    &copy; 2025 M. Höpfler
   </footer>
 
   <script>
-    const canvas = document.getElementById("matrixCanvas");
+    // Typing Effect
+    const typing = document.getElementById("typing");
+    const text = "Willkommen auf meiner Website!";
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        typing.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 100);
+      }
+    }
+    type();
+
+    // Matrix effect with white stripes
+    const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
+
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
-    const letters = "01";
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
+
+    const columns = canvas.width / 20;
     const drops = Array(Math.floor(columns)).fill(1);
 
     function drawMatrix() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#0F0";
-      ctx.font = `${fontSize}px monospace`;
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "16px monospace";
+
       for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        ctx.fillText("|", i * 20, drops[i] * 20);
         drops[i]++;
+        if (drops[i] * 20 > canvas.height && Math.random() > 0.95) {
+          drops[i] = 0;
+        }
       }
     }
+
     setInterval(drawMatrix, 50);
   </script>
 </body>
