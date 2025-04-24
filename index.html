@@ -1,220 +1,208 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Ausbildungsprojekt-Website</title>
+  <title>Mein Projekt</title>
   <style>
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    html {
       scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
-      color: #fff;
+      background: black;
+      color: white;
       overflow-x: hidden;
-      position: relative;
     }
 
     header {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
       position: fixed;
       width: 100%;
-      top: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 1rem;
       z-index: 1000;
+      box-shadow: 0 0 10px red;
     }
 
     header a {
-      color: #ff2d2d;
+      color: #ff4c4c;
       text-decoration: none;
       font-weight: bold;
-      transition: transform 0.3s, color 0.3s;
+      transition: color 0.3s;
     }
 
     header a:hover {
-      color: #ff5e5e;
-      transform: scale(1.1);
+      color: #ff1a1a;
     }
 
     .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding-top: 8rem;
-      padding-bottom: 3rem;
-      background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
-      background-size: cover;
-      position: relative;
+      min-height: 100vh;
+      padding-top: 100px;
+      background: url('img/ferrari_flipped_final.jpg') center/contain no-repeat;
+      background-attachment: fixed;
+      background-position-y: 200px;
+      background-repeat: no-repeat;
     }
 
     .hero h1 {
       font-size: 3rem;
-      color: #fff;
-      animation: lightning 2s infinite;
-    }
-
-    @keyframes lightning {
-      0%, 100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
-      50% { text-shadow: 0 0 20px #ff3b3b, 0 0 40px #ff3b3b; }
+      animation: glow 2s infinite alternate;
     }
 
     .hero p {
-      margin-top: 1rem;
       font-size: 1.2rem;
+      margin-top: 1rem;
       color: #ccc;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff1a1a, 0 0 20px #ff1a1a;
+      }
+      to {
+        text-shadow: 0 0 20px #ff3333, 0 0 30px #ff3333;
+      }
     }
 
     .buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
-      margin: 3rem 0;
+      gap: 1rem;
+      margin-top: 2rem;
     }
 
-    .button {
-      background: #aa1d1d;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 30px;
-      font-size: 1rem;
-      color: #fff;
+    .buttons a {
+      background: #b30000;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 5px;
       text-decoration: none;
-      box-shadow: 0 0 10px #aa1d1d;
-      transition: all 0.3s ease-in-out;
+      transition: background 0.3s, transform 0.3s;
     }
 
-    .button:hover {
-      background: #ff4444;
-      box-shadow: 0 0 20px #ff4444;
+    .buttons a:hover {
+      background: #990000;
       transform: scale(1.05);
     }
 
-    .ferrari {
-      position: absolute;
-      bottom: 100px;
-      left: -300px;
-      width: 300px;
-      animation: drive 10s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes drive {
-      0% {
-        left: -300px;
-      }
-      100% {
-        left: 100vw;
-      }
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #aaa;
-      font-size: 0.9rem;
-      position: relative;
-      margin-top: 10rem;
-    }
-
     form {
+      max-width: 400px;
+      margin: 3rem auto;
       display: flex;
       flex-direction: column;
-      max-width: 400px;
-      margin: 0 auto;
       gap: 1rem;
     }
 
-    input, textarea {
+    form input,
+    form textarea {
       padding: 0.8rem;
-      border-radius: 10px;
       border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: #b30000;
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
     }
 
     #scrollToTop {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: none;
-      background-color: #aa1d1d;
-      border: none;
-      padding: 1rem;
-      border-radius: 50%;
+      bottom: 20px;
+      right: 20px;
+      background: #b30000;
       color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 0 10px #ff4444;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 50%;
+      display: none;
+      z-index: 999;
     }
 
-    @media screen and (max-width: 768px) {
-      .buttons {
-        padding: 1rem;
-      }
+    footer {
+      background: black;
+      color: #888;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
 
+    @media (max-width: 768px) {
       .hero h1 {
         font-size: 2rem;
+      }
+
+      .buttons {
+        flex-direction: column;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <a href="#start">Start</a>
     <a href="#kontakt">Kontakt</a>
   </header>
 
-  <section class="hero" id="start">
-    <h1>Willkommen auf meiner Website!</h1>
-    <p>Diese Website dient als Projekt für meine Ausbildung bei Vionic in Landau an der Isar, Hauptstraße 9.<br>Schaue regelmäßig vorbei – sie wird laufend aktualisiert.</p>
-  </section>
+  <main>
+    <section class="hero" id="start">
+      <h1>Willkommen auf meiner Website!</h1>
+      <p>Diese Website dient als Projekt für meine Ausbildung und wird täglich aktualisiert.</p>
 
-  <section class="buttons">
-    <a class="button" href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier gehts zu meinem Geschäftspartner</a>
-    <a class="button" href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-    <a class="button" href="https://vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic</a>
-  </section>
+      <div class="buttons">
+        <a href="https://www.vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic</a>
+        <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
+        <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier geht's zu meinem Geschäftspartner</a>
+      </div>
+    </section>
 
-  <img class="ferrari" src="img/ferrari_flipped_final.jpg" alt="Ferrari" />
-
-  <section id="kontakt">
-    <form action="mailto:mar.hoepfler@icloud.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Dein Name" required />
-      <input type="email" name="email" placeholder="Deine E-Mail" required />
-      <textarea name="nachricht" rows="5" placeholder="Deine Nachricht" required></textarea>
-      <button class="button" type="submit">Senden</button>
-    </form>
-  </section>
-
-  <footer>
-    &copy; 2025 M. Höpfler
-  </footer>
+    <section id="kontakt">
+      <form action="mailto:mar.hoepfler@icloud.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Dein Name" required />
+        <input type="email" name="email" placeholder="Deine E-Mail" required />
+        <textarea name="nachricht" rows="5" placeholder="Deine Nachricht" required></textarea>
+        <button type="submit">Absenden</button>
+      </form>
+    </section>
+  </main>
 
   <button id="scrollToTop" onclick="scrollToTop()">↑</button>
 
+  <footer>
+    <p>© 2025 M. Höpfler</p>
+  </footer>
+
   <script>
-    const scrollBtn = document.getElementById("scrollToTop");
+    const scrollToTopBtn = document.getElementById("scrollToTop");
+
     window.onscroll = function () {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        scrollBtn.style.display = "block";
-      } else {
-        scrollBtn.style.display = "none";
-      }
+      scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
     };
 
     function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   </script>
 </body>
+
 </html>
