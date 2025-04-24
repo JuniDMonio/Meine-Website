@@ -3,86 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Projektwebsite</title>
+  <title>Meine Projekt-Website</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #000;
-      color: #fff;
+      color: white;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 2rem 1rem 1rem;
+      padding: 3rem 1rem 1rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header h1 {
       font-size: 2.5rem;
-      color: #ff2b2b;
-      animation: fadeInDown 1s ease-in-out;
+      margin-bottom: 0.5rem;
     }
 
-    .description {
-      text-align: center;
+    header p {
       font-size: 1.2rem;
-      margin-top: -1rem;
-      animation: fadeInUp 1s ease-in-out 0.5s both;
+      color: #ccc;
     }
 
-    .button-container {
+    .buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 2rem;
-      gap: 1rem;
-      animation: fadeInUp 1.2s ease-in-out 1s both;
+      gap: 1.2rem;
+      margin: 3rem 1rem;
     }
 
-    .fancy-button {
-      background-color: #ff2b2b;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1rem;
+    .buttons a {
+      background-color: #e10600;
       color: white;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #ff2b2b, 0 0 40px #ff2b2b44;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 0 10px #e10600aa;
     }
 
-    .fancy-button:hover {
+    .buttons a:hover {
+      background-color: #ff1c1c;
       transform: scale(1.05);
-      box-shadow: 0 0 15px #ff2b2b, 0 0 50px #ff2b2b88;
     }
 
     .ferrari {
-  position: absolute;
-  bottom: 50px;
-  left: -300px;
-  width: 200px;
-  animation: drive 8s linear infinite;
-}
-
-@keyframes drive {
-  0% {
-    left: -300px;
-  }
-  100% {
-    left: 100%;
-  }
-}
+      position: absolute;
+      bottom: 50px;
+      left: -400px;
+      width: 300px;
+      animation: drive 8s linear infinite;
+    }
 
     @keyframes drive {
       0% { left: -400px; }
       100% { left: 110%; }
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -90,53 +76,30 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: #666;
-      animation: fadeInUp 1s ease-in-out 1.5s both;
+      color: #777;
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      background-color: #111;
-      padding: 1rem 0;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ff2b2b;
-    }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#start">Start</a>
-    <a href="mailto:mar.hoepfler@icloud.com">Kontakt</a>
-  </nav>
 
-  <header id="start">Willkommen auf meiner Website!</header>
-  <div class="description">Diese Website dient als Projekt für meine Ausbildung und wird sich täglich aktualisieren.</div>
+  <header>
+    <h1>Willkommen auf meiner Website!</h1>
+    <p>Diese Website dient als Projekt für meine Ausbildung und wird täglich aktualisiert.</p>
+  </header>
 
-  <div class="button-container">
-    <a href="https://www.vionic.de" target="_blank">
-      <button class="fancy-button">Hier geht's zu VIONIC – meiner Ausbildungsstätte</button>
-    </a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-      <button class="fancy-button">Hier geht's zu meinem Geschäftspartner</button>
-    </a>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">
-      <button class="fancy-button">Die Formel 1 unter den Fahrschulen</button>
-    </a>
+  <div class="buttons">
+    <a href="https://www.vionic.de/" target="_blank">Hier geht’s zu meiner Ausbildungsstätte: Vionic</a>
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier geht’s zu meinem Geschäftspartner</a>
+    <a href="mailto:mar.hoepfler@icloud.com">Kontakt: mar.hoepfler@icloud.com</a>
   </div>
 
-  <img class="ferrari" src="img/ferrari_flipped_final.jpg" alt="Ferrari" />
+  <img src="img/ferrari_flipped_final.jpg" alt="Ferrari Formel 1" class="ferrari" />
 
-  <footer>© 2025 – Projektseite von M. Höpfler</footer>
+  <footer>
+    &copy; 2025 M. Höpfler Projektseite
+  </footer>
+
 </body>
 </html>
