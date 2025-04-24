@@ -7,99 +7,134 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
-      color: white;
+      color: #fff;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 3rem 1rem 1rem;
-      animation: fadeIn 2s ease-in-out;
+      padding: 2rem 1rem 1rem;
     }
 
-    header h1 {
+    h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
 
-    header p {
-      font-size: 1.2rem;
+    p.description {
+      text-align: center;
+      font-size: 1.1rem;
       color: #ccc;
+      margin-bottom: 2rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    nav a {
+      color: #ff0000;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
     }
 
     .buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.2rem;
-      margin: 3rem 1rem;
+      gap: 1rem;
+      margin-bottom: 3rem;
     }
 
     .buttons a {
-      background-color: #e10600;
-      color: white;
+      background-color: #ff0000;
+      color: #fff;
       padding: 1rem 2rem;
       border: none;
-      border-radius: 50px;
+      border-radius: 30px;
       text-decoration: none;
       font-size: 1rem;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 0 10px #e10600aa;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
     }
 
     .buttons a:hover {
-      background-color: #ff1c1c;
+      background-color: #cc0000;
       transform: scale(1.05);
+    }
+
+    .ferrari-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      height: 200px;
+      margin-top: 2rem;
     }
 
     .ferrari {
       position: absolute;
-      bottom: 50px;
-      left: -400px;
-      width: 300px;
-      animation: drive 8s linear infinite;
+      bottom: 0;
+      left: -600px;
+      height: 120px;
+      animation: drive 10s linear infinite;
+      transform: scaleX(-1); /* Bild spiegeln */
     }
 
     @keyframes drive {
-      0% { left: -400px; }
-      100% { left: 110%; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      0% {
+        left: -600px;
+        filter: brightness(1.2) drop-shadow(0 0 5px #f00);
+      }
+      50% {
+        filter: brightness(1.6) drop-shadow(0 0 15px #f00);
+      }
+      100% {
+        left: 100%;
+        filter: brightness(1.2) drop-shadow(0 0 5px #f00);
+      }
     }
 
     footer {
       text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
+      color: #888;
+      margin-top: 4rem;
+      padding: 1rem;
     }
-
   </style>
 </head>
 <body>
-
   <header>
     <h1>Willkommen auf meiner Website!</h1>
-    <p>Diese Website dient als Projekt für meine Ausbildung und wird täglich aktualisiert.</p>
+    <p class="description">Diese Website dient als Projekt für meine Ausbildung und wird sich täglich aktualisieren.</p>
   </header>
 
+  <nav>
+    <a href="#">Start</a>
+    <a href="mailto:mar.hoepfler@icloud.com">Kontakt</a>
+  </nav>
+
   <div class="buttons">
-    <a href="https://www.vionic.de/" target="_blank">Hier geht’s zu meiner Ausbildungsstätte: Vionic</a>
     <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier geht’s zu meinem Geschäftspartner</a>
-    <a href="mailto:mar.hoepfler@icloud.com">Kontakt: mar.hoepfler@icloud.com</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier geht's zu meinem Geschäftspartner</a>
+    <a href="https://www.vionic.de" target="_blank">Vionic – Meine Ausbildungsstätte in Landau</a>
   </div>
 
-  <img src="img/ferrari_flipped_final.jpg" alt="Ferrari Formel 1" class="ferrari" style="transform: scaleX(-1);" />
+  <div class="ferrari-container">
+    <img src="img/ferrari_flipped_final.jpg" alt="Ferrari" class="ferrari" />
+  </div>
 
   <footer>
-    &copy; 2025 M. Höpfler Projektseite
+    © 2025 M. Höpfler
   </footer>
-
 </body>
 </html>
