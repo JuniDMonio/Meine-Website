@@ -3,71 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Projektwebsite</title>
+  <title>Mein Webprojekt</title>
   <style>
-    /* Grundlegendes Layout */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
-      color: #fff;
+      color: white;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 3rem 1rem 2rem;
+      padding: 4rem 2rem 2rem;
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
 
-    h1 {
+    .typing {
       font-size: 2.5rem;
-      animation: glow 2s ease-in-out infinite alternate;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid orange;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
     }
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-      }
-      to {
-        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
-      }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
     }
 
-    .buttons {
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orange; }
+    }
+
+    .button-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      z-index: 2;
+      padding: 2rem;
+      z-index: 1;
       position: relative;
     }
 
-    .buttons a {
-      text-decoration: none;
+    .btn {
       padding: 1rem 2rem;
-      background-color: #b30000;
+      background-color: #8B0000;
       color: white;
       border: none;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      transition: background-color 0.3s, transform 0.2s;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s, transform 0.3s;
     }
 
-    .buttons a:hover {
-      background-color: #800000;
+    .btn:hover {
+      background-color: #aa1f1f;
       transform: scale(1.05);
     }
 
-    /* Kontaktformular */
     .contact-form {
-      max-width: 400px;
+      max-width: 500px;
       margin: 3rem auto;
       padding: 2rem;
       background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 1rem;
-      z-index: 2;
+      border-radius: 10px;
+      z-index: 1;
       position: relative;
     }
 
@@ -75,139 +78,88 @@
     .contact-form textarea {
       width: 100%;
       padding: 0.75rem;
-      margin-bottom: 1rem;
+      margin: 0.5rem 0;
       border: none;
-      border-radius: 0.5rem;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
     }
 
     .contact-form button {
-      background-color: #b30000;
-      color: white;
-      padding: 0.75rem 2rem;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
-
-    .contact-form button:hover {
-      background-color: #800000;
+      margin-top: 1rem;
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem;
+      font-size: 0.8rem;
       color: #aaa;
-      font-size: 0.9rem;
-      z-index: 2;
       position: relative;
+      z-index: 1;
     }
 
-    /* Intensiver Hexagon Hintergrund */
-    #hexagons {
-      background: #000;
+    .hexagon-wrap {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    #hexagons canvas {
       width: 100vw;
       height: 100vh;
-      display: block;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hexagon {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-left: 4px solid white;
+      border-right: 4px solid white;
+      transform: rotate(30deg);
+      animation: rotateHex 12s linear infinite;
+    }
+
+    .hexagon:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+    .hexagon:nth-child(2) { top: 50%; left: 30%; animation-delay: 2s; }
+    .hexagon:nth-child(3) { top: 10%; left: 60%; animation-delay: 4s; }
+    .hexagon:nth-child(4) { top: 70%; left: 50%; animation-delay: 6s; }
+    .hexagon:nth-child(5) { top: 30%; left: 80%; animation-delay: 8s; }
+
+    @keyframes rotateHex {
+      0% { transform: rotate(30deg); opacity: 0.1; }
+      50% { transform: rotate(390deg); opacity: 0.5; }
+      100% { transform: rotate(750deg); opacity: 0.1; }
     }
   </style>
 </head>
 <body>
+  <div class="hexagon-wrap">
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+  </div>
 
-<div id="hexagons">
-  <canvas id="hexCanvas"></canvas>
-</div>
+  <header>
+    <div class="typing">Willkommen auf meiner Website!</div>
+  </header>
 
-<header>
-  <h1>Willkommen auf meiner Website!</h1>
-  <p>Diese Website dient als Projekt für meine Ausbildung und wird laufend aktualisiert.</p>
-</header>
+  <div class="button-container">
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" class="btn" target="_blank">Die Formel 1 unter den Fahrschulen</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="btn" target="_blank">Hier gehts zu meinem Geschäftspartner</a>
+  </div>
 
-<section class="buttons">
-  <a href="https://vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic</a>
-  <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-  <a href="mailto:mar.hoepfler@icloud.com">Kontakt aufnehmen</a>
-</section>
+  <div class="contact-form">
+    <form>
+      <input type="text" placeholder="Dein Name" required />
+      <input type="email" placeholder="Deine E-Mail" required />
+      <textarea rows="5" placeholder="Deine Nachricht" required></textarea>
+      <button class="btn" type="submit">Absenden</button>
+    </form>
+  </div>
 
-<section class="contact-form">
-  <h2>Kontaktformular</h2>
-  <form>
-    <input type="text" placeholder="Name" required />
-    <input type="email" placeholder="E-Mail" required />
-    <textarea placeholder="Nachricht" rows="5" required></textarea>
-    <button type="submit">Senden</button>
-  </form>
-</section>
-
-<footer>
-  <p>© 2025 M. Höpfler</p>
-</footer>
-
-<script>
-  const canvas = document.getElementById("hexCanvas");
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  let hexagons = [];
-  const hexagonRadius = 20;
-
-  function drawHexagon(x, y, size) {
-    ctx.beginPath();
-    for (let i = 0; i < 6; i++) {
-      const angle = Math.PI / 3 * i;
-      const x_i = x + size * Math.cos(angle);
-      const y_i = y + size * Math.sin(angle);
-      ctx.lineTo(x_i, y_i);
-    }
-    ctx.closePath();
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
-    ctx.stroke();
-  }
-
-  function generateHexagons() {
-    hexagons = [];
-    const hexHeight = Math.sqrt(3) * hexagonRadius;
-    const hexWidth = 2 * hexagonRadius;
-    const vertDist = hexHeight;
-    const horizDist = hexWidth * 0.75;
-
-    for (let y = 0; y < canvas.height + hexHeight; y += vertDist) {
-      for (let x = 0; x < canvas.width + hexWidth; x += horizDist) {
-        const offsetX = (y / vertDist) % 2 === 0 ? 0 : hexagonRadius * 0.75;
-        hexagons.push({ x: x + offsetX, y: y });
-      }
-    }
-  }
-
-  function animateHexagons() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    hexagons.forEach((hex, index) => {
-      hex.y += 0.2;
-      if (hex.y > canvas.height + hexagonRadius) hex.y = -hexagonRadius;
-      drawHexagon(hex.x, hex.y, hexagonRadius);
-    });
-    requestAnimationFrame(animateHexagons);
-  }
-
-  window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    generateHexagons();
-  });
-
-  generateHexagons();
-  animateHexagons();
-</script>
-
+  <footer>
+    © 2025 M. Höpfler
+  </footer>
 </body>
 </html>
