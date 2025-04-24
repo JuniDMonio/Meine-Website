@@ -6,10 +6,9 @@
   <title>Meine moderne Website</title>
   <style>
     :root {
-      --rot: #b3001b;
-      --dunkel: #121212;
-      --hell: #ffffff;
-      --shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+      --rot: #c30010;
+      --dunkel: #0a0a0a;
+      --weiß: #ffffff;
     }
 
     * {
@@ -19,38 +18,28 @@
     }
 
     body {
-      background-color: var(--dunkel);
-      color: var(--hell);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dunkel);
+      color: var(--weiß);
       overflow-x: hidden;
     }
 
     header {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 1rem 2rem;
     }
 
-    h1 {
+    header h1 {
       font-size: 2.5rem;
-      color: var(--hell);
-      text-shadow: var(--shadow);
-      animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 0.15em solid var(--hell);
-      width: 100%;
-      max-width: 100vw;
-      margin: 0 auto;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: var(--hell); }
+    header p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #ccc;
     }
 
     nav {
@@ -58,134 +47,201 @@
       justify-content: center;
       gap: 2rem;
       padding: 1rem;
-      background-color: #1f1f1f;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      background-color: #111;
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 10;
     }
 
     nav a {
-      color: var(--hell);
+      color: var(--weiß);
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      position: relative;
     }
 
-    nav a:hover {
-      color: var(--rot);
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 100%;
+      background: var(--rot);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: right;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem auto;
+      z-index: 2;
+      position: relative;
     }
 
     .button {
-      display: inline-block;
       padding: 1rem 2rem;
-      margin: 1rem;
+      background: #a00000;
+      color: var(--weiß);
+      border: none;
+      border-radius: 8px;
       font-size: 1rem;
-      color: var(--hell);
-      background-color: #8b0000;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .button:hover {
+      background: #870000;
+      transform: scale(1.05);
+    }
+
+    .kontakt {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: #111;
+      padding: 2rem;
+      border-radius: 10px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .kontakt h2 {
+      margin-bottom: 1rem;
+    }
+
+    .kontakt input,
+    .kontakt textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .kontakt button {
+      background: var(--rot);
+      color: var(--weiß);
+      padding: 0.75rem 2rem;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: 0.3s;
-      text-decoration: none;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
     }
 
-    .button:hover {
-      background-color: #600;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-    }
-
-    .content {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .content p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-
-    .ferrari {
-      display: block;
-      margin: 4rem auto 2rem;
-      max-width: 300px;
-      filter: drop-shadow(0 0 15px red);
-    }
-
-    .kontaktformular {
-      max-width: 600px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background-color: #1a1a1a;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-    }
-
-    .kontaktformular input,
-    .kontaktformular textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin: 0.5rem 0 1rem;
-      border: none;
-      border-radius: 4px;
-    }
-
-    .kontaktformular button {
-      background-color: var(--rot);
-      color: var(--hell);
-      border: none;
-      padding: 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-      transition: 0.3s;
-    }
-
-    .kontaktformular button:hover {
-      background-color: #800000;
+    .kontakt button:hover {
+      background: #a00000;
     }
 
     footer {
       text-align: center;
-      padding: 2rem;
-      font-size: 0.8rem;
-      color: #aaa;
-      margin-top: 6rem;
+      padding: 1rem;
+      background: #000;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+      }
+      100% {
+        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
+      }
+    }
+
+    /* Ferrari Background Stil */
+    .ferrari-bg {
+      position: absolute;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    /* Hintergrund Animation */
+    #background-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .line {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      animation: moveDown 4s linear infinite;
+    }
+
+    @keyframes moveDown {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(100%);
+      }
     }
   </style>
 </head>
 <body>
+  <div id="background-lines"></div>
   <nav>
-    <a href="#">Start</a>
+    <a href="#start">Start</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
 
-  <header>
+  <header id="start">
     <h1>Willkommen auf meiner Website!</h1>
-    <p>Diese Website dient als Projekt für meine Ausbildung und wird sich täglich weiterentwickeln.</p>
+    <p>Diese Website dient als Projekt für meine Ausbildung und wird laufend aktualisiert.</p>
   </header>
 
-  <div class="content">
-    <a class="button" href="https://www.vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic</a>
-    <a class="button" href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Geschäftspartner John</a>
-    <a class="button" href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
+  <section class="buttons">
+    <a href="https://www.vionic.de" class="button">Meine Ausbildungsstätte: Vionic</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button">Mein Geschäftspartner</a>
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" class="button">Die Formel 1 unter den Fahrschulen</a>
+  </section>
 
-    <img class="ferrari" src="img/ferrari_flipped_final.jpg" alt="Ferrari" />
-  </div>
-
-  <section class="kontaktformular" id="kontakt">
-    <h2>Kontakt</h2>
-    <form action="mailto:mar.hoepfler@icloud.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Dein Name" required>
-      <input type="email" name="email" placeholder="Deine E-Mail" required>
-      <textarea name="nachricht" rows="5" placeholder="Deine Nachricht" required></textarea>
+  <section class="kontakt" id="kontakt">
+    <h2>Kontaktiere mich</h2>
+    <form>
+      <input type="text" placeholder="Dein Name" required />
+      <input type="email" placeholder="Deine E-Mail" required />
+      <textarea rows="5" placeholder="Deine Nachricht" required></textarea>
       <button type="submit">Absenden</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 M. Höpfler</p>
+    © 2025 M. Höpfler
   </footer>
+
+  <img src="img/ferrari_flipped_final.jpg" alt="Ferrari" class="ferrari-bg" />
+
+  <script>
+    const background = document.getElementById("background-lines");
+    for (let i = 0; i < 60; i++) {
+      const line = document.createElement("div");
+      line.classList.add("line");
+      line.style.left = `${Math.random() * 100}%`;
+      line.style.animationDuration = `${2 + Math.random() * 4}s`;
+      background.appendChild(line);
+    }
+  </script>
 </body>
 </html>
