@@ -3,43 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine moderne Website</title>
+  <title>Projektseite M. Höpfler</title>
   <style>
-    :root {
-      --rot: #c30010;
-      --dunkel: #0a0a0a;
-      --weiß: #ffffff;
-    }
-
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--dunkel);
-      color: var(--weiß);
+      font-family: 'Orbitron', sans-serif;
+      background: #000;
+      color: #fff;
       overflow-x: hidden;
     }
 
     header {
       position: relative;
-      z-index: 2;
+      padding: 2rem 1rem;
       text-align: center;
-      padding: 3rem 1rem 2rem;
+      overflow: hidden;
     }
 
     header h1 {
       font-size: 2.5rem;
-      animation: glow 2s ease-in-out infinite alternate;
+      color: #ff2d2d;
+      animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid rgba(255, 255, 255, 0.75);
+      width: 24ch;
+      margin: 0 auto;
     }
 
-    header p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #ccc;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 24ch; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: rgba(255, 255, 255, 0.75); }
     }
 
     nav {
@@ -47,201 +51,154 @@
       justify-content: center;
       gap: 2rem;
       padding: 1rem;
-      background-color: #111;
+      background: rgba(0, 0, 0, 0.7);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
     }
 
     nav a {
-      color: var(--weiß);
       text-decoration: none;
-      font-weight: bold;
-      position: relative;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      height: 2px;
-      width: 100%;
-      background: var(--rot);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-      transform-origin: right;
-    }
-
-    nav a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 2rem auto;
-      z-index: 2;
-      position: relative;
-    }
-
-    .button {
-      padding: 1rem 2rem;
-      background: #a00000;
-      color: var(--weiß);
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .button:hover {
-      background: #870000;
-      transform: scale(1.05);
-    }
-
-    .kontakt {
-      max-width: 600px;
-      margin: 3rem auto;
-      background: #111;
-      padding: 2rem;
-      border-radius: 10px;
-      z-index: 2;
-      position: relative;
-    }
-
-    .kontakt h2 {
-      margin-bottom: 1rem;
-    }
-
-    .kontakt input,
-    .kontakt textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .kontakt button {
-      background: var(--rot);
-      color: var(--weiß);
-      padding: 0.75rem 2rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      color: #ff3e3e;
       transition: 0.3s;
     }
 
-    .kontakt button:hover {
-      background: #a00000;
+    nav a:hover {
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .container p {
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      margin: 1rem;
+      padding: 1rem 2rem;
+      background-color: #990000;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #cc0000;
+      transform: scale(1.05);
+    }
+
+    .contact-form {
+      width: 90%;
+      max-width: 500px;
+      margin: 3rem auto;
+      background-color: #111;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    }
+
+    .contact-form h2 {
+      margin-bottom: 1rem;
+      color: #ff3e3e;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+    }
+
+    .contact-form button {
+      background: #ff3e3e;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .contact-form button:hover {
+      background: #cc0000;
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      background: #000;
+      padding: 2rem 1rem 3rem;
       font-size: 0.9rem;
-      position: relative;
-      z-index: 2;
+      color: #666;
     }
 
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
-      }
-      100% {
-        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
-      }
-    }
-
-    /* Ferrari Background Stil */
-    .ferrari-bg {
-      position: absolute;
-      bottom: 5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 300px;
-      opacity: 0.1;
-      z-index: 1;
-    }
-
-    /* Hintergrund Animation */
-    #background-lines {
+    #hex-bg {
       position: fixed;
       top: 0;
       left: 0;
-      height: 100%;
-      width: 100%;
-      z-index: 0;
-      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: repeating-conic-gradient(#111 0deg 60deg, #1a1a1a 60deg 120deg);
+      animation: rotate 30s linear infinite;
     }
 
-    .line {
-      position: absolute;
-      width: 2px;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      animation: moveDown 4s linear infinite;
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    @keyframes moveDown {
-      from {
-        transform: translateY(-100%);
-      }
-      to {
-        transform: translateY(100%);
-      }
+    .surprise-feature {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      color: #999;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
-  <div id="background-lines"></div>
+  <div id="hex-bg"></div>
   <nav>
     <a href="#start">Start</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
-
   <header id="start">
     <h1>Willkommen auf meiner Website!</h1>
-    <p>Diese Website dient als Projekt für meine Ausbildung und wird laufend aktualisiert.</p>
   </header>
-
-  <section class="buttons">
-    <a href="https://www.vionic.de" class="button">Meine Ausbildungsstätte: Vionic</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button">Mein Geschäftspartner</a>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" class="button">Die Formel 1 unter den Fahrschulen</a>
-  </section>
-
-  <section class="kontakt" id="kontakt">
-    <h2>Kontaktiere mich</h2>
+  <div class="container">
+    <p>Diese Website dient als Projekt für meine Ausbildung und wird sich täglich weiterentwickeln.</p>
+    <a href="https://vionic.de" target="_blank"><button class="btn">Zu Vionic (Ausbildungsstätte)</button></a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><button class="btn">Mein Geschäftspartner</button></a>
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank"><button class="btn">Die Formel 1 unter den Fahrschulen</button></a>
+  </div>
+  <section class="contact-form" id="kontakt">
+    <h2>Kontakt</h2>
     <form>
-      <input type="text" placeholder="Dein Name" required />
-      <input type="email" placeholder="Deine E-Mail" required />
-      <textarea rows="5" placeholder="Deine Nachricht" required></textarea>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="E-Mail" required />
+      <textarea rows="5" placeholder="Nachricht" required></textarea>
       <button type="submit">Absenden</button>
     </form>
   </section>
-
   <footer>
-    © 2025 M. Höpfler
+    <p>&copy; 2025 M. Höpfler</p>
   </footer>
-
-  <img src="img/ferrari_flipped_final.jpg" alt="Ferrari" class="ferrari-bg" />
-
-  <script>
-    const background = document.getElementById("background-lines");
-    for (let i = 0; i < 60; i++) {
-      const line = document.createElement("div");
-      line.classList.add("line");
-      line.style.left = `${Math.random() * 100}%`;
-      line.style.animationDuration = `${2 + Math.random() * 4}s`;
-      background.appendChild(line);
-    }
-  </script>
+  <div class="surprise-feature">🔥 Überraschungseffekt aktiviert: Hintergrund dreht sich stylish im Hexagon-Stil!</div>
 </body>
 </html>
