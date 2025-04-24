@@ -3,202 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projektseite M. Höpfler</title>
+  <title>Meine moderne Website</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+    /* Grund-Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      font-family: 'Orbitron', sans-serif;
-      background: #000;
-      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      background-color: #000;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     header {
-      position: relative;
-      padding: 2rem 1rem;
       text-align: center;
-      overflow: hidden;
+      padding: 100px 20px 40px;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      color: #ff2d2d;
-      animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+    h1 {
+      font-size: 3rem;
+      animation: typing 4s steps(30, end), blink .75s step-end infinite;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 2px solid rgba(255, 255, 255, 0.75);
+      border-right: 2px solid red;
       width: 24ch;
-      margin: 0 auto;
+      margin: 0 auto 20px;
     }
 
     @keyframes typing {
-      from { width: 0; }
-      to { width: 24ch; }
+      from { width: 0 }
+      to { width: 24ch }
     }
 
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: rgba(255, 255, 255, 0.75); }
+    @keyframes blink {
+      50% { border-color: transparent }
     }
 
     nav {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      gap: 40px;
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(5px);
     }
 
     nav a {
+      color: #ff4d4d;
       text-decoration: none;
-      color: #ff3e3e;
-      transition: 0.3s;
+      font-weight: bold;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
       color: #fff;
     }
 
-    .container {
-      text-align: center;
-      padding: 2rem;
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    .container p {
-      font-size: 1.2rem;
-      color: #aaa;
-      margin-top: 1rem;
+    section {
+      margin-bottom: 60px;
     }
 
     .btn {
-      margin: 1rem;
-      padding: 1rem 2rem;
-      background-color: #990000;
-      color: white;
+      background-color: #b30000;
       border: none;
-      border-radius: 30px;
-      cursor: pointer;
+      padding: 15px 30px;
+      border-radius: 8px;
+      color: white;
       font-size: 1rem;
-      transition: all 0.3s;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+      margin: 20px 0;
     }
 
     .btn:hover {
-      background-color: #cc0000;
+      background-color: #8b0000;
       transform: scale(1.05);
     }
 
-    .contact-form {
-      width: 90%;
-      max-width: 500px;
-      margin: 3rem auto;
-      background-color: #111;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .contact-form h2 {
-      margin-bottom: 1rem;
-      color: #ff3e3e;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.75rem;
+    input, textarea {
+      padding: 10px;
+      border-radius: 5px;
       border: none;
-      border-radius: 8px;
-      background: #222;
-      color: #fff;
-    }
-
-    .contact-form button {
-      background: #ff3e3e;
-      color: #fff;
-      padding: 0.75rem 2rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
+      resize: vertical;
       font-size: 1rem;
-    }
-
-    .contact-form button:hover {
-      background: #cc0000;
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem 3rem;
+      padding: 40px 20px 20px;
       font-size: 0.9rem;
-      color: #666;
+      color: #aaa;
     }
 
-    #hex-bg {
+    /* Hexagon-Style Hintergrund */
+    body::before {
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 200%;
+      height: 200%;
+      background-image: url('https://i.ibb.co/p0ZG1ph/hexagon-pattern-dark.png');
+      background-size: 200px 200px;
+      animation: hexmove 60s linear infinite;
+      opacity: 0.05;
       z-index: -1;
-      background: repeating-conic-gradient(#111 0deg 60deg, #1a1a1a 60deg 120deg);
-      animation: rotate 30s linear infinite;
     }
 
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes hexmove {
+      0% { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(360deg) scale(1); }
     }
 
-    .surprise-feature {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 1rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      color: #999;
-      font-style: italic;
+    /* Responsives Layout */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="hex-bg"></div>
   <nav>
     <a href="#start">Start</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
+
   <header id="start">
     <h1>Willkommen auf meiner Website!</h1>
+    <p>Diese Website dient als Projekt für meine Ausbildung und wird regelmäßig aktualisiert.</p>
   </header>
-  <div class="container">
-    <p>Diese Website dient als Projekt für meine Ausbildung und wird sich täglich weiterentwickeln.</p>
-    <a href="https://vionic.de" target="_blank"><button class="btn">Zu Vionic (Ausbildungsstätte)</button></a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><button class="btn">Mein Geschäftspartner</button></a>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank"><button class="btn">Die Formel 1 unter den Fahrschulen</button></a>
-  </div>
-  <section class="contact-form" id="kontakt">
-    <h2>Kontakt</h2>
-    <form>
-      <input type="text" placeholder="Name" required />
-      <input type="email" placeholder="E-Mail" required />
-      <textarea rows="5" placeholder="Nachricht" required></textarea>
-      <button type="submit">Absenden</button>
-    </form>
-  </section>
+
+  <main>
+    <section>
+      <a href="https://vionic.de" target="_blank" class="btn">Zur Ausbildungsstätte Vionic</a>
+    </section>
+
+    <section>
+      <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="btn">
+        Hier geht's zu meinem Geschäftspartner
+      </a>
+    </section>
+
+    <section id="kontakt">
+      <h2>Kontaktformular</h2>
+      <form>
+        <input type="text" placeholder="Dein Name" required>
+        <input type="email" placeholder="Deine E-Mail" required>
+        <textarea rows="5" placeholder="Deine Nachricht" required></textarea>
+        <button type="submit" class="btn">Nachricht senden</button>
+      </form>
+    </section>
+  </main>
+
   <footer>
-    <p>&copy; 2025 M. Höpfler</p>
+    <p>© 2025 M. Höpfler</p>
   </footer>
-  <div class="surprise-feature">🔥 Überraschungseffekt aktiviert: Hintergrund dreht sich stylish im Hexagon-Stil!</div>
 </body>
 </html>
