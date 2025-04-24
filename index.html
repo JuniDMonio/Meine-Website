@@ -3,184 +3,211 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine moderne Website</title>
+  <title>Meine Projektwebsite</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* Grundlegendes Layout */
     body {
+      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
       background-color: #000;
+      color: #fff;
       overflow-x: hidden;
-      scroll-behavior: smooth;
     }
 
     header {
       text-align: center;
-      padding: 100px 20px 40px;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      font-size: 3rem;
-      animation: typing 4s steps(30, end), blink .75s step-end infinite;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid red;
-      width: 24ch;
-      margin: 0 auto 20px;
+      font-size: 2.5rem;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 24ch }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+      }
+      to {
+        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
+      }
     }
 
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-
-    nav {
+    .buttons {
       display: flex;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 15px;
-      gap: 40px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(5px);
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      z-index: 2;
+      position: relative;
     }
 
-    nav a {
-      color: #ff4d4d;
+    .buttons a {
       text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #fff;
-    }
-
-    main {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    section {
-      margin-bottom: 60px;
-    }
-
-    .btn {
+      padding: 1rem 2rem;
       background-color: #b30000;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 8px;
       color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      display: inline-block;
-      margin: 20px 0;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      transition: background-color 0.3s, transform 0.2s;
     }
 
-    .btn:hover {
-      background-color: #8b0000;
+    .buttons a:hover {
+      background-color: #800000;
       transform: scale(1.05);
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    /* Kontaktformular */
+    .contact-form {
+      max-width: 400px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      z-index: 2;
+      position: relative;
     }
 
-    input, textarea {
-      padding: 10px;
-      border-radius: 5px;
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
       border: none;
-      resize: vertical;
-      font-size: 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .contact-form button {
+      background-color: #b30000;
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #800000;
     }
 
     footer {
       text-align: center;
-      padding: 40px 20px 20px;
-      font-size: 0.9rem;
+      padding: 2rem 1rem;
       color: #aaa;
+      font-size: 0.9rem;
+      z-index: 2;
+      position: relative;
     }
 
-    body::before {
-      content: '';
+    /* Intensiver Hexagon Hintergrund */
+    #hexagons {
+      background: #000;
       position: fixed;
       top: 0;
       left: 0;
-      width: 200%;
-      height: 200%;
-      background-image: url('https://i.ibb.co/p0ZG1ph/hexagon-pattern-dark.png');
-      background-size: 200px 200px;
-      animation: hexmove 60s linear infinite;
-      opacity: 0.05;
-      z-index: -1;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
 
-    @keyframes hexmove {
-      0% { transform: rotate(0deg) scale(1); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
+    #hexagons canvas {
+      width: 100vw;
+      height: 100vh;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#start">Start</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
 
-  <header id="start">
-    <h1>Willkommen auf meiner Website!</h1>
-    <p>Diese Website dient als Projekt für meine Ausbildung und wird regelmäßig aktualisiert.</p>
-  </header>
+<div id="hexagons">
+  <canvas id="hexCanvas"></canvas>
+</div>
 
-  <main>
-    <section>
-      <a href="https://vionic.de" target="_blank" class="btn">Zur Ausbildungsstätte Vionic</a>
-    </section>
+<header>
+  <h1>Willkommen auf meiner Website!</h1>
+  <p>Diese Website dient als Projekt für meine Ausbildung und wird laufend aktualisiert.</p>
+</header>
 
-    <section>
-      <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="btn">
-        Hier geht's zu meinem Geschäftspartner
-      </a>
-    </section>
+<section class="buttons">
+  <a href="https://vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic</a>
+  <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
+  <a href="mailto:mar.hoepfler@icloud.com">Kontakt aufnehmen</a>
+</section>
 
-    <section id="kontakt">
-      <h2>Kontaktformular</h2>
-      <form>
-        <input type="text" placeholder="Dein Name" required>
-        <input type="email" placeholder="Deine E-Mail" required>
-        <textarea rows="5" placeholder="Deine Nachricht" required></textarea>
-        <button type="submit" class="btn">Nachricht senden</button>
-      </form>
-    </section>
-  </main>
+<section class="contact-form">
+  <h2>Kontaktformular</h2>
+  <form>
+    <input type="text" placeholder="Name" required />
+    <input type="email" placeholder="E-Mail" required />
+    <textarea placeholder="Nachricht" rows="5" required></textarea>
+    <button type="submit">Senden</button>
+  </form>
+</section>
 
-  <footer>
-    <p>© 2025 M. Höpfler</p>
-  </footer>
+<footer>
+  <p>© 2025 M. Höpfler</p>
+</footer>
+
+<script>
+  const canvas = document.getElementById("hexCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let hexagons = [];
+  const hexagonRadius = 20;
+
+  function drawHexagon(x, y, size) {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const angle = Math.PI / 3 * i;
+      const x_i = x + size * Math.cos(angle);
+      const y_i = y + size * Math.sin(angle);
+      ctx.lineTo(x_i, y_i);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+    ctx.stroke();
+  }
+
+  function generateHexagons() {
+    hexagons = [];
+    const hexHeight = Math.sqrt(3) * hexagonRadius;
+    const hexWidth = 2 * hexagonRadius;
+    const vertDist = hexHeight;
+    const horizDist = hexWidth * 0.75;
+
+    for (let y = 0; y < canvas.height + hexHeight; y += vertDist) {
+      for (let x = 0; x < canvas.width + hexWidth; x += horizDist) {
+        const offsetX = (y / vertDist) % 2 === 0 ? 0 : hexagonRadius * 0.75;
+        hexagons.push({ x: x + offsetX, y: y });
+      }
+    }
+  }
+
+  function animateHexagons() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hexagons.forEach((hex, index) => {
+      hex.y += 0.2;
+      if (hex.y > canvas.height + hexagonRadius) hex.y = -hexagonRadius;
+      drawHexagon(hex.x, hex.y, hexagonRadius);
+    });
+    requestAnimationFrame(animateHexagons);
+  }
+
+  window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    generateHexagons();
+  });
+
+  generateHexagons();
+  animateHexagons();
+</script>
+
 </body>
 </html>
