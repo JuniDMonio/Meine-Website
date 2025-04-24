@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Projekt-Website</title>
+  <title>Meine Projekt Website</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
-      color: white;
+      color: #fff;
       overflow-x: hidden;
     }
 
@@ -18,90 +17,103 @@
       display: flex;
       justify-content: center;
       gap: 40px;
-      padding: 20px;
-      background: linear-gradient(to right, #ff0000, #8b0000);
-      box-shadow: 0 0 20px red;
+      background-color: rgba(255, 0, 0, 0.1);
+      padding: 15px 0;
+      position: relative;
     }
 
     nav a {
+      color: #ff0000;
       text-decoration: none;
-      color: white;
       font-weight: bold;
-      font-size: 1.2em;
-      transition: transform 0.3s, color 0.3s;
+      position: relative;
     }
 
-    nav a:hover {
-      transform: scale(1.1);
-      color: #ffd700;
+    nav a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: red;
+      animation: underline 0.5s ease-in-out;
+    }
+
+    @keyframes underline {
+      from { width: 0; }
+      to { width: 100%; }
     }
 
     h1 {
       text-align: center;
-      font-size: 3em;
-      margin: 30px 0 10px;
-      animation: pulse 2s infinite;
+      font-size: 3rem;
+      margin-top: 60px;
+      animation: glow 2s infinite alternate;
     }
 
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
-      50% { text-shadow: 0 0 20px #ff4500, 0 0 40px #ff4500; }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px red, 0 0 20px #ff0000;
+      }
+      to {
+        text-shadow: 0 0 20px crimson, 0 0 30px #ff4d4d;
+      }
     }
 
-    p {
+    p.description {
       text-align: center;
-      font-size: 1.2em;
-      margin-bottom: 30px;
+      font-size: 1.2rem;
+      margin-top: -10px;
+      color: #ccc;
     }
 
-    .button-container {
+    .buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 20px;
-      margin-bottom: 50px;
+      margin-top: 50px;
     }
 
-    .modern-button {
+    .buttons a {
       background-color: #ff0000;
-      border: none;
       color: white;
       padding: 15px 25px;
-      font-size: 1em;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-      box-shadow: 0 0 10px #ff0000, 0 0 20px #8b0000;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .modern-button:hover {
-      background-color: #8b0000;
-      transform: scale(1.05);
+    .buttons a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px red;
     }
 
     .ferrari {
-      width: 300px;
       position: absolute;
-      bottom: 50px;
+      bottom: 100px;
       left: -300px;
-      animation: drive 10s linear infinite;
+      width: 300px;
+      animation: drive 8s linear infinite;
     }
 
     @keyframes drive {
-      0% { left: -300px; }
-      100% { left: 100%; }
+      0% { transform: translateX(-300px); }
+      100% { transform: translateX(120vw); }
     }
 
     footer {
       text-align: center;
       margin-top: 200px;
-      padding: 20px;
-      font-size: 0.9em;
+      padding: 30px 0;
+      font-size: 0.9rem;
       color: #aaa;
     }
   </style>
 </head>
-
 <body>
   <nav>
     <a href="#">Start</a>
@@ -109,25 +121,18 @@
   </nav>
 
   <h1>Willkommen auf meiner Website!</h1>
-  <p>Diese Website dient als Projekt für meine Ausbildung und wird täglich aktualisiert.</p>
+  <p class="description">Diese Website dient als Projekt für meine Ausbildung und wird sich täglich aktualisieren.</p>
 
-  <div class="button-container">
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-      <button class="modern-button">Hier geht's zu meinem Geschäftspartner</button>
-    </a>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">
-      <button class="modern-button">Die Formel 1 unter den Fahrschulen</button>
-    </a>
-    <a href="https://www.vionic.de" target="_blank">
-      <button class="modern-button">Meine Ausbildungsstätte: Vionic</button>
-    </a>
+  <div class="buttons">
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier geht's zu meinem Geschäftspartner</a>
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
+    <a href="https://vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic</a>
   </div>
 
-  <img src="img/ferrari_flipped_final.jpg" alt="Ferrari" class="ferrari" />
+  <img class="ferrari" src="img/ferrari_flipped_final.jpg" alt="Ferrari" />
 
   <footer>
-    © 2025 M. Höpfler
+    &copy; 2025 M. Höpfler
   </footer>
 </body>
-
 </html>
