@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meine Website</title>
+  <title>Meine Animierte Website</title>
   <style>
     body {
       margin: 0;
@@ -28,12 +28,45 @@
     }
 
     @keyframes shine {
-      0% {
-        background-position: -100% 0;
-      }
-      100% {
-        background-position: 100% 0;
-      }
+      0% { background-position: -100% 0; }
+      100% { background-position: 100% 0; }
+    }
+
+    nav {
+      background-color: #111;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #ff0000;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
     }
 
     .button-container {
@@ -70,7 +103,7 @@
       width: 200px;
       animation: moveCar 10s linear infinite;
       transform: scaleX(-1);
-      filter: drop-shadow(0 0 8px red);
+      filter: drop-shadow(0 0 8px red) brightness(1.2);
     }
 
     @keyframes moveCar {
@@ -82,15 +115,40 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .overlay {
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.1), transparent 70%);
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
+  <div class="overlay"></div>
+
+  <nav>
+    <a href="#">Start</a>
+    <a href="#vionic">Ausbildung</a>
+    <a href="#partner">Partner</a>
+    <a href="#fahrschule">Fahrschule</a>
+  </nav>
+
   <h1>Willkommen auf meiner Website!</h1>
 
   <div class="button-container">
-    <a href="https://vionic.de" class="button" target="_blank">Meine Ausbildungsstätte: Vionic</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button" target="_blank">Hier geht's zu meinem Geschäftspartner</a>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" class="button" target="_blank">Die Formel 1 unter den Fahrschulen</a>
+    <a id="vionic" href="https://vionic.de" class="button" target="_blank">Meine Ausbildungsstätte: Vionic</a>
+    <a id="partner" href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button" target="_blank">Hier geht's zu meinem Geschäftspartner</a>
+    <a id="fahrschule" href="https://abenstal-passage.de/fahrschule-hoepfler/" class="button" target="_blank">Die Formel 1 unter den Fahrschulen</a>
   </div>
 
   <img src="img/ferrari_flipped.jpg" alt="Ferrari" class="car" />
