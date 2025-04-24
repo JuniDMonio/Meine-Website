@@ -3,141 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Projekt-Website</title>
+  <title>Meine Projekt Website</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
       background-color: #000;
-      color: #fff;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 3rem 1rem 1rem;
+      padding: 2rem 1rem;
     }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      animation: pulseGlow 2s infinite;
+    h1 {
+      font-size: 2.5rem;
       color: #ff0000;
-      text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+      animation: pulse 2s infinite;
     }
 
-    @keyframes pulseGlow {
-      0%, 100% {
-        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-      }
-      50% {
-        text-shadow: 0 0 20px #ff4d4d, 0 0 40px #ff4d4d;
-      }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px #ff0000; }
+      50% { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff4d4d; }
+      100% { text-shadow: 0 0 5px #ff0000; }
     }
 
-    .description {
+    .subheading {
       text-align: center;
       font-size: 1.2rem;
-      color: #bbb;
-      margin-bottom: 2rem;
-    }
-
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .buttons a {
-      background-color: #ff0000;
-      color: white;
-      padding: 1rem 2rem;
-      text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .buttons a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #ff0000;
+      margin-top: -1rem;
+      color: #ccc;
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 0.8rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      margin: 0;
+      text-align: center;
+      margin: 2rem 0;
     }
 
     nav a {
-      color: #fff;
+      background-color: #ff0000;
+      color: white;
       text-decoration: none;
+      padding: 0.8rem 1.2rem;
+      margin: 0 0.5rem;
+      border-radius: 30px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      background-color: #cc0000;
+      transform: scale(1.05);
+    }
+
+    .car-animation {
+      position: absolute;
+      bottom: 60px;
+      left: -400px;
+      width: 300px;
+      animation: drive 10s linear infinite;
+      transform: scaleX(-1); /* Spiegelung entfernen */
+    }
+
+    @keyframes drive {
+      0% { left: -400px; }
+      100% { left: 100%; }
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem 6rem;
-      color: #aaa;
-      position: relative;
-    }
-
-    .ferrari {
-      position: fixed;
-      bottom: 0;
-      left: -300px;
-      width: 200px;
-      animation: driveFerrari 10s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes driveFerrari {
-      0% {
-        left: -300px;
-      }
-      100% {
-        left: 100%;
-      }
+      padding: 1rem;
+      color: #666;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div style="font-weight: bold; color: #ff0000;">Meine Website</div>
-    <ul>
-      <li><a href="#">Start</a></li>
-      <li><a href="mailto:mar.hoepfler@icloud.com">Kontakt</a></li>
-    </ul>
-  </nav>
-
   <header>
     <h1>Willkommen auf meiner Website!</h1>
-    <p class="description">Diese Website dient als Projekt für meine Ausbildung und wird täglich aktualisiert.</p>
+    <p class="subheading">Diese Website dient als Projekt für meine Ausbildung und wird regelmäßig aktualisiert.</p>
   </header>
 
-  <div class="buttons">
+  <nav>
+    <a href="#">Start</a>
+    <a href="mailto:mar.hoepfler@icloud.com">Kontakt</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Mein Geschäftspartner</a>
     <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Hier gehts zu meinem Geschäftspartner</a>
-    <a href="https://www.vionic.de" target="_blank">Vionic – Meine Ausbildungsstätte</a>
-  </div>
+    <a href="https://vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic</a>
+  </nav>
+
+  <img src="ferrari_flipped_final.jpg" alt="Ferrari" class="car-animation" />
 
   <footer>
-    <p>&copy; 2025 M. Höpfler</p>
+    &copy; 2025 M. Höpfler
   </footer>
-
-  <img src="ferrari_flipped_final.jpg" alt="Ferrari" class="ferrari" />
 </body>
 </html>
