@@ -3,98 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Projekt Website</title>
+  <title>Meine Projekt-Website</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       background-color: #000;
-      color: white;
+      color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
     }
 
     header {
-      text-align: center;
-      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background-color: #111;
+      padding: 1rem 0;
+      box-shadow: 0 0 20px #ff0000;
+    }
+
+    header a {
+      color: #ff0000;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    header a:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 10px #ff0000;
     }
 
     h1 {
-      font-size: 2.5rem;
+      text-align: center;
+      font-size: 3rem;
       color: #ff0000;
       animation: pulse 2s infinite;
+      margin-top: 2rem;
     }
 
     @keyframes pulse {
-      0% { text-shadow: 0 0 5px #ff0000; }
-      50% { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff4d4d; }
-      100% { text-shadow: 0 0 5px #ff0000; }
+      0% { text-shadow: 0 0 10px #ff0000; }
+      50% { text-shadow: 0 0 30px #ff0000; }
+      100% { text-shadow: 0 0 10px #ff0000; }
     }
 
-    .subheading {
+    p {
       text-align: center;
+      margin-top: 1rem;
       font-size: 1.2rem;
-      margin-top: -1rem;
-      color: #ccc;
     }
 
-    nav {
+    .button-container {
       text-align: center;
-      margin: 2rem 0;
+      margin-top: 2rem;
     }
 
-    nav a {
+    .btn {
+      display: inline-block;
       background-color: #ff0000;
-      color: white;
-      text-decoration: none;
-      padding: 0.8rem 1.2rem;
-      margin: 0 0.5rem;
-      border-radius: 30px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      color: #fff;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    nav a:hover {
+    .btn:hover {
       background-color: #cc0000;
       transform: scale(1.05);
+      box-shadow: 0 0 20px #ff0000;
     }
 
-    .car-animation {
+    .ferrari {
       position: absolute;
-      bottom: 60px;
-      left: -400px;
+      bottom: 80px;
+      left: -500px;
       width: 300px;
       animation: drive 10s linear infinite;
-      transform: scaleX(-1); /* Spiegelung entfernen */
     }
 
     @keyframes drive {
-      0% { left: -400px; }
-      100% { left: 100%; }
+      0% { left: -500px; }
+      100% { left: 100vw; }
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      color: #666;
+      padding: 2rem;
       font-size: 0.9rem;
+      background-color: #111;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Willkommen auf meiner Website!</h1>
-    <p class="subheading">Diese Website dient als Projekt für meine Ausbildung und wird regelmäßig aktualisiert.</p>
-  </header>
-
-  <nav>
     <a href="#">Start</a>
     <a href="mailto:mar.hoepfler@icloud.com">Kontakt</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Mein Geschäftspartner</a>
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">Die Formel 1 unter den Fahrschulen</a>
-    <a href="https://vionic.de" target="_blank">Meine Ausbildungsstätte: Vionic</a>
-  </nav>
+  </header>
 
-  <img src="ferrari_flipped_final.jpg" alt="Ferrari" class="car-animation" />
+  <h1>Willkommen auf meiner Website!</h1>
+  <p>Diese Website dient als Projekt für meine Ausbildung und wird sich täglich aktualisieren.</p>
+
+  <div class="button-container">
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="btn">Hier gehts zu meinem Geschäftspartner</a>
+    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" class="btn">Die Formel 1 unter den Fahrschulen</a>
+    <a href="https://www.vionic.de/" class="btn">Meine Ausbildungsstätte: Vionic</a>
+  </div>
+
+  <img src="ferrari_flipped_final.jpg" alt="Ferrari" class="ferrari" />
 
   <footer>
     &copy; 2025 M. Höpfler
