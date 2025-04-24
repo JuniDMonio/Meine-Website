@@ -2,37 +2,161 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meine erste Webseite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stay High</title>
+  <style>
+    :root {
+      --light-bg: #f4f4f4;
+      --light-text: #222;
+      --dark-bg: #1e1e1e;
+      --dark-text: #f4f4f4;
+      --accent: #00b894;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--accent);
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      background-color: #e0e0e0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--light-text);
+      font-weight: bold;
+    }
+
+    main {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #019974;
+    }
+
+    footer {
+      background-color: #ccc;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    body.dark-mode nav {
+      background-color: #333;
+    }
+
+    body.dark-mode nav a {
+      color: var(--dark-text);
+    }
+
+    body.dark-mode footer {
+      background-color: #2b2b2b;
+      color: var(--dark-text);
+    }
+
+    .toggle-darkmode {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 2px solid var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--accent);
+      background-color: transparent;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .toggle-darkmode:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hallo Welt!</h1>
-  <img src="index.jpg" alt="Ich wollte Hallo sagen" width="300"
-  <br>
-  <h4>Das ist meine erste Webseite mit HTML.</h4>
-<u1><li>Ich mache eine Ausbildung zum Anwendungsentwickler in der Firma die ich unten verlinkt habe
-</li></u1>
-<div style="text-align: center; margin-top: 50px;">
-    <a href="https://vionic.de" target="_blank"
-       style="
-         display: inline-block;
-         padding: 12px 24px;
-         background-color: #007bff;
-         color: white;
-         text-decoration: none;
-         font-size: 18px;
-         border-radius: 8px;
-         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-         transition: background-color 0.3s ease;
-       "
-       onmouseover="this.style.backgroundColor='#0056b3'"
-       onmouseout="this.style.backgroundColor='#007bff'">
-      Zur Website von Vionic
-    </a>
-  </div>
-<h2> Das ist mein Bruder Pegasis</h2>
-<a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-    <img src="WhatsApp Image 2025-04-23 at 18.25.19.jpeg" alt="Profilbild John Höpfler" width="300" />
-  </a>
+  <button class="toggle-darkmode" onclick="toggleDarkMode()">Dark Mode</button>
+
+  <header>
+    <h1>Willkommen auf meiner Website</h1>
+    <p>Dies ist ein Beispiel für eine moderne Website mit HTML & CSS</p>
+  </header>
+
+  <nav>
+    <a href="#">Start</a>
+    <a href="#">Über mich</a>
+    <a href="#">Projekte</a>
+    <a href="#">Kontakt</a>
+  </nav>
+
+  <main>
+    <h2>Was ich mache</h2>
+    <p>
+      Ich bin angehender Fachinformatiker für Anwendungsentwicklung. Diese Seite dient als Übungsplattform für HTML, CSS und später JavaScript!
+    </p>
+    <a href="https://vionic.de" class="button" target="_blank">Zum Ausbildungsplatz</a><br>
+    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button" target="_blank">Hier geht's zu meinem Geschäftspartner</a>
+  </main>
+
+  <footer>
+    © 2025 JuniDMonio – Alle Rechte vorbehalten
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>
