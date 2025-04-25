@@ -15,105 +15,124 @@
     }
 
     body {
-      background-color: #e6f0ff;
-      color: #1a1a1a;
-      overflow-x: hidden;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #1a1a1a;
-      font-weight: 600;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: #1a1a1a;
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-      transform-origin: right;
-    }
-
-    .nav-links a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
+      background-color: #eaf3fa;
+      color: #111;
     }
 
     header {
       text-align: center;
-      padding: 5rem 1rem 2rem;
+      padding: 6rem 1rem 3rem;
+      position: relative;
+      z-index: 2;
     }
 
-    header h1 {
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #007acc;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .slideshow {
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+    }
+
+    .slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: fade 20s infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    @keyframes fade {
+      0% { opacity: 1; }
+      25% { opacity: 0; }
+      50% { opacity: 0; }
+      75% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    h1 {
       font-size: 2.5rem;
-      color: #003366;
-    }
-
-    .subtext {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #333;
+      z-index: 2;
+      position: relative;
     }
 
     .button-container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-      gap: 1rem;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 3rem 1rem;
     }
 
     .button-container a {
       text-decoration: none;
       color: white;
-      background-color: #003366;
+      background: #007acc;
       padding: 1rem 2rem;
       border-radius: 30px;
-      transition: all 0.3s ease;
-      font-weight: bold;
-      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
+      transition: 0.3s;
+      font-weight: 600;
     }
 
     .button-container a:hover {
-      transform: scale(1.05);
-      background-color: #00509e;
+      background: #005fa3;
     }
 
     .contact-form {
       margin: 4rem auto;
       padding: 2rem;
       max-width: 600px;
-      background: #cce0ff;
+      background: #d0e4f4;
       border-radius: 20px;
     }
 
     .contact-form h2 {
       margin-bottom: 1rem;
       text-align: center;
-      color: #003366;
+      color: #007acc;
     }
 
     .contact-form input,
@@ -121,10 +140,10 @@
       width: 100%;
       padding: 1rem;
       margin-bottom: 1rem;
-      border: none;
+      border: 1px solid #ccc;
       border-radius: 10px;
       background: white;
-      color: #1a1a1a;
+      color: #111;
     }
 
     .contact-form button {
@@ -132,7 +151,7 @@
       padding: 1rem;
       border: none;
       border-radius: 30px;
-      background: #003366;
+      background: #007acc;
       color: white;
       font-weight: bold;
       cursor: pointer;
@@ -140,50 +159,43 @@
     }
 
     .contact-form button:hover {
-      background: #00509e;
+      background: #005fa3;
     }
 
     footer {
       text-align: center;
       padding: 2rem;
-      color: #666;
-      font-size: 0.9rem;
+      color: #444;
     }
 
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
       }
-      .nav-links {
+      .button-container {
         flex-direction: column;
-        width: 100%;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-      }
-      header h1 {
-        font-size: 1.8rem;
-      }
-      .subtext {
-        font-size: 1rem;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
+  <div class="slideshow">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" class="active" />
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" />
+    <img src="https://images.unsplash.com/photo-1493244040629-496f6d136cc3" />
+  </div>
+
   <nav>
-    <div><strong>Projekt M. Höpfler</strong></div>
-    <div class="nav-links">
-      <a href="#start">Start</a>
-      <a href="#projekt">Projekt</a>
-      <a href="#partner">Partner</a>
-      <a href="#kontakt">Kontakt</a>
-    </div>
+    <a href="#start">Start</a>
+    <a href="#projekt">Projekt</a>
+    <a href="#partner">Partner</a>
+    <a href="#kontakt">Kontakt</a>
   </nav>
 
   <header id="start">
     <h1>Willkommen auf meiner Website</h1>
-    <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird laufend aktualisiert.</p>
   </header>
 
   <section class="button-container" id="partner">
@@ -198,8 +210,8 @@
       <input type="email" name="email" placeholder="Deine E-Mail" required />
       <textarea name="message" rows="5" placeholder="Deine Nachricht"></textarea>
       <button type="submit">Absenden</button>
+      <p id="formMessage" style="text-align:center; margin-top:1rem; color:green; display:none;">Nachricht erfolgreich gesendet!</p>
     </form>
-    <p id="confirmation" style="text-align:center; color:#00509e; margin-top:1rem; display:none;">Deine Nachricht wurde erfolgreich versendet!</p>
   </section>
 
   <footer>
@@ -207,38 +219,30 @@
   </footer>
 
   <script>
-    const form = document.getElementById("contactForm");
-    const confirmation = document.getElementById("confirmation");
+    // Slideshow Effekt
+    const slides = document.querySelectorAll('.slideshow img');
+    let current = 0;
 
-    form.addEventListener("submit", function (e) {
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 6000);
+
+    // Formularbehandlung mit fetch
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: form.name.value,
-          email: form.email.value,
-          message: form.message.value
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success === "true") {
-          confirmation.style.display = "block";
-          form.reset();
-        } else {
-          confirmation.textContent = "Ein Fehler ist aufgetreten. Bitte versuche es erneut.";
-          confirmation.style.display = "block";
-        }
-      })
-      .catch(error => {
-        confirmation.textContent = "Ein Fehler ist aufgetreten. Bitte versuche es erneut.";
-        confirmation.style.display = "block";
+      const formData = new FormData(this);
+
+      await fetch('https://formsubmit.co/ajax/mar.hoepfler@icloud.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
       });
+
+      document.getElementById('formMessage').style.display = 'block';
+      this.reset();
     });
   </script>
 </body>
