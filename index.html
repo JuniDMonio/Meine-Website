@@ -5,95 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projekt M. Höpfler</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Orbitron', 'Poppins', sans-serif;
+      font-family: 'Roboto', sans-serif;
     }
 
     body {
-      background-color: #1e1e2f;
-      color: #f0f0f0;
+      background-color: #ffffff;
+      color: #333333;
       overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+      z-index: 1000;
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #222;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li {
       position: relative;
+    }
+
+    nav ul li::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background-color: #007BFF;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    nav ul li:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #007BFF;
     }
 
     header {
       text-align: center;
-      padding: 5rem 1rem 2rem;
-      position: relative;
-      z-index: 2;
+      padding: 8rem 1rem 3rem;
     }
 
-    .typing {
+    header h2 {
       font-size: 2.5rem;
-      color: #9f7aea;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: .15em solid #ccc;
-      width: 0;
-      animation: typing 4s steps(40, end) forwards, blink .75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
+      margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     .subtext {
-      margin-top: 1rem;
       font-size: 1.2rem;
-      color: #c0c0c0;
+      color: #555;
+      font-weight: 400;
     }
 
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-      gap: 1rem;
-      z-index: 2;
-      position: relative;
-    }
-
-    .button-container a {
-      text-decoration: none;
-      color: white;
-      background: #2d2d44;
-      padding: 1rem 2rem;
-      border-radius: 30px;
-      transition: all 0.3s ease-in-out;
-      font-weight: bold;
-    }
-
-    .button-container a:hover {
-      transform: scale(1.05);
-      background-color: #9f7aea;
-      box-shadow: 0 0 15px #9f7aea;
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .contact-form {
-      margin: 4rem auto;
+      background: #f9f9f9;
       padding: 2rem;
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      z-index: 2;
-      position: relative;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .contact-form h2 {
-      margin-bottom: 1rem;
       text-align: center;
-      color: #9f7aea;
+      color: #222;
+      margin-bottom: 1.5rem;
     }
 
     .contact-form input,
@@ -101,71 +120,118 @@
       width: 100%;
       padding: 1rem;
       margin-bottom: 1rem;
-      border: none;
-      border-radius: 10px;
-      background: #2c2c3f;
-      color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      color: #333;
+      font-size: 1rem;
     }
 
     .contact-form button {
       width: 100%;
       padding: 1rem;
       border: none;
-      border-radius: 30px;
-      background: #6b46c1;
+      border-radius: 8px;
+      background: #007BFF;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.3s ease-in-out;
-      box-shadow: 0 0 10px #9f7aea;
+      transition: background 0.3s ease;
+      font-size: 1rem;
     }
 
     .contact-form button:hover {
-      background: #9f7aea;
+      background: #0056b3;
+    }
+
+    .confirmation {
+      text-align: center;
+      margin-top: 1rem;
+      color: #007BFF;
+      font-weight: 500;
+      display: none;
     }
 
     footer {
       text-align: center;
-      padding: 2rem;
-      color: #aaa;
-      position: relative;
-      z-index: 2;
+      padding: 3rem 1rem;
+      color: #888;
+      font-weight: 300;
+      background-color: #f1f1f1;
+      border-top: 1px solid #ddd;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     @media (max-width: 768px) {
-      .typing {
-        font-size: 1.5rem;
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
       }
-      .subtext {
-        font-size: 1rem;
+      header h2 {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="typing">Willkommen auf meiner Website!</div>
-    <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird täglich aktualisiert.</p>
+  <nav>
+    <h1>M. Höpfler</h1>
+    <ul>
+      <li><a href="#start">Start</a></li>
+      <li><a href="#projekt">Projekt</a></li>
+      <li><a href="#partner">Partner</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <header id="start">
+    <h2>Willkommen auf meiner Website</h2>
+    <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig erweitert.</p>
   </header>
 
-  <section class="button-container">
-    <a href="https://abenstal-passage.de/fahrschule-hoepfler/" target="_blank">🚗 Die Formel 1 unter den Fahrschulen</a>
-    <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">🤝 Geschäftspartner</a>
-    <a href="https://vionic.de" target="_blank">🏢 Ausbildungsstätte: Vionic</a>
+  <section id="projekt">
+    <h2 style="text-align:center; margin-bottom:2rem;">Mein Projekt</h2>
+    <p style="text-align:center; color:#444; max-width: 700px; margin: auto; font-size: 1.1rem;">
+      Hier wird bald ein spannendes Ausbildungsprojekt vorgestellt, das sich mit moderner Webentwicklung beschäftigt. Die Inhalte folgen demnächst.
+    </p>
   </section>
 
-  <section class="contact-form">
+  <section id="partner">
+    <h2 style="text-align:center; margin-bottom:2rem;">Partner</h2>
+    <div style="text-align: center;">
+      <a href="https://www.linkedin.com/in/john-hoepfler?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" style="color: #007BFF; text-decoration: none; font-weight: 500;">LinkedIn-Profil</a>
+      <br /><br />
+      <a href="https://vionic.de" target="_blank" style="color: #007BFF; text-decoration: none; font-weight: 500;">Ausbildungsstätte: Vionic</a>
+    </div>
+  </section>
+
+  <section id="kontakt" class="contact-form">
     <h2>Kontakt</h2>
-    <form>
-      <input type="text" placeholder="Dein Name" required />
-      <input type="email" placeholder="Deine E-Mail" required />
-      <textarea rows="5" placeholder="Deine Nachricht"></textarea>
+    <form id="kontaktForm">
+      <input type="text" name="name" placeholder="Dein Name" required />
+      <input type="email" name="email" placeholder="Deine E-Mail" required />
+      <textarea name="nachricht" rows="5" placeholder="Deine Nachricht"></textarea>
       <button type="submit">Absenden</button>
+      <p class="confirmation" id="bestaetigung">Vielen Dank für deine Nachricht! Wir melden uns unter mar.hoepfler@icloud.com.</p>
     </form>
   </section>
 
   <footer>
-    &copy; 2025 M. Höpfler
+    &copy; 2025 M. Höpfler. Alle Rechte vorbehalten.
   </footer>
+
+  <script>
+    const form = document.getElementById('kontaktForm');
+    const bestaetigung = document.getElementById('bestaetigung');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      bestaetigung.style.display = 'block';
+      form.reset();
+    });
+  </script>
 </body>
 </html>
