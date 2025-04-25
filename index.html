@@ -15,100 +15,105 @@
     }
 
     body {
-      background-color: #fff;
-      color: #333;
-      line-height: 1.6;
+      background-color: #e6f0ff;
+      color: #1a1a1a;
+      overflow-x: hidden;
     }
 
     nav {
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 999;
     }
 
-    nav ul {
+    .nav-links {
       display: flex;
-      justify-content: center;
-      list-style: none;
-      padding: 1rem;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
-    nav ul li a {
+    .nav-links a {
       text-decoration: none;
-      color: #333;
+      color: #1a1a1a;
       font-weight: 600;
       position: relative;
-      transition: color 0.3s ease;
     }
 
-    nav ul li a::after {
-      content: '';
+    .nav-links a::after {
+      content: "";
       position: absolute;
-      width: 0%;
+      width: 100%;
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: #000;
-      transition: width 0.3s;
+      background-color: #1a1a1a;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: right;
     }
 
-    nav ul li a:hover::after {
-      width: 100%;
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
 
     header {
       text-align: center;
-      padding: 4rem 1rem 2rem;
+      padding: 5rem 1rem 2rem;
     }
 
     header h1 {
       font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
+      color: #003366;
     }
 
     .subtext {
+      margin-top: 1rem;
       font-size: 1.2rem;
-      color: #555;
+      color: #333;
     }
 
     .button-container {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 3rem 0;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      gap: 1rem;
     }
 
     .button-container a {
       text-decoration: none;
-      color: #fff;
-      background-color: #000;
+      color: white;
+      background-color: #003366;
       padding: 1rem 2rem;
       border-radius: 30px;
-      transition: background-color 0.3s ease;
-      font-weight: 600;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
     }
 
     .button-container a:hover {
-      background-color: #333;
+      transform: scale(1.05);
+      background-color: #00509e;
     }
 
     .contact-form {
       margin: 4rem auto;
       padding: 2rem;
       max-width: 600px;
-      background: #f9f9f9;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background: #cce0ff;
+      border-radius: 20px;
     }
 
     .contact-form h2 {
       margin-bottom: 1rem;
       text-align: center;
-      color: #111;
+      color: #003366;
     }
 
     .contact-form input,
@@ -116,10 +121,10 @@
       width: 100%;
       padding: 1rem;
       margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #fff;
-      color: #333;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      color: #1a1a1a;
     }
 
     .contact-form button {
@@ -127,57 +132,63 @@
       padding: 1rem;
       border: none;
       border-radius: 30px;
-      background: #000;
+      background: #003366;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: 0.3s;
     }
 
     .contact-form button:hover {
-      background: #333;
-    }
-
-    .confirmation {
-      display: none;
-      text-align: center;
-      color: green;
-      margin-top: 1rem;
-      font-weight: 600;
-      animation: fadeIn 1s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      background: #00509e;
     }
 
     footer {
       text-align: center;
       padding: 2rem;
-      color: #888;
+      color: #666;
       font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      .subtext {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <nav>
-    <ul>
-      <li><a href="#">Start</a></li>
-      <li><a href="#">Projekt</a></li>
-      <li><a href="#partner">Partner</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
+    <div><strong>Projekt M. Höpfler</strong></div>
+    <div class="nav-links">
+      <a href="#start">Start</a>
+      <a href="#projekt">Projekt</a>
+      <a href="#partner">Partner</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
   </nav>
 
-  <header>
-    <h1>Willkommen auf meiner Website!</h1>
-    <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig aktualisiert.</p>
+  <header id="start">
+    <h1>Willkommen auf meiner Website</h1>
+    <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird laufend aktualisiert.</p>
   </header>
 
   <section class="button-container" id="partner">
-    <a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">Partner: LinkedIn Profil</a>
-    <a href="https://vionic.de" target="_blank">Partner: Vionic</a>
+    <a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">John H.</a>
+    <a href="https://vionic.de" target="_blank">Vionic</a>
   </section>
 
   <section class="contact-form" id="kontakt">
@@ -185,10 +196,10 @@
     <form id="contactForm">
       <input type="text" name="name" placeholder="Dein Name" required />
       <input type="email" name="email" placeholder="Deine E-Mail" required />
-      <textarea name="nachricht" rows="5" placeholder="Deine Nachricht" required></textarea>
+      <textarea name="message" rows="5" placeholder="Deine Nachricht"></textarea>
       <button type="submit">Absenden</button>
     </form>
-    <div class="confirmation" id="confirmationMessage">Vielen Dank! Deine Nachricht wurde erfolgreich verschickt.</div>
+    <p id="confirmation" style="text-align:center; color:#00509e; margin-top:1rem; display:none;">Deine Nachricht wurde erfolgreich versendet!</p>
   </section>
 
   <footer>
@@ -196,27 +207,38 @@
   </footer>
 
   <script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+    const form = document.getElementById("contactForm");
+    const confirmation = document.getElementById("confirmation");
 
-      const form = event.target;
-      const formData = new FormData(form);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
 
       fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
         method: "POST",
         headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: formData
+        body: JSON.stringify({
+          name: form.name.value,
+          email: form.email.value,
+          message: form.message.value
+        })
       })
       .then(response => response.json())
       .then(data => {
-        if (data.success === "true" || data.success === true) {
-          document.getElementById("confirmationMessage").style.display = "block";
+        if (data.success === "true") {
+          confirmation.style.display = "block";
           form.reset();
+        } else {
+          confirmation.textContent = "Ein Fehler ist aufgetreten. Bitte versuche es erneut.";
+          confirmation.style.display = "block";
         }
       })
-      .catch(error => console.error("Fehler beim Senden:", error));
+      .catch(error => {
+        confirmation.textContent = "Ein Fehler ist aufgetreten. Bitte versuche es erneut.";
+        confirmation.style.display = "block";
+      });
     });
   </script>
 </body>
