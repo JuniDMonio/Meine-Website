@@ -21,22 +21,10 @@
       overflow-x: hidden;
     }
 
-    header {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-    }
-
-    .subtext {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #555;
+    .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     nav {
@@ -48,6 +36,7 @@
       height: 100%;
       padding: 2rem 1rem;
       box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+      z-index: 10;
     }
 
     nav ul {
@@ -96,12 +85,6 @@
       transform: translateY(0);
     }
 
-    .hero-image {
-      width: 100%;
-      height: 200px;
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    }
-
     .contact-form {
       padding: 2rem;
       max-width: 600px;
@@ -140,6 +123,50 @@
       background: #005fa3;
     }
 
+    .faq-section {
+      max-width: 800px;
+      margin: 4rem auto;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1rem;
+      cursor: pointer;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .faq-question::after {
+      content: '\25BC';
+      position: absolute;
+      right: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1rem;
+      color: #555;
+      transition: max-height 0.5s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 1rem;
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(180deg);
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -164,10 +191,6 @@
       main {
         margin-left: 0;
       }
-
-      .hero-image {
-        height: 150px;
-      }
     }
   </style>
 </head>
@@ -182,12 +205,12 @@
   </nav>
 
   <main>
-    <div class="hero-image"></div>
+    <img class="hero-image" src="/mnt/data/photo-1507525428034-b723cf961d3e Kopie.jpeg" alt="Projekt Universe Header" />
 
-    <header id="start">
+    <section id="start">
       <h1>Willkommen auf meiner Website</h1>
       <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig erweitert.</p>
-    </header>
+    </section>
 
     <section id="projekt">
       <h2>Projekt</h2>
@@ -213,6 +236,36 @@
       <p id="formSuccess" style="text-align:center; color:green; display:none; margin-top:1rem;">Danke! Deine Nachricht wurde gesendet.</p>
     </section>
 
+    <section class="faq-section">
+      <h2 style="text-align:center; margin-bottom:2rem;">Fragen & Antworten</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Warum habe ich mich für die Ausbildung zum Fachinformatiker entschieden?</div>
+        <div class="faq-answer">Weil Technologie unsere Zukunft gestaltet – und ich nicht nur zuschauen, sondern aktiv mitentwickeln möchte. Mein Ziel ist es, Ideen digital zum Leben zu erwecken.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Was begeistert mich an der Webentwicklung besonders?</div>
+        <div class="faq-answer">Die Möglichkeit, mit jedem Projekt etwas Einzigartiges zu schaffen. Webseiten sind heute mehr als nur digitale Visitenkarten – sie sind Erlebnisse, Marken, Communities.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Wie bringe ich meine eigene Persönlichkeit in Projekte ein?</div>
+        <div class="faq-answer">Durch Kreativität, Liebe zum Detail und absolute Entschlossenheit. Ich glaube daran, dass jede Zeile Code und jedes Pixel einen Unterschied machen kann.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Was ist mein langfristiges Ziel in der IT-Branche?</div>
+        <div class="faq-answer">Ich möchte nicht nur Webseiten entwickeln, sondern nachhaltige digitale Welten schaffen. Mein Fokus liegt auf Innovation, Benutzerfreundlichkeit und modernem Design.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Warum bin ich der richtige Partner für Webprojekte?</div>
+        <div class="faq-answer">Weil ich nicht nur Technologien verstehe, sondern Visionen greifbar mache. Mit technischer Kompetenz, Leidenschaft und einem klaren Sinn für Ästhetik.</div>
+      </div>
+
+    </section>
+
     <footer>
       &copy; 2025 M. Höpfler
     </footer>
@@ -232,6 +285,13 @@
 
     sections.forEach(section => {
       observer.observe(section);
+    });
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+      });
     });
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
