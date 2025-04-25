@@ -138,6 +138,14 @@
       background: #333;
     }
 
+    .confirmation {
+      display: none;
+      text-align: center;
+      color: green;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -168,19 +176,28 @@
 
   <section class="contact-form" id="kontakt">
     <h2>Kontakt</h2>
-    <form action="https://formsubmit.co/mar.hoepfler@icloud.com" method="POST">
+    <form action="https://formsubmit.co/mar.hoepfler@icloud.com" method="POST" onsubmit="showConfirmation(); return true;">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_subject" value="Neue Nachricht von deiner Website">
-      <input type="hidden" name="_next" value="https://deine-website.de/danke.html">
       <input type="text" name="name" placeholder="Dein Name" required />
       <input type="email" name="email" placeholder="Deine E-Mail" required />
       <textarea name="nachricht" rows="5" placeholder="Deine Nachricht" required></textarea>
       <button type="submit">Absenden</button>
     </form>
+    <div class="confirmation" id="confirmationMessage">Vielen Dank! Deine Nachricht wurde erfolgreich verschickt.</div>
   </section>
 
   <footer>
     &copy; 2025 M. Höpfler
   </footer>
+
+  <script>
+    function showConfirmation() {
+      const message = document.getElementById("confirmationMessage");
+      setTimeout(() => {
+        message.style.display = "block";
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
