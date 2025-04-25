@@ -19,12 +19,7 @@
       background-color: #eaf3fb;
       color: #222;
       overflow-x: hidden;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 300px;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
     }
 
     nav {
@@ -33,7 +28,7 @@
       left: 0;
       background: #fff;
       width: 220px;
-      height: 100%;
+      height: 100vh;
       padding: 2rem 1rem;
       box-shadow: 2px 0 5px rgba(0,0,0,0.05);
       z-index: 10;
@@ -49,7 +44,7 @@
     nav ul li a {
       text-decoration: none;
       color: #333;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1.05rem;
       position: relative;
     }
@@ -69,12 +64,23 @@
       width: 100%;
     }
 
-    main {
+    .content-wrapper {
       margin-left: 240px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    main {
       padding: 2rem;
-      max-width: 800px;
-      margin-right: auto;
-      margin-left: auto;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 300px;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     }
 
     section {
@@ -180,6 +186,9 @@
     }
 
     @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
       nav {
         position: static;
         width: 100%;
@@ -188,13 +197,11 @@
         display: flex;
         justify-content: center;
       }
-
       nav ul {
         flex-direction: row;
         gap: 1rem;
       }
-
-      main {
+      .content-wrapper {
         margin-left: 0;
       }
     }
@@ -210,72 +217,73 @@
     </ul>
   </nav>
 
-  <main>
-    <div class="hero-image"></div>
+  <div class="content-wrapper">
+    <main>
+      <div class="hero-image"></div>
 
-    <section id="start">
-      <h1>Willkommen auf meiner Website</h1>
-      <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig erweitert.</p>
-    </section>
+      <section id="start">
+        <h1>Willkommen auf meiner Website</h1>
+        <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig erweitert.</p>
+      </section>
 
-    <section id="projekt">
-      <h2>Projekt</h2>
-      <p>Hier entsteht ein professionelles Web-Projekt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
-    </section>
+      <section id="projekt">
+        <h2>Projekt</h2>
+        <p>Hier entsteht ein professionelles Web-Projekt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
+      </section>
 
-    <section id="partner">
-      <h2>Partner</h2>
-      <ul style="list-style:none; padding:0;">
-        <li><a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">John H.</a></li>
-        <li><a href="https://vionic.de" target="_blank">Vionic</a></li>
-      </ul>
-    </section>
+      <section id="partner">
+        <h2>Partner</h2>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">John H.</a></li>
+          <li><a href="https://vionic.de" target="_blank">Vionic</a></li>
+        </ul>
+      </section>
 
-    <section class="contact-form" id="kontakt">
-      <h2>Kontakt</h2>
-      <form id="contactForm">
-        <input type="text" name="name" placeholder="Dein Name" required />
-        <input type="email" name="email" placeholder="Deine E-Mail" required />
-        <textarea name="message" rows="5" placeholder="Deine Nachricht"></textarea>
-        <button type="submit">Absenden</button>
-      </form>
-      <p id="formSuccess" style="text-align:center; color:green; display:none; margin-top:1rem;">Danke! Deine Nachricht wurde gesendet.</p>
-    </section>
+      <section class="contact-form" id="kontakt">
+        <h2>Kontakt</h2>
+        <form id="contactForm">
+          <input type="text" name="name" placeholder="Dein Name" required />
+          <input type="email" name="email" placeholder="Deine E-Mail" required />
+          <textarea name="message" rows="5" placeholder="Deine Nachricht"></textarea>
+          <button type="submit">Absenden</button>
+        </form>
+        <p id="formSuccess" style="text-align:center; color:green; display:none; margin-top:1rem;">Danke! Deine Nachricht wurde gesendet.</p>
+      </section>
 
-    <section class="faq-section">
-      <h2 style="text-align:center; margin-bottom:2rem;">Fragen & Antworten</h2>
+      <section class="faq-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Fragen & Antworten</h2>
 
-      <div class="faq-item">
-        <div class="faq-question">Warum habe ich mich für die Ausbildung zum Fachinformatiker entschieden?</div>
-        <div class="faq-answer">Weil Technologie unsere Zukunft gestaltet – und ich nicht nur zuschauen, sondern aktiv mitentwickeln möchte. Mein Ziel ist es, Ideen digital zum Leben zu erwecken.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">Warum habe ich mich für die Ausbildung zum Fachinformatiker entschieden?</div>
+          <div class="faq-answer">Weil Technologie unsere Zukunft gestaltet – und ich nicht nur zuschauen, sondern aktiv mitentwickeln möchte. Mein Ziel ist es, Ideen digital zum Leben zu erwecken.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Was begeistert mich an der Webentwicklung besonders?</div>
-        <div class="faq-answer">Die Möglichkeit, mit jedem Projekt etwas Einzigartiges zu schaffen. Webseiten sind heute mehr als nur digitale Visitenkarten – sie sind Erlebnisse, Marken, Communities.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">Was begeistert mich an der Webentwicklung besonders?</div>
+          <div class="faq-answer">Die Möglichkeit, mit jedem Projekt etwas Einzigartiges zu schaffen. Webseiten sind heute mehr als nur digitale Visitenkarten – sie sind Erlebnisse, Marken, Communities.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Wie bringe ich meine eigene Persönlichkeit in Projekte ein?</div>
-        <div class="faq-answer">Durch Kreativität, Liebe zum Detail und absolute Entschlossenheit. Ich glaube daran, dass jede Zeile Code und jedes Pixel einen Unterschied machen kann.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">Wie bringe ich meine eigene Persönlichkeit in Projekte ein?</div>
+          <div class="faq-answer">Durch Kreativität, Liebe zum Detail und absolute Entschlossenheit. Ich glaube daran, dass jede Zeile Code und jedes Pixel einen Unterschied machen kann.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Was ist mein langfristiges Ziel in der IT-Branche?</div>
-        <div class="faq-answer">Ich möchte nicht nur Webseiten entwickeln, sondern nachhaltige digitale Welten schaffen. Mein Fokus liegt auf Innovation, Benutzerfreundlichkeit und modernem Design.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">Was ist mein langfristiges Ziel in der IT-Branche?</div>
+          <div class="faq-answer">Ich möchte nicht nur Webseiten entwickeln, sondern nachhaltige digitale Welten schaffen. Mein Fokus liegt auf Innovation, Benutzerfreundlichkeit und modernem Design.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Warum bin ich der richtige Partner für Webprojekte?</div>
-        <div class="faq-answer">Weil ich nicht nur Technologien verstehe, sondern Visionen greifbar mache. Mit technischer Kompetenz, Leidenschaft und einem klaren Sinn für Ästhetik.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">Warum bin ich der richtige Partner für Webprojekte?</div>
+          <div class="faq-answer">Weil ich nicht nur Technologien verstehe, sondern Visionen greifbar mache. Mit technischer Kompetenz, Leidenschaft und einem klaren Sinn für Ästhetik.</div>
+        </div>
+      </section>
 
-    </section>
-
-    <footer>
-      &copy; 2025 M. Höpfler
-    </footer>
-  </main>
+      <footer>
+        &copy; 2025 M. Höpfler
+      </footer>
+    </main>
+  </div>
 
   <script>
     const sections = document.querySelectorAll("section");
