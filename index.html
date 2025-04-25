@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projekt M. Höpfler</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&display=swap');
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Orbitron', 'Poppins', sans-serif;
     }
 
     body {
-      background-color: #000;
-      color: white;
+      background-color: #1e1e2f;
+      color: #f0f0f0;
       overflow-x: hidden;
       position: relative;
     }
@@ -30,10 +30,10 @@
 
     .typing {
       font-size: 2.5rem;
-      color: #ff003c;
+      color: #9f7aea;
       white-space: nowrap;
       overflow: hidden;
-      border-right: .15em solid white;
+      border-right: .15em solid #ccc;
       width: 0;
       animation: typing 4s steps(40, end) forwards, blink .75s step-end infinite;
     }
@@ -50,7 +50,7 @@
     .subtext {
       margin-top: 1rem;
       font-size: 1.2rem;
-      color: #ccc;
+      color: #c0c0c0;
     }
 
     .button-container {
@@ -66,18 +66,17 @@
     .button-container a {
       text-decoration: none;
       color: white;
-      background: linear-gradient(145deg, #111, #1a1a1a);
+      background: #2d2d44;
       padding: 1rem 2rem;
       border-radius: 30px;
-      transition: all 0.3s ease;
+      transition: all 0.3s ease-in-out;
       font-weight: bold;
-      box-shadow: 0 4px 20px rgba(255, 0, 60, 0.4);
     }
 
     .button-container a:hover {
-      transform: scale(1.1);
-      background-color: #ff003c;
-      box-shadow: 0 0 25px #ff003c, 0 0 45px #ff003c;
+      transform: scale(1.05);
+      background-color: #9f7aea;
+      box-shadow: 0 0 15px #9f7aea;
     }
 
     .contact-form {
@@ -94,7 +93,7 @@
     .contact-form h2 {
       margin-bottom: 1rem;
       text-align: center;
-      color: #ff003c;
+      color: #9f7aea;
     }
 
     .contact-form input,
@@ -104,7 +103,7 @@
       margin-bottom: 1rem;
       border: none;
       border-radius: 10px;
-      background: #222;
+      background: #2c2c3f;
       color: white;
     }
 
@@ -113,34 +112,24 @@
       padding: 1rem;
       border: none;
       border-radius: 30px;
-      background: #8b0000;
+      background: #6b46c1;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 10px #ff003c;
+      transition: 0.3s ease-in-out;
+      box-shadow: 0 0 10px #9f7aea;
     }
 
     .contact-form button:hover {
-      background: #ff003c;
+      background: #9f7aea;
     }
 
     footer {
       text-align: center;
       padding: 2rem;
-      color: #888;
+      color: #aaa;
       position: relative;
       z-index: 2;
-    }
-
-    canvas.matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      pointer-events: none;
     }
 
     @media (max-width: 768px) {
@@ -154,7 +143,6 @@
   </style>
 </head>
 <body>
-  <canvas class="matrix"></canvas>
   <header>
     <div class="typing">Willkommen auf meiner Website!</div>
     <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird täglich aktualisiert.</p>
@@ -179,34 +167,5 @@
   <footer>
     &copy; 2025 M. Höpfler
   </footer>
-
-  <script>
-    const canvas = document.querySelector(".matrix");
-    const context = canvas.getContext("2d");
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const letters = Array(200).join("|").split("");
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array.from({ length: columns }, () => Math.random() * canvas.height / fontSize);
-
-    function draw() {
-      context.fillStyle = "rgba(0, 0, 0, 0.05)";
-      context.fillRect(0, 0, canvas.width, canvas.height);
-      context.fillStyle = "rgba(255, 255, 255, 0.3)";
-      context.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        context.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-    setInterval(draw, 40);
-  </script>
 </body>
 </html>
