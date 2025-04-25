@@ -34,6 +34,7 @@
       color: var(--text-color);
       overflow-x: hidden;
       display: flex;
+      flex-direction: row;
     }
 
     nav {
@@ -120,7 +121,7 @@
 
     .content-wrapper {
       margin-left: 240px;
-      margin-top: 40px;
+      margin-top: 60px;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -236,153 +237,39 @@
       color: var(--text-color);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
+      body {
+        flex-direction: column;
+      }
       nav {
-        position: static;
+        position: relative;
         width: 100%;
         height: auto;
-        padding: 1rem;
         display: flex;
         justify-content: center;
       }
+      .top-banner {
+        left: 0;
+      }
+      .content-wrapper {
+        margin-left: 0;
+        margin-top: 100px;
+      }
+    }
 
+    @media (max-width: 768px) {
+      .faq-question {
+        font-size: 1rem;
+      }
+      .contact-form input,
+      .contact-form textarea,
+      .contact-form button {
+        font-size: 1rem;
+      }
       nav ul {
         flex-direction: row;
         gap: 1rem;
       }
-
-      .content-wrapper {
-        margin-left: 0;
-        margin-top: 80px;
-      }
     }
   </style>
 </head>
-<body>
-  <nav>
-    <button class="theme-toggle" onclick="toggleTheme()">☾</button>
-    <ul>
-      <li><a href="#start">Start</a></li>
-      <li><a href="#projekt">Projekt</a></li>
-      <li><a href="#partner">Partner</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
-  </nav>
-
-  <div class="top-banner">
-    <span>Projekt Univine – „Ich bin kein Entwickler. Ich bin der Architekt der Zukunft.“</span>
-  </div>
-
-  <div class="content-wrapper">
-    <main>
-      <div class="hero-image"></div>
-
-      <section id="start">
-        <h1>Willkommen auf meiner Website</h1>
-        <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig erweitert.</p>
-      </section>
-
-      <section id="projekt">
-        <h2>Projekt</h2>
-        <p>Hier entsteht ein professionelles Web-Projekt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
-      </section>
-
-      <section id="partner">
-        <h2>Partner</h2>
-        <ul style="list-style:none; padding:0;">
-          <li><a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">John H.</a></li>
-          <li><a href="https://vionic.de" target="_blank">Vionic</a></li>
-        </ul>
-      </section>
-
-      <section class="contact-form" id="kontakt">
-        <h2>Kontakt</h2>
-        <form id="contactForm">
-          <input type="text" name="name" placeholder="Dein Name" required />
-          <input type="email" name="email" placeholder="Deine E-Mail" required />
-          <textarea name="message" rows="5" placeholder="Deine Nachricht"></textarea>
-          <button type="submit">Absenden</button>
-        </form>
-        <p id="formSuccess" style="text-align:center; color:green; display:none; margin-top:1rem;">Danke! Deine Nachricht wurde gesendet.</p>
-      </section>
-
-      <section class="faq-section">
-        <h2 style="text-align:center; margin-bottom:2rem;">Fragen & Antworten</h2>
-
-        <div class="faq-item">
-          <div class="faq-question">Warum habe ich mich für die Ausbildung zum Fachinformatiker entschieden?</div>
-          <div class="faq-answer">Weil Technologie unsere Zukunft gestaltet – und ich nicht nur zuschauen, sondern aktiv mitentwickeln möchte. Mein Ziel ist es, Ideen digital zum Leben zu erwecken.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">Was begeistert mich an der Webentwicklung besonders?</div>
-          <div class="faq-answer">Die Möglichkeit, mit jedem Projekt etwas Einzigartiges zu schaffen. Webseiten sind heute mehr als nur digitale Visitenkarten – sie sind Erlebnisse, Marken, Communities.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">Wie bringe ich meine eigene Persönlichkeit in Projekte ein?</div>
-          <div class="faq-answer">Durch Kreativität, Liebe zum Detail und absolute Entschlossenheit. Ich glaube daran, dass jede Zeile Code und jedes Pixel einen Unterschied machen kann.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">Was ist mein langfristiges Ziel in der IT-Branche?</div>
-          <div class="faq-answer">Ich möchte nicht nur Webseiten entwickeln, sondern nachhaltige digitale Welten schaffen. Mein Fokus liegt auf Innovation, Benutzerfreundlichkeit und modernem Design.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">Warum bin ich der richtige Partner für Webprojekte?</div>
-          <div class="faq-answer">Weil ich nicht nur Technologien verstehe, sondern Visionen greifbar mache. Mit technischer Kompetenz, Leidenschaft und einem klaren Sinn für Ästhetik.</div>
-        </div>
-      </section>
-
-      <footer>
-        &copy; 2025 M. Höpfler
-      </footer>
-    </main>
-  </div>
-
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    }
-
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => observer.observe(section));
-
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const item = question.parentElement;
-        item.classList.toggle('active');
-      });
-    });
-
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: this.name.value,
-          email: this.email.value,
-          message: this.message.value
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("formSuccess").style.display = "block";
-        this.reset();
-      })
-      .catch(error => console.error("Error:", error));
-    });
-  </script>
-</body>
-</html>
