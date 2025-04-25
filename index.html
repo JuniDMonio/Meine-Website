@@ -144,6 +144,12 @@
       color: green;
       margin-top: 1rem;
       font-weight: 600;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     footer {
@@ -159,7 +165,7 @@
     <ul>
       <li><a href="#">Start</a></li>
       <li><a href="#">Projekt</a></li>
-      <li><a href="#">Partner</a></li>
+      <li><a href="#partner">Partner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
   </nav>
@@ -169,16 +175,14 @@
     <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig aktualisiert.</p>
   </header>
 
-  <section class="button-container">
-    <a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">Geschäftspartner</a>
-    <a href="https://vionic.de" target="_blank">Ausbildungsstätte: Vionic</a>
+  <section class="button-container" id="partner">
+    <a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">Partner: LinkedIn Profil</a>
+    <a href="https://vionic.de" target="_blank">Partner: Vionic</a>
   </section>
 
   <section class="contact-form" id="kontakt">
     <h2>Kontakt</h2>
-    <form action="https://formsubmit.co/mar.hoepfler@icloud.com" method="POST" onsubmit="showConfirmation(); return true;">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="Neue Nachricht von deiner Website">
+    <form id="contactForm">
       <input type="text" name="name" placeholder="Dein Name" required />
       <input type="email" name="email" placeholder="Deine E-Mail" required />
       <textarea name="nachricht" rows="5" placeholder="Deine Nachricht" required></textarea>
@@ -192,12 +196,28 @@
   </footer>
 
   <script>
-    function showConfirmation() {
-      const message = document.getElementById("confirmationMessage");
-      setTimeout(() => {
-        message.style.display = "block";
-      }, 1000);
-    }
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === "true" || data.success === true) {
+          document.getElementById("confirmationMessage").style.display = "block";
+          form.reset();
+        }
+      })
+      .catch(error => console.error("Fehler beim Senden:", error));
+    });
   </script>
 </body>
 </html>
