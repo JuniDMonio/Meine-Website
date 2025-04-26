@@ -7,57 +7,69 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { background: #eaf3fb; color: #222; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
-    
-    .scrolling-text-container {
+    body {
+      background: #eaf3fb;
+      color: #222;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: #121212;
+      color: #ddd;
+    }
+    nav {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 50px;
-      background: #0077cc;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      font-weight: bold;
-      white-space: nowrap;
-      overflow: hidden;
-      z-index: 100;
-    }
-    .scrolling-text {
-      display: inline-block;
-      animation: scroll-left 10s linear infinite;
-    }
-    @keyframes scroll-left {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
-
-    nav {
-      position: fixed;
-      top: 50px;
-      left: 0;
       background: #fff;
       width: 220px;
-      height: calc(100vh - 50px);
+      height: 100vh;
       padding: 2rem 1rem;
       box-shadow: 2px 0 5px rgba(0,0,0,0.05);
       z-index: 10;
     }
+    body.dark-mode nav {
+      background: #333;
+    }
     nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
-    nav ul li a { text-decoration: none; color: #333; font-weight: 600; font-size: 1.05rem; position: relative; }
-    nav ul li a::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: #0077cc; transition: width 0.3s ease; }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 1.05rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+    body.dark-mode nav ul li a {
+      color: #ddd;
+    }
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #0077cc;
+      transition: width 0.3s ease;
+    }
     nav ul li a:hover::after { width: 100%; }
-
     .content-wrapper {
       margin-left: 240px;
-      margin-top: 60px;
       width: calc(100% - 240px);
+      transition: margin-left 0.3s;
     }
-    main { padding: 2rem; max-width: 1200px; margin: auto; }
-
+    body.dark-mode .content-wrapper {
+      background: #1a1a1a;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
     .hero-image {
       width: 100%;
       height: 300px;
@@ -84,10 +96,17 @@
     }
     .hero-text h1 { font-size: 2.5rem; }
     .hero-text p { margin-top: 1rem; font-size: 1.2rem; }
-
-    section { margin-bottom: 4rem; opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; text-align: center; }
-    section.visible { opacity: 1; transform: translateY(0); }
-
+    section {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+      text-align: center;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .contact-form {
       background: #d0e3f1;
       padding: 2rem;
@@ -95,12 +114,20 @@
       max-width: 600px;
       margin: 2rem auto;
     }
+    body.dark-mode .contact-form {
+      background: #333;
+      color: #ddd;
+    }
     .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 1rem;
       margin-bottom: 1rem;
       border-radius: 8px;
       border: 1px solid #ccc;
+      transition: border-color 0.3s;
+    }
+    body.dark-mode .contact-form input, body.dark-mode .contact-form textarea {
+      border-color: #555;
     }
     .contact-form button {
       width: 100%;
@@ -111,53 +138,69 @@
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s;
     }
-    .contact-form button:hover { background: #005fa3; }
-    #formSuccess { display: none; color: green; margin-top: 1rem; animation: fadeIn 1s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .faq-section { max-width: 800px; margin: 4rem auto; }
-    .faq-item {
-      background: white;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .contact-form button:hover { 
+      background: #005fa3; 
+      transform: translateY(-3px);
     }
-    .faq-question {
-      padding: 1rem;
-      cursor: pointer;
-      font-weight: 600;
-      position: relative;
+    #formSuccess { 
+      display: none; 
+      color: green; 
+      margin-top: 1rem; 
+      animation: fadeIn 1s ease;
     }
-    .faq-question::after {
-      content: '▼';
-      position: absolute;
-      right: 1rem;
-      transition: transform 0.3s;
+    @keyframes fadeIn { 
+      from { opacity: 0; } 
+      to { opacity: 1; } 
     }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-      padding: 0 1rem;
-      color: #555;
+    .faq-section { 
+      max-width: 800px; 
+      margin: 4rem auto; 
     }
-    .faq-item.active .faq-answer {
-      max-height: 300px;
-      padding: 1rem;
+    .faq-item { 
+      background: white; 
+      margin-bottom: 1rem; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
     }
-    .faq-item.active .faq-question::after {
-      transform: rotate(180deg);
+    body.dark-mode .faq-item {
+      background: #222;
+      color: #ddd;
     }
-
-    .partner-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
+    .faq-question { 
+      padding: 1rem; 
+      cursor: pointer; 
+      font-weight: 600; 
+      position: relative; 
+    }
+    .faq-question::after { 
+      content: '▼'; 
+      position: absolute; 
+      right: 1rem; 
+      transition: transform 0.3s; 
+    }
+    .faq-answer { 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: max-height 0.5s ease; 
+      padding: 0 1rem; 
+      color: #555; 
+    }
+    .faq-item.active .faq-answer { 
+      max-height: 300px; 
+      padding: 1rem; 
+    }
+    .faq-item.active .faq-question::after { 
+      transform: rotate(180deg); 
+    }
+    .partner-buttons { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 1rem; 
+      justify-content: center; 
+      margin-top: 2rem; 
     }
     .partner-buttons a {
       background: #0077cc;
@@ -169,46 +212,55 @@
       transition: background 0.3s, transform 0.3s;
       box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
     }
-    .partner-buttons a:hover {
-      background: #005fa3;
-      transform: translateY(-3px);
+    .partner-buttons a:hover { 
+      background: #005fa3; 
+      transform: translateY(-3px); 
     }
-
     footer {
       margin-top: auto;
       background: #fff;
       padding: 2rem;
       text-align: center;
-      color: #555;
-      font-size: 1rem;
+      color: #777;
+      font-size: 0.9rem;
       border-top: 1px solid #ccc;
-      position: relative;
-      z-index: 5;
     }
-    footer a { color: #0077cc; text-decoration: none; margin: 0 0.5rem; }
-
+    footer a { 
+      color: #0077cc; 
+      text-decoration: none; 
+      margin: 0 0.5rem; 
+    }
+    body.dark-mode footer {
+      background: #333;
+      color: #ddd;
+    }
+    .scrolling-text-container {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%;
+      background: #0077cc; 
+      color: white; 
+      padding: 0.5rem 0;
+      font-size: 1.2rem; 
+      font-weight: bold; 
+      white-space: nowrap;
+      overflow: hidden; 
+      z-index: 20;
+    }
+    .scrolling-text {
+      display: inline-block;
+      animation: scroll-left 10s linear infinite;
+    }
+    @keyframes scroll-left {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
     @media (max-width: 768px) {
-      nav {
-        position: static;
-        width: 100%;
-        height: auto;
-        padding: 1rem;
-        box-shadow: none;
-      }
-      nav ul {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
-      }
-      .content-wrapper {
-        margin-left: 0;
-        margin-top: 120px;
-        width: 100%;
-      }
-      .scrolling-text-container {
-        height: 60px;
-        font-size: 1rem;
-      }
+      body { flex-direction: column; }
+      nav { position: static; width: 100%; height: auto; padding: 1rem; }
+      nav ul { flex-direction: row; justify-content: center; }
+      .content-wrapper { margin-left: 0; width: 100%; }
     }
   </style>
 </head>
@@ -224,6 +276,7 @@
       <li><a href="#projekt">Projekt</a></li>
       <li><a href="#partner">Partner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="#" id="darkModeToggle">Dark Mode</a></li>
     </ul>
   </nav>
 
@@ -267,22 +320,27 @@
 
       <section class="faq-section">
         <h2>Fragen & Antworten</h2>
+
         <div class="faq-item">
           <div class="faq-question">Warum habe ich mich für die IT entschieden?</div>
           <div class="faq-answer">Weil ich die Zukunft aktiv mitgestalten will und Technologie dafür der Schlüssel ist.</div>
         </div>
+
         <div class="faq-item">
           <div class="faq-question">Was begeistert mich an der Webentwicklung?</div>
           <div class="faq-answer">Die Kombination aus Kreativität, Technik und der Möglichkeit, echte Erlebnisse zu schaffen.</div>
         </div>
+
         <div class="faq-item">
           <div class="faq-question">Wie bringe ich Persönlichkeit ein?</div>
           <div class="faq-answer">Durch Liebe zum Detail, kreative Ansätze und absolute Hingabe an jedes Projekt.</div>
         </div>
+
         <div class="faq-item">
           <div class="faq-question">Mein langfristiges Ziel?</div>
           <div class="faq-answer">Digitale Welten schaffen, die nicht nur funktionieren, sondern begeistern und inspirieren.</div>
         </div>
+
         <div class="faq-item">
           <div class="faq-question">Warum ich als Partner?</div>
           <div class="faq-answer">Weil ich Technologie und Vision vereine und jedes Projekt zu etwas Besonderem mache.</div>
@@ -323,6 +381,10 @@
         this.reset();
       })
       .catch(error => console.error("Error:", error));
+    });
+
+    document.getElementById("darkModeToggle").addEventListener("click", function() {
+      document.body.classList.toggle("dark-mode");
     });
   </script>
 </body>
