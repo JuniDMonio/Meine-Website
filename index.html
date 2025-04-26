@@ -20,6 +20,7 @@
       color: #222;
       overflow-x: hidden;
       display: flex;
+      flex-direction: column;
     }
 
     nav {
@@ -78,11 +79,19 @@
     }
 
     /* Fließender Text */
-    <div style="background-color: #004080; color: white; overflow: hidden; white-space: nowrap;">
-      <div style="display: inline-block; padding: 10px 0; animation: marquee 25s linear infinite;">
-        Projekt Univine - "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."
-      </div>
-    </div>
+    .marquee-container {
+      background-color: #004080;
+      color: white;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .marquee {
+      display: inline-block;
+      padding: 10px 0;
+      animation: marquee 25s linear infinite;
+    }
 
     @keyframes marquee {
       0% { transform: translateX(100%); }
@@ -92,7 +101,7 @@
     .hero-image {
       width: 100%;
       height: 300px;
-      background: url('https://images.unsplash.com/photo-1521747116042-5e9b7f0a4578') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1542806878-3dd040542e69') center/cover no-repeat;
     }
 
     section {
@@ -231,6 +240,11 @@
 
   <div class="content-wrapper">
     <main>
+      <!-- Fließender Text -->
+      <div class="marquee-container">
+        <div class="marquee">Projekt Univine - "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
+      </div>
+
       <div class="hero-image"></div>
 
       <section id="start">
@@ -322,4 +336,8 @@
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      fetch("https://formsubmit.co/ajax/mar.hoepfler@
+      fetch("https://formsubmit.co/ajax/mar.hoepfler@<SECRET_EMAIL>");
+    });
+  </script>
+</body>
+</html>
