@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projekt Univine</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body {
@@ -13,7 +14,7 @@
       overflow-x: hidden;
       min-height: 100vh;
       opacity: 0;
-      transition: opacity 1s ease;
+      transition: opacity 1.2s ease;
     }
     nav {
       position: fixed;
@@ -88,9 +89,6 @@
       margin-bottom: 1rem;
       border-radius: 8px;
       border: 1px solid #ccc;
-    }
-    .contact-form input:required:invalid, .contact-form textarea:required:invalid {
-      border-color: red;
     }
     .contact-form button {
       width: 100%;
@@ -188,7 +186,26 @@
       font-size: 2rem;
       z-index: 100;
     }
-    .dark-mode {
+    .dark-mode-toggle {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background: #0077cc;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 50px;
+      transition: background 0.3s;
+    }
+    .dark-mode-toggle:hover { background: #005fa3; }
+    .dark-mode body {
       background: #121212;
       color: #eee;
     }
@@ -210,7 +227,9 @@
     <div class="scrolling-text">Projekt Univine – "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
   </div>
 
-  <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <i data-lucide="moon"></i>
+  </button>
 
   <nav>
     <ul>
@@ -287,7 +306,6 @@
           <div class="faq-answer">Weil ich Technologie und Vision vereine.</div>
         </div>
       </section>
-
     </main>
   </div>
 
@@ -296,9 +314,12 @@
   </footer>
 
   <script>
-    window.addEventListener("load", () => {
-      document.getElementById('splash').style.display = 'none';
-      document.body.style.opacity = 1;
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        document.getElementById('splash').style.display = 'none';
+        document.body.style.opacity = 1;
+      }, 2000);
+      lucide.createIcons();
     });
 
     const sections = document.querySelectorAll("section");
@@ -331,7 +352,7 @@
     });
 
     function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
+      document.documentElement.classList.toggle('dark-mode');
     }
   </script>
 </body>
