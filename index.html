@@ -6,70 +6,89 @@
   <title>Projekt Univine</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #eaf3fb;
+      --text-color: #222;
+      --accent-color: #0077cc;
+      --nav-bg: #ffffff;
+      --card-bg: #ffffff;
+      --button-hover: #005fa3;
+    }
+    .dark-mode {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --accent-color: #66b2ff;
+      --nav-bg: #1e1e1e;
+      --card-bg: #1e1e1e;
+      --button-hover: #3399ff;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body {
-      background: #eaf3fb;
-      color: #222;
+      background: var(--bg-color);
+      color: var(--text-color);
       overflow-x: hidden;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark-mode {
-      background: #121212;
-      color: #ddd;
+      transition: background 0.4s, color 0.4s;
     }
     nav {
+      background: var(--nav-bg);
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: fixed;
       top: 0;
       left: 0;
-      background: #fff;
-      width: 220px;
-      height: 100vh;
-      padding: 2rem 1rem;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-      z-index: 10;
+      z-index: 20;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-    body.dark-mode nav {
-      background: #333;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
     }
-    nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
     nav ul li a {
       text-decoration: none;
-      color: #333;
+      color: var(--text-color);
       font-weight: 600;
-      font-size: 1.05rem;
       position: relative;
-      transition: color 0.3s;
-    }
-    body.dark-mode nav ul li a {
-      color: #ddd;
     }
     nav ul li a::after {
       content: "";
       position: absolute;
       bottom: -5px;
       left: 0;
-      width: 0%;
+      width: 0;
       height: 2px;
-      background: #0077cc;
-      transition: width 0.3s ease;
+      background: var(--accent-color);
+      transition: width 0.3s;
     }
     nav ul li a:hover::after { width: 100%; }
+    .dark-toggle {
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .dark-toggle:hover { background: var(--button-hover); transform: scale(1.05); }
+
     .content-wrapper {
-      margin-left: 240px;
-      width: calc(100% - 240px);
-      transition: margin-left 0.3s;
-    }
-    body.dark-mode .content-wrapper {
-      background: #1a1a1a;
-    }
-    main {
-      padding: 2rem;
+      padding-top: 80px;
+      width: 90%;
       max-width: 1200px;
       margin: auto;
     }
+
+    main { padding: 2rem 0; }
+
     .hero-image {
       width: 100%;
       height: 300px;
@@ -96,6 +115,7 @@
     }
     .hero-text h1 { font-size: 2.5rem; }
     .hero-text p { margin-top: 1rem; font-size: 1.2rem; }
+
     section {
       margin-bottom: 4rem;
       opacity: 0;
@@ -107,32 +127,29 @@
       opacity: 1;
       transform: translateY(0);
     }
+
     .contact-form {
-      background: #d0e3f1;
+      background: var(--card-bg);
       padding: 2rem;
       border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       max-width: 600px;
       margin: 2rem auto;
     }
-    body.dark-mode .contact-form {
-      background: #333;
-      color: #ddd;
-    }
-    .contact-form input, .contact-form textarea {
+    .contact-form input, .contact-form textarea, .contact-form select {
       width: 100%;
       padding: 1rem;
       margin-bottom: 1rem;
       border-radius: 8px;
       border: 1px solid #ccc;
-      transition: border-color 0.3s;
-    }
-    body.dark-mode .contact-form input, body.dark-mode .contact-form textarea {
-      border-color: #555;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
     }
     .contact-form button {
       width: 100%;
       padding: 1rem;
-      background: #0077cc;
+      background: var(--accent-color);
       color: white;
       border: none;
       border-radius: 8px;
@@ -140,144 +157,71 @@
       cursor: pointer;
       transition: background 0.3s, transform 0.3s;
     }
-    .contact-form button:hover { 
-      background: #005fa3; 
+    .contact-form button:hover {
+      background: var(--button-hover);
       transform: translateY(-3px);
     }
-    #formSuccess { 
-      display: none; 
-      color: green; 
-      margin-top: 1rem; 
-      animation: fadeIn 1s ease;
+    label.required::after {
+      content: " *";
+      color: red;
     }
-    @keyframes fadeIn { 
-      from { opacity: 0; } 
-      to { opacity: 1; } 
+    #formSuccess {
+      display: none;
+      color: green;
+      margin-top: 1rem;
     }
-    .faq-section { 
-      max-width: 800px; 
-      margin: 4rem auto; 
-    }
-    .faq-item { 
-      background: white; 
-      margin-bottom: 1rem; 
-      border-radius: 8px; 
-      overflow: hidden; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-    }
-    body.dark-mode .faq-item {
-      background: #222;
-      color: #ddd;
-    }
-    .faq-question { 
-      padding: 1rem; 
-      cursor: pointer; 
-      font-weight: 600; 
-      position: relative; 
-    }
-    .faq-question::after { 
-      content: '▼'; 
-      position: absolute; 
-      right: 1rem; 
-      transition: transform 0.3s; 
-    }
-    .faq-answer { 
-      max-height: 0; 
-      overflow: hidden; 
-      transition: max-height 0.5s ease; 
-      padding: 0 1rem; 
-      color: #555; 
-    }
-    .faq-item.active .faq-answer { 
-      max-height: 300px; 
-      padding: 1rem; 
-    }
-    .faq-item.active .faq-question::after { 
-      transform: rotate(180deg); 
-    }
-    .partner-buttons { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 1rem; 
-      justify-content: center; 
-      margin-top: 2rem; 
-    }
-    .partner-buttons a {
-      background: #0077cc;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s, transform 0.3s;
-      box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
-    }
-    .partner-buttons a:hover { 
-      background: #005fa3; 
-      transform: translateY(-3px); 
-    }
+
     footer {
       margin-top: auto;
-      background: #fff;
+      background: var(--nav-bg);
       padding: 2rem;
       text-align: center;
-      color: #777;
       font-size: 0.9rem;
+      color: #777;
       border-top: 1px solid #ccc;
     }
-    footer a { 
-      color: #0077cc; 
-      text-decoration: none; 
-      margin: 0 0.5rem; 
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
     }
-    body.dark-mode footer {
-      background: #333;
-      color: #ddd;
-    }
-    .scrolling-text-container {
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%;
-      background: #0077cc; 
-      color: white; 
-      padding: 0.5rem 0;
-      font-size: 1.2rem; 
-      font-weight: bold; 
-      white-space: nowrap;
-      overflow: hidden; 
-      z-index: 20;
-    }
-    .scrolling-text {
-      display: inline-block;
-      animation: scroll-left 10s linear infinite;
-    }
-    @keyframes scroll-left {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
+
     @media (max-width: 768px) {
-      body { flex-direction: column; }
-      nav { position: static; width: 100%; height: auto; padding: 1rem; }
-      nav ul { flex-direction: row; justify-content: center; }
-      .content-wrapper { margin-left: 0; width: 100%; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--nav-bg);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 200px;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      nav ul.show { display: flex; }
+      .menu-toggle {
+        background: none;
+        border: 2px solid var(--accent-color);
+        color: var(--accent-color);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: bold;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine – "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
-  </div>
-
   <nav>
-    <ul>
+    <div class="logo">Univine</div>
+    <button class="menu-toggle" onclick="toggleMenu()">Menü</button>
+    <ul id="nav-links">
       <li><a href="#start">Start</a></li>
       <li><a href="#projekt">Projekt</a></li>
       <li><a href="#partner">Partner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
-      <li><a href="#" id="darkModeToggle">Dark Mode</a></li>
     </ul>
+    <button class="dark-toggle" onclick="toggleDarkMode()">Dark Mode</button>
   </nav>
 
   <div class="content-wrapper">
@@ -290,61 +234,44 @@
       </div>
 
       <section id="start">
-        <h2>Willkommen auf meiner Website</h2>
-        <p class="subtext">Hier entsteht ein modernes Webprojekt – entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
+        <h2>Start</h2>
+        <p>Hier beginnt unsere Reise durch die digitale Welt – elegant, innovativ und professionell.</p>
       </section>
 
       <section id="projekt">
-        <h2>Mein Projekt</h2>
-        <p>Innovative Ideen, klare Designs und eine Leidenschaft für Technik – all das fließt in dieses Projekt ein. Hier lerne ich, die digitale Welt aktiv mitzugestalten.</p>
+        <h2>Projekt</h2>
+        <p>Moderne Technologien, kreative Ideen und klare Designs verschmelzen hier zu einer neuen Zukunftsvision.</p>
       </section>
 
       <section id="partner">
-        <h2>Meine Partner</h2>
+        <h2>Partner</h2>
         <div class="partner-buttons">
           <a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">John H.</a>
           <a href="https://vionic.de" target="_blank">Vionic</a>
         </div>
       </section>
 
-      <section class="contact-form" id="kontakt">
+      <section id="kontakt" class="contact-form">
         <h2>Kontakt</h2>
         <form id="contactForm">
-          <input type="text" name="name" placeholder="Dein Name" required />
-          <input type="email" name="email" placeholder="Deine E-Mail" required />
-          <textarea name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
+          <label class="required">Name</label>
+          <input type="text" name="name" required />
+
+          <label class="required">E-Mail</label>
+          <input type="email" name="email" required />
+
+          <label>Telefonnummer</label>
+          <input type="tel" name="phone" />
+
+          <label>Betreff</label>
+          <input type="text" name="subject" />
+
+          <label class="required">Nachricht</label>
+          <textarea name="message" rows="5" required></textarea>
+
           <button type="submit">Absenden</button>
+          <p id="formSuccess">Danke! Deine Nachricht wurde erfolgreich gesendet.</p>
         </form>
-        <p id="formSuccess">Danke! Deine Nachricht wurde erfolgreich gesendet.</p>
-      </section>
-
-      <section class="faq-section">
-        <h2>Fragen & Antworten</h2>
-
-        <div class="faq-item">
-          <div class="faq-question">Warum habe ich mich für die IT entschieden?</div>
-          <div class="faq-answer">Weil ich die Zukunft aktiv mitgestalten will und Technologie dafür der Schlüssel ist.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">Was begeistert mich an der Webentwicklung?</div>
-          <div class="faq-answer">Die Kombination aus Kreativität, Technik und der Möglichkeit, echte Erlebnisse zu schaffen.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">Wie bringe ich Persönlichkeit ein?</div>
-          <div class="faq-answer">Durch Liebe zum Detail, kreative Ansätze und absolute Hingabe an jedes Projekt.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">Mein langfristiges Ziel?</div>
-          <div class="faq-answer">Digitale Welten schaffen, die nicht nur funktionieren, sondern begeistern und inspirieren.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">Warum ich als Partner?</div>
-          <div class="faq-answer">Weil ich Technologie und Vision vereine und jedes Projekt zu etwas Besonderem mache.</div>
-        </div>
       </section>
     </main>
   </div>
@@ -360,31 +287,18 @@
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
 
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
-    });
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('show');
+    }
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: this.name.value,
-          email: this.email.value,
-          message: this.message.value
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("formSuccess").style.display = "block";
-        this.reset();
-      })
-      .catch(error => console.error("Error:", error));
-    });
-
-    document.getElementById("darkModeToggle").addEventListener("click", function() {
-      document.body.classList.toggle("dark-mode");
+      document.getElementById("formSuccess").style.display = "block";
+      this.reset();
     });
   </script>
 </body>
