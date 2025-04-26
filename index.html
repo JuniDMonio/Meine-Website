@@ -4,54 +4,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projekt Univine</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { background: #eaf3fb; color: #222; overflow-x: hidden; display: flex; flex-direction: column; }
+    body { background: #eaf3fb; color: #222; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
     nav { position: fixed; top: 0; left: 0; background: #fff; width: 220px; height: 100vh; padding: 2rem 1rem; box-shadow: 2px 0 5px rgba(0,0,0,0.05); z-index: 10; }
     nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
     nav ul li a { text-decoration: none; color: #333; font-weight: 600; font-size: 1.05rem; position: relative; }
     nav ul li a::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: #0077cc; transition: width 0.3s ease; }
     nav ul li a:hover::after { width: 100%; }
-    .content-wrapper { margin-left: 240px; width: 100%; display: flex; justify-content: center; }
-    main { padding: 2rem; max-width: 900px; width: 100%; }
-    .hero-image { width: 100%; height: 300px; background: url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat; }
+    .content-wrapper { margin-left: 240px; width: calc(100% - 240px); }
+    main { padding: 2rem; max-width: 1200px; margin: auto; }
+    .hero-image {
+      width: 100%;
+      height: 300px;
+      background: url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+    .hero-text h1 { font-size: 2.5rem; }
+    .hero-text p { margin-top: 1rem; font-size: 1.2rem; }
     section { margin-bottom: 4rem; opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; text-align: center; }
     section.visible { opacity: 1; transform: translateY(0); }
-    .contact-form { padding: 2rem; max-width: 600px; margin: auto; background: #d0e3f1; border-radius: 12px; }
-    .contact-form h2 { margin-bottom: 1rem; text-align: center; color: #0077cc; }
-    .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; }
-    .contact-form button { width: 100%; padding: 1rem; background: #0077cc; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .contact-form { background: #d0e3f1; padding: 2rem; border-radius: 12px; max-width: 600px; margin: 2rem auto; }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 1rem;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
     .contact-form button:hover { background: #005fa3; }
+    #formSuccess { display: none; color: green; margin-top: 1rem; animation: fadeIn 1s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .faq-section { max-width: 800px; margin: 4rem auto; }
-    .faq-item { background: white; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; text-align: left; }
-    .faq-question { padding: 1rem; cursor: pointer; position: relative; font-weight: 600; }
-    .faq-question::after { content: '\25BC'; position: absolute; right: 1rem; transition: transform 0.3s; }
-    .faq-answer { max-height: 0; overflow: hidden; padding: 0 1rem; color: #555; transition: max-height 0.5s ease; }
+    .faq-item { background: white; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .faq-question { padding: 1rem; cursor: pointer; font-weight: 600; position: relative; }
+    .faq-question::after { content: '▼'; position: absolute; right: 1rem; transition: transform 0.3s; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; padding: 0 1rem; color: #555; }
     .faq-item.active .faq-answer { max-height: 300px; padding: 1rem; }
     .faq-item.active .faq-question::after { transform: rotate(180deg); }
-    footer { text-align: center; padding: 2rem; color: #777; }
-    .scrolling-text-container { position: fixed; top: 0; left: 0; width: 100%; background: #0077cc; color: white; padding: 0.5rem 0; font-size: 1.2rem; font-weight: bold; white-space: nowrap; overflow: hidden; z-index: 9; }
-    .scrolling-text { display: inline-block; animation: scroll-left 10s linear infinite; }
-    @keyframes scroll-left { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    .partner-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
+    .partner-buttons a {
+      background: #0077cc;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
+    }
+    .partner-buttons a:hover { background: #005fa3; transform: translateY(-3px); }
+    footer {
+      margin-top: auto;
+      background: #fff;
+      padding: 2rem;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid #ccc;
+    }
+    footer a { color: #0077cc; text-decoration: none; margin: 0 0.5rem; }
+    .scrolling-text-container {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: #0077cc; color: white; padding: 0.5rem 0;
+      font-size: 1.2rem; font-weight: bold; white-space: nowrap;
+      overflow: hidden; z-index: 20;
+    }
+    .scrolling-text {
+      display: inline-block;
+      animation: scroll-left 10s linear infinite;
+    }
+    @keyframes scroll-left {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
     @media (max-width: 768px) {
       body { flex-direction: column; }
-      nav { position: static; width: 100%; height: auto; padding: 1rem; display: flex; justify-content: center; }
-      nav ul { flex-direction: row; gap: 1rem; }
-      .content-wrapper { margin-left: 0; }
+      nav { position: static; width: 100%; height: auto; padding: 1rem; }
+      nav ul { flex-direction: row; justify-content: center; }
+      .content-wrapper { margin-left: 0; width: 100%; }
     }
-    .partner-buttons { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 2rem; }
-    .partner-buttons a { display: inline-block; padding: 1rem 2rem; background: #0077cc; color: white; font-size: 1.1rem; font-weight: bold; text-decoration: none; border-radius: 50px; box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3); transition: transform 0.3s ease, background-color 0.3s ease; }
-    .partner-buttons a:hover { background: #005fa3; transform: translateY(-3px); }
-    .partner-buttons a:active { transform: translateY(1px); }
   </style>
 </head>
 
 <body>
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine - "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
+    <div class="scrolling-text">Projekt Univine – "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
   </div>
 
   <nav>
@@ -65,81 +133,87 @@
 
   <div class="content-wrapper">
     <main>
-      <div class="hero-image"></div>
+      <div class="hero-image">
+        <div class="hero-text">
+          <h1>Willkommen bei Univine</h1>
+          <p>Die Zukunft gestalten – Schritt für Schritt.</p>
+        </div>
+      </div>
 
-      <section id="start" class="visible">
-        <h1>Willkommen auf meiner Website</h1>
-        <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig erweitert.</p>
+      <section id="start">
+        <h2>Willkommen auf meiner Website</h2>
+        <p class="subtext">Hier entsteht ein modernes Webprojekt – entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
       </section>
 
-      <section id="projekt" class="visible">
-        <h2>Projekt</h2>
-        <p>Hier entsteht ein professionelles Web-Projekt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
+      <section id="projekt">
+        <h2>Mein Projekt</h2>
+        <p>Innovative Ideen, klare Designs und eine Leidenschaft für Technik – all das fließt in dieses Projekt ein. Hier lerne ich, die digitale Welt aktiv mitzugestalten.</p>
       </section>
 
-      <section id="partner" class="visible">
-        <h2>Partner</h2>
+      <section id="partner">
+        <h2>Meine Partner</h2>
         <div class="partner-buttons">
           <a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">John H.</a>
           <a href="https://vionic.de" target="_blank">Vionic</a>
         </div>
       </section>
 
-      <section class="contact-form" id="kontakt" class="visible">
+      <section class="contact-form" id="kontakt">
         <h2>Kontakt</h2>
         <form id="contactForm">
           <input type="text" name="name" placeholder="Dein Name" required />
           <input type="email" name="email" placeholder="Deine E-Mail" required />
-          <textarea name="message" rows="5" placeholder="Deine Nachricht"></textarea>
+          <textarea name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
           <button type="submit">Absenden</button>
         </form>
-        <p id="formSuccess" style="text-align:center; color:green; display:none; margin-top:1rem;">Danke! Deine Nachricht wurde gesendet.</p>
+        <p id="formSuccess">Danke! Deine Nachricht wurde erfolgreich gesendet.</p>
       </section>
 
-      <section class="faq-section visible">
-        <h2 style="text-align:center; margin-bottom:2rem;">Fragen & Antworten</h2>
+      <section class="faq-section">
+        <h2>Fragen & Antworten</h2>
 
         <div class="faq-item">
-          <div class="faq-question">Warum habe ich mich für die Ausbildung zum Fachinformatiker entschieden?</div>
-          <div class="faq-answer">Weil Technologie unsere Zukunft gestaltet – und ich nicht nur zuschauen, sondern aktiv mitentwickeln möchte. Mein Ziel ist es, Ideen digital zum Leben zu erwecken.</div>
+          <div class="faq-question">Warum habe ich mich für die IT entschieden?</div>
+          <div class="faq-answer">Weil ich die Zukunft aktiv mitgestalten will und Technologie dafür der Schlüssel ist.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-question">Was begeistert mich an der Webentwicklung besonders?</div>
-          <div class="faq-answer">Die Möglichkeit, mit jedem Projekt etwas Einzigartiges zu schaffen. Webseiten sind heute mehr als nur digitale Visitenkarten – sie sind Erlebnisse, Marken, Communities.</div>
+          <div class="faq-question">Was begeistert mich an der Webentwicklung?</div>
+          <div class="faq-answer">Die Kombination aus Kreativität, Technik und der Möglichkeit, echte Erlebnisse zu schaffen.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-question">Wie bringe ich meine eigene Persönlichkeit in Projekte ein?</div>
-          <div class="faq-answer">Durch Kreativität, Liebe zum Detail und absolute Entschlossenheit. Ich glaube daran, dass jede Zeile Code und jedes Pixel einen Unterschied machen kann.</div>
+          <div class="faq-question">Wie bringe ich Persönlichkeit ein?</div>
+          <div class="faq-answer">Durch Liebe zum Detail, kreative Ansätze und absolute Hingabe an jedes Projekt.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-question">Was ist mein langfristiges Ziel in der IT-Branche?</div>
-          <div class="faq-answer">Ich möchte nicht nur Webseiten entwickeln, sondern nachhaltige digitale Welten schaffen. Mein Fokus liegt auf Innovation, Benutzerfreundlichkeit und modernem Design.</div>
+          <div class="faq-question">Mein langfristiges Ziel?</div>
+          <div class="faq-answer">Digitale Welten schaffen, die nicht nur funktionieren, sondern begeistern und inspirieren.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-question">Warum bin ich der richtige Partner für Webprojekte?</div>
-          <div class="faq-answer">Weil ich nicht nur Technologien verstehe, sondern Visionen greifbar mache. Mit technischer Kompetenz, Leidenschaft und einem klaren Sinn für Ästhetik.</div>
+          <div class="faq-question">Warum ich als Partner?</div>
+          <div class="faq-answer">Weil ich Technologie und Vision vereine und jedes Projekt zu etwas Besonderem mache.</div>
         </div>
       </section>
-
-      <footer>&copy; 2025 M. Höpfler</footer>
     </main>
   </div>
+
+  <footer>
+    &copy; 2025 M. Höpfler | <a href="#">Impressum</a> | <a href="#">Datenschutz</a>
+  </footer>
 
   <script>
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => { 
-        if (entry.isIntersecting) entry.target.classList.add("visible"); 
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
     }, { threshold: 0.1 });
-
     sections.forEach(section => observer.observe(section));
 
-    document.querySelectorAll('.faq-question').forEach(q => q.addEventListener('click', () => q.parentElement.classList.toggle('active')));
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
+    });
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
