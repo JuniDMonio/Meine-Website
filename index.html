@@ -185,6 +185,36 @@
       color: #777;
     }
 
+    /* Neue Leiste oben für den Text */
+    .scrolling-text-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #0077cc;
+      color: white;
+      padding: 0.5rem 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 9;
+    }
+
+    .scrolling-text {
+      display: inline-block;
+      animation: scroll-left 10s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
     @media (max-width: 768px) {
       body {
         flex-direction: column;
@@ -208,6 +238,11 @@
   </style>
 </head>
 <body>
+  <!-- Neue Leiste für den Text -->
+  <div class="scrolling-text-container">
+    <div class="scrolling-text">Projekt Univine - "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
+  </div>
+
   <nav>
     <ul>
       <li><a href="#start">Start</a></li>
