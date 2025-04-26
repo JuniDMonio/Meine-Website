@@ -20,7 +20,6 @@
       color: #222;
       overflow-x: hidden;
       display: flex;
-      flex-direction: column;
     }
 
     nav {
@@ -78,30 +77,10 @@
       width: 100%;
     }
 
-    /* Fließender Text */
-    .marquee-container {
-      background-color: #004080;
-      color: white;
-      overflow: hidden;
-      white-space: nowrap;
-      width: 100%;
-    }
-
-    .marquee {
-      display: inline-block;
-      padding: 10px 0;
-      animation: marquee 25s linear infinite;
-    }
-
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-
     .hero-image {
       width: 100%;
       height: 300px;
-      background: url('https://images.unsplash.com/photo-1542806878-3dd040542e69') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
     }
 
     section {
@@ -240,11 +219,6 @@
 
   <div class="content-wrapper">
     <main>
-      <!-- Fließender Text -->
-      <div class="marquee-container">
-        <div class="marquee">Projekt Univine - "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
-      </div>
-
       <div class="hero-image"></div>
 
       <section id="start">
@@ -336,7 +310,21 @@
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      fetch("https://formsubmit.co/ajax/mar.hoepfler@<SECRET_EMAIL>");
+      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: this.name.value,
+          email: this.email.value,
+          message: this.message.value
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("formSuccess").style.display = "block";
+        this.reset();
+      })
+      .catch(error => console.error("Error:", error));
     });
   </script>
 </body>
