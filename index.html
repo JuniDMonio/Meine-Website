@@ -77,13 +77,22 @@
       width: 100%;
     }
 
+    /* Fließender Text */
+    <div style="background-color: #004080; color: white; overflow: hidden; white-space: nowrap;">
+      <div style="display: inline-block; padding: 10px 0; animation: marquee 25s linear infinite;">
+        Projekt Univine - "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."
+      </div>
+    </div>
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
     .hero-image {
       width: 100%;
       height: 300px;
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      background: url('https://images.unsplash.com/photo-1521747116042-5e9b7f0a4578') center/cover no-repeat;
     }
 
     section {
@@ -313,22 +322,4 @@
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: this.name.value,
-          email: this.email.value,
-          message: this.message.value
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("formSuccess").style.display = "block";
-        this.reset();
-      })
-      .catch(error => console.error("Error:", error));
-    });
-  </script>
-</body>
-</html>
+      fetch("https://formsubmit.co/ajax/mar.hoepfler@
