@@ -1,27 +1,13 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="light">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projekt Univine</title>
+  <title>Projekt M. Höpfler</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-color: #eaf3fb;
-      --text-color: #222;
-      --accent-color: #0077cc;
-      --card-bg: #ffffff;
-    }
-
-    [data-theme="dark"] {
-      --bg-color: #121b25;
-      --text-color: #e0e0e0;
-      --accent-color: #1E90FF;
-      --card-bg: #1c2733;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -30,18 +16,17 @@
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background-color: #eaf3fb;
+      color: #222;
       overflow-x: hidden;
       display: flex;
-      flex-direction: row;
     }
 
     nav {
       position: fixed;
       top: 0;
       left: 0;
-      background: var(--card-bg);
+      background: #fff;
       width: 220px;
       height: 100vh;
       padding: 2rem 1rem;
@@ -58,7 +43,7 @@
 
     nav ul li a {
       text-decoration: none;
-      color: var(--text-color);
+      color: #333;
       font-weight: 600;
       font-size: 1.05rem;
       position: relative;
@@ -71,7 +56,7 @@
       left: 0;
       width: 0%;
       height: 2px;
-      background: var(--accent-color);
+      background: #0077cc;
       transition: width 0.3s ease;
     }
 
@@ -79,49 +64,8 @@
       width: 100%;
     }
 
-    .theme-toggle {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: var(--accent-color);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .top-banner {
-      position: fixed;
-      top: 0;
-      left: 220px;
-      right: 0;
-      height: 40px;
-      background: var(--accent-color);
-      color: white;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .top-banner span {
-      white-space: nowrap;
-      animation: scroll-left 20s linear infinite;
-      padding-left: 100%;
-      font-weight: 600;
-    }
-
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
     .content-wrapper {
       margin-left: 240px;
-      margin-top: 60px;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -156,14 +100,14 @@
       padding: 2rem;
       max-width: 600px;
       margin: auto;
-      background: var(--card-bg);
+      background: #d0e3f1;
       border-radius: 12px;
     }
 
     .contact-form h2 {
       margin-bottom: 1rem;
       text-align: center;
-      color: var(--accent-color);
+      color: #0077cc;
     }
 
     .contact-form input,
@@ -178,12 +122,16 @@
     .contact-form button {
       width: 100%;
       padding: 1rem;
-      background: var(--accent-color);
+      background: #0077cc;
       color: white;
       border: none;
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: #005fa3;
     }
 
     .faq-section {
@@ -192,7 +140,7 @@
     }
 
     .faq-item {
-      background: var(--card-bg);
+      background: white;
       border-radius: 8px;
       margin-bottom: 1rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -218,7 +166,7 @@
       max-height: 0;
       overflow: hidden;
       padding: 0 1rem;
-      color: var(--text-color);
+      color: #555;
       transition: max-height 0.5s ease;
     }
 
@@ -234,42 +182,150 @@
     footer {
       text-align: center;
       padding: 2rem;
-      color: var(--text-color);
+      color: #777;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
       body {
         flex-direction: column;
       }
       nav {
-        position: relative;
+        position: static;
         width: 100%;
         height: auto;
+        padding: 1rem;
         display: flex;
         justify-content: center;
-      }
-      .top-banner {
-        left: 0;
-      }
-      .content-wrapper {
-        margin-left: 0;
-        margin-top: 100px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .faq-question {
-        font-size: 1rem;
-      }
-      .contact-form input,
-      .contact-form textarea,
-      .contact-form button {
-        font-size: 1rem;
       }
       nav ul {
         flex-direction: row;
         gap: 1rem;
       }
+      .content-wrapper {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#start">Start</a></li>
+      <li><a href="#projekt">Projekt</a></li>
+      <li><a href="#partner">Partner</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <div class="content-wrapper">
+    <main>
+      <div class="hero-image"></div>
+
+      <section id="start">
+        <h1>Willkommen auf meiner Website</h1>
+        <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig erweitert.</p>
+      </section>
+
+      <section id="projekt">
+        <h2>Projekt</h2>
+        <p>Hier entsteht ein professionelles Web-Projekt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
+      </section>
+
+      <section id="partner">
+        <h2>Partner</h2>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">John H.</a></li>
+          <li><a href="https://vionic.de" target="_blank">Vionic</a></li>
+        </ul>
+      </section>
+
+      <section class="contact-form" id="kontakt">
+        <h2>Kontakt</h2>
+        <form id="contactForm">
+          <input type="text" name="name" placeholder="Dein Name" required />
+          <input type="email" name="email" placeholder="Deine E-Mail" required />
+          <textarea name="message" rows="5" placeholder="Deine Nachricht"></textarea>
+          <button type="submit">Absenden</button>
+        </form>
+        <p id="formSuccess" style="text-align:center; color:green; display:none; margin-top:1rem;">Danke! Deine Nachricht wurde gesendet.</p>
+      </section>
+
+      <section class="faq-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Fragen & Antworten</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">Warum habe ich mich für die Ausbildung zum Fachinformatiker entschieden?</div>
+          <div class="faq-answer">Weil Technologie unsere Zukunft gestaltet – und ich nicht nur zuschauen, sondern aktiv mitentwickeln möchte. Mein Ziel ist es, Ideen digital zum Leben zu erwecken.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Was begeistert mich an der Webentwicklung besonders?</div>
+          <div class="faq-answer">Die Möglichkeit, mit jedem Projekt etwas Einzigartiges zu schaffen. Webseiten sind heute mehr als nur digitale Visitenkarten – sie sind Erlebnisse, Marken, Communities.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Wie bringe ich meine eigene Persönlichkeit in Projekte ein?</div>
+          <div class="faq-answer">Durch Kreativität, Liebe zum Detail und absolute Entschlossenheit. Ich glaube daran, dass jede Zeile Code und jedes Pixel einen Unterschied machen kann.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Was ist mein langfristiges Ziel in der IT-Branche?</div>
+          <div class="faq-answer">Ich möchte nicht nur Webseiten entwickeln, sondern nachhaltige digitale Welten schaffen. Mein Fokus liegt auf Innovation, Benutzerfreundlichkeit und modernem Design.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Warum bin ich der richtige Partner für Webprojekte?</div>
+          <div class="faq-answer">Weil ich nicht nur Technologien verstehe, sondern Visionen greifbar mache. Mit technischer Kompetenz, Leidenschaft und einem klaren Sinn für Ästhetik.</div>
+        </div>
+      </section>
+
+      <footer>
+        &copy; 2025 M. Höpfler
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: this.name.value,
+          email: this.email.value,
+          message: this.message.value
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("formSuccess").style.display = "block";
+        this.reset();
+      })
+      .catch(error => console.error("Error:", error));
+    });
+  </script>
+</body>
+</html>
