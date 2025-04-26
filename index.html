@@ -6,33 +6,33 @@
   <title>Projekt Univine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-    body { background: #f5f5f5; color: #333; overflow-x: hidden; display: flex; }
-    nav { position: fixed; top: 0; left: 0; background: #ffffff; width: 220px; height: 100vh; padding: 2rem 1rem; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); z-index: 10; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background: #eaf3fb; color: #222; overflow-x: hidden; display: flex; flex-direction: column; }
+    nav { position: fixed; top: 0; left: 0; background: #fff; width: 220px; height: 100vh; padding: 2rem 1rem; box-shadow: 2px 0 5px rgba(0,0,0,0.05); z-index: 10; }
     nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
-    nav ul li a { text-decoration: none; color: #0077cc; font-weight: 600; font-size: 1.1rem; position: relative; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: 600; font-size: 1.05rem; position: relative; }
     nav ul li a::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: #0077cc; transition: width 0.3s ease; }
     nav ul li a:hover::after { width: 100%; }
     .content-wrapper { margin-left: 240px; width: 100%; display: flex; justify-content: center; }
-    main { padding: 2rem; max-width: 900px; width: 100%; background: #ffffff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
-    .hero-image { width: 100%; height: 300px; background: url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat; border-radius: 8px; }
+    main { padding: 2rem; max-width: 900px; width: 100%; }
+    .hero-image { width: 100%; height: 300px; background: url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat; }
     section { margin-bottom: 4rem; opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; text-align: center; }
     section.visible { opacity: 1; transform: translateY(0); }
-    .contact-form { padding: 2rem; max-width: 600px; margin: auto; background: #e6f2ff; border-radius: 12px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); }
+    .contact-form { padding: 2rem; max-width: 600px; margin: auto; background: #d0e3f1; border-radius: 12px; }
     .contact-form h2 { margin-bottom: 1rem; text-align: center; color: #0077cc; }
-    .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; }
     .contact-form button { width: 100%; padding: 1rem; background: #0077cc; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
     .contact-form button:hover { background: #005fa3; }
     .faq-section { max-width: 800px; margin: 4rem auto; }
     .faq-item { background: white; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; text-align: left; }
-    .faq-question { padding: 1rem; cursor: pointer; position: relative; font-weight: 600; font-size: 1.1rem; }
+    .faq-question { padding: 1rem; cursor: pointer; position: relative; font-weight: 600; }
     .faq-question::after { content: '\25BC'; position: absolute; right: 1rem; transition: transform 0.3s; }
-    .faq-answer { max-height: 0; overflow: hidden; padding: 0 1rem; color: #555; transition: max-height 0.5s ease; font-size: 1rem; }
+    .faq-answer { max-height: 0; overflow: hidden; padding: 0 1rem; color: #555; transition: max-height 0.5s ease; }
     .faq-item.active .faq-answer { max-height: 300px; padding: 1rem; }
     .faq-item.active .faq-question::after { transform: rotate(180deg); }
-    footer { text-align: center; padding: 2rem; color: #777; background: #f0f0f0; font-size: 1rem; }
+    footer { text-align: center; padding: 2rem; color: #777; }
     .scrolling-text-container { position: fixed; top: 0; left: 0; width: 100%; background: #0077cc; color: white; padding: 0.5rem 0; font-size: 1.2rem; font-weight: bold; white-space: nowrap; overflow: hidden; z-index: 9; }
     .scrolling-text { display: inline-block; animation: scroll-left 10s linear infinite; }
     @keyframes scroll-left { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
@@ -67,17 +67,17 @@
     <main>
       <div class="hero-image"></div>
 
-      <section id="start">
+      <section id="start" class="visible">
         <h1>Willkommen auf meiner Website</h1>
         <p class="subtext">Diese Website ist mein Projekt für die Ausbildung und wird regelmäßig erweitert.</p>
       </section>
 
-      <section id="projekt">
+      <section id="projekt" class="visible">
         <h2>Projekt</h2>
         <p>Hier entsteht ein professionelles Web-Projekt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
       </section>
 
-      <section id="partner">
+      <section id="partner" class="visible">
         <h2>Partner</h2>
         <div class="partner-buttons">
           <a href="https://www.linkedin.com/in/john-hoepfler" target="_blank">John H.</a>
@@ -85,7 +85,7 @@
         </div>
       </section>
 
-      <section class="contact-form" id="kontakt">
+      <section class="contact-form" id="kontakt" class="visible">
         <h2>Kontakt</h2>
         <form id="contactForm">
           <input type="text" name="name" placeholder="Dein Name" required />
@@ -96,12 +96,69 @@
         <p id="formSuccess" style="text-align:center; color:green; display:none; margin-top:1rem;">Danke! Deine Nachricht wurde gesendet.</p>
       </section>
 
-      <section class="faq-section">
+      <section class="faq-section visible">
         <h2 style="text-align:center; margin-bottom:2rem;">Fragen & Antworten</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">Warum habe ich mich für die Ausbildung zum Fachinformatiker entschieden?</div>
+          <div class="faq-answer">Weil Technologie unsere Zukunft gestaltet – und ich nicht nur zuschauen, sondern aktiv mitentwickeln möchte. Mein Ziel ist es, Ideen digital zum Leben zu erwecken.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Was begeistert mich an der Webentwicklung besonders?</div>
+          <div class="faq-answer">Die Möglichkeit, mit jedem Projekt etwas Einzigartiges zu schaffen. Webseiten sind heute mehr als nur digitale Visitenkarten – sie sind Erlebnisse, Marken, Communities.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Wie bringe ich meine eigene Persönlichkeit in Projekte ein?</div>
+          <div class="faq-answer">Durch Kreativität, Liebe zum Detail und absolute Entschlossenheit. Ich glaube daran, dass jede Zeile Code und jedes Pixel einen Unterschied machen kann.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Was ist mein langfristiges Ziel in der IT-Branche?</div>
+          <div class="faq-answer">Ich möchte nicht nur Webseiten entwickeln, sondern nachhaltige digitale Welten schaffen. Mein Fokus liegt auf Innovation, Benutzerfreundlichkeit und modernem Design.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Warum bin ich der richtige Partner für Webprojekte?</div>
+          <div class="faq-answer">Weil ich nicht nur Technologien verstehe, sondern Visionen greifbar mache. Mit technischer Kompetenz, Leidenschaft und einem klaren Sinn für Ästhetik.</div>
+        </div>
       </section>
 
       <footer>&copy; 2025 M. Höpfler</footer>
     </main>
   </div>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) entry.target.classList.add("visible"); 
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+
+    document.querySelectorAll('.faq-question').forEach(q => q.addEventListener('click', () => q.parentElement.classList.toggle('active')));
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: this.name.value,
+          email: this.email.value,
+          message: this.message.value
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("formSuccess").style.display = "block";
+        this.reset();
+      })
+      .catch(error => console.error("Error:", error));
+    });
+  </script>
 </body>
 </html>
