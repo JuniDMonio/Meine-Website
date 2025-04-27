@@ -26,8 +26,16 @@
       padding: 2rem 1rem;
       box-shadow: 2px 0 5px rgba(0,0,0,0.05);
       z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+    nav ul { 
+      list-style: none; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1.5rem; 
+    }
     nav ul li a {
       text-decoration: none;
       color: #333;
@@ -187,22 +195,19 @@
       z-index: 100;
     }
     .dark-mode-toggle {
-      position: fixed;
-      top: 70px;
-      right: 20px;
       background: #0077cc;
       color: white;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem;
       border: none;
       border-radius: 50%;
       cursor: pointer;
-      z-index: 30;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 50px;
-      width: 50px;
+      height: 40px;
+      width: 40px;
       transition: background 0.3s;
+      margin: 0 auto;
     }
     .dark-mode-toggle:hover { background: #005fa3; }
     .dark-mode body {
@@ -212,10 +217,49 @@
     .dark-mode nav { background: #1f1f1f; }
     .dark-mode .contact-form { background: #2b2b2b; }
     .dark-mode .faq-item { background: #1f1f1f; }
+
+    /* Responsive Navigation */
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+      position: fixed;
+      top: 70px;
+      left: 20px;
+      z-index: 30;
+    }
     @media (max-width: 768px) {
-      nav { position: static; width: 100%; height: auto; padding: 1rem; }
-      nav ul { flex-direction: row; justify-content: center; }
-      .content-wrapper { margin-left: 0; width: 100%; }
+      .hamburger {
+        display: block;
+      }
+      nav {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        padding: 1rem;
+        transition: left 0.3s ease;
+        z-index: 10;
+      }
+      nav.active {
+        left: 0;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+      }
+      .dark-mode-toggle {
+        margin: 1rem auto;
+      }
     }
   </style>
 </head>
@@ -227,8 +271,8 @@
     <div class="scrolling-text">Projekt Univine – "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
   </div>
 
-  <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-    <i data-lucide="moon"></i>
+  <button class="hamburger" onclick="toggleNav()">
+    <i data-lucide="menu"></i>
   </button>
 
   <nav>
@@ -238,6 +282,9 @@
       <li><a href="#partner">Partner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+      <i data-lucide="moon"></i>
+    </button>
   </nav>
 
   <div class="content-wrapper">
@@ -310,7 +357,7 @@
   </div>
 
   <footer>
-    &copy; 2025 M. Höpfler | <a href="#">Impressum</a> | <a href="#">Datenschutz</a>
+    © 2025 M. Höpfler | <a href="#">Impressum</a> | <a href="#">Datenschutz</a>
   </footer>
 
   <script>
@@ -353,6 +400,10 @@
 
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark-mode');
+    }
+
+    function toggleNav() {
+      document.querySelector('nav').classList.toggle('active');
     }
   </script>
 </body>
