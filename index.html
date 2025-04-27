@@ -106,7 +106,7 @@
       border: none;
       border-radius: 8px;
       font-weight: bold;
-      cursor: pointer;
+      cursor Dub: pointer;
       transition: background 0.3s, transform 0.3s;
     }
     .contact-form button:hover {
@@ -127,11 +127,16 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s ease;
+      transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
       padding: 0 1rem;
       color: #555;
+      opacity: 0;
     }
-    .faq-item.active .faq-answer { max-height: 300px; padding: 1rem; }
+    .faq-item.active .faq-answer { 
+      max-height: 500px; 
+      padding: 1rem; 
+      opacity: 1; 
+    }
     .faq-item.active .faq-question::after { transform: rotate(180deg); }
     .partner-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
     .partner-buttons a {
@@ -253,10 +258,6 @@
         align-items: center;
         margin-top: 2rem;
       }
-      .content-wrapper {
-        margin-left: 0;
-        width: 100%;
-      }
       .dark-mode-toggle {
         margin: 1rem auto;
       }
@@ -281,10 +282,12 @@
       <li><a href="#projekt">Projekt</a></li>
       <li><a href="#partner">Partner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
+      <li>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+          <i data-lucide="moon"></i>
+        </button>
+      </li>
     </ul>
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-      <i data-lucide="moon"></i>
-    </button>
   </nav>
 
   <div class="content-wrapper">
