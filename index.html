@@ -4,30 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projekt Univine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:wght@500;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body {
-      background: #f5f7fa;
-      color: #222;
+      background: #fafafa;
+      color: #1f2937;
       overflow-x: hidden;
       min-height: 100vh;
       opacity: 0;
-      transition: opacity 1.2s ease;
+      transition: opacity 1.5s ease;
     }
-    h1, h2 { font-family: 'Poppins', sans-serif; font-weight: 700; }
-    h3, h4 { font-family: 'Poppins', sans-serif; font-weight: 500; }
-    p { line-height: 1.6; }
+    h1, h2 { font-family: 'Lora', serif; font-weight: 700; }
+    h3, h4 { font-family: 'Lora', serif; font-weight: 500; }
+    p { line-height: 1.7; color: #6b7280; }
     nav {
       position: fixed;
       top: 60px;
       left: 0;
       background: #fff;
-      width: 220px;
+      width: 200px;
       height: calc(100vh - 60px);
       padding: 2rem 1rem;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+      box-shadow: 2px 0 8px rgba(0,0,0,0.05);
       z-index: 10;
       display: flex;
       flex-direction: column;
@@ -36,17 +36,17 @@
       list-style: none; 
       display: flex; 
       flex-direction: column; 
-      gap: 1.5rem; 
+      gap: 1.8rem; 
     }
     nav ul li a {
       text-decoration: none;
-      color: #333;
+      color: #1f2937;
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       position: relative;
       transition: color 0.3s ease;
     }
-    nav ul li a:hover { color: #005fa3; }
+    nav ul li a:hover { color: #1e3a8a; }
     nav ul li a::after {
       content: "";
       position: absolute;
@@ -54,32 +54,26 @@
       left: 0;
       width: 0%;
       height: 2px;
-      background: #005fa3;
+      background: #d4a017;
       transition: width 0.3s ease;
     }
     nav ul li a:hover::after { width: 100%; }
     .content-wrapper { 
-      margin-left: 240px; 
-      width: calc(100% - 240px); 
+      margin-left: 220px; 
+      width: calc(100% - 220px); 
       padding-top: 60px;
-      padding-bottom: 60px; /* Platz für Bottom Navigation */
+      padding-bottom: 60px;
     }
-    main { padding: 2rem; max-width: 1200px; margin: auto; }
+    main { padding: 3rem; max-width: 1100px; margin: auto; }
     .hero-image {
       width: 100%;
-      height: 400px;
-      background: url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
+      height: 500px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
       position: relative;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       background-attachment: fixed;
-    }
-    .hero-image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
     }
     .hero-text {
       position: absolute;
@@ -88,158 +82,237 @@
       transform: translate(-50%, -50%);
       color: white;
       text-align: center;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
       opacity: 0;
-      animation: fadeInHero 1s ease forwards 0.5s;
+      animation: fadeInHero 1.2s ease forwards 0.5s;
     }
     @keyframes fadeInHero {
       to { opacity: 1; transform: translate(-50%, -50%); }
     }
-    .hero-text h1 { font-size: 3rem; }
-    .hero-text p { margin-top: 1rem; font-size: 1.3rem; }
+    .hero-text h1 { font-size: 3.5rem; }
+    .hero-text p { margin-top: 1rem; font-size: 1.4rem; color: #f3f4f6; }
     .hero-text .cta-button {
       display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.8rem 2rem;
-      background: #005fa3;
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      background: #1e3a8a;
       color: white;
       text-decoration: none;
       border-radius: 50px;
       font-weight: 600;
-      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2s infinite;
     }
     .hero-text .cta-button:hover {
-      background: #004080;
-      transform: scale(1.05);
+      background: #d4a017;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
     }
     section { 
-      margin-bottom: 4rem; 
+      margin-bottom: 5rem; 
       opacity: 0; 
-      transform: translateY(30px); 
-      transition: opacity 0.8s ease, transform 0.8s ease; 
+      transform: translateY(40px); 
+      transition: opacity 1s ease, transform 1s ease; 
     }
     section.visible { opacity: 1; transform: translateY(0); }
     .contact-form {
-      background: #d0e3f1;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 600px;
-      margin: 2rem auto;
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 3rem auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .contact-form .form-group {
       position: relative;
+      margin-bottom: 1.5rem;
     }
     .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
       transition: border-color 0.3s ease, transform 0.3s ease;
     }
     .contact-form input:focus, .contact-form textarea:focus {
-      border-color: #005fa3;
+      border-color: #1e3a8a;
       transform: translateY(-2px);
       outline: none;
+    }
+    .contact-form label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: #6b7280;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    .contact-form input:focus + label,
+    .contact-form input:not(:placeholder-shown) + label,
+    .contact-form textarea:focus + label,
+    .contact-form textarea:not(:placeholder-shown) + label {
+      top: -0.8rem;
+      left: 0.8rem;
+      font-size: 0.85rem;
+      color: #1e3a8a;
+      background: #fff;
+      padding: 0 0.2rem;
     }
     .contact-form button {
       width: 100%;
       padding: 1rem;
-      background: #005fa3;
+      background: #1e3a8a;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     }
     .contact-form button:hover {
-      background: #004080;
-      transform: scale(1.02);
+      background: #d4a017;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
     #formSuccess { 
       display: none; 
       background: #e6f4ea; 
       color: #2e7d32; 
       padding: 1rem; 
-      border-radius: 6px; 
+      border-radius: 8px; 
       margin-top: 1rem; 
       animation: slideIn 0.5s ease; 
+      display: flex; 
+      align-items: center; 
+      gap: 0.5rem; 
     }
+    #formSuccess svg { width: 20px; height: 20px; }
     @keyframes slideIn { 
       from { opacity: 0; transform: translateY(-10px); } 
       to { opacity: 1; transform: translateY(0); } 
     }
-    .faq-section { max-width: 800px; margin: 4rem auto; }
-    .faq-item { background: white; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .faq-question { padding: 1rem; cursor: pointer; font-weight: 600; position: relative; }
+    .faq-section { max-width: 900px; margin: 4rem auto; }
+    .faq-item { 
+      background: #fff; 
+      margin-bottom: 1.2rem; 
+      border-radius: 12px; 
+      overflow: hidden; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+      transition: transform 0.3s ease; 
+    }
+    .faq-item:hover { transform: translateY(-2px); }
+    .faq-question { 
+      padding: 1.5rem; 
+      cursor: pointer; 
+      font-weight: 600; 
+      position: relative; 
+      color: #1f2937; 
+    }
     .faq-question::after {
       content: '▼';
       position: absolute;
-      right: 1rem;
-      transition: transform 0.3s;
+      right: 1.5rem;
+      transition: transform 0.3s ease;
+      color: #d4a017;
     }
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
-      padding: 0 1rem;
-      color: #555;
+      transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      padding: 0 1.5rem;
+      color: #6b7280;
       opacity: 0;
     }
     .faq-item.active .faq-answer { 
-      max-height: 500px; 
-      padding: 1rem; 
+      max-height: 600px; 
+      padding: 1.5rem; 
       opacity: 1; 
-      animation: bounceIn 0.3s ease; 
+      animation: bounceIn 0.4s ease; 
     }
     @keyframes bounceIn {
       0% { transform: scale(0.95); }
-      50% { transform: scale(1.02); }
+      50% { transform: scale(1.03); }
       100% { transform: scale(1); }
     }
     .faq-item.active .faq-question::after { transform: rotate(180deg); }
-    .partner-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
+    .partner-buttons { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 1.5rem; 
+      justify-content: center; 
+      margin-top: 2.5rem; 
+    }
     .partner-buttons a {
-      background: #005fa3;
+      background: #1e3a8a;
       color: white;
-      padding: 1rem 2rem;
+      padding: 1rem 2.5rem;
       border-radius: 50px;
       text-decoration: none;
-      font-weight:apply bold;
-      transition: background 0.3s, transform 0.3s;
-      box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
+      font-weight: 600;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .partner-buttons a:hover {
-      background: #004080;
-      transform: scale(1.05);
+      background: #d4a017;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
     footer {
-      margin-top: auto;
-      background: #fff;
-      padding: 2rem;
+      background: #1f2937;
+      padding: 3rem 2rem;
       text-align: center;
-      color: #777;
+      color: #f3f4f6;
       font-size: 0.9rem;
-      border-top: 1px solid #ccc;
     }
-    footer a { color: #005fa3; text-decoration: none; margin: 0 0.5rem; transition: color 0.3s ease; }
-    footer a:hover { color: #004080; }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    footer a { 
+      color: #d4a017; 
+      text-decoration: none; 
+      transition: color 0.3s ease; 
+    }
+    footer a:hover { color: #f3f4f6; }
+    footer .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    footer .social-icons a {
+      color: #f3f4f6;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    footer .social-icons a:hover { transform: scale(1.2); }
     .scrolling-text-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: #005fa3;
+      background: #1e3a8a;
       color: white;
-      padding: 0.5rem 0;
-      font-size: 1.2rem;
-      font-weight: bold;
+      padding: 0.6rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
       white-space: nowrap;
       overflow: hidden;
       z-index: 15;
     }
     .scrolling-text {
       display: inline-block;
-      animation: scroll-left 10s linear infinite;
+      animation: scroll-left 12s linear infinite;
     }
     @keyframes scroll-left {
       from { transform: translateX(100%); }
@@ -251,16 +324,45 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #005fa3;
+      background: #1e3a8a;
       color: white;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
       z-index: 100;
+      opacity: 1;
+      transition: opacity 1s ease;
     }
+    #splash.hidden { opacity: 0; pointer-events: none; }
+    #splash h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #d4a017;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1e3a8a;
+      color: white;
+      padding: 0.8rem;
+      border-radius: 50%;
+      display: none;
+      z-index: 10;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .back-to-top.visible { display: block; opacity: 1; }
+    .back-to-top:hover { transform: scale(1.1); }
     .dark-mode-toggle {
-      background: #005fa3;
+      background: #1e3a8a;
       color: white;
       padding: 0.5rem;
       border: none;
@@ -274,21 +376,18 @@
       transition: background 0.3s, transform 0.3s;
     }
     .dark-mode-toggle:hover { 
-      background: #004080; 
+      background: #d4a017; 
       transform: scale(1.1); 
     }
-    .dark-mode body {
-      background: #1a1a1a;
-      color: #eee;
-    }
-    .dark-mode nav { background: #252525; }
-    .dark-mode .contact-form { background: #333; }
-    .dark-mode .faq-item { background: #252525; }
-    .dark-mode .partner-buttons a { background: #004080; }
-    .dark-mode .partner-buttons a:hover { background: #003366; }
-    .dark-mode footer { background: #252525; }
-    .dark-mode .scrolling-text-container { background: #004080; }
-    .dark-mode .mobile-nav { background: #252525; }
+    .dark-mode body { background: #1f2937; color: #f3f4f6; }
+    .dark-mode nav { background: #111827; }
+    .dark-mode .contact-form { background: #1f2937; }
+    .dark-mode .faq-item { background: #111827; }
+    .dark-mode .partner-buttons a { background: #1e3a8a; }
+    .dark-mode .partner-buttons a:hover { background: #d4a017; }
+    .dark-mode footer { background: #111827; }
+    .dark-mode .scrolling-text-container { background: #1e3a8a; }
+    .dark-mode .mobile-nav { background: rgba(17, 24, 39, 0.95); }
 
     /* Mobile Bottom Navigation */
     .mobile-nav {
@@ -297,11 +396,16 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95); /* Glas-Effekt */
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
       z-index: 10;
-      padding: 0.5rem 0;
+      padding: 0.6rem 0;
+      animation: slideUp 0.5s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
     }
     .mobile-nav ul {
       display: flex;
@@ -314,51 +418,53 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: #333;
+      color: #1f2937;
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 500;
       transition: color 0.3s ease, transform 0.3s ease;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0.5rem;
+      padding: 0.6rem;
     }
     .mobile-nav ul li a:hover, .mobile-nav ul li button:hover {
-      color: #005fa3;
+      color: #d4a017;
       transform: scale(1.1);
     }
     .mobile-nav ul li svg {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 0.2rem;
+      width: 26px;
+      height: 26px;
+      margin-bottom: 0.3rem;
     }
     @media (max-width: 768px) {
-      nav { display: none; } /* Desktop-Navigation ausblenden */
+      nav { display: none; }
       .mobile-nav { display: block; }
       .content-wrapper {
         margin-left: 0;
         width: 100%;
         padding-top: 60px;
-        padding-bottom: 60px;
+        padding-bottom: 70px;
       }
-      main {
-        padding: 1rem;
-      }
+      main { padding: 1.5rem; }
       .hero-image {
-        height: 300px;
+        height: 350px;
         background-attachment: scroll;
       }
-      .hero-text h1 { font-size: 2rem; }
-      .hero-text p { font-size: 1rem; }
+      .hero-text h1 { font-size: 2.5rem; }
+      .hero-text p { font-size: 1.1rem; }
     }
   </style>
 </head>
 
 <body>
-  <div id="splash">Projekt Univine lädt...</div>
+  <div id="splash">
+    <h1>Projekt Univine</h1>
+    <div class="loader"></div>
+  </div>
 
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine – "Ich bin kein Entwickler. Ich bin der Architekt der Zukunft."</div>
+    <div class="scrolling-text">Projekt Univine – Architektur der Zukunft</div>
   </div>
 
   <nav>
@@ -389,20 +495,20 @@
     <main>
       <div class="hero-image">
         <div class="hero-text">
-          <h1>Willkommen bei Univine</h1>
-          <p>Die Zukunft gestalten – Schritt für Schritt.</p>
-          <a href="#projekt" class="cta-button">Mehr erfahren</a>
+          <h1>Projekt Univine</h1>
+          <p>Innovation, Präzision, Zukunft – vereint in einem visionären Projekt.</p>
+          <a href="#projekt" class="cta-button">Entdecken</a>
         </div>
       </div>
 
       <section id="start">
-        <h2>Willkommen auf meiner Website</h2>
-        <p class="subtext">Hier entsteht ein modernes Webprojekt – entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
+        <h2>Willkommen bei Projekt Univine</h2>
+        <p>Projekt Univine ist das Ergebnis meiner Leidenschaft für Technologie und Innovation, entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung. Diese Website verkörpert moderne Webentwicklung, klare Ästhetik und zukunftsorientierte Visionen.</p>
       </section>
 
       <section id="projekt">
-        <h2>Mein Projekt</h2>
-        <p>Innovative Ideen, klare Designs und eine Leidenschaft für Technik – all das fließt in dieses Projekt ein.</p>
+        <h2>Das Projekt</h2>
+        <p>Projekt Univine steht für die Verschmelzung von kreativen Konzepten, technischer Präzision und zukunftsweisendem Design. Mein Ziel ist es, digitale Erlebnisse zu schaffen, die nicht nur funktional, sondern auch inspirierend sind. Von der Idee bis zur Umsetzung – jede Zeile Code spiegelt meine Hingabe wider, die Grenzen des Möglichen zu erweitern.</p>
       </section>
 
       <section id="partner">
@@ -416,55 +522,71 @@
       <section class="contact-form" id="kontakt">
         <h2>Kontakt</h2>
         <form id="contactForm">
-          <input type="text" name="name" placeholder="Dein Name *" required />
-          <input type="email" name="email" placeholder="Deine E-Mail *" required />
-          <textarea name="message" rows="5" placeholder="Deine Nachricht"></textarea>
+          <div class="form-group">
+            <input type="text" name="name" id="name" placeholder=" " required />
+            <label for="name">Dein Name *</label>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" id="email" placeholder=" " required />
+            <label for="email">Deine E-Mail *</label>
+          </div>
+          <div class="form-group">
+            <textarea name="message" id="message" rows="5" placeholder=" "></textarea>
+            <label for="message">Deine Nachricht</label>
+          </div>
           <button type="submit">Absenden</button>
         </form>
-        <p id="formSuccess">Danke! Deine Nachricht wurde erfolgreich gesendet.</p>
+        <p id="formSuccess"><i data-lucide="check-circle"></i> Danke! Deine Nachricht wurde erfolgreich gesendet.</p>
       </section>
 
       <section class="faq-section">
-        <h2>Fragen & Antworten</h2>
-
+        <h2>FAQs</h2>
         <div class="faq-item">
           <div class="faq-question">Warum habe ich mich für die IT entschieden?</div>
-          <div class="faq-answer">Weil ich die Zukunft aktiv mitgestalten will und Technologie der Schlüssel ist.</div>
+          <div class="faq-answer">Die IT ist der Motor der modernen Welt und bietet unendliche Möglichkeiten, die Zukunft zu gestalten. Meine Entscheidung für diesen Bereich wurzelt in der Faszination für Technologie, die Probleme löst und Innovationen vorantreibt. Die Möglichkeit, durch Code digitale Erlebnisse zu schaffen, die Menschen weltweit erreichen, ist für mich eine einzigartige Kombination aus Kreativität und Präzision.</div>
         </div>
-
         <div class="faq-item">
           <div class="faq-question">Was begeistert mich an der Webentwicklung?</div>
-          <div class="faq-answer">Die Kombination aus Kreativität, Technik und Erlebnissen.</div>
+          <div class="faq-answer">Webentwicklung ist für mich die perfekte Schnittstelle zwischen Design, Technik und Nutzererlebnis. Es begeistert mich, wie man durch sauberen Code und durchdachtes Design Websites erschaffen kann, die nicht nur funktional, sondern auch ästhetisch ansprechend sind. Jeder Pixel, jede Animation und jede Interaktion trägt dazu bei, eine Geschichte zu erzählen und Nutzer zu inspirieren.</div>
         </div>
-
         <div class="faq-item">
-          <div class="faq-question">Wie bringe ich Persönlichkeit ein?</div>
-          <div class he:faq-answer">Durch Liebe zum Detail und kreative Ansätze.</div>
+          <div class="faq-question">Wie bringe ich Persönlichkeit in meine Projekte ein?</div>
+          <div class="faq-answer">Persönlichkeit entsteht durch die Liebe zum Detail und die Bereitschaft, über den Standard hinauszugehen. Ich integriere meine Leidenschaft für klare Strukturen, elegante Designs und innovative Lösungen in jedes Projekt. Ob durch subtile Animationen, durchdachte Farbschemata oder intuitive Benutzerführung – meine Arbeit spiegelt meine Vision wider, Technologie menschlich und zugänglich zu machen.</div>
         </div>
-
         <div class="faq-item">
-          <div class="faq-question">Mein langfristiges Ziel?</div>
-          <div class="faq-answer">Digitale Welten schaffen, die begeistern und inspirieren.</div>
+          <div class="faq-question">Was ist mein langfristiges Ziel?</div>
+          <div class="faq-answer">Mein Ziel ist es, digitale Welten zu schaffen, die nicht nur technologisch fortschrittlich, sondern auch emotional ansprechend sind. Ich möchte als Entwickler und Architekt digitaler Lösungen anerkannt werden, der Unternehmen und Nutzer durch visionäre Projekte verbindet. Langfristig strebe ich an, Technologien zu entwickeln, die nachhaltig und inklusiv sind, und so einen positiven Einfluss auf die Gesellschaft ausüben.</div>
         </div>
-
         <div class="faq-item">
-          <div class="faq-question">Warum ich als Partner?</div>
-          <div class="faq-answer">Weil ich Technologie und Vision vereine.</div>
+          <div class="faq-question">Warum sollte man mich als Partner wählen?</div>
+          <div class="faq-answer">Ich bringe nicht nur technisches Know-how, sondern auch eine visionäre Perspektive in jedes Projekt ein. Meine Stärke liegt in der Fähigkeit, komplexe Anforderungen in elegante, nutzerfreundliche Lösungen zu übersetzen. Mit einem Fokus auf Qualität, Zuverlässigkeit und Kreativität bin ich ein Partner, der nicht nur Projekte abschließt, sondern Mehrwert schafft und langfristige Partnerschaften aufbaut.</div>
         </div>
       </section>
     </main>
   </div>
 
   <footer>
-    © 2025 M. Höpfler | <a href="#">Impressum</a> | <a href="#">Datenschutz</a>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+    </div>
+    <p>© 2025 M. Höpfler | Projekt Univine</p>
   </footer>
+
+  <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i data-lucide="arrow-up"></i>
+  </button>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
-        document.getElementById('splash').style.display = 'none';
+        document.getElementById('splash').classList.add('hidden');
         document.body.style.opacity = 1;
-      }, 2000);
+      }, 2500);
       lucide.createIcons();
     });
 
@@ -503,7 +625,7 @@
       })
       .then(response => response.json())
       .then(data => {
-        document.getElementById("formSuccess").style.display = "block";
+        document.getElementById("formSuccess").style.display = "flex";
         this.reset();
       })
       .catch(error => console.error("Error:", error));
@@ -512,6 +634,15 @@
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark-mode');
     }
+
+    window.addEventListener('scroll', () => {
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
   </script>
 </body>
 </html>
