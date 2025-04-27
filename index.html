@@ -376,7 +376,17 @@
     sections.forEach(section => observer.observe(section));
 
     document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
+      q.addEventListener('click', () => {
+        const parent = q.parentElement;
+        // Schließe alle anderen offenen FAQs
+        document.querySelectorAll('.faq-item.active').forEach(item => {
+          if (item !== parent) {
+            item.classList.remove('active');
+          }
+        });
+        // Toggle die angeklickte FAQ
+        parent.classList.toggle('active');
+      });
     });
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
