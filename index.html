@@ -28,7 +28,6 @@
       z-index: 10;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
     nav ul { 
       list-style: none; 
@@ -54,7 +53,11 @@
       transition: width 0.3s ease;
     }
     nav ul li a:hover::after { width: 100%; }
-    .content-wrapper { margin-left: 240px; width: calc(100% - 240px); }
+    .content-wrapper { 
+      margin-left: 240px; 
+      width: calc(100% - 240px); 
+      padding-top: 60px; /* Platz für Scrolling-Text */
+    }
     main { padding: 2rem; max-width: 1200px; margin: auto; }
     .hero-image {
       width: 100%;
@@ -106,7 +109,7 @@
       border: none;
       border-radius: 8px;
       font-weight: bold;
-      cursor Dub: pointer;
+      cursor: pointer;
       transition: background 0.3s, transform 0.3s;
     }
     .contact-form button:hover {
@@ -175,7 +178,7 @@
       font-weight: bold;
       white-space: nowrap;
       overflow: hidden;
-      z-index: 20;
+      z-index: 15; /* Niedriger als Hamburger, höher als Inhalt */
     }
     .scrolling-text {
       display: inline-block;
@@ -232,9 +235,9 @@
       cursor: pointer;
       color: #333;
       position: fixed;
-      top: 70px;
+      top: 20px; /* Angepasst, um unter Scrolling-Text zu liegen */
       left: 20px;
-      z-index: 30;
+      z-index: 20; /* Höher als Scrolling-Text, niedriger als Splash */
     }
     @media (max-width: 768px) {
       .hamburger {
@@ -248,7 +251,8 @@
         height: calc(100vh - 60px);
         padding: 1rem;
         transition: left 0.3s ease;
-        z-index: 10;
+        z-index: 10; /* Unter Hamburger, über Inhalt */
+        background: #fff; /* Sicherstellen, dass Navigation sichtbar ist */
       }
       nav.active {
         left: 0;
@@ -258,8 +262,16 @@
         align-items: center;
         margin-top: 2rem;
       }
+      .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 80px; /* Mehr Platz für Scrolling-Text und Hamburger */
+      }
       .dark-mode-toggle {
         margin: 1rem auto;
+      }
+      main {
+        padding: 1rem; /* Reduziert für kleinere Bildschirme */
       }
     }
   </style>
