@@ -370,8 +370,8 @@
     /* Meine Reise Section */
     /* ----------------------------------- */
     .journey-section {
-      max-width: 900px;
-      margin: 4rem auto;
+      max-width: 700px;
+      margin: 3rem auto;
       transition: box-shadow 0.3s ease;
     }
 
@@ -379,21 +379,26 @@
       box-shadow: 0 4px 16px rgba(250, 204, 21, 0.3);
     }
 
+    .journey-section.visible {
+      padding-left: 1rem;
+    }
+
     .journey-section .journey-text {
-      padding: 1.5rem 0;
+      padding: 1rem 0;
     }
 
     .journey-section .journey-image {
       background: url('https://images.unsplash.com/photo-1516321310764-2f58c1d5476a?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
       border-radius: 12px;
-      height: 250px;
-      max-width: 600px;
+      height: 200px;
+      max-width: 500px;
       margin: 1rem auto;
     }
 
     @media (max-width: 768px) {
       .journey-section .journey-image {
-        height: 200px;
+        height: 150px;
+        max-width: 400px;
       }
     }
 
@@ -648,13 +653,17 @@
     .initials-logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
-      color: #facc15;
+      color: #fefcbf;
       position: relative;
       display: inline-block;
+      background: rgba(17, 24, 39, 0.8);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       opacity: 1;
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.7);
+      z-index: 10;
+      box-shadow: 0 0 20px rgba(254, 252, 191, 0.8);
       animation: glowLogo 3s ease infinite;
     }
 
@@ -665,7 +674,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, transparent, rgba(250, 204, 21, 0.5), transparent);
+      background: linear-gradient(45deg, transparent, rgba(254, 252, 191, 0.5), transparent);
       transition: left 0.5s ease;
     }
 
@@ -675,12 +684,12 @@
 
     .initials-logo:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(250, 204, 21, 0.8);
+      box-shadow: 0 0 25px rgba(254, 252, 191, 0.9);
     }
 
     @keyframes glowLogo {
-      0%, 100% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.7); }
-      50% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.9); }
+      0%, 100% { box-shadow: 0 0 20px rgba(254, 252, 191, 0.8); }
+      50% { box-shadow: 0 0 25px rgba(254, 252, 191, 1); }
     }
 
     /* ----------------------------------- */
@@ -914,6 +923,12 @@
       background: rgba(17, 24, 39, 0.9);
     }
 
+    .dark-mode .initials-logo {
+      color: #fefcbf;
+      background: rgba(17, 24, 39, 0.8);
+      box-shadow: 0 0 20px rgba(254, 252, 191, 0.8);
+    }
+
     /* ----------------------------------- */
     /* Easter Egg */
     /* ----------------------------------- */
@@ -1067,7 +1082,7 @@
       <section id="journey" class="journey-section">
         <h2>Meine Reise</h2>
         <div class="journey-text">
-          <p>Ich stehe am Anfang meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung, angetrieben von meiner Leidenschaft für Technologie. Projekt Univine ist mein Ausdruck von Kreativität und Entschlossenheit, die Zukunft zu gestalten.</p>
+          <p>Ich stehe am Anfang meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung, angetrieben von meiner Leidenschaft für Technologie. Projekt Univine ist mein Ausdruck von Kreativität und Entschlossenheit, die Zukunft zu gestalten. Diese Reise begann mit dem Wunsch, innovative Lösungen zu entwickeln, die Menschen begeistern. Mit jedem Schritt in meiner Ausbildung lerne ich, wie ich meine Vision durch Code und Design zum Leben erwecken kann.</p>
         </div>
         <div class="journey-image"></div>
       </section>
