@@ -895,129 +895,131 @@
     /* ----------------------------------- */
     /* NEW: Blitz Cursor and Easter Egg */
     /* ----------------------------------- */
-    /* Blitz Cursor */
-    * {
-      cursor: none; /* Standard-Cursor ausblenden */
-    }
-    body::after {
-      content: '';
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background: #facc15; /* Goldener Funke */
-      border-radius: 50%;
-      box-shadow: 0 0 8px rgba(250, 204, 21, 0.8), 0 0 12px rgba(250, 204, 21, 0.5); /* Blitz-Glühen */
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease; /* Normale Geschwindigkeit */
-    }
-    .dark-mode body::after {
-      background: #ffffff;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.5);
-    }
-    body {
-      --mouse-x: 0;
-      --mouse-y: 0;
-    }
-    body::after {
-      left: var(--mouse-x);
-      top: var(--mouse-y);
-    }
+    /* Blitz Cursor (nur Desktop) */
+    @media (min-width: 769px) {
+      * {
+        cursor: none;
+      }
+      body::after {
+        content: '';
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: #facc15;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(250, 204, 21, 0.8), 0 0 12px rgba(250, 204, 21, 0.5);
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+      .dark-mode body::after {
+        background: #ffffff;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.5);
+      }
+      body {
+        --mouse-x: 0;
+        --mouse-y: 0;
+      }
+      body::after {
+        left: var(--mouse-x);
+        top: var(--mouse-y);
+      }
 
-    /* Hover-Effekt für interaktive Elemente */
-    a, button, .faq-title, .dark-mode-toggle {
-      cursor: none;
-    }
-    a:hover ~ body::after,
-    button:hover ~ body::after,
-    .faq-title:hover ~ body::after,
-    .dark-mode-toggle:hover ~ body::after {
-      transform: translate(-50%, -50%) scale(1.8); /* Größerer Cursor */
-      background: #1e3a8a; /* Blauer Blitz */
-      box-shadow: 0 0 12px rgba(30, 58, 138, 0.9), 0 0 18px rgba(30, 58, 138, 0.6);
-    }
-    .dark-mode a:hover ~ body::after,
-    .dark-mode button:hover ~ body::after,
-    .dark-mode .faq-title:hover ~ body::after,
-    .dark-mode .dark-mode-toggle:hover ~ body::after {
-      background: #facc15;
-      box-shadow: 0 0 12px rgba(250, 204, 21, 0.9), 0 0 18px rgba(250, 204, 21, 0.6);
-    }
+      /* Hover-Effekt für interaktive Elemente */
+      a, button, .faq-title, .dark-mode-toggle {
+        cursor: none;
+      }
+      a:hover ~ body::after,
+      button:hover ~ body::after,
+      .faq-title:hover ~ body::after,
+      .dark-mode-toggle:hover ~ body::after {
+        transform: translate(-50%, -50%) scale(1.8);
+        background: #1e3a8a;
+        box-shadow: 0 0 12px rgba(30, 58, 138, 0.9), 0 0 18px rgba(30, 58, 138, 0.6);
+      }
+      .dark-mode a:hover ~ body::after,
+      .dark-mode button:hover ~ body::after,
+      .dark-mode .faq-title:hover ~ body::after,
+      .dark-mode .dark-mode-toggle:hover ~ body::after {
+        background: #facc15;
+        box-shadow: 0 0 12px rgba(250, 204, 21, 0.9), 0 0 18px rgba(250, 204, 21, 0.6);
+      }
 
-    /* Puls-Effekt in Journey-Sektion (Überraschung) */
-    #journey:hover body::after {
-      animation: pulseCursor 1.5s ease infinite;
-    }
-    @keyframes pulseCursor {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.2); }
-    }
+      /* Puls-Effekt in Journey-Sektion */
+      #journey:hover body::after {
+        animation: pulseCursor 1.5s ease infinite;
+      }
+      @keyframes pulseCursor {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.2); }
+      }
 
-    /* Blitz-Trail-Effekt */
-    .blitz-trail {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      background: rgba(250, 204, 21, 0.7);
-      border-radius: 50%;
-      box-shadow: 0 0 6px rgba(250, 204, 21, 0.8);
-      pointer-events: none;
-      z-index: 9998;
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: rotate(45deg); /* Leicht gezackt für Blitz-Look */
-    }
-    .dark-mode .blitz-trail {
-      background: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-    }
+      /* Blitz-Trail-Effekt */
+      .blitz-trail {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: rgba(250, 204, 21, 0.7);
+        border-radius: 50%;
+        box-shadow: 0 0 6px rgba(250, 204, 21, 0.8);
+        pointer-events: none;
+        z-index: 9998;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: rotate(45deg);
+      }
+      .dark-mode .blitz-trail {
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+      }
 
-    /* Klick-Effekt (Blitzschlag) */
-    .blitz-spark {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      background: radial-gradient(circle, rgba(250, 204, 21, 0.9), transparent);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9997;
-      transition: all 0.4s ease;
-      opacity: 0;
-    }
-    .dark-mode .blitz-spark {
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent);
-    }
+      /* Klick-Effekt (Blitzschlag) */
+      .blitz-spark {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: radial-gradient(circle, rgba(250, 204, 21, 0.9), transparent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9997;
+        transition: all 0.4s ease;
+        opacity: 0;
+      }
+      .dark-mode .blitz-spark {
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent);
+      }
 
-    /* Easter Egg: Großer Blitzschlag (SVG) */
-    #lightningBolt {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-    #lightningBolt.active {
-      opacity: 1;
-    }
-    #lightningBolt path {
-      fill: none;
-      stroke: #facc15;
-      stroke-width: 4;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      animation: flash 0.3s ease-in-out alternate 2;
-    }
-    .dark-mode #lightningBolt path {
-      stroke: #ffffff;
-    }
-    @keyframes flash {
-      0% { stroke-opacity: 1; }
-      100% { stroke-opacity: 0.6; }
+      /* Easter Egg: Großer Blitzschlag (SVG) */
+      #lightningBolt {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      #lightningBolt.active {
+        opacity: 1;
+      }
+      #lightningBolt path {
+        fill: none;
+        stroke: #facc15;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        animation: flash 0.3s ease-in-out alternate 2;
+      }
+      .dark-mode #lightningBolt path {
+        stroke: #ffffff;
+      }
+      @keyframes flash {
+        0% { stroke-opacity: 1; }
+        100% { stroke-opacity: 0.6; }
+      }
     }
 
     /* ----------------------------------- */
@@ -1071,14 +1073,6 @@
         line-height: 2;
         padding: 4rem 1.5rem;
       }
-
-      /* Deaktiviere Blitz-Cursor auf Mobilgeräten */
-      * {
-        cursor: auto;
-      }
-      body::after, .blitz-trail, .blitz-spark, #lightningBolt {
-        display: none;
-      }
     }
   </style>
 </head>
@@ -1097,7 +1091,7 @@
 
   <!-- Scrolling Text -->
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine - Architektur für eine neue Zukunft</div>
+    <div class="scrolling-text">Projekt Univine – Meine Architektur der Zukunft</div>
   </div>
 
   <!-- Desktop Navigation -->
@@ -1131,7 +1125,7 @@
     <i data-lucide="sun"></i>
   </button>
 
-  <!-- NEW: SVG für großen Blitzschlag (Easter Egg) -->
+  <!-- SVG für großen Blitzschlag (Easter Egg) -->
   <svg id="lightningBolt">
     <path d="" />
   </svg>
@@ -1218,7 +1212,7 @@
           <a href="https://vionic.de" target="_blank"><i data-lucide="globe"></i>Vionic</a>
         </div>
         <div class="partner-description">
-          <p><strong>John H.</strong>: Ein erfahrener Entwickler, der mich mit technischem Wissen unterstützt.</p>
+          <p><strong>John H.</strong>: Ein erfahrener Entwickler, der mich mit technischem Wissen unterstützen würde.</p>
           <p><strong>Vionic</strong>: Ein Design-Studio, das mir hilft, ästhetische Lösungen zu entwickeln.</p>
         </div>
       </section>
@@ -1255,7 +1249,7 @@
     <div class="social-icons">
       <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
       <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
-实施方案</div>
+    </div>
     <p>© 2025 M. Höpfler | Projekt Univine – Meine Zukunftsvision</p>
   </footer>
 
@@ -1382,49 +1376,72 @@
     // -----------------------------------
     // NEW: Blitz Cursor and Easter Egg
     // -----------------------------------
-    // Cursor-Position aktualisieren
-    document.addEventListener('mousemove', (e) => {
-      document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-      document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+    // Cursor-Position aktualisieren (nur Desktop)
+    if (window.innerWidth > 768) {
+      document.addEventListener('mousemove', (e) => {
+        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
 
-      // Blitz-Trail erstellen
-      const trail = document.createElement('div');
-      trail.className = 'blitz-trail';
-      trail.style.left = `${e.clientX + (Math.random() * 10 - 5)}px`; // Leichtes Zickzack
-      trail.style.top = `${e.clientY + (Math.random() * 10 - 5)}px`;
-      document.body.appendChild(trail);
-      setTimeout(() => {
-        trail.style.opacity = 1;
-        trail.style.transform = 'scale(0.5) rotate(45deg)';
-      }, 10);
-      setTimeout(() => {
-        trail.style.opacity = 0;
-        setTimeout(() => trail.remove(), 300);
-      }, 200);
-    });
-
-    // Klick-Effekt (Blitzschlag)
-    document.addEventListener('click', (e) => {
-      for (let i = 0; i < 3; i++) {
-        const spark = document.createElement('div');
-        spark.className = 'blitz-spark';
-        spark.style.left = `${e.clientX + (Math.random() * 20 - 10)}px`;
-        spark.style.top = `${e.clientY + (Math.random() * 20 - 10)}px`;
-        document.body.appendChild(spark);
+        // Blitz-Trail erstellen
+        const trail = document.createElement('div');
+        trail.className = 'blitz-trail';
+        trail.style.left = `${e.clientX + (Math.random() * 10 - 5)}px`;
+        trail.style.top = `${e.clientY + (Math.random() * 10 - 5)}px`;
+        document.body.appendChild(trail);
         setTimeout(() => {
-          spark.style.opacity = 1;
-          spark.style.transform = 'scale(1.5)';
+          trail.style.opacity = 1;
+          trail.style.transform = 'scale(0.5) rotate(45deg)';
         }, 10);
         setTimeout(() => {
-          spark.style.opacity = 0;
-          spark.style.transform = 'scale(0.5) translateY(-20px)';
-          setTimeout(() => spark.remove(), 400);
+          trail.style.opacity = 0;
+          setTimeout(() => trail.remove(), 300);
         }, 200);
-      }
-    });
+      });
+
+      // Klick-Effekt (Blitzschlag)
+      document.addEventListener('click', (e) => {
+        for (let i = 0; i < 3; i++) {
+          const spark = document.createElement('div');
+          spark.className = 'blitz-spark';
+          spark.style.left = `${e.clientX + (Math.random() * 20 - 10)}px`;
+          spark.style.top = `${e.clientY + (Math.random() * 20 - 10)}px`;
+          document.body.appendChild(spark);
+          setTimeout(() => {
+            spark.style.opacity = 1;
+            spark.style.transform = 'scale(1.5)';
+          }, 10);
+          setTimeout(() => {
+            spark.style.opacity = 0;
+            spark.style.transform = 'scale(0.5) translateY(-20px)';
+            setTimeout(() => spark.remove(), 400);
+          }, 200);
+        }
+      });
+    }
 
     // Easter Egg: Großer Blitzschlag in Journey-Sektion
     let journeyClickCount = 0;
     const journeySection = document.querySelector('#journey');
     const lightningBolt = document.querySelector('#lightningBolt');
-    const thunderSound = new Audio('data:audio/mp3;base64,/+MYxAAAAANIAUAAAASEEB/jwOFM/0MM/90b/+RhST//w4NFwI//N/0wcIX/0AAAAAAA/+MYxDsAIENEA4AAAAHg8hksXw4EAAOBCQ/4MGE//6OBA/8fRj/3kCK//8BCg/8BQkP/+AAC/8AAAD//w4AAAAA/+MYxHYBI0GUAQAAADHuO8f/4C/A/+A/wP/gH8D/4A/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D/4B/A/+AfwP/gH8D
+    journeySection.addEventListener('click', (e) => {
+      journeyClickCount++;
+      if (journeyClickCount === 3) {
+        // Blitzpfad erstellen
+        const x = e.clientX;
+        const y = e.clientY;
+        const path = `M${x},${y - 100} L${x - 30},${y - 50} L${x + 20},${y} L${x - 20},${y + 50} L${x + 30},${y + 100}`;
+        lightningBolt.querySelector('path').setAttribute('d', path);
+        lightningBolt.classList.add('active');
+        setTimeout(() => {
+          lightningBolt.classList.remove('active');
+          lightningBolt.querySelector('path').setAttribute('d', '');
+        }, 1000);
+        // Optional: Donner-Sound (auskommentiert, bis eine gültige MP3 hinzugefügt wird)
+        // const thunderSound = new Audio('path/to/thunder.mp3');
+        // thunderSound.play();
+        journeyClickCount = 0;
+      }
+    });
+  </script>
+</body>
+</html>
