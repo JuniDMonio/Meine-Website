@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Datenschutzrichtlinie für Projekt Univine – Modern und Transparent">
+  <meta name="description" content="Datenschutzrichtlinie für Projekt Univine – Transparent und Modern">
   <meta name="author" content="M. Höpfler">
   <title>Datenschutz – Projekt Univine</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
@@ -19,9 +19,6 @@
       background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
       color: #374151;
       min-height: 100vh;
-      opacity: 0;
-      transition: opacity 1.5s ease;
-      position: relative;
       overflow-x: hidden;
     }
     .parallax-bg {
@@ -32,22 +29,20 @@
       height: 100%;
       background: linear-gradient(135deg, rgba(250,204,21,0.1), rgba(30,58,138,0.1));
       z-index: -1;
-      transform: translateY(0);
       transition: transform 0.1s ease;
     }
     h1, h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 800;
       color: #111827;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
       margin: 1rem 0;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
     }
     h1 {
       font-size: 3.5rem;
       text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
     h2 {
       font-size: 1.8rem;
@@ -56,6 +51,9 @@
       background: rgba(255,255,255,0.95);
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       transition: background 0.3s ease, transform 0.3s ease;
     }
     h2:hover {
@@ -80,18 +78,47 @@
       padding: 0 1rem;
     }
     .accordion-content.active {
-      max-height: 500px;
+      max-height: 1000px;
       padding: 1rem;
     }
     .visible h1, .visible h2, .visible p {
       opacity: 1;
       transform: translateY(0);
     }
+    .contact-box {
+      background: rgba(250,204,21,0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .contact-box a, p a {
+      color: #1e3a8a;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contact-box a:hover, p a:hover {
+      color: #facc15;
+    }
+    .download-button, .back-button {
+      display: inline-block;
+      margin: 1rem 0;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .download-button:hover, .back-button:hover {
+      background: #facc15;
+      transform: scale(1.05);
+    }
     nav {
       position: sticky;
       top: 0;
-      left: 0;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
       width: 100%;
       padding: 1rem;
@@ -105,37 +132,21 @@
       gap: 2rem;
     }
     nav ul li a {
-      text-decoration: none;
       color: #111827;
       font-weight: 600;
       font-size: 1.1rem;
-      position: relative;
-      transition: color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
     nav ul li a:hover {
       color: #facc15;
-      transform: scale(1.1);
-    }
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #facc15;
-      transition: width 0.3s ease;
-    }
-    nav ul li a:hover::after {
-      width: 100%;
     }
     .mobile-nav {
       display: none;
       position: fixed;
       bottom: 0;
-      left: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
       box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
       padding: 0.6rem 0;
@@ -155,11 +166,10 @@
       font-size: 0.85rem;
       font-weight: 500;
       padding: 0.6rem;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: color 0.3s ease;
     }
     .mobile-nav ul li a:hover {
       color: #facc15;
-      transform: scale(1.1);
     }
     .mobile-nav ul li svg {
       width: 24px;
@@ -191,11 +201,10 @@
       color: #facc15;
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: color 0.3s ease;
     }
     footer a:hover {
       color: #ffffff;
-      transform: scale(1.1);
     }
     .dark-mode body {
       background: linear-gradient(to bottom, #111827, #1f2937);
@@ -206,7 +215,6 @@
     }
     .dark-mode h1, .dark-mode h2 {
       color: #ffffff;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
     .dark-mode h2:hover {
       background: #facc15;
@@ -216,13 +224,13 @@
       color: #e5e7eb;
     }
     .dark-mode nav {
-      background: rgba(17, 24, 39, 0.95);
+      background: rgba(17,24,39,0.95);
     }
     .dark-mode nav ul li a {
       color: #ffffff;
     }
     .dark-mode .mobile-nav {
-      background: rgba(17, 24, 39, 0.95);
+      background: rgba(17,24,39,0.95);
     }
     .dark-mode .mobile-nav ul li a {
       color: #ffffff;
@@ -230,16 +238,12 @@
     .dark-mode main {
       background: rgba(31,41,55,0.8);
     }
-    .dark-mode footer {
-      background: linear-gradient(to bottom, #111827, #1e3a8a);
-    }
     .dark-mode-toggle {
       position: fixed;
-      bottom: 20px;
+      top: 20px;
       right: 20px;
       background: linear-gradient(to right, #1e3a8a, #2b6cb0);
       color: white;
-      padding: 0;
       border: none;
       border-radius: 50%;
       cursor: pointer;
@@ -271,7 +275,7 @@
         height: 10px;
         background: #facc15;
         border-radius: 50%;
-        box-shadow: 0 0 8px rgba(250, 204, 21, 0.8), 0 0 12px rgba(250, 204, 21, 0.5);
+        box-shadow: 0 0 8px rgba(250,204,21,0.8);
         pointer-events: none;
         z-index: 9999;
         transform: translate(-50%, -50%);
@@ -279,7 +283,7 @@
       }
       .dark-mode body::after {
         background: #ffffff;
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 8px rgba(255,255,255,0.8);
       }
       body {
         --mouse-x: 0;
@@ -289,16 +293,14 @@
         left: var(--mouse-x);
         top: var(--mouse-y);
       }
-      a:hover ~ body::after,
-      button:hover ~ body::after {
+      a:hover ~ body::after, button:hover ~ body::after {
         transform: translate(-50%, -50%) scale(1.8);
         background: #1e3a8a;
-        box-shadow: 0 0 12px rgba(30, 58, 138, 0.9);
+        box-shadow: 0 0 12px rgba(30,58,138,0.9);
       }
-      .dark-mode a:hover ~ body::after,
-      .dark-mode button:hover ~ body::after {
+      .dark-mode a:hover ~ body::after, .dark-mode button:hover ~ body::after {
         background: #facc15;
-        box-shadow: 0 0 12px rgba(250, 204, 21, 0.9);
+        box-shadow: 0 0 12px rgba(250,204,21,0.9);
       }
     }
     @media (max-width: 768px) {
@@ -317,13 +319,10 @@
       h2 {
         font-size: 1.5rem;
       }
-      .dark-mode-toggle {
-        bottom: 80px;
-      }
     }
   </style>
 </head>
-<body onload="document.body.style.opacity = 1;">
+<body>
   <div class="parallax-bg"></div>
   <nav>
     <ul>
@@ -340,32 +339,78 @@
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">
     <i data-lucide="sun"></i>
   </button>
-  <main class="visible">
+  <main>
     <h1>Datenschutz</h1>
-    <p>Willkommen zur Datenschutzrichtlinie von <strong>Projekt Univine</strong>. Wir legen größten Wert auf den Schutz Ihrer Daten und Transparenz. Erfahren Sie, wie wir Ihre Informationen sammeln, nutzen und schützen.</p>
+    <p>Herzlich willkommen zur Datenschutzrichtlinie von <strong>Projekt Univine</strong>. Wir nehmen den Schutz Ihrer Daten ernst. Hier erfahren Sie, wie wir Ihre personenbezogenen Daten erheben, verarbeiten und schützen – und welche Rechte Sie nach der Datenschutz-Grundverordnung (DSGVO) haben.</p>
+    
     <div class="accordion">
-      <h2 onclick="toggleAccordion(this)">1. Datenerfassung</h2>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="user"></i>1. Verantwortlicher</h2>
       <div class="accordion-content">
-        <p>Wir erfassen personenbezogene Daten, die Sie freiwillig über unser Kontaktformular angeben (Name, E-Mail-Adresse, Nachricht). Diese Daten dienen ausschließlich der Kommunikation und werden nicht für andere Zwecke verwendet.</p>
+        <p>Verantwortlich für die Datenverarbeitung ist M. Höpfler. Sie erreichen uns jederzeit unter: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a>.</p>
       </div>
-      <h2 onclick="toggleAccordion(this)">2. Datennutzung</h2>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="database"></i>2. Datenerfassung</h2>
       <div class="accordion-content">
-        <p>Ihre Daten werden genutzt, um auf Ihre Anfragen zu antworten und unsere Dienstleistungen zu verbessern. Wir teilen Ihre Daten nicht mit Dritten, es sei denn, dies ist gesetzlich erforderlich.</p>
+        <p>Wir erfassen nur Daten, die Sie uns freiwillig über das Kontaktformular mitteilen (z. B. Name, E-Mail-Adresse, Nachricht). Diese nutzen wir ausschließlich, um mit Ihnen zu kommunizieren. Die Verarbeitung erfolgt über Formsubmit.co, einen DSGVO-konformen Dienst.</p>
       </div>
-      <h2 onclick="toggleAccordion(this)">3. Cookies</h2>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="scale"></i>3. Rechtsgrundlage</h2>
       <div class="accordion-content">
-        <p>Projekt Univine verwendet keine eigenen Cookies. Externe Dienste wie Formsubmit.co können Cookies setzen, auf die wir keinen Einfluss haben. Bitte überprüfen Sie deren Datenschutzrichtlinien.</p>
+        <p>Ihre Daten verarbeiten wir auf Basis Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) für das Kontaktformular oder unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) für technische Logs zur Sicherheit und Optimierung der Website.</p>
       </div>
-      <h2 onclick="toggleAccordion(this)">4. Datensicherheit</h2>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="tool"></i>4. Datennutzung</h2>
       <div class="accordion-content">
-        <p>Wir schützen Ihre Daten durch verschlüsselte Übertragung (HTTPS) und speichern sie nur so lange, wie es für den angegebenen Zweck erforderlich ist. Sicherheitsmaßnahmen werden regelmäßig überprüft.</p>
+        <p>Ihre Daten dienen allein der Beantwortung Ihrer Anfragen und der Verbesserung unseres Angebots. Eine Weitergabe an Dritte erfolgt nur, wenn dies gesetzlich vorgeschrieben ist oder Sie zustimmen.</p>
       </div>
-      <h2 onclick="toggleAccordion(this)">5. Ihre Rechte</h2>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="cookie"></i>5. Cookies</h2>
       <div class="accordion-content">
-        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten. Kontaktieren Sie uns unter <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a> für Anfragen.</p>
+        <p><strong>Projekt Univine</strong> setzt keine eigenen Cookies ein. Externe Dienste wie Formsubmit.co könnten Cookies verwenden – Details finden Sie in deren Datenschutzrichtlinien.</p>
+      </div>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="lock"></i>6. Datensicherheit</h2>
+      <div class="accordion-content">
+        <p>Ihre Daten schützen wir mit moderner Verschlüsselung (HTTPS). Sie werden nur so lange gespeichert, wie es für den Zweck nötig ist, und unsere Sicherheitsmaßnahmen werden regelmäßig geprüft.</p>
+      </div>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="shield"></i>7. Ihre Rechte</h2>
+      <div class="accordion-content">
+        <p>Nach der DSGVO stehen Ihnen folgende Rechte zu:</p>
+        <ul>
+          <li><strong>Auskunft</strong> (Art. 15): Sie können erfahren, welche Daten wir über Sie haben.</li>
+          <li><strong>Berichtigung</strong> (Art. 16): Falsche Daten korrigieren wir auf Wunsch.</li>
+          <li><strong>Löschung</strong> (Art. 17): Ihre Daten können Sie löschen lassen (‘Recht auf Vergessenwerden’).</li>
+          <li><strong>Einschränkung</strong> (Art. 18): Sie können die Verarbeitung einschränken lassen.</li>
+          <li><strong>Datenübertragbarkeit</strong> (Art. 20): Ihre Daten können Sie in einem maschinenlesbaren Format erhalten.</li>
+          <li><strong>Widerspruch</strong> (Art. 21): Sie können der Verarbeitung widersprechen.</li>
+          <li><strong>Widerruf der Einwilligung</strong> (Art. 7 Abs. 3): Ihre Einwilligung können Sie jederzeit zurückziehen.</li>
+          <li><strong>Keine automatisierte Entscheidung</strong> (Art. 22): Sie haben das Recht, nicht nur auf Basis automatisierter Entscheidungen (z. B. Profiling) bewertet zu werden.</li>
+          <li><strong>Benachrichtigung bei Datenverletzungen</strong> (Art. 34): Bei einem Datenleck informieren wir Sie umgehend.</li>
+        </ul>
+        <p>Kontaktieren Sie uns unter <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a>, um Ihre Rechte wahrzunehmen.</p>
+      </div>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="alert-circle"></i>8. Beschwerde</h2>
+      <div class="accordion-content">
+        <p>Falls Sie mit der Verarbeitung Ihrer Daten unzufrieden sind, können Sie sich an die zuständige Datenschutzbehörde wenden, z. B. die Landesbeauftragte für Datenschutz Ihres Bundeslandes.</p>
+      </div>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="edit"></i>9. Änderungen</h2>
+      <div class="accordion-content">
+        <p>Diese Richtlinie kann angepasst werden. Die aktuelle Version finden Sie hier. Stand: April 2025.</p>
       </div>
     </div>
-    <p>Zuletzt aktualisiert: April 2025</p>
+
+    <h1>Häufige Fragen (FAQ)</h1>
+    <div class="accordion">
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="help-circle"></i>Was passiert mit meinen Daten?</h2>
+      <div class="accordion-content">
+        <p>Ihre Daten nutzen wir nur, um Ihre Anfragen zu beantworten. Sie werden sicher gespeichert und nicht weitergegeben.</p>
+      </div>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="clock"></i>Wie lange speichern Sie meine Daten?</h2>
+      <div class="accordion-content">
+        <p>Wir speichern Ihre Daten nur so lange, wie es nötig ist – in der Regel bis Ihre Anfrage vollständig bearbeitet ist.</p>
+      </div>
+    </div>
+
+    <div class="contact-box">
+      <p>Fragen zum Datenschutz? Schreiben Sie uns: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a>.</p>
+    </div>
+    <a href="#" class="download-button">Datenschutz als PDF herunterladen</a>
+    <a href="index.html" class="back-button">Zurück zur Startseite</a>
   </main>
   <footer>
     <div class="footer-links">
@@ -395,10 +440,16 @@
       const parallax = document.querySelector('.parallax-bg');
       parallax.style.transform = `translateY(${window.scrollY * 0.3}px)`;
     });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('main').forEach(el => observer.observe(el));
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
-      const main = document.querySelector('main');
-      setTimeout(() => main.classList.add('visible'), 100);
     });
   </script>
 </body>
