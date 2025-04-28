@@ -45,6 +45,8 @@
       color: #111827;
       text-shadow: 0 1px 2px rgba(0,0,0,0.1);
       position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 0.5rem 0;
     }
 
     h2:hover::after {
@@ -69,6 +71,12 @@
       font-weight: 500;
       font-size: 1.1rem;
       text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 0.5s ease 0.3s;
+    }
+
+    section.visible p {
+      opacity: 1;
     }
 
     /* ----------------------------------- */
@@ -102,12 +110,13 @@
       font-weight: 600;
       font-size: 1.1rem;
       position: relative;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
     }
 
     nav ul li a:hover {
-      color: #1e3a8a;
+      color: #facc15;
       transform: translateX(10px);
+      text-shadow: 0 0 8px rgba(250, 204, 21, 0.5);
     }
 
     nav ul li a::after {
@@ -168,6 +177,7 @@
       transition: color 0.3s ease, transform 0.3s ease;
       padding: 0.6rem;
       position: relative;
+      animation: pulseNav 3s ease infinite;
     }
 
     .mobile-nav ul li a:hover {
@@ -179,6 +189,11 @@
       width: 26px;
       height: 26px;
       margin-bottom: 0.3rem;
+    }
+
+    @keyframes pulseNav {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     /* ----------------------------------- */
@@ -203,7 +218,7 @@
     .hero-image {
       width: 100%;
       height: 550px;
-      background: linear-gradient(to bottom, rgba(30, 58, 138, 0.5), rgba(43, 108, 176, 0.5)), url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
+      background: linear-gradient(to bottom, rgba(30, 58, 138, 0.7), rgba(17, 24, 39, 0.7)), url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
       position: relative;
       border-radius: 16px;
       overflow: hidden;
@@ -217,8 +232,8 @@
       transform: translate(-50%, -50%);
       color: white;
       text-align: center;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.4));
       padding: 2rem;
       border-radius: 8px;
       display: flex;
@@ -256,10 +271,25 @@
       overflow: hidden;
       border: 2px solid #facc15;
       white-space: nowrap;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
       backface-visibility: hidden;
       transform: translateZ(0);
-      animation: pulseButton 2s ease infinite;
+      will-change: transform, box-shadow;
+    }
+
+    .hero-text .cta-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(250, 204, 21, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .hero-text .cta-button:hover::before {
+      left: 100%;
     }
 
     .hero-text .cta-button:hover {
@@ -271,11 +301,6 @@
     @keyframes fadeInText {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulseButton {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
     }
 
     /* ----------------------------------- */
@@ -291,16 +316,19 @@
     section.visible {
       opacity: 1;
       transform: translateY(0);
+      z-index: 5;
+      border-left: 4px solid #facc15;
+      padding-left: 1rem;
     }
 
     section h2 {
       font-size: 2.5rem;
-      position: sticky;
-      top: 60px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 0.5rem 0;
-      z-index: 5;
       transition: transform 0.3s ease;
+      will-change: transform;
+    }
+
+    section.visible h2 {
+      transform: scale(1.05);
     }
 
     /* ----------------------------------- */
@@ -308,10 +336,16 @@
     /* ----------------------------------- */
     .journey-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 40% 1fr;
       gap: 2rem;
       max-width: 900px;
       margin: 4rem auto;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .journey-section:hover {
+      border-color: #facc15;
     }
 
     .journey-section .journey-text {
@@ -321,7 +355,7 @@
     .journey-section .journey-image {
       background: url('https://images.unsplash.com/photo-1516321310764-2f58c1d5476a?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
       border-radius: 12px;
-      height: 300px;
+      height: 250px;
     }
 
     @media (max-width: 768px) {
@@ -577,7 +611,7 @@
     }
 
     footer .social-icons a:hover {
-      transform: rotate(360deg);
+      transform: scale(1.3);
       color: #facc15;
     }
 
@@ -589,17 +623,26 @@
       display: inline-block;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      animation: glowLogo 4s ease infinite;
+    }
+
+    .initials-logo::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(250, 204, 21, 0.5), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .initials-logo:hover::before {
+      left: 100%;
     }
 
     .initials-logo:hover {
       transform: scale(1.1);
       box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
-    }
-
-    @keyframes glowLogo {
-      0%, 100% { box-shadow: 0 0 5px rgba(250, 204, 21, 0.2); }
-      50% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.5); }
     }
 
     /* ----------------------------------- */
@@ -610,7 +653,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      background: linear-gradient(to right, #111827, #1e3a8a);
       color: white;
       padding: 0.6rem 0;
       font-size: 1.1rem;
@@ -707,14 +750,16 @@
       right: 15px;
       background: linear-gradient(to right, #1e3a8a, #2b6cb0);
       color: white;
-      padding: 0.5rem;
+      padding: 0;
       border-radius: 50%;
       display: none;
       z-index: 10;
       transition: opacity 0.3s ease, transform 0.3s ease;
-      width: 28px;
-      height: 28px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .back-to-top.visible {
@@ -724,6 +769,12 @@
 
     .back-to-top:hover {
       transform: scale(1.1);
+    }
+
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
     }
 
     /* ----------------------------------- */
@@ -806,7 +857,7 @@
     }
 
     .dark-mode .scrolling-text-container {
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      background: linear-gradient(to right, #111827, #1e3a8a);
     }
 
     .dark-mode .mobile-nav {
@@ -833,7 +884,7 @@
       border-radius: 8px;
       animation: fadeInText 0.5s ease;
       z-index: 20;
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
     }
 
     /* ----------------------------------- */
@@ -880,7 +931,6 @@
 
       section h2 {
         font-size: 1.8rem;
-        position: static;
       }
 
       footer {
@@ -959,20 +1009,20 @@
       <!-- Start Section -->
       <section id="start">
         <h2>Willkommen bei Projekt Univine</h2>
-        <p>Ich, M. Höpfler, habe Projekt Univine aus meiner Leidenschaft für Technologie und Innovation heraus entwickelt. Es ist das Ergebnis meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung und spiegelt meine Vision für die Zukunft wider.</p>
+        <p>Ich, M. Höpfler, starte gerade meine Umschulung zum Fachinformatiker für Anwendungsentwicklung. Projekt Univine ist mein Herzensprojekt, das meine Leidenschaft für Technologie und meine Vision für die Zukunft widerspiegelt.</p>
       </section>
 
       <!-- Vision Section -->
       <section id="vision">
         <h2>Meine Vision</h2>
-        <p>Ich strebe danach, Technologie und Design zu vereinen, um nachhaltige und innovative Lösungen zu schaffen. Projekt Univine ist mein persönlicher Beitrag zu einer Welt, in der kreative Ideen die Grenzen des Möglichen überschreiten.</p>
+        <p>Ich träume davon, Technologie und Design zu vereinen, um innovative Lösungen zu schaffen. Projekt Univine ist mein erster Schritt, diese Vision Wirklichkeit werden zu lassen, während ich meine Fähigkeiten in der Umschulung entwickle.</p>
       </section>
 
       <!-- Meine Reise Section -->
       <section id="journey" class="journey-section">
         <h2>Meine Reise</h2>
         <div class="journey-text">
-          <p>Meine Reise begann mit einer tiefen Faszination für Technologie und dem Wunsch, etwas Einzigartiges zu schaffen. Während meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung entdeckte ich meine Leidenschaft für Webentwicklung. Projekt Univine ist das Ergebnis unzähliger Stunden harter Arbeit, Lernen und Kreativität. Es ist nicht nur ein Projekt – es ist meine Vision, die Zukunft zu gestalten.</p>
+          <p>Ich stehe am Anfang meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung, angetrieben von meiner Leidenschaft für Technologie. Projekt Univine ist mein Ausdruck von Kreativität und Entschlossenheit, die Zukunft zu gestalten.</p>
         </div>
         <div class="journey-image"></div>
       </section>
@@ -980,7 +1030,7 @@
       <!-- Projekt Section -->
       <section id="projekt">
         <h2>Mein Projekt</h2>
-        <p>Projekt Univine ist meine Kreation, die kreative Konzepte, technische Präzision und zukunftsweisendes Design vereint. Ich habe eine Webanwendung entwickelt, die Benutzerfreundlichkeit und Ästhetik in den Vordergrund stellt.</p>
+        <p>Projekt Univine ist meine Kreation, die Technologie und Ästhetik vereint. Während meiner Umschulung entwickle ich diese Webanwendung, um meine Vision von benutzerfreundlichem Design umzusetzen.</p>
       </section>
 
       <!-- FAQ Section -->
@@ -989,31 +1039,31 @@
         <div class="faq-item">
           <div class="faq-title"><i data-lucide="plus"></i> Was ist Projekt Univine?</div>
           <div class="faq-content">
-            <p>Projekt Univine ist meine persönliche Vision, eine innovative Webanwendung zu entwickeln, die Technologie und Design vereint. Ich, M. Höpfler, habe es im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung geschaffen.</p>
+            <p>Projekt Univine ist mein persönliches Projekt, das ich während meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung entwickle. Es vereint meine Leidenschaft für Technologie und Design.</p>
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-title"><i data-lucide="plus"></i> Welche Technologien nutze ich?</div>
+          <div class="faq-title"><i data-lucide="plus"></i> Welche Technologien lerne ich?</div>
           <div class="faq-content">
-            <p>Ich setze auf moderne Webtechnologien wie HTML5, CSS3 und JavaScript. Mein Design ist responsiv, um auf allen Geräten eine optimale Nutzererfahrung zu bieten.</p>
+            <p>Ich beginne gerade, Technologien wie HTML, CSS und JavaScript zu erlernen. Mein Ziel ist es, responsive und ästhetische Webanwendungen wie Projekt Univine zu entwickeln.</p>
           </div>
         </div>
         <div class="faq-item">
           <div class="faq-title"><i data-lucide="plus"></i> Wie kann ich kontaktiert werden?</div>
           <div class="faq-content">
-            <p>Du kannst mich direkt über das Kontaktformular im Abschnitt „Kontakt“ erreichen. Ich freue mich auf deine Nachricht!</p>
+            <p>Du kannst mich über das Kontaktformular im Abschnitt „Kontakt“ erreichen. Ich freue mich auf dein Feedback zu Projekt Univine!</p>
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-title"><i data-lucide="plus"></i> Wer sind meine Partner?</div>
+          <div class="faq-title"><i data-lucide="plus"></i> Wer unterstützt mich?</div>
           <div class="faq-content">
-            <p>Ich arbeite mit Experten wie John H. und Vionic zusammen, die mich mit ihrem Fachwissen unterstützen, um Projekt Univine zum Erfolg zu führen.</p>
+            <p>Ich arbeite mit Experten wie John H. und Vionic zusammen, die mich mit ihrem Wissen unterstützen, während ich meine Fähigkeiten in der Umschulung entwickle.</p>
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-title"><i data-lucide="plus"></i> Was inspiriert mich?</div>
+          <div class="faq-title"><i data-lucide="plus"></i> Was treibt mich an?</div>
           <div class="faq-content">
-            <p>Meine Inspiration kommt aus meiner Leidenschaft für Technologie und dem Wunsch, die Welt durch innovative Lösungen zu verbessern. Projekt Univine ist mein Ausdruck dieser Vision.</p>
+            <p>Meine Motivation ist meine Vision, innovative Lösungen zu schaffen. Obwohl ich am Anfang meiner Umschulung stehe, inspiriert mich die Möglichkeit, die Zukunft durch Technologie zu gestalten.</p>
           </div>
         </div>
       </section>
@@ -1026,8 +1076,8 @@
           <a href="https://vionic.de" target="_blank"><i data-lucide="globe"></i>Vionic</a>
         </div>
         <div class="partner-description">
-          <p><strong>John H.</strong>: Ein erfahrener Entwickler, der mein Projekt mit technischem Know-how unterstützt.</p>
-          <p><strong>Vionic</strong>: Ein Design-Studio, das mir hilft, ästhetische und benutzerfreundliche Lösungen zu entwickeln.</p>
+          <p><strong>John H.</strong>: Ein erfahrener Entwickler, der mich mit technischem Wissen unterstützt.</p>
+          <p><strong>Vionic</strong>: Ein Design-Studio, das mir hilft, ästhetische Lösungen zu entwickeln.</p>
         </div>
       </section>
 
