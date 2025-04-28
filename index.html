@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <!-- Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projekt Univine – Innovation, Präzision, Zukunft. Entdecke unser visionäres Projekt!" />
+  <meta name="author" content="M. Höpfler" />
   <title>Projekt Univine</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Styles -->
   <style>
+    /* ----------------------------------- */
     /* General Styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    /* ----------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
     body {
       background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
       color: #374151;
@@ -18,11 +35,33 @@
       transition: opacity 1.5s ease;
     }
 
+    /* ----------------------------------- */
     /* Typography */
-    h1, h2 { font-family: 'Playfair Display', serif; font-weight: 800; letter-spacing: 0.02em; color: #111827; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-    p { line-height: 1.8; color: #374151; font-weight: 500; font-size: 1.1rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    /* ----------------------------------- */
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #111827;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
 
+    h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+
+    p {
+      line-height: 1.8;
+      color: #374151;
+      font-weight: 500;
+      font-size: 1.1rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* ----------------------------------- */
     /* Navigation */
+    /* ----------------------------------- */
     nav {
       position: fixed;
       top: 60px;
@@ -37,124 +76,47 @@
       display: flex;
       flex-direction: column;
     }
-    nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.8rem; }
-    nav ul li a { text-decoration: none; color: #111827; font-weight: 600; font-size: 1.1rem; position: relative; transition: color 0.3s ease; }
-    nav ul li a:hover { color: #1e3a8a; }
-    nav ul li a::after { content: ""; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: #d4a017; transition: width 0.3s ease, left 0.3s ease; }
-    nav ul li a:hover::after { width: 100%; left: 0; }
 
-    /* Content Wrapper */
-    .content-wrapper { margin-left: 220px; width: calc(100% - 220px); padding-top: 60px; padding-bottom: 70px; }
-    main { padding: 3rem; max-width: 1100px; margin: auto; }
-
-    /* Hero Section */
-    .hero-image {
-      width: 100%;
-      height: 550px;
-      background: linear-gradient(to bottom, rgba(30, 58, 138, 0.4), rgba(43, 108, 176, 0.4)), url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 3rem;
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
     }
-    .hero-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); background: rgba(0, 0, 0, 0.4); padding: 1.5rem; border-radius: 8px; }
-    .hero-text h1 { font-size: 4rem; opacity: 0; animation: fadeInText 1s ease forwards; }
-    .hero-text p { margin-top: 1rem; font-size: 1.2rem; color: #f3f4f6; opacity: 0; animation: fadeInText 1s ease forwards 0.3s; line-height: 1.8; }
-    .hero-text .cta-button {
-      opacity: 0;
-      animation: fadeInText 1s ease forwards 0.6s;
-      margin-top: 4rem;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
+
+    nav ul li a {
       text-decoration: none;
-      border-radius: 50px;
+      color: #111827;
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-size: 1.1rem;
       position: relative;
-      overflow: hidden;
-      border: 2px solid #d4a017;
-      white-space: nowrap;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backface-visibility: hidden;
-      transform: translateZ(0);
+      transition: color 0.3s ease;
     }
-    .hero-text .cta-button:hover { background: #d4a017; transform: scale(1.05); box-shadow: 0 0 15px rgba(212, 160, 23, 0.5); }
-    @keyframes fadeInText { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Sections */
-    section { margin-bottom: 7rem; opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
-    section.visible { opacity: 1; transform: translateY(0); }
-    section h2 { font-size: 2.5rem; position: sticky; top: 60px; background: rgba(255, 255, 255, 0.95); padding: 0.5rem 0; z-index: 5; transition: transform 0.3s ease; }
+    nav ul li a:hover {
+      color: #1e3a8a;
+    }
 
-    /* Contact Form */
-    .contact-form { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); padding: 2.5rem; border-radius: 12px; max-width: 700px; margin: 3rem auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-    .contact-form .form-group { position: relative; margin-bottom: 1.5rem; }
-    .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #d1d5db; font-size: 1rem; transition: border-color 0.3s ease, transform 0.3s ease; }
-    .contact-form input:focus, .contact-form textarea:focus { border-color: #1e3a8a; transform: translateY(-2px); outline: none; }
-    .contact-form label { position: absolute; top: 1rem; left: 1rem; color: #6b7280; font-size: 1rem; transition: all 0.3s ease; pointer-events: none; }
-    .contact-form input:focus + label, .contact-form input:not(:placeholder-shown) + label, .contact-form textarea:focus + label, .contact-form textarea:not(:placeholder-shown) + label { top: -0.8rem; left: 0.8rem; font-size: 0.85rem; color: #1e3a8a; background: rgba(255, 255, 255, 0.9); padding: 0 0.2rem; }
-    .contact-form button { width: 100%; padding: 1rem; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .contact-form button:hover { background: #d4a017; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
-    #formSuccess { display: none; background: #e6f4ea; color: #2e7d32; padding: 1rem; border-radius: 8px; margin-top: 1rem; animation: fadeInText 0.5s ease; display: flex; align-items: center; gap: 0.5rem; }
-    #formSuccess svg { width: 20px; height: 20px; }
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #facc15;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
 
-    /* Partner Buttons */
-    .partner-buttons { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 2.5rem; }
-    .partner-buttons a { background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .partner-buttons a:hover { background: #d4a017; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+    nav ul li a:hover::after {
+      width: 100%;
+      left: 0;
+    }
 
-    /* Footer */
-    footer { background: linear-gradient(to bottom, #1f2937, #2d3748); padding: 5rem 2rem; text-align: center; color: #ffffff; font-size: 0.9rem; position: relative; overflow: hidden; }
-    footer .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
-    footer a { color: #d4a017; text-decoration: none; position: relative; transition: color 0.3s ease; }
-    footer a:hover { color: #ffffff; }
-    footer .social-icons { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
-    footer .social-icons a { color: #ffffff; font-size: 1.2rem; transition: transform 0.3s ease; animation: pulseIcon 2s ease infinite; }
-    footer .social-icons a:hover { transform: scale(1.2); color: #d4a017; }
-    @keyframes pulseIcon { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-    .initials-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #d4a017; position: relative; display: inline-block; transition: transform 0.3s ease; cursor: pointer; }
-    .initials-logo:hover { transform: scale(1.1); }
-
-    /* Scrolling Text */
-    .scrolling-text-container { position: fixed; top: 0; left: 0; width: 100%; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; padding: 0.6rem 0; font-size: 1.1rem; font-weight: 600; white-space: nowrap; overflow: hidden; z-index: 15; }
-    .scrolling-text { display: inline-block; animation: scroll-left 12s linear infinite; }
-    @keyframes scroll-left { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
-
-    /* Splash Screen */
-    #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #1e3a8a, #111827); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; opacity: 1; transition: opacity 1s ease; cursor: pointer; }
-    #splash.hidden { opacity: 0; pointer-events: none; }
-    #splash h1 { font-size: 3rem; opacity: 0; animation: fadeInText 1s ease forwards; }
-    #splash p { font-size: 1.2rem; opacity: 0; animation: fadeInText 1s ease forwards 0.5s; margin-bottom: 2rem; }
-    #splash .loader { width: 50px; height: 50px; border: 5px solid #d4a017; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; opacity: 0; animation: fadeInText 1s ease forwards 1s; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Progress Bar */
-    .progress-bar { position: fixed; top: 0; left: 0; width: 0; height: 3px; background: #d4a017; z-index: 20; transition: width 0.3s ease; }
-
-    /* Back to Top */
-    .back-to-top { position: fixed; bottom: 80px; right: 15px; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; padding: 0.5rem; border-radius: 50%; display: none; z-index: 10; transition: opacity 0.3s ease, transform 0.3s ease; width: 30px; height: 30px; }
-    .back-to-top.visible { display: block; opacity: 1; }
-    .back-to-top:hover { transform: scale(1.1); }
-
-    /* Dark Mode Toggle */
-    .dark-mode-toggle { position: fixed; top: 70px; right: 20px; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; padding: 0.5rem; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 40px; width: 40px; transition: transform 0.3s ease, background 0.3s ease; z-index: 10; }
-    .dark-mode-toggle:hover { background: #d4a017; transform: rotate(360deg); }
-
-    /* Dark Mode */
-    .dark-mode body { background: linear-gradient(to bottom, #111827, #1f2937); color: #e5e7eb; }
-    .dark-mode h1, .dark-mode h2 { color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
-    .dark-mode p { color: #e5e7eb; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
-    .dark-mode nav { background: rgba(17, 24, 39, 0.9); }
-    .dark-mode nav ul li a { color: #ffffff; text-shadow: 0 0 5px rgba(212, 160, 23, 0.3); }
-    .dark-mode .contact-form { background: rgba(17, 24, 39, 0.9); }
-    .dark-mode .partner-buttons a { background: linear-gradient(to right, #1e3a8a, #2b6cb0); }
-    .dark-mode .partner-buttons a:hover { background: #d4a017; }
-    .dark-mode footer { background: linear-gradient(to bottom, #1f2937, #2d3748); }
-    .dark-mode .scrolling-text-container { background: linear-gradient(to right, #1e3a8a, #2b6cb0); }
-    .dark-mode .mobile-nav { background: rgba(17, 24, 39, 0.95); display: block; }
-
+    /* ----------------------------------- */
     /* Mobile Navigation */
+    /* ----------------------------------- */
     .mobile-nav {
       display: none;
       position: fixed;
@@ -168,34 +130,729 @@
       padding: 0.6rem 0;
       animation: fadeInNav 0.5s ease;
     }
-    @keyframes fadeInNav { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
-    .mobile-nav ul { display: flex; justify-content: space-around; list-style: none; margin: 0; padding: 0; }
-    .mobile-nav ul li a { display: flex; flex-direction: column; align-items: center; color: #111827; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s ease, transform 0.3s ease; padding: 0.6rem; position: relative; }
-    .mobile-nav ul li a:hover { color: #d4a017; transform: scale(1.1); }
-    .mobile-nav ul li svg { width: 26px; height: 26px; margin-bottom: 0.3rem; }
 
+    @keyframes fadeInNav {
+      from { opacity: 0; transform: translateY(100%); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mobile-nav ul li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #111827;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+      padding: 0.6rem;
+      position: relative;
+    }
+
+    .mobile-nav ul li a:hover {
+      color: #facc15;
+      transform: scale(1.1);
+    }
+
+    .mobile-nav ul li svg {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ----------------------------------- */
+    /* Content Wrapper */
+    /* ----------------------------------- */
+    .content-wrapper {
+      margin-left: 220px;
+      width: calc(100% - 220px);
+      padding-top: 60px;
+      padding-bottom: 70px;
+    }
+
+    main {
+      padding: 3rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* ----------------------------------- */
+    /* Hero Section */
+    /* ----------------------------------- */
+    .hero-image {
+      width: 100%;
+      height: 550px;
+      background: linear-gradient(to bottom, rgba(30, 58, 138, 0.5), rgba(43, 108, 176, 0.5)), url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      opacity: 0;
+      animation: fadeInText 1s ease forwards;
+    }
+
+    .hero-text p {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #f3f4f6;
+      opacity: 0;
+      animation: fadeInText 1s ease forwards 0.3s;
+      line-height: 1.8;
+    }
+
+    .hero-text .cta-button {
+      opacity: 0;
+      animation: fadeInText 1s ease forwards 0.6s;
+      margin-top: 5rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #facc15;
+      white-space: nowrap;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      animation: pulseButton 2s ease infinite;
+    }
+
+    .hero-text .cta-button:hover {
+      background: #facc15;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulseButton {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* ----------------------------------- */
+    /* Sections */
+    /* ----------------------------------- */
+    section {
+      margin-bottom: 7rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      position: sticky;
+      top: 60px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 0.5rem 0;
+      z-index: 5;
+      transition: transform 0.3s ease;
+    }
+
+    /* ----------------------------------- */
+    /* FAQ Section */
+    /* ----------------------------------- */
+    .faq-section {
+      max-width: 900px;
+      margin: 4rem auto;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      margin-bottom: 1.2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      background: rgba(212, 160, 23, 0.1);
+    }
+
+    .faq-item.active {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #facc15;
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      position: relative;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question svg {
+      transform: rotate(45deg);
+      color: #facc15;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      padding: 0 1.5rem;
+      color: #6b7280;
+      opacity: 0;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 600px;
+      padding: 1.5rem;
+      opacity: 1;
+    }
+
+    /* ----------------------------------- */
+    /* Contact Form */
+    /* ----------------------------------- */
+    .contact-form {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      padding: 2.5rem;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 3rem auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-form .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #1e3a8a;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .contact-form label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: #6b7280;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .contact-form input:focus + label,
+    .contact-form input:not(:placeholder-shown) + label,
+    .contact-form textarea:focus + label,
+    .contact-form textarea:not(:placeholder-shown) + label {
+      top: -0.8rem;
+      left: 0.8rem;
+      font-size: 0.85rem;
+      color: #1e3a8a;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0 0.2rem;
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #facc15;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    #formSuccess {
+      display: none;
+      background: #e6f4ea;
+      color: #2e7d32;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      animation: fadeInText 0.5s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #formSuccess svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ----------------------------------- */
+    /* Partner Section */
+    /* ----------------------------------- */
+    .partner-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    .partner-buttons a {
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .partner-buttons a:hover {
+      background: #facc15;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    .partner-description {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #6b7280;
+    }
+
+    /* ----------------------------------- */
+    /* Footer */
+    /* ----------------------------------- */
+    footer {
+      background: linear-gradient(to bottom, #111827, #1e3a8a);
+      padding: 5rem 2rem;
+      text-align: center;
+      color: #ffffff;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: #facc15;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    footer a:hover {
+      color: #ffffff;
+    }
+
+    footer .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    footer .social-icons a {
+      color: #ffffff;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    footer .social-icons a:hover {
+      transform: rotate(10deg);
+      color: #facc15;
+    }
+
+    .initials-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #facc15;
+      position: relative;
+      display: inline-block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      animation: pulseLogo 3s ease infinite;
+    }
+
+    .initials-logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
+    }
+
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* ----------------------------------- */
+    /* Scrolling Text */
+    /* ----------------------------------- */
+    .scrolling-text-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      padding: 0.6rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 15;
+    }
+
+    .scrolling-text {
+      display: inline-block;
+      animation: scroll-left 12s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* ----------------------------------- */
+    /* Splash Screen */
+    /* ----------------------------------- */
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #1e3a8a, #111827);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      opacity: 1;
+      transition: opacity 1s ease;
+      cursor: pointer;
+    }
+
+    #splash.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #splash h1 {
+      font-size: 3rem;
+      opacity: 0;
+      animation: fadeInText 1s ease forwards;
+    }
+
+    #splash p {
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeInText 1s ease forwards 0.5s;
+      margin-bottom: 2rem;
+    }
+
+    #splash .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #facc15;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      opacity: 0;
+      animation: fadeInText 1s ease forwards 1s;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ----------------------------------- */
+    /* Progress Bar */
+    /* ----------------------------------- */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #facc15;
+      z-index: 20;
+      transition: width 0.3s ease;
+    }
+
+    /* ----------------------------------- */
+    /* Back to Top */
+    /* ----------------------------------- */
+    .back-to-top {
+      position: fixed;
+      bottom: 90px;
+      right: 15px;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      padding: 0.5rem;
+      border-radius: 50%;
+      display: none;
+      z-index: 10;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      width: 28px;
+      height: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .back-to-top.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      transform: scale(1.1);
+    }
+
+    /* ----------------------------------- */
+    /* Dark Mode Toggle */
+    /* ----------------------------------- */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 10;
+    }
+
+    .dark-mode-toggle:hover {
+      background: #facc15;
+      transform: rotate(360deg);
+    }
+
+    /* ----------------------------------- */
+    /* Dark Mode */
+    /* ----------------------------------- */
+    .dark-mode body {
+      background: linear-gradient(to bottom, #111827, #1f2937);
+      color: #e5e7eb;
+    }
+
+    .dark-mode h1, .dark-mode h2 {
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .dark-mode p {
+      color: #e5e7eb;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .dark-mode nav {
+      background: rgba(17, 24, 39, 0.9);
+    }
+
+    .dark-mode nav ul li a {
+      color: #ffffff;
+      text-shadow: 0 0 5px rgba(250, 204, 21, 0.3);
+    }
+
+    .dark-mode .contact-form {
+      background: rgba(17, 24, 39, 0.9);
+    }
+
+    .dark-mode .faq-item {
+      background: rgba(17, 24, 39, 0.9);
+    }
+
+    .dark-mode .faq-item.active {
+      background: rgba(17, 24, 39, 0.95);
+      border: 2px solid #facc15;
+    }
+
+    .dark-mode .partner-buttons a {
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+    }
+
+    .dark-mode .partner-buttons a:hover {
+      background: #facc15;
+    }
+
+    .dark-mode footer {
+      background: linear-gradient(to bottom, #111827, #1e3a8a);
+    }
+
+    .dark-mode .scrolling-text-container {
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+    }
+
+    .dark-mode .mobile-nav {
+      background: rgba(17, 24, 39, 0.95);
+      display: block;
+    }
+
+    /* ----------------------------------- */
     /* Easter Egg */
-    #easter-egg { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e3a8a; color: white; padding: 1rem; border-radius: 8px; animation: fadeInText 0.5s ease; z-index: 20; }
+    /* ----------------------------------- */
+    #easter-egg {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e3a8a;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      animation: fadeInText 0.5s ease;
+      z-index: 20;
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
+    }
 
+    /* ----------------------------------- */
     /* Media Queries */
+    /* ----------------------------------- */
     @media (max-width: 768px) {
-      nav { display: none; }
-      .mobile-nav { display: block; }
-      .content-wrapper { margin-left: 0; width: 100%; padding-top: 60px; padding-bottom: 70px; }
-      main { padding: 1.5rem; }
-      .hero-image { height: 400px; }
-      .hero-text h1 { font-size: 1.8rem; }
-      .hero-text p { font-size: 0.9rem; line-height: 1.8; }
-      .hero-text .cta-button { font-size: 0.9rem; padding: 0.8rem 2rem; margin-top: 3rem; }
-      section h2 { font-size: 1.8rem; position: static; }
-      footer { font-size: 0.9rem; line-height: 2; padding: 4rem 1.5rem; }
-      .initials-logo { font-size: 1.2rem; }
+      nav {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+
+      .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 60px;
+        padding-bottom: 70px;
+      }
+
+      main {
+        padding: 1.5rem;
+      }
+
+      .hero-image {
+        height: 400px;
+      }
+
+      .hero-text h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero-text p {
+        font-size: 0.85rem;
+        line-height: 1.8;
+      }
+
+      .hero-text .cta-button {
+        font-size: 0.9rem;
+        padding: 0.8rem 2rem;
+        margin-top: 4rem;
+      }
+
+      section h2 {
+        font-size: 1.8rem;
+        position: static;
+      }
+
+      footer {
+        font-size: 0.9rem;
+        line-height: 2;
+        padding: 4rem 1.5rem;
+      }
+
+      .initials-logo {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- Progress Bar -->
   <div class="progress-bar"></div>
+
+  <!-- Splash Screen -->
   <div id="splash" onclick="hideSplash()">
     <div class="splash-bg"></div>
     <h1>Projekt Univine</h1>
@@ -203,34 +860,44 @@
     <div class="loader"></div>
   </div>
 
+  <!-- Scrolling Text -->
   <div class="scrolling-text-container">
     <div class="scrolling-text">Projekt Univine – Architektur der Zukunft</div>
   </div>
 
+  <!-- Desktop Navigation -->
   <nav>
     <ul>
       <li><a href="#start">Start</a></li>
+      <li><a href="#vision">Vision</a></li>
       <li><a href="#projekt">Projekt</a></li>
+      <li><a href="#faqs">FAQs</a></li>
       <li><a href="#partner">Partner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
   </nav>
 
+  <!-- Mobile Navigation -->
   <div class="mobile-nav">
     <ul>
       <li><a href="#start"><i data-lucide="home"></i>Start</a></li>
+      <li><a href="#vision"><i data-lucide="eye"></i>Vision</a></li>
       <li><a href="#projekt"><i data-lucide="briefcase"></i>Projekt</a></li>
+      <li><a href="#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
       <li><a href="#partner"><i data-lucide="users"></i>Partner</a></li>
       <li><a href="#kontakt"><i data-lucide="mail"></i>Kontakt</a></li>
     </ul>
   </div>
 
+  <!-- Dark Mode Toggle -->
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">
     <i data-lucide="sun"></i>
   </button>
 
+  <!-- Main Content -->
   <div class="content-wrapper">
     <main>
+      <!-- Hero Section -->
       <div class="hero-image">
         <div class="hero-text">
           <h1>Projekt Univine</h1>
@@ -239,24 +906,73 @@
         </div>
       </div>
 
+      <!-- Start Section -->
       <section id="start">
         <h2>Willkommen bei Projekt Univine</h2>
-        <p>Projekt Univine ist das Ergebnis meiner Leidenschaft für Technologie und Innovation, entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
+        <p>Projekt Univine ist das Ergebnis meiner Leidenschaft für Technologie und Innovation, entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung. Unser Ziel ist es, die Zukunft der Architektur und Technologie durch kreative Konzepte und präzise Umsetzung zu gestalten.</p>
       </section>
 
+      <!-- Vision Section -->
+      <section id="vision">
+        <h2>Unsere Vision</h2>
+        <p>Wir streben danach, eine Welt zu schaffen, in der Technologie und Design nahtlos verschmelzen, um nachhaltige und innovative Lösungen zu bieten. Projekt Univine steht für mutige Ideen, die die Grenzen des Möglichen überschreiten und die Lebensqualität verbessern.</p>
+      </section>
+
+      <!-- Projekt Section -->
       <section id="projekt">
         <h2>Das Projekt</h2>
-        <p>Projekt Univine steht für die Verschmelzung von kreativen Konzepten, technischer Präzision und zukunftsweisendem Design.</p>
+        <p>Projekt Univine steht für die Verschmelzung von kreativen Konzepten, technischer Präzision und zukunftsweisendem Design. Unser Team arbeitet daran, innovative Webanwendungen zu entwickeln, die Benutzerfreundlichkeit und Ästhetik vereinen.</p>
       </section>
 
+      <!-- FAQ Section -->
+      <section id="faqs" class="faq-section">
+        <h2>Häufig gestellte Fragen</h2>
+        <div class="faq-item">
+          <div class="faq-question"><i data-lucide="plus"></i> Was ist Projekt Univine?</div>
+          <div class="faq-answer">
+            <p>Projekt Univine ist ein visionäres Technologieprojekt, das innovative Webanwendungen entwickelt, um die Zukunft der digitalen Interaktion zu gestalten. Es wurde als Teil einer Umschulung zum Fachinformatiker für Anwendungsentwicklung ins Leben gerufen.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><i data-lucide="plus"></i> Welche Technologien werden genutzt?</div>
+          <div class="faq-answer">
+            <p>Wir setzen auf moderne Webtechnologien wie HTML5, CSS3, JavaScript, und Frameworks wie React und Node.js. Unsere Designs basieren auf responsiven Prinzipien, um auf allen Geräten optimal zu funktionieren.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><i data-lucide="plus"></i> Wie kann ich mitwirken?</div>
+          <div class="faq-answer">
+            <p>Sie können sich über das Kontaktformular mit uns in Verbindung setzen, um mögliche Kooperationen oder Beiträge zu besprechen. Wir sind offen für Entwickler, Designer und Visionäre, die unsere Mission teilen.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><i data-lucide="plus"></i> Wer sind die Partner?</div>
+          <div class="faq-answer">
+            <p>Unsere Partner sind Experten aus der Technologie- und Designbranche, darunter John H. und Vionic. Sie unterstützen uns mit Fachwissen und Ressourcen, um unsere Ziele zu erreichen.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><i data-lucide="plus"></i> Wie kontaktiere ich das Team?</div>
+          <div class="faq-answer">
+            <p>Nutzen Sie unser Kontaktformular im Abschnitt „Kontakt“, um uns direkt zu erreichen. Wir freuen uns auf Ihre Nachricht!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partner Section -->
       <section id="partner">
         <h2>Meine Partner</h2>
         <div class="partner-buttons">
           <a href="https://www.linkedin.com/in/john-hoepfler" target="_blank"><i data-lucide="linkedin"></i>John H.</a>
           <a href="https://vionic.de" target="_blank"><i data-lucide="globe"></i>Vionic</a>
         </div>
+        <div class="partner-description">
+          <p><strong>John H.</strong>: Ein erfahrener Entwickler mit Fokus auf innovative Webtechnologien.</p>
+          <p><strong>Vionic</strong>: Ein Design-Studio, das kreative und benutzerfreundliche Lösungen bietet.</p>
+        </div>
       </section>
 
+      <!-- Contact Section -->
       <section class="contact-form" id="kontakt">
         <h2>Kontakt</h2>
         <form id="contactForm">
@@ -279,6 +995,7 @@
     </main>
   </div>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-links">
       <a href="#">Impressum</a>
@@ -291,35 +1008,53 @@
     <p><span class="initials-logo" id="initials">MH</span> © 2025 M. Höpfler | Projekt Univine – Gestalte die Zukunft</p>
   </footer>
 
+  <!-- Easter Egg -->
   <div id="easter-egg">Danke für deine Leidenschaft!</div>
 
+  <!-- Back to Top -->
   <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
     <i data-lucide="arrow-up"></i>
   </button>
 
+  <!-- JavaScript -->
   <script>
-    // Initialize page
+    // -----------------------------------
+    // Initialize Page
+    // -----------------------------------
     document.addEventListener("DOMContentLoaded", () => {
       // Hide form success message on load
       document.getElementById('formSuccess').style.display = 'none';
+      
+      // Hide splash screen after 4 seconds
       setTimeout(() => {
         document.getElementById('splash').classList.add('hidden');
         document.body.style.opacity = 1;
       }, 4000);
+      
+      // Initialize Lucide icons
       lucide.createIcons();
     });
 
-    // Section visibility observer
+    // -----------------------------------
+    // Section Visibility Observer
+    // -----------------------------------
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-        else { entry.target.style.opacity = 0.5; entry.target.style.transform = 'translateY(40px)'; }
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.style.opacity = 0.5;
+          entry.target.style.transform = 'translateY(40px)';
+        }
       });
     }, { threshold: 0.1 });
+
     sections.forEach(section => observer.observe(section));
 
-    // Contact form submission
+    // -----------------------------------
+    // Contact Form Submission
+    // -----------------------------------
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
       fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
@@ -341,7 +1076,27 @@
       .catch(error => console.error("Error:", error));
     });
 
-    // Toggle dark mode
+    // -----------------------------------
+    // FAQ Accordion
+    // -----------------------------------
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-question svg').setAttribute('data-lucide', 'plus');
+        });
+        if (!isActive) {
+          item.classList.add('active');
+          item.querySelector('.faq-question svg').setAttribute('data-lucide', 'minus');
+        }
+        lucide.createIcons();
+      });
+    });
+
+    // -----------------------------------
+    // Toggle Dark Mode
+    // -----------------------------------
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark-mode');
       const icon = document.querySelector('.dark-mode-toggle i');
@@ -349,25 +1104,36 @@
       lucide.createIcons();
     }
 
-    // Hide splash screen
+    // -----------------------------------
+    // Hide Splash Screen
+    // -----------------------------------
     function hideSplash() {
       document.getElementById('splash').classList.add('hidden');
       document.body.style.opacity = 1;
     }
 
-    // Scroll progress and back-to-top
+    // -----------------------------------
+    // Scroll Progress and Back-to-Top
+    // -----------------------------------
     window.addEventListener('scroll', () => {
-      const backToTop = document.querySelector('.back-to-top');
-      const progressBar = document.querySelector('.progress-bar');
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      progressBar.style.width = scrollPercent + '%';
-      if (scrollTop > 300) backToTop.classList.add('visible');
-      else backToTop.classList.remove('visible');
+      requestAnimationFrame(() => {
+        const backToTop = document.querySelector('.back-to-top');
+        const progressBar = document.querySelector('.progress-bar');
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+        if (scrollTop > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
     });
 
-    // Easter egg
+    // -----------------------------------
+    // Easter Egg
+    // -----------------------------------
     let clickCount = 0;
     document.getElementById('initials').addEventListener('click', () => {
       clickCount++;
