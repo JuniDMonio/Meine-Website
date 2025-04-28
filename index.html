@@ -229,7 +229,7 @@
     .hero-image {
       width: 100%;
       height: 550px;
-      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.65)), url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
+      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.75), rgba(17, 24, 39, 0.55)), url('https://images.unsplash.com/photo-1516321310764-2f58c1d5476a?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
       position: relative;
       border-radius: 20px;
       overflow: hidden;
@@ -242,10 +242,10 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #f3f4f6;
+      color: #ffffff;
       text-align: center;
-      text-shadow: 4px 4px 16px rgba(0,0,0,0.9), 0 0 10px rgba(250, 204, 21, 0.5);
-      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.65));
+      text-shadow: 4px 4px 20px rgba(0,0,0,1), 0 0 12px rgba(250, 204, 21, 0.6);
+      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.75), rgba(17, 24, 39, 0.55));
       padding: 2rem;
       border-radius: 8px;
       display: flex;
@@ -262,7 +262,7 @@
     .hero-text p {
       margin-top: 1rem;
       font-size: 1.1rem;
-      color: #f3f4f6;
+      color: #ffffff;
       opacity: 0;
       animation: fadeInText 1s ease forwards 0.3s;
       line-height: 1.8;
@@ -317,8 +317,8 @@
     }
 
     @keyframes glowText {
-      0%, 100% { text-shadow: 4px 4px 16px rgba(0,0,0,0.9), 0 0 10px rgba(250, 204, 21, 0.5); }
-      50% { text-shadow: 4px 4px 20px rgba(0,0,0,0.9), 0 0 15px rgba(250, 204, 21, 0.7); }
+      0%, 100% { text-shadow: 4px 4px 20px rgba(0,0,0,1), 0 0 12px rgba(250, 204, 21, 0.6); }
+      50% { text-shadow: 4px 4px 24px rgba(0,0,0,1), 0 0 15px rgba(250, 204, 21, 0.8); }
     }
 
     @keyframes pulseButton {
@@ -330,7 +330,8 @@
     /* Sections */
     /* ----------------------------------- */
     section {
-      margin-bottom: 7rem;
+      margin: 4rem auto;
+      max-width: 900px;
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 1s ease, transform 1s ease;
@@ -370,17 +371,13 @@
     /* Meine Reise Section */
     /* ----------------------------------- */
     .journey-section {
-      max-width: 700px;
-      margin: 3rem auto;
+      max-width: 900px;
+      margin: 4rem auto;
       transition: box-shadow 0.3s ease;
     }
 
     .journey-section:hover {
       box-shadow: 0 4px 16px rgba(250, 204, 21, 0.3);
-    }
-
-    .journey-section.visible {
-      padding-left: 1rem;
     }
 
     .journey-section .journey-text {
@@ -478,7 +475,7 @@
       padding: 2.5rem;
       border-radius: 12px;
       max-width: 700px;
-      margin: 3rem auto;
+      margin: 4rem auto;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
@@ -637,6 +634,7 @@
       justify-content: center;
       gap: 1rem;
       margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
     footer .social-icons a {
@@ -653,17 +651,19 @@
     .initials-logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
-      color: #fefcbf;
+      color: #fffbeb;
       position: relative;
       display: inline-block;
-      background: rgba(17, 24, 39, 0.8);
+      background: rgba(17, 24, 39, 0.9);
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
+      border: 1px solid #facc15;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       opacity: 1;
-      z-index: 10;
-      box-shadow: 0 0 20px rgba(254, 252, 191, 0.8);
+      z-index: 15;
+      margin: 0.5rem;
+      box-shadow: 0 0 25px rgba(255, 251, 235, 0.9);
       animation: glowLogo 3s ease infinite;
     }
 
@@ -674,7 +674,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, transparent, rgba(254, 252, 191, 0.5), transparent);
+      background: linear-gradient(45deg, transparent, rgba(255, 251, 235, 0.5), transparent);
       transition: left 0.5s ease;
     }
 
@@ -684,12 +684,12 @@
 
     .initials-logo:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(254, 252, 191, 0.9);
+      box-shadow: 0 0 30px rgba(255, 251, 235, 1);
     }
 
     @keyframes glowLogo {
-      0%, 100% { box-shadow: 0 0 20px rgba(254, 252, 191, 0.8); }
-      50% { box-shadow: 0 0 25px rgba(254, 252, 191, 1); }
+      0%, 100% { box-shadow: 0 0 25px rgba(255, 251, 235, 0.9); }
+      50% { box-shadow: 0 0 30px rgba(255, 251, 235, 1); }
     }
 
     /* ----------------------------------- */
@@ -924,9 +924,10 @@
     }
 
     .dark-mode .initials-logo {
-      color: #fefcbf;
-      background: rgba(17, 24, 39, 0.8);
-      box-shadow: 0 0 20px rgba(254, 252, 191, 0.8);
+      color: #fffbeb;
+      background: rgba(17, 24, 39, 0.9);
+      box-shadow: 0 0 25px rgba(255, 251, 235, 0.9);
+      border: 1px solid #facc15;
     }
 
     /* ----------------------------------- */
@@ -1136,7 +1137,7 @@
           <a href="https://vionic.de" target="_blank"><i data-lucide="globe"></i>Vionic</a>
         </div>
         <div class="partner-description">
-          <p><strong>John H.</strong>: Ein erfahrener Entwickler, der mich mit technischem Wissen unterstützt.</p>
+          <p><strong>John H.</strong>: Ein erfahrener Entwickler, der mich mit technischem Wissen unterstützen würde.</p>
           <p><strong>Vionic</strong>: Ein Design-Studio, das mir hilft, ästhetische Lösungen zu entwickeln.</p>
         </div>
       </section>
