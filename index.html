@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projekt Univine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -28,9 +28,7 @@
       transform: translate(-50%, -50%);
       transition: transform 0.1s ease;
     }
-    .custom-cursor:hover {
-      transform: translate(-50%, -50%) scale(1.5);
-    }
+    .custom-cursor:hover { transform: translate(-50%, -50%) scale(1.5); }
     .background-waves {
       position: fixed;
       inset: 0;
@@ -38,13 +36,10 @@
       z-index: -1;
       animation: waveMove 20s linear infinite;
     }
-    @keyframes waveMove {
-      0% { background-position: 0 bottom; }
-      100% { background-position: 1440px bottom; }
-    }
-    h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: 0.02em; }
+    @keyframes waveMove { 0% { background-position: 0 bottom; } 100% { background-position: 1440px bottom; } }
+    h1, h2 { font-family: 'Playfair Display', serif; font-weight: 800; letter-spacing: 0.02em; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
     h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; }
-    p { line-height: 1.7; color: #6b7280; }
+    p { line-height: 1.7; color: #6b7280; font-weight: 500; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
     nav {
       position: fixed;
       top: 60px;
@@ -60,46 +55,13 @@
       flex-direction: column;
       animation: waveIn 1s ease;
     }
-    @keyframes waveIn {
-      from { transform: translateX(-100%); }
-      to { transform: translateX(0); }
-    }
-    nav ul { 
-      list-style: none; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 1.8rem; 
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #1f2937;
-      font-weight: 600;
-      font-size: 1.1rem;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    nav ul li a:hover { 
-      color: #1e3a8a; 
-      background: radial-gradient(circle, rgba(212, 160, 23, 0.2), transparent); 
-    }
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: #d4a017;
-      transition: width 0.3s ease, left 0.3s ease;
-    }
+    @keyframes waveIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+    nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.8rem; }
+    nav ul li a { text-decoration: none; color: #1f2937; font-weight: 600; font-size: 1.1rem; position: relative; transition: color 0.3s ease; }
+    nav ul li a:hover { color: #1e3a8a; background: radial-gradient(circle, rgba(212, 160, 23, 0.2), transparent); }
+    nav ul li a::after { content: ""; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: #d4a017; transition: width 0.3s ease, left 0.3s ease; }
     nav ul li a:hover::after { width: 100%; left: 0; }
-    .content-wrapper { 
-      margin-left: 220px; 
-      width: calc(100% - 220px); 
-      padding-top: 60px;
-      padding-bottom: 70px;
-    }
+    .content-wrapper { margin-left: 220px; width: calc(100% - 220px); padding-top: 60px; padding-bottom: 70px; }
     main { padding: 3rem; max-width: 1100px; margin: auto; }
     .hero-image {
       width: 100%;
@@ -117,713 +79,87 @@
       50% { background: linear-gradient(to bottom, rgba(43, 108, 176, 0.4), rgba(30, 58, 138, 0.4)), url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat; }
       100% { background: linear-gradient(to bottom, rgba(30, 58, 138, 0.4), rgba(43, 108, 176, 0.4)), url('https://images.unsplash.com/photo-1665304671009-4f2bbdf81ac6?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat; }
     }
-    .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      text-align: center;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 1rem;
-      border-radius: 8px;
-    }
+    .hero-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; }
     .hero-text h1 { font-size: 4rem; opacity: 0; animation: slideIn 1s ease forwards; }
     .hero-text p { margin-top: 1rem; font-size: 1.3rem; color: #f3f4f6; opacity: 0; animation: slideIn 1s ease forwards 0.3s; line-height: 1.8; }
-    .hero-text .cta-button { 
-      opacity: 0; 
-      animation: slideIn 1s ease forwards 0.6s; 
-      margin-top: 3rem; 
-      padding: 1rem 2.5rem; 
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0); 
-      color: white; 
-      text-decoration: none; 
-      border-radius: 50px; 
-      font-weight: 600; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-      position: relative; 
-      overflow: hidden; 
-      border: 2px solid #d4a017; 
-      animation: lightPulse 3s ease infinite;
-    }
-    @keyframes lightPulse {
-      0%, 100% { box-shadow: 0 0 10px rgba(212, 160, 23, 0.5); }
-      50% { box-shadow: 0 0 20px rgba(212, 160, 23, 0.8); }
-    }
-    .hero-text .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(212, 160, 23, 0.3);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease;
-    }
-    .hero-text .cta-button:hover::before {
-      width: 200px;
-      height: 200px;
-    }
-    .hero-text .cta-button:hover {
-      background: #d4a017;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    }
-    .hero-text .cta-button:active::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
-      background: #d4a017;
-      border-radius: 50%;
-      animation: sparkle 0.5s ease;
-    }
-    @keyframes sparkle {
-      to { transform: translate(-50%, -50%) scale(3); opacity: 0; }
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .scroll-indicator {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 1.2rem;
-      animation: wave 2s ease infinite;
-    }
-    @keyframes wave {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 10px); }
-    }
-    .particles {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .particles::before {
-      content: '';
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      animation: float 15s linear infinite;
-      box-shadow: 0 0 5px rgba(255,255,255,0.5);
-    }
-    @keyframes float {
-      0% { transform: translate(0, 0); opacity: 0.5; }
-      100% { transform: translate(100px, -100px); opacity: 0; }
-    }
-    .aurora {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(212, 160, 23, 0.1), transparent);
-      opacity: 0.5;
-      animation: auroraMove 20s ease infinite;
-    }
-    @keyframes auroraMove {
-      0% { transform: translateY(0); opacity: 0.5; }
-      50% { transform: translateY(-50px); opacity: 0.8; }
-      100% { transform: translateY(0); opacity: 0.5; }
-    }
-    section { 
-      margin-bottom: 6rem; 
-      opacity: 0; 
-      transform: translateY(40px); 
-      transition: opacity 1s ease, transform 1s ease; 
-    }
+    .hero-text .cta-button { opacity: 0; animation: slideIn 1s ease forwards 0.6s; margin-top: 3rem; padding: 1rem 2.5rem; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.2); position: relative; overflow: hidden; border: 2px solid #d4a017; animation: lightPulse 3s ease infinite; }
+    @keyframes lightPulse { 0%, 100% { box-shadow: 0 0 10px rgba(212, 160, 23, 0.5); } 50% { box-shadow: 0 0 20px rgba(212, 160, 23, 0.8); } }
+    .hero-text .cta-button::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(212, 160, 23, 0.3); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.3s ease, height 0.3s ease; }
+    .hero-text .cta-button:hover::before { width: 200px; height: 200px; }
+    .hero-text .cta-button:hover { background: #d4a017; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
+    .hero-text .cta-button:active::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 10px; height: 10px; background: #d4a017; border-radius: 50%; animation: sparkle 0.5s ease; }
+    @keyframes sparkle { to { transform: translate(-50%, -50%) scale(3); opacity: 0; } }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    section { margin-bottom: 6rem; opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
     section.visible { opacity: 1; transform: translateY(0); }
-    section h2 {
-      position: sticky;
-      top: 60px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 0.5rem 0;
-      z-index: 5;
-      transition: transform 0.3s ease;
-    }
-    .contact-form {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      padding: 2.5rem;
-      border-radius: 12px;
-      max-width: 700px;
-      margin: 3rem auto;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      animation: shadowPulse 3s ease infinite;
-    }
-    @keyframes shadowPulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-      50% { box-shadow: 0 6px 30px rgba(0,0,0,0.15); }
-    }
-    .contact-form .form-group {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
-      font-size: 1rem;
-      transition: border-color 0.3s ease, transform 0.3s ease;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {
-      border-color: #1e3a8a;
-      transform: translateY(-2px);
-      outline: none;
-    }
-    .contact-form label {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      color: #6b7280;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      pointer-events: none;
-    }
-    .contact-form input:focus + label,
-    .contact-form input:not(:placeholder-shown) + label,
-    .contact-form textarea:focus + label,
-    .contact-form textarea:not(:placeholder-shown) + label {
-      top: -0.8rem;
-      left: 0.8rem;
-      font-size: 0.85rem;
-      color: #1e3a8a;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 0 0.2rem;
-    }
-    .contact-form button {
-      width: 100%;
-      padding: 1rem;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .contact-form button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(212, 160, 23, 0.3);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease;
-    }
-    .contact-form button:hover::before {
-      width: 200px;
-      height: 200px;
-    }
-    .contact-form button:hover {
-      background: #d4a017;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-    }
-    .contact-form button:active::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
-      background: #d4a017;
-      border-radius: 50%;
-      animation: sparkle 0.5s ease;
-    }
-    #formSuccess { 
-      display: none; 
-      background: #e6f4ea; 
-      color: #2e7d32; 
-      padding: 1rem; 
-      border-radius: 8px; 
-      margin-top: 1rem; 
-      animation: slideIn 0.5s ease; 
-      display: flex; 
-      align-items: center; 
-      gap: 0.5rem; 
-    }
+    section h2 { position: sticky; top: 60px; background: rgba(255, 255, 255, 0.95); padding: 0.5rem 0; z-index: 5; transition: transform 0.3s ease; font-weight: 800; color: #1f2937; }
+    .dark-mode section h2 { color: #ffffff; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
+    .contact-form { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); padding: 2.5rem; border-radius: 12px; max-width: 700px; margin: 3rem auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1); animation: shadowPulse 3s ease infinite; }
+    @keyframes shadowPulse { 0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.1); } 50% { box-shadow: 0 6px 30px rgba(0,0,0,0.15); } }
+    .contact-form .form-group { position: relative; margin-bottom: 1.5rem; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #d1d5db; font-size: 1rem; transition: border-color 0.3s ease, transform 0.3s ease; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: #1e3a8a; transform: translateY(-2px); outline: none; }
+    .contact-form label { position: absolute; top: 1rem; left: 1rem; color: #6b7280; font-size: 1rem; transition: all 0.3s ease; pointer-events: none; }
+    .contact-form input:focus + label, .contact-form input:not(:placeholder-shown) + label, .contact-form textarea:focus + label, .contact-form textarea:not(:placeholder-shown) + label { top: -0.8rem; left: 0.8rem; font-size: 0.85rem; color: #1e3a8a; background: rgba(255, 255, 255, 0.9); padding: 0 0.2rem; }
+    .contact-form button { width: 100%; padding: 1rem; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .contact-form button:hover { background: #d4a017; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+    #formSuccess { display: none; background: #e6f4ea; color: #2e7d32; padding: 1rem; border-radius: 8px; margin-top: 1rem; animation: slideIn 0.5s ease; display: flex; align-items: center; gap: 0.5rem; }
     #formSuccess svg { width: 20px; height: 20px; }
-    @keyframes slideIn { 
-      from { opacity: 0; transform: translateY(-10px); } 
-      to { opacity: 1; transform: translateY(0); } 
-    }
     .faq-section { max-width: 900px; margin: 4rem auto; }
-    .faq-item { 
-      background: rgba(255, 255, 255, 0.9); 
-      backdrop-filter: blur(12px); 
-      margin-bottom: 1.2rem; 
-      border-radius: 12px; 
-      overflow: hidden; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-      transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    }
+    .faq-item { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); margin-bottom: 1.2rem; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .faq-item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-    .faq-item.active { 
-      background: rgba(255, 255, 255, 0.95); 
-      border: 2px solid #d4a017; 
-      animation: highlight 0.5s ease; 
-    }
-    @keyframes highlight {
-      0% { border-color: transparent; }
-      100% { border-color: #d4a017; }
-    }
-    .faq-question { 
-      padding: 1.5rem; 
-      cursor: pointer; 
-      font-weight: 600; 
-      position: relative; 
-      color: #1f2937; 
-      display: flex; 
-      align-items: center; 
-      gap: 1rem; 
-    }
+    .faq-item.active { background: rgba(255, 255, 255, 0.95); border: 2px solid #d4a017; }
+    .faq-question { padding: 1.5rem; cursor: pointer; font-weight: 600; position: relative; color: #1f2937; display: flex; align-items: center; gap: 1rem; }
     .faq-question svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
-    .faq-item.active .faq-question svg { 
-      transform: rotate(45deg); 
-      color: #d4a017; 
-      animation: sparkleIcon 0.5s ease; 
-    }
-    @keyframes sparkleIcon {
-      0% { filter: brightness(1); }
-      50% { filter: brightness(1.5); }
-      100% { filter: brightness(1); }
-    }
-    .faq-question::after {
-      content: '▼';
-      position: absolute;
-      right: 1.5rem;
-      transition: transform 0.3s ease;
-      color: #d4a017;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out;
-      padding: 0 1.5rem;
-      color: #6b7280;
-      opacity: 0;
-    }
-    .faq-item.active .faq-answer { 
-      max-height: 600px; 
-      padding: 1.5rem; 
-      opacity: 1; 
-      animation: rippleFade 0.5s ease; 
-    }
-    @keyframes rippleFade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .faq-item.active .faq-question::after { transform: rotate(180deg); }
-    .partner-buttons { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 1.5rem; 
-      justify-content: center; 
-      margin-top: 2.5rem; 
-    }
-    .partner-buttons a {
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
-      padding: 1rem 2.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: shadowPulse 3s ease infinite;
-    }
-    .partner-buttons a svg { width: 20px; height: 20px; }
-    .partner-buttons a::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(212, 160, 23, 0.3);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease;
-    }
-    .partner-buttons a:hover::before {
-      width: 200px;
-      height: 200px;
-    }
-    .partner-buttons a:hover {
-      background: #d4a017;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-    }
-    .partner-buttons a:active::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
-      background: #d4a017;
-      border-radius: 50%;
-      animation: sparkle 0.5s ease;
-    }
-    footer {
-      background: linear-gradient(to bottom, #1f2937, #2d3748);
-      padding: 5rem 2rem;
-      text-align: center;
-      color: #ffffff;
-      font-size: 0.9rem;
-      position: relative;
-      overflow: hidden;
-    }
-    footer .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    footer a { 
-      color: #d4a017; 
-      text-decoration: none; 
-      position: relative; 
-      transition: color 0.3s ease; 
-    }
-    footer a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 1px;
-      background: #ffffff;
-      transition: width 0.3s ease, left 0.3s ease;
-    }
-    footer a:hover::after { width: 100%; left: 0; }
+    .faq-item.active .faq-question svg { transform: rotate(45deg); color: #d4a017; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out; padding: 0 1.5rem; color: #6b7280; opacity: 0; }
+    .faq-item.active .faq-answer { max-height: 600px; padding: 1.5rem; opacity: 1; }
+    .partner-buttons { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 2.5rem; }
+    .partner-buttons a { background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; animation: shadowPulse 3s ease infinite; }
+    .partner-buttons a:hover { background: #d4a017; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+    footer { background: linear-gradient(to bottom, #1f2937, #2d3748); padding: 5rem 2rem; text-align: center; color: #ffffff; font-size: 0.9rem; position: relative; overflow: hidden; }
+    footer .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+    footer a { color: #d4a017; text-decoration: none; position: relative; transition: color 0.3s ease; }
     footer a:hover { color: #ffffff; }
-    footer .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    footer .social-icons a {
-      color: #ffffff;
-      font-size: 1.2rem;
-      opacity: 1;
-      animation: fadeInIcons 0.5s ease forwards;
-      animation-delay: calc(var(--i) * 0.1s);
-      position: relative;
-    }
-    footer .social-icons a:hover::after {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 5px;
-      height: 5px;
-      background: #d4a017;
-      border-radius: 50%;
-      animation: starBurst 0.5s ease;
-    }
-    @keyframes starBurst {
-      to { transform: translateX(-50%) scale(2); opacity: 0; }
-    }
-    footer .social-icons a:hover { transform: scale(1.2); }
-    @keyframes fadeInIcons {
-      to { opacity: 1; }
-    }
-    .scrolling-text-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
-      padding: 0.6rem 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      z-index: 15;
-    }
-    .scrolling-text {
-      display: inline-block;
-      animation: scroll-left 12s linear infinite;
-    }
-    @keyframes scroll-left {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
-    #splash {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #1e3a8a, #111827);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      opacity: 1;
-      transition: opacity 1s ease;
-      cursor: pointer;
-    }
+    .scrolling-text-container { position: fixed; top: 0; left: 0; width: 100%; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; padding: 0.6rem 0; font-size: 1.1rem; font-weight: 600; white-space: nowrap; overflow: hidden; z-index: 15; }
+    .scrolling-text { display: inline-block; animation: scroll-left 12s linear infinite; }
+    @keyframes scroll-left { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+    #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #1e3a8a, #111827); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; opacity: 1; transition: opacity 1s ease; cursor: pointer; }
     #splash.hidden { opacity: 0; pointer-events: none; }
-    #splash h1 { 
-      font-size: 3rem; 
-      opacity: 0; 
-      animation: fadeIn 1s ease forwards; 
-    }
-    #splash p { 
-      font-size: 1.2rem; 
-      opacity: 0; 
-      animation: fadeIn 1s ease forwards 0.5s; 
-      margin-bottom: 2rem; 
-    }
-    #splash .loader {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #d4a017;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 1s;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    .splash-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
-      animation: starTwinkle 5s ease infinite;
-    }
-    @keyframes starTwinkle {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: #d4a017;
-      z-index: 20;
-      transition: width 0.3s ease;
-    }
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
-      padding: 0.8rem;
-      border-radius: 50%;
-      display: none;
-      z-index: 10;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
+    #splash h1 { font-size: 3rem; opacity: 0; animation: fadeIn 1s ease forwards; }
+    #splash p { font-size: 1.2rem; opacity: 0; animation: fadeIn 1s ease forwards 0.5s; margin-bottom: 2rem; }
+    #splash .loader { width: 50px; height: 50px; border: 5px solid #d4a017; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; opacity: 0; animation: fadeIn 1s ease forwards 1s; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .progress-bar { position: fixed; top: 0; left: 0; width: 0; height: 3px; background: #d4a017; z-index: 20; transition: width 0.3s ease; }
+    .back-to-top { position: fixed; bottom: 20px; right: 10px; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; padding: 0.6rem; border-radius: 50%; display: none; z-index: 10; transition: opacity 0.3s ease, transform 0.3s ease; width: 35px; height: 35px; }
     .back-to-top.visible { display: block; opacity: 1; }
     .back-to-top:hover { transform: scale(1.1); }
-    .dark-mode-toggle {
-      position: fixed;
-      bottom: 80px;
-      left: 20px;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
-      padding: 0.5rem;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 50px;
-      width: 50px;
-      transition: transform 0.3s ease, background 0.3s ease;
-      z-index: 10;
-    }
-    .dark-mode-toggle:hover { 
-      background: #d4a017; 
-      transform: rotate(360deg); 
-    }
+    .dark-mode-toggle { position: fixed; top: 70px; right: 20px; background: linear-gradient(to right, #1e3a8a, #2b6cb0); color: white; padding: 0.5rem; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 40px; width: 40px; transition: transform 0.3s ease, background 0.3s ease; z-index: 10; }
+    .dark-mode-toggle:hover { background: #d4a017; transform: rotate(360deg); }
     .dark-mode body { background: linear-gradient(to bottom, #1f2937, #1a202c); color: #f3f4f6; }
     .dark-mode nav { background: rgba(17, 24, 39, 0.9); }
     .dark-mode nav ul li a { color: #ffffff; text-shadow: 0 0 5px rgba(212, 160, 23, 0.3); }
-    .dark-mode nav ul li a:hover { color: #d4a017; }
     .dark-mode .contact-form { background: rgba(17, 24, 39, 0.9); }
     .dark-mode .faq-item { background: rgba(17, 24, 39, 0.9); }
-    .dark-mode .faq-item.active { background: rgba(17, 24, 39, 0.95); }
-    .dark-mode .partner-buttons a { background: linear-gradient(to right, #1e3a8a, #2b6cb0); }
-    .dark-mode .partner-buttons a:hover { background: #d4a017; }
-    .dark-mode footer { background: linear-gradient(to bottom, #1f2937, #2d3748); }
-    .dark-mode .scrolling-text-container { background: linear-gradient(to right, #1e3a8a, #2b6cb0); }
-    .dark-mode .mobile-nav { background: rgba(17, 24, 39, 0.95); }
-
-    /* Mobile Bottom Navigation */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-      z-index: 10;
-      padding: 0.6rem 0;
-      animation: slideUp 0.5s ease;
-    }
-    @keyframes slideUp {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
-    }
-    .mobile-nav ul {
-      display: flex;
-      justify-content: space-around;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .mobile-nav ul li a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #1f2937;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.3s ease, transform 0.3s ease;
-      padding: 0.6rem;
-      position: relative;
-    }
-    .mobile-nav ul li a:hover {
-      color: #d4a017;
-      transform: scale(1.1) rotate(5deg);
-      background: radial-gradient(circle, rgba(212, 160, 23, 0.2), transparent);
-    }
-    .mobile-nav ul li svg {
-      width: 26px;
-      height: 26px;
-      margin-bottom: 0.3rem;
-    }
-    .initials-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #d4a017;
-      position: relative;
-      display: inline-block;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .initials-logo:hover {
-      transform: scale(1.1);
-    }
-    .initials-logo::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: #d4a017;
-      transition: width 0.3s ease;
-    }
-    .initials-logo:hover::after {
-      width: 100%;
-    }
-    #easter-egg {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1e3a8a;
-      color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      animation: slideIn 0.5s ease;
-      z-index: 20;
-    }
-    #easter-egg::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
-      background: #d4a017;
-      border-radius: 50%;
-      animation: sparkle 0.5s ease infinite;
-    }
-    .quote {
-      font-style: italic;
-      color: #1e3a8a;
-      font-size: 1.2rem;
-      text-align: center;
-      margin: 2rem 0;
-      position: relative;
-    }
-    .quote::before, .quote::after {
-      content: '"';
-      font-size: 1.5rem;
-      color: #d4a017;
-    }
+    .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); box-shadow: 0 -2px 8px rgba(0,0,0,0.1); z-index: 10; padding: 0.6rem 0; animation: slideUp 0.5s ease; }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .mobile-nav ul { display: flex; justify-content: space-around; list-style: none; margin: 0; padding: 0; }
+    .mobile-nav ul li a { display: flex; flex-direction: column; align-items: center; color: #1f2937; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s ease, transform 0.3s ease; padding: 0.6rem; position: relative; }
+    .mobile-nav ul li a:hover { color: #d4a017; transform: scale(1.1) rotate(5deg); background: radial-gradient(circle, rgba(212, 160, 23, 0.2), transparent); }
+    .mobile-nav ul li svg { width: 26px; height: 26px; margin-bottom: 0.3rem; }
+    .initials-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #d4a017; position: relative; display: inline-block; transition: transform 0.3s ease; cursor: pointer; }
+    .initials-logo:hover { transform: scale(1.1); }
+    #easter-egg { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e3a8a; color: white; padding: 1rem; border-radius: 8px; animation: slideIn 0.5s ease; z-index: 20; }
     @media (max-width: 768px) {
       nav { display: none; }
       .mobile-nav { display: block; }
-      .content-wrapper {
-        margin-left: 0;
-        width: 100%;
-        padding-top: 60px;
-        padding-bottom: 70px;
-      }
+      .content-wrapper { margin-left: 0; width: 100%; padding-top: 60px; padding-bottom: 70px; }
       main { padding: 1.5rem; }
-      .hero-image {
-        height: 400px;
-        background-attachment: scroll;
-      }
+      .hero-image { height: 400px; background-attachment: scroll; }
       .hero-text h1 { font-size: 2rem; }
       .hero-text p { font-size: 1rem; line-height: 1.8; }
-      .hero-text .cta-button {
-        font-size: 0.9rem;
-        padding: 0.8rem 2rem;
-        white-space: nowrap;
-        margin-top: 2rem;
-      }
+      .hero-text .cta-button { font-size: 0.9rem; padding: 0.8rem 2rem; white-space: nowrap; margin-top: 2rem; }
       section h2 { position: static; }
       body { cursor: default; }
       .custom-cursor { display: none; }
@@ -873,25 +209,21 @@
   <div class="content-wrapper">
     <main>
       <div class="hero-image">
-        <div class="particles"></div>
-        <div class="aurora"></div>
         <div class="hero-text">
           <h1>Projekt Univine</h1>
           <p>Innovation, Präzision, Zukunft – vereint in einem visionären Projekt.</p>
           <a href="#projekt" class="cta-button">Entdecken</a>
         </div>
-        <div class="scroll-indicator"><i data-lucide="chevron-down"></i></div>
       </div>
 
       <section id="start">
         <h2>Willkommen bei Projekt Univine</h2>
-        <p>Projekt Univine ist das Ergebnis meiner Leidenschaft für Technologie und Innovation, entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung. Diese Website verkörpert moderne Webentwicklung, klare Ästhetik und zukunftsorientierte Visionen.</p>
+        <p>Projekt Univine ist das Ergebnis meiner Leidenschaft für Technologie und Innovation, entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung.</p>
       </section>
 
       <section id="projekt">
         <h2>Das Projekt</h2>
-        <p>Projekt Univine steht für die Verschmelzung von kreativen Konzepten, technischer Präzision und zukunftsweisendem Design. Mein Ziel ist es, digitale Erlebnisse zu schaffen, die nicht nur funktional, sondern auch inspirierend sind. Von der Idee bis zur Umsetzung – jede Zeile Code spiegelt meine Hingabe wider, die Grenzen des Möglichen zu erweitern.</p>
-        <div class="quote">„Technologie ist die Kunst, die Zukunft zu formen.“</div>
+        <p>Projekt Univine steht für die Verschmelzung von kreativen Konzepten, technischer Präzision und zukunftsweisendem Design.</p>
       </section>
 
       <section id="partner">
@@ -921,30 +253,6 @@
         </form>
         <p id="formSuccess"><i data-lucide="check-circle"></i> Danke! Deine Nachricht wurde erfolgreich gesendet.</p>
       </section>
-
-      <section class="faq-section">
-        <h2>FAQs</h2>
-        <div class="faq-item">
-          <div class="faq-question"><i data-lucide="help-circle"></i>Warum habe ich mich für die IT entschieden?</div>
-          <div class="faq-answer">Die IT ist der Motor der modernen Welt und bietet unendliche Möglichkeiten, die Zukunft zu gestalten. Meine Entscheidung für diesen Bereich wurzelt in der Faszination für Technologie, die Probleme löst und Innovationen vorantreibt. Die Möglichkeit, durch Code digitale Erlebnisse zu schaffen, die Menschen weltweit erreichen, ist für mich eine einzigartige Kombination aus Kreativität und Präzision.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question"><i data-lucide="help-circle"></i>Was begeistert mich an der Webentwicklung?</div>
-          <div class="faq-answer">Webentwicklung ist für mich die perfekte Schnittstelle zwischen Design, Technik und Nutzererlebnis. Es begeistert mich, wie man durch sauberen Code und durchdachtes Design Websites erschaffen kann, die nicht nur funktional, sondern auch ästhetisch ansprechend sind. Jeder Pixel, jede Animation und jede Interaktion trägt dazu bei, eine Geschichte zu erzählen und Nutzer zu inspirieren.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question"><i data-lucide="help-circle"></i>Wie bringe ich Persönlichkeit in meine Projekte ein?</div>
-          <div class="faq-answer">Persönlichkeit entsteht durch die Liebe zum Detail und die Bereitschaft, über den Standard hinauszugehen. Ich integriere meine Leidenschaft für klare Strukturen, elegante Designs und innovative Lösungen in jedes Projekt. Ob durch subtile Animationen, durchdachte Farbschemata oder intuitive Benutzerführung – meine Arbeit spiegelt meine Vision wider, Technologie menschlich und zugänglich zu machen.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question"><i data-lucide="help-circle"></i>Was ist mein langfristiges Ziel?</div>
-          <div class="faq-answer">Mein Ziel ist es, digitale Welten zu schaffen, die nicht nur technologisch fortschrittlich, sondern auch emotional ansprechend sind. Ich möchte als Entwickler und Architekt digitaler Lösungen anerkannt werden, der Unternehmen und Nutzer durch visionäre Projekte verbindet. Langfristig strebe ich an, Technologien zu entwickeln, die nachhaltig und inklusiv sind, und so einen positiven Einfluss auf die Gesellschaft ausüben.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question"><i data-lucide="help-circle"></i>Warum sollte man mich als Partner wählen?</div>
-          <div class="faq-answer">Ich bringe nicht nur technisches Know-how, sondern auch eine visionäre Perspektive in jedes Projekt ein. Meine Stärke liegt in der Fähigkeit, komplexe Anforderungen in elegante, nutzerfreundliche Lösungen zu übersetzen. Mit einem Fokus auf Qualität, Zuverlässigkeit und Kreativität bin ich ein Partner, der nicht nur Projekte abschließt, sondern Mehrwert schafft und langfristige Partnerschaften aufbaut.</div>
-        </div>
-      </section>
     </main>
   </div>
 
@@ -953,11 +261,7 @@
       <a href="#">Impressum</a>
       <a href="#">Datenschutz</a>
     </div>
-    <div class="social-icons">
-      <a href="#" aria-label="LinkedIn" style="--i: 1;"><i data-lucide="linkedin"></i></a>
-      <a href="#" aria-label="GitHub" style="--i: 2;"><i data-lucide="github"></i></a>
-    </div>
-    <p><span class="initials-logo" id="initials">MH</span> © 2025 M. Höpfler | Projekt Univine – Gestalte die Zukunft</p>
+    <p><span class="initials-logo" id="initials">MH</span> © 2025 M. Höpfler | Projekt Univine</p>
   </footer>
 
   <div id="easter-egg">Danke für deine Leidenschaft!</div>
@@ -978,27 +282,11 @@
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => { 
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        } else {
-          entry.target.style.opacity = 0.5;
-          entry.target.style.transform = 'translateY(40px)';
-        }
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+        else { entry.target.style.opacity = 0.5; entry.target.style.transform = 'translateY(40px)'; }
       });
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
-
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        const parent = q.parentElement;
-        document.querySelectorAll('.faq-item.active').forEach(item => {
-          if (item !== parent) {
-            item.classList.remove('active');
-          }
-        });
-        parent.classList.toggle('active');
-      });
-    });
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -1040,11 +328,8 @@
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = (scrollTop / docHeight) * 100;
       progressBar.style.width = scrollPercent + '%';
-      if (scrollTop > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
+      if (scrollTop > 300) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
     });
 
     const cursor = document.querySelector('.custom-cursor');
