@@ -266,6 +266,62 @@
       font-size: 3.8rem;
       opacity: 0;
       animation: fadeInText 1s ease forwards, glowText 3s ease infinite;
+      cursor: pointer; /* NEW: Zeigt an, dass der Text klickbar ist */
+    }
+
+    /* NEW: Glitch-Effekt für Hero-Text Easter Egg */
+    .hero-text h1.glitch {
+      animation: glitch 0.4s ease-in-out 3;
+      position: relative;
+    }
+
+    .hero-text h1.glitch::before,
+    .hero-text h1.glitch::after {
+      content: 'Projekt Univine';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip: rect(0, 900px, 0, 0);
+    }
+
+    .hero-text h1.glitch::before {
+      color: #facc15;
+      left: 2px;
+      text-shadow: -2px 0 #facc15;
+      animation: glitch-top 0.4s ease-in-out 3;
+    }
+
+    .hero-text h1.glitch::after {
+      color: #1e3a8a;
+      left: -2px;
+      text-shadow: 2px 0 #1e3a8a;
+      animation: glitch-bottom 0.4s ease-in-out 3;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, 0); }
+      80% { transform: translate(2px, 0); }
+    }
+
+    @keyframes glitch-top {
+      0%, 100% { clip: rect(0, 900px, 0, 0); }
+      20% { clip: rect(10px, 900px, 20px, 0); }
+      40% { clip: rect(30px, 900px, 40px, 0); }
+      60% { clip: rect(20px, 900px, 30px, 0); }
+      80% { clip: rect(0, 900px, 10px, 0); }
+    }
+
+    @keyframes glitch-bottom {
+      0%, 100% { clip: rect(0, 900px, 0, 0); }
+      20% { clip: rect(50px, 900px, 60px, 0); }
+      40% { clip: rect(70px, 900px, 80px, 0); }
+      60% { clip: rect(60px, 900px, 70px, 0); }
+      80% { clip: rect(40px, 900px, 50px, 0); }
     }
 
     .hero-text p {
@@ -557,6 +613,12 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+
+    /* NEW: Stil für geheime Nachricht im Kontaktformular */
+    #formSuccess.secret {
+      background: #fef9c3;
+      color: #b45309;
     }
 
     #formSuccess svg {
@@ -893,7 +955,7 @@
     }
 
     /* ----------------------------------- */
-    /* NEW: Blitz Cursor and Easter Egg */
+    /* NEW: Blitz Cursor */
     /* ----------------------------------- */
     /* Blitz Cursor (nur Desktop) */
     @media (min-width: 769px) {
@@ -927,13 +989,14 @@
       }
 
       /* Hover-Effekt für interaktive Elemente */
-      a, button, .faq-title, .dark-mode-toggle {
+      a, button, .faq-title, .dark-mode-toggle, .hero-text h1 {
         cursor: none;
       }
       a:hover ~ body::after,
       button:hover ~ body::after,
       .faq-title:hover ~ body::after,
-      .dark-mode-toggle:hover ~ body::after {
+      .dark-mode-toggle:hover ~ body::after,
+      .hero-text h1:hover ~ body::after {
         transform: translate(-50%, -50%) scale(1.8);
         background: #1e3a8a;
         box-shadow: 0 0 12px rgba(30, 58, 138, 0.9), 0 0 18px rgba(30, 58, 138, 0.6);
@@ -941,18 +1004,10 @@
       .dark-mode a:hover ~ body::after,
       .dark-mode button:hover ~ body::after,
       .dark-mode .faq-title:hover ~ body::after,
-      .dark-mode .dark-mode-toggle:hover ~ body::after {
+      .dark-mode .dark-mode-toggle:hover ~ body::after,
+      .dark-mode .hero-text h1:hover ~ body::after {
         background: #facc15;
         box-shadow: 0 0 12px rgba(250, 204, 21, 0.9), 0 0 18px rgba(250, 204, 21, 0.6);
-      }
-
-      /* Puls-Effekt in Journey-Sektion */
-      #journey:hover body::after {
-        animation: pulseCursor 1.5s ease infinite;
-      }
-      @keyframes pulseCursor {
-        0%, 100% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.2); }
       }
 
       /* Blitz-Trail-Effekt */
@@ -988,37 +1043,6 @@
       }
       .dark-mode .blitz-spark {
         background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent);
-      }
-
-      /* Easter Egg: Großer Blitzschlag (SVG) */
-      #lightningBolt {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-      #lightningBolt.active {
-        opacity: 1;
-      }
-      #lightningBolt path {
-        fill: none;
-        stroke: #facc15;
-        stroke-width: 4;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        animation: flash 0.3s ease-in-out alternate 2;
-      }
-      .dark-mode #lightningBolt path {
-        stroke: #ffffff;
-      }
-      @keyframes flash {
-        0% { stroke-opacity: 1; }
-        100% { stroke-opacity: 0.6; }
       }
     }
 
@@ -1091,7 +1115,7 @@
 
   <!-- Scrolling Text -->
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine – Meine Architektur der Zukunft</div>
+    <div class="scrolling-text">Projekt Univine – Architektur der Zukunft</div>
   </div>
 
   <!-- Desktop Navigation -->
@@ -1125,18 +1149,13 @@
     <i data-lucide="sun"></i>
   </button>
 
-  <!-- SVG für großen Blitzschlag (Easter Egg) -->
-  <svg id="lightningBolt">
-    <path d="" />
-  </svg>
-
   <!-- Main Content -->
   <div class="content-wrapper">
     <main>
       <!-- Hero Section -->
       <div class="hero-image">
         <div class="hero-text">
-          <h1>Projekt Univine</h1>
+          <h1 id="heroTitle">Projekt Univine</h1>
           <p>Meine Vision für Innovation, Präzision und Zukunft.</p>
           <a href="#projekt" class="cta-button">Entdecken</a>
         </div>
@@ -1212,7 +1231,7 @@
           <a href="https://vionic.de" target="_blank"><i data-lucide="globe"></i>Vionic</a>
         </div>
         <div class="partner-description">
-          <p><strong>John H.</strong>: Ein erfahrener Entwickler, der mich mit technischem Wissen unterstützen würde.</p>
+          <p><strong>John H.</strong>: Ein erfahrener Vertriebsleiter, der mich mit technischem Wissen unterstützt.</p>
           <p><strong>Vionic</strong>: Ein Design-Studio, das mir hilft, ästhetische Lösungen zu entwickeln.</p>
         </div>
       </section>
@@ -1235,7 +1254,7 @@
           </div>
           <button type="submit">Absenden</button>
         </form>
-        <p id="formSuccess"><i data-lucide="check-circle"></i> Danke! Deine Nachricht wurde erfolgreich gesendet.</p>
+        <p id="formSuccess"><i data-lucide="check-circle"></i> <span id="successMessage">Danke! Deine Nachricht wurde erfolgreich gesendet.</span></p>
       </section>
     </main>
   </div>
@@ -1299,6 +1318,8 @@
     // -----------------------------------
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
+      const message = this.message.value.trim().toLowerCase();
+      const isSecretCode = message === 'univine';
       fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -1311,7 +1332,15 @@
       .then(response => response.json())
       .then(data => {
         const success = document.getElementById("formSuccess");
+        const successMessage = document.getElementById("successMessage");
         success.style.display = "flex";
+        if (isSecretCode) {
+          success.classList.add('secret');
+          successMessage.textContent = 'Herzlichen Glückwunsch! Du hast den Code geknackt!';
+        } else {
+          success.classList.remove('secret');
+          successMessage.textContent = 'Danke! Deine Nachricht wurde erfolgreich gesendet.';
+        }
         setTimeout(() => { success.style.display = "none"; }, 6000);
         this.reset();
       })
@@ -1374,7 +1403,7 @@
     });
 
     // -----------------------------------
-    // NEW: Blitz Cursor and Easter Egg
+    // NEW: Blitz Cursor
     // -----------------------------------
     // Cursor-Position aktualisieren (nur Desktop)
     if (window.innerWidth > 768) {
@@ -1419,27 +1448,19 @@
       });
     }
 
-    // Easter Egg: Großer Blitzschlag in Journey-Sektion
-    let journeyClickCount = 0;
-    const journeySection = document.querySelector('#journey');
-    const lightningBolt = document.querySelector('#lightningBolt');
-    journeySection.addEventListener('click', (e) => {
-      journeyClickCount++;
-      if (journeyClickCount === 3) {
-        // Blitzpfad erstellen
-        const x = e.clientX;
-        const y = e.clientY;
-        const path = `M${x},${y - 100} L${x - 30},${y - 50} L${x + 20},${y} L${x - 20},${y + 50} L${x + 30},${y + 100}`;
-        lightningBolt.querySelector('path').setAttribute('d', path);
-        lightningBolt.classList.add('active');
+    // -----------------------------------
+    // NEW: Glitch-Effekt Easter Egg für Hero-Text
+    // -----------------------------------
+    let heroClickCount = 0;
+    const heroTitle = document.querySelector('#heroTitle');
+    heroTitle.addEventListener('click', () => {
+      heroClickCount++;
+      if (heroClickCount === 5) {
+        heroTitle.classList.add('glitch');
         setTimeout(() => {
-          lightningBolt.classList.remove('active');
-          lightningBolt.querySelector('path').setAttribute('d', '');
-        }, 1000);
-        // Optional: Donner-Sound (auskommentiert, bis eine gültige MP3 hinzugefügt wird)
-        // const thunderSound = new Audio('path/to/thunder.mp3');
-        // thunderSound.play();
-        journeyClickCount = 0;
+          heroTitle.classList.remove('glitch');
+        }, 1200); // Glitch für 1,2 Sekunden
+        heroClickCount = 0;
       }
     });
   </script>
