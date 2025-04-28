@@ -4,7 +4,7 @@
   <!-- Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Projekt Univine – Innovation, Präzision, Zukunft. Entdecke unser visionäres Projekt!" />
+  <meta name="description" content="Projekt Univine – Meine Vision für Innovation und Zukunft. Entdecke mein Projekt!" />
   <meta name="author" content="M. Höpfler" />
   <title>Projekt Univine</title>
 
@@ -44,6 +44,18 @@
       letter-spacing: 0.02em;
       color: #111827;
       text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    h2:hover::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(to right, #facc15, transparent);
+      transition: width 0.3s ease;
     }
 
     h3, h4 {
@@ -90,11 +102,12 @@
       font-weight: 600;
       font-size: 1.1rem;
       position: relative;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     nav ul li a:hover {
       color: #1e3a8a;
+      transform: translateX(10px);
     }
 
     nav ul li a::after {
@@ -159,7 +172,7 @@
 
     .mobile-nav ul li a:hover {
       color: #facc15;
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
 
     .mobile-nav ul li svg {
@@ -205,7 +218,7 @@
       color: white;
       text-align: center;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-      background: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
       padding: 2rem;
       border-radius: 8px;
       display: flex;
@@ -252,7 +265,7 @@
     .hero-text .cta-button:hover {
       background: #facc15;
       transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
     }
 
     @keyframes fadeInText {
@@ -291,6 +304,37 @@
     }
 
     /* ----------------------------------- */
+    /* Meine Reise Section */
+    /* ----------------------------------- */
+    .journey-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 4rem auto;
+    }
+
+    .journey-section .journey-text {
+      padding: 1.5rem;
+    }
+
+    .journey-section .journey-image {
+      background: url('https://images.unsplash.com/photo-1516321310764-2f58c1d5476a?q=80&w=1227&auto=format&fit=crop') center/cover no-repeat;
+      border-radius: 12px;
+      height: 300px;
+    }
+
+    @media (max-width: 768px) {
+      .journey-section {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-section .journey-image {
+        height: 200px;
+      }
+    }
+
+    /* ----------------------------------- */
     /* FAQ Section */
     /* ----------------------------------- */
     .faq-section {
@@ -311,7 +355,7 @@
     .faq-item:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      background: rgba(212, 160, 23, 0.1);
+      background: rgba(250, 204, 21, 0.1);
     }
 
     .faq-item.active {
@@ -319,7 +363,7 @@
       border: 2px solid #facc15;
     }
 
-    .faq-question {
+    .faq-title {
       padding: 1.5rem;
       cursor: pointer;
       font-weight: 600;
@@ -330,18 +374,18 @@
       gap: 1rem;
     }
 
-    .faq-question svg {
+    .faq-title svg {
       width: 20px;
       height: 20px;
       transition: transform 0.3s ease;
     }
 
-    .faq-item.active .faq-question svg {
+    .faq-item.active .faq-title svg {
       transform: rotate(45deg);
       color: #facc15;
     }
 
-    .faq-answer {
+    .faq-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -350,7 +394,7 @@
       opacity: 0;
     }
 
-    .faq-item.active .faq-answer {
+    .faq-item.active .faq-content {
       max-height: 600px;
       padding: 1.5rem;
       opacity: 1;
@@ -533,7 +577,7 @@
     }
 
     footer .social-icons a:hover {
-      transform: rotate(10deg);
+      transform: rotate(360deg);
       color: #facc15;
     }
 
@@ -545,7 +589,7 @@
       display: inline-block;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      animation: pulseLogo 3s ease infinite;
+      animation: glowLogo 4s ease infinite;
     }
 
     .initials-logo:hover {
@@ -553,9 +597,9 @@
       box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
     }
 
-    @keyframes pulseLogo {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    @keyframes glowLogo {
+      0%, 100% { box-shadow: 0 0 5px rgba(250, 204, 21, 0.2); }
+      50% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.5); }
     }
 
     /* ----------------------------------- */
@@ -770,6 +814,10 @@
       display: block;
     }
 
+    .dark-mode .journey-section {
+      background: rgba(17, 24, 39, 0.9);
+    }
+
     /* ----------------------------------- */
     /* Easter Egg */
     /* ----------------------------------- */
@@ -856,13 +904,13 @@
   <div id="splash" onclick="hideSplash()">
     <div class="splash-bg"></div>
     <h1>Projekt Univine</h1>
-    <p>Die Zukunft gestalten</p>
+    <p>Meine Vision für die Zukunft</p>
     <div class="loader"></div>
   </div>
 
   <!-- Scrolling Text -->
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine – Architektur der Zukunft</div>
+    <div class="scrolling-text">Projekt Univine – Meine Architektur der Zukunft</div>
   </div>
 
   <!-- Desktop Navigation -->
@@ -870,6 +918,7 @@
     <ul>
       <li><a href="#start">Start</a></li>
       <li><a href="#vision">Vision</a></li>
+      <li><a href="#journey">Meine Reise</a></li>
       <li><a href="#projekt">Projekt</a></li>
       <li><a href="#faqs">FAQs</a></li>
       <li><a href="#partner">Partner</a></li>
@@ -882,6 +931,7 @@
     <ul>
       <li><a href="#start"><i data-lucide="home"></i>Start</a></li>
       <li><a href="#vision"><i data-lucide="eye"></i>Vision</a></li>
+      <li><a href="#journey"><i data-lucide="user"></i>Reise</a></li>
       <li><a href="#projekt"><i data-lucide="briefcase"></i>Projekt</a></li>
       <li><a href="#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
       <li><a href="#partner"><i data-lucide="users"></i>Partner</a></li>
@@ -901,7 +951,7 @@
       <div class="hero-image">
         <div class="hero-text">
           <h1>Projekt Univine</h1>
-          <p>Innovation, Präzision, Zukunft – vereint in einem visionären Projekt.</p>
+          <p>Meine Vision für Innovation, Präzision und Zukunft.</p>
           <a href="#projekt" class="cta-button">Entdecken</a>
         </div>
       </div>
@@ -909,52 +959,61 @@
       <!-- Start Section -->
       <section id="start">
         <h2>Willkommen bei Projekt Univine</h2>
-        <p>Projekt Univine ist das Ergebnis meiner Leidenschaft für Technologie und Innovation, entwickelt im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung. Unser Ziel ist es, die Zukunft der Architektur und Technologie durch kreative Konzepte und präzise Umsetzung zu gestalten.</p>
+        <p>Ich, M. Höpfler, habe Projekt Univine aus meiner Leidenschaft für Technologie und Innovation heraus entwickelt. Es ist das Ergebnis meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung und spiegelt meine Vision für die Zukunft wider.</p>
       </section>
 
       <!-- Vision Section -->
       <section id="vision">
-        <h2>Unsere Vision</h2>
-        <p>Wir streben danach, eine Welt zu schaffen, in der Technologie und Design nahtlos verschmelzen, um nachhaltige und innovative Lösungen zu bieten. Projekt Univine steht für mutige Ideen, die die Grenzen des Möglichen überschreiten und die Lebensqualität verbessern.</p>
+        <h2>Meine Vision</h2>
+        <p>Ich strebe danach, Technologie und Design zu vereinen, um nachhaltige und innovative Lösungen zu schaffen. Projekt Univine ist mein persönlicher Beitrag zu einer Welt, in der kreative Ideen die Grenzen des Möglichen überschreiten.</p>
+      </section>
+
+      <!-- Meine Reise Section -->
+      <section id="journey" class="journey-section">
+        <h2>Meine Reise</h2>
+        <div class="journey-text">
+          <p>Meine Reise begann mit einer tiefen Faszination für Technologie und dem Wunsch, etwas Einzigartiges zu schaffen. Während meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung entdeckte ich meine Leidenschaft für Webentwicklung. Projekt Univine ist das Ergebnis unzähliger Stunden harter Arbeit, Lernen und Kreativität. Es ist nicht nur ein Projekt – es ist meine Vision, die Zukunft zu gestalten.</p>
+        </div>
+        <div class="journey-image"></div>
       </section>
 
       <!-- Projekt Section -->
       <section id="projekt">
-        <h2>Das Projekt</h2>
-        <p>Projekt Univine steht für die Verschmelzung von kreativen Konzepten, technischer Präzision und zukunftsweisendem Design. Unser Team arbeitet daran, innovative Webanwendungen zu entwickeln, die Benutzerfreundlichkeit und Ästhetik vereinen.</p>
+        <h2>Mein Projekt</h2>
+        <p>Projekt Univine ist meine Kreation, die kreative Konzepte, technische Präzision und zukunftsweisendes Design vereint. Ich habe eine Webanwendung entwickelt, die Benutzerfreundlichkeit und Ästhetik in den Vordergrund stellt.</p>
       </section>
 
       <!-- FAQ Section -->
       <section id="faqs" class="faq-section">
-        <h2>Häufig gestellte Fragen</h2>
+        <h2>FAQs</h2>
         <div class="faq-item">
-          <div class="faq-question"><i data-lucide="plus"></i> Was ist Projekt Univine?</div>
-          <div class="faq-answer">
-            <p>Projekt Univine ist ein visionäres Technologieprojekt, das innovative Webanwendungen entwickelt, um die Zukunft der digitalen Interaktion zu gestalten. Es wurde als Teil einer Umschulung zum Fachinformatiker für Anwendungsentwicklung ins Leben gerufen.</p>
+          <div class="faq-title"><i data-lucide="plus"></i> Was ist Projekt Univine?</div>
+          <div class="faq-content">
+            <p>Projekt Univine ist meine persönliche Vision, eine innovative Webanwendung zu entwickeln, die Technologie und Design vereint. Ich, M. Höpfler, habe es im Rahmen meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung geschaffen.</p>
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question"><i data-lucide="plus"></i> Welche Technologien werden genutzt?</div>
-          <div class="faq-answer">
-            <p>Wir setzen auf moderne Webtechnologien wie HTML5, CSS3, JavaScript, und Frameworks wie React und Node.js. Unsere Designs basieren auf responsiven Prinzipien, um auf allen Geräten optimal zu funktionieren.</p>
+          <div class="faq-title"><i data-lucide="plus"></i> Welche Technologien nutze ich?</div>
+          <div class="faq-content">
+            <p>Ich setze auf moderne Webtechnologien wie HTML5, CSS3 und JavaScript. Mein Design ist responsiv, um auf allen Geräten eine optimale Nutzererfahrung zu bieten.</p>
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question"><i data-lucide="plus"></i> Wie kann ich mitwirken?</div>
-          <div class="faq-answer">
-            <p>Sie können sich über das Kontaktformular mit uns in Verbindung setzen, um mögliche Kooperationen oder Beiträge zu besprechen. Wir sind offen für Entwickler, Designer und Visionäre, die unsere Mission teilen.</p>
+          <div class="faq-title"><i data-lucide="plus"></i> Wie kann ich kontaktiert werden?</div>
+          <div class="faq-content">
+            <p>Du kannst mich direkt über das Kontaktformular im Abschnitt „Kontakt“ erreichen. Ich freue mich auf deine Nachricht!</p>
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question"><i data-lucide="plus"></i> Wer sind die Partner?</div>
-          <div class="faq-answer">
-            <p>Unsere Partner sind Experten aus der Technologie- und Designbranche, darunter John H. und Vionic. Sie unterstützen uns mit Fachwissen und Ressourcen, um unsere Ziele zu erreichen.</p>
+          <div class="faq-title"><i data-lucide="plus"></i> Wer sind meine Partner?</div>
+          <div class="faq-content">
+            <p>Ich arbeite mit Experten wie John H. und Vionic zusammen, die mich mit ihrem Fachwissen unterstützen, um Projekt Univine zum Erfolg zu führen.</p>
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question"><i data-lucide="plus"></i> Wie kontaktiere ich das Team?</div>
-          <div class="faq-answer">
-            <p>Nutzen Sie unser Kontaktformular im Abschnitt „Kontakt“, um uns direkt zu erreichen. Wir freuen uns auf Ihre Nachricht!</p>
+          <div class="faq-title"><i data-lucide="plus"></i> Was inspiriert mich?</div>
+          <div class="faq-content">
+            <p>Meine Inspiration kommt aus meiner Leidenschaft für Technologie und dem Wunsch, die Welt durch innovative Lösungen zu verbessern. Projekt Univine ist mein Ausdruck dieser Vision.</p>
           </div>
         </div>
       </section>
@@ -967,8 +1026,8 @@
           <a href="https://vionic.de" target="_blank"><i data-lucide="globe"></i>Vionic</a>
         </div>
         <div class="partner-description">
-          <p><strong>John H.</strong>: Ein erfahrener Entwickler mit Fokus auf innovative Webtechnologien.</p>
-          <p><strong>Vionic</strong>: Ein Design-Studio, das kreative und benutzerfreundliche Lösungen bietet.</p>
+          <p><strong>John H.</strong>: Ein erfahrener Entwickler, der mein Projekt mit technischem Know-how unterstützt.</p>
+          <p><strong>Vionic</strong>: Ein Design-Studio, das mir hilft, ästhetische und benutzerfreundliche Lösungen zu entwickeln.</p>
         </div>
       </section>
 
@@ -1005,11 +1064,11 @@
       <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
       <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
     </div>
-    <p><span class="initials-logo" id="initials">MH</span> © 2025 M. Höpfler | Projekt Univine – Gestalte die Zukunft</p>
+    <p><span class="initials-logo" id="initials">MH</span> © 2025 M. Höpfler | Projekt Univine – Meine Zukunftsvision</p>
   </footer>
 
   <!-- Easter Egg -->
-  <div id="easter-egg">Danke für deine Leidenschaft!</div>
+  <div id="easter-egg">Danke für deine Unterstützung!</div>
 
   <!-- Back to Top -->
   <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
@@ -1084,11 +1143,11 @@
         const isActive = item.classList.contains('active');
         document.querySelectorAll('.faq-item').forEach(i => {
           i.classList.remove('active');
-          i.querySelector('.faq-question svg').setAttribute('data-lucide', 'plus');
+          i.querySelector('.faq-title svg').setAttribute('data-lucide', 'plus');
         });
         if (!isActive) {
           item.classList.add('active');
-          item.querySelector('.faq-question svg').setAttribute('data-lucide', 'minus');
+          item.querySelector('.faq-title svg').setAttribute('data-lucide', 'minus');
         }
         lucide.createIcons();
       });
