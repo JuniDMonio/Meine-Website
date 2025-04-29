@@ -956,94 +956,6 @@
     }
 
     /* ----------------------------------- */
-    /* Blitz Cursor */
-    /* ----------------------------------- */
-    @media (min-width: 769px) {
-      * {
-        cursor: none;
-      }
-      body::after {
-        content: '';
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: #facc15;
-        border-radius: 50%;
-        box-shadow: 0 0 8px rgba(250, 204, 21, 0.8), 0 0 12px rgba(250, 204, 21, 0.5);
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
-      }
-      .dark-mode body::after {
-        background: #ffffff;
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.5);
-      }
-      body {
-        --mouse-x: 0;
-        --mouse-y: 0;
-      }
-      body::after {
-        left: var(--mouse-x);
-        top: var(--mouse-y);
-      }
-
-      a, button, .faq-title, .dark-mode-toggle, .hero-text h1 {
-        cursor: none;
-      }
-      a:hover ~ body::after,
-      button:hover ~ body::after,
-      .faq-title:hover ~ body::after,
-      .dark-mode-toggle:hover ~ body::after,
-      .hero-text h1:hover ~ body::after {
-        transform: translate(-50%, -50%) scale(1.8);
-        background: #1e3a8a;
-        box-shadow: 0 0 12px rgba(30, 58, 138, 0.9), 0 0 18px rgba(30, 58, 138, 0.6);
-      }
-      .dark-mode a:hover ~ body::after,
-      .dark-mode button:hover ~ body::after,
-      .dark-mode .faq-title:hover ~ body::after,
-      .dark-mode .dark-mode-toggle:hover ~ body::after,
-      .dark-mode .hero-text h1:hover ~ body::after {
-        background: #facc15;
-        box-shadow: 0 0 12px rgba(250, 204, 21, 0.9), 0 0 18px rgba(250, 204, 21, 0.6);
-      }
-
-      .blitz-trail {
-        position: fixed;
-        width: 6px;
-        height: 6px;
-        background: rgba(250, 204, 21, 0.7);
-        border-radius: 50%;
-        box-shadow: 0 0 6px rgba(250, 204, 21, 0.8);
-        pointer-events: none;
-        z-index: 9998;
-        transition: all 0.3s ease;
-        opacity: 0;
-        transform: rotate(45deg);
-      }
-      .dark-mode .blitz-trail {
-        background: rgba(255, 255, 255, 0.7);
-        box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-      }
-
-      .blitz-spark {
-        position: fixed;
-        width: 12px;
-        height: 12px;
-        background: radial-gradient(circle, rgba(250, 204, 21, 0.9), transparent);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9997;
-        transition: all 0.4s ease;
-        opacity: 0;
-      }
-      .dark-mode .blitz-spark {
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent);
-      }
-    }
-
-    /* ----------------------------------- */
     /* Media Queries */
     /* ----------------------------------- */
     @media (max-width: 768px) {
@@ -1161,7 +1073,7 @@
       <!-- Start Section -->
       <section id="start">
         <h2>Willkommen bei Projekt Univine</h2>
-        <p>Ich, M. Höpfler, starte gerade meine Umschulung zum Fachinformatiker für Anwendungsentwicklung. Projekt Univine ist mein Herzensprojekt, das meine Leidenschaft für Technologie und meine Vision für die Zukunft widerspiegelt.</p>
+        <p>Ich, M. Höpfler, starte gerade meine Umschulung zum Fachinformatiker für Anwendungsentwicklung. Projekt Univine ist mein Herzensprojekt, dass meine Leidenschaft für Technologie und meine Vision für die Zukunft widerspiegelt.</p>
       </section>
 
       <!-- Vision Section -->
@@ -1191,7 +1103,7 @@
         <div class="faq-item">
           <div class="faq-title"><i data-lucide="plus"></i> Was ist Projekt Univine?</div>
           <div class="faq-content">
-            <p>Projekt Univine ist mein persönliches Projekt, das ich während meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung entwickle. Es vereint meine Leidenschaft für Technologie und Design.</p>
+            <p>Projekt Univine ist mein persönliches Projekt, dass ich während meiner Umschulung zum Fachinformatiker für Anwendungsentwicklung entwickle. Es vereint meine Leidenschaft für Technologie und Design.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -1438,52 +1350,6 @@
         console.error("Fehler im Scroll-Handler:", error);
       }
     });
-
-    // -----------------------------------
-    // Blitz Cursor
-    // -----------------------------------
-    if (window.innerWidth > 768) {
-      try {
-        document.addEventListener('mousemove', (e) => {
-          document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-          document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
-          const trail = document.createElement('div');
-          trail.className = 'blitz-trail';
-          trail.style.left = `${e.clientX + (Math.random() * 10 - 5)}px`;
-          trail.style.top = `${e.clientY + (Math.random() * 10 - 5)}px`;
-          document.body.appendChild(trail);
-          setTimeout(() => {
-            trail.style.opacity = 1;
-            trail.style.transform = 'scale(0.5) rotate(45deg)';
-          }, 10);
-          setTimeout(() => {
-            trail.style.opacity = 0;
-            setTimeout(() => trail.remove(), 300);
-          }, 200);
-        });
-
-        document.addEventListener('click', (e) => {
-          for (let i = 0; i < 3; i++) {
-            const spark = document.createElement('div');
-            spark.className = 'blitz-spark';
-            spark.style.left = `${e.clientX + (Math.random() * 20 - 10)}px`;
-            spark.style.top = `${e.clientY + (Math.random() * 20 - 10)}px`;
-            document.body.appendChild(spark);
-            setTimeout(() => {
-              spark.style.opacity = 1;
-              spark.style.transform = 'scale(1.5)';
-            }, 10);
-            setTimeout(() => {
-              spark.style.opacity = 0;
-              spark.style.transform = 'scale(0.5) translateY(-20px)';
-              setTimeout(() => spark.remove(), 400);
-            }, 200);
-          }
-        });
-      } catch (error) {
-        console.error("Fehler im Blitz-Cursor:", error);
-      }
-    }
 
     // -----------------------------------
     // Glitch-Effekt Easter Egg für Hero-Text
