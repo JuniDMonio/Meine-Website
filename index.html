@@ -27,13 +27,13 @@
     }
 
     html {
-      scroll-padding-top: 80px; /* Für Navigation zu Überschriften */
-      scroll-behavior: smooth; /* Weiches Scrollen */
+      scroll-padding-top: 80px;
+      scroll-behavior: smooth;
     }
 
     body {
       background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
-      color: #374151;
+      color: #111827;
       overflow-x: hidden;
       min-height: 100vh;
       opacity: 0;
@@ -273,7 +273,6 @@
       cursor: pointer;
     }
 
-    /* NEW: Glitch-Effekt für Hero-Text Easter Egg */
     .hero-text h1.glitch {
       animation: glitch 0.4s ease-in-out 3;
       position: relative;
@@ -619,7 +618,6 @@
       gap: 0.5rem;
     }
 
-    /* NEW: Stil für geheime Nachricht im Kontaktformular */
     #formSuccess.secret {
       background: #fef9c3;
       color: #b45309;
@@ -891,7 +889,7 @@
     /* ----------------------------------- */
     .dark-mode body {
       background: linear-gradient(to bottom, #111827, #1f2937);
-      color: #e5e7eb;
+      color: #ffffff;
     }
 
     .dark-mode h1, .dark-mode h2 {
@@ -961,9 +959,8 @@
     }
 
     /* ----------------------------------- */
-    /* NEW: Blitz Cursor */
+    /* Blitz Cursor */
     /* ----------------------------------- */
-    /* Blitz Cursor (nur Desktop) */
     @media (min-width: 769px) {
       * {
         cursor: none;
@@ -994,7 +991,6 @@
         top: var(--mouse-y);
       }
 
-      /* Hover-Effekt für interaktive Elemente */
       a, button, .faq-title, .dark-mode-toggle, .hero-text h1 {
         cursor: none;
       }
@@ -1016,7 +1012,6 @@
         box-shadow: 0 0 12px rgba(250, 204, 21, 0.9), 0 0 18px rgba(250, 204, 21, 0.6);
       }
 
-      /* Blitz-Trail-Effekt */
       .blitz-trail {
         position: fixed;
         width: 6px;
@@ -1035,7 +1030,6 @@
         box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
       }
 
-      /* Klick-Effekt (Blitzschlag) */
       .blitz-spark {
         position: fixed;
         width: 12px;
@@ -1289,16 +1283,11 @@
     // Initialize Page
     // -----------------------------------
     document.addEventListener("DOMContentLoaded", () => {
-      // Hide form success message on load
       document.getElementById('formSuccess').style.display = 'none';
-      
-      // Hide splash screen after 4 seconds
       setTimeout(() => {
         document.getElementById('splash').classList.add('hidden');
         document.body.style.opacity = 1;
       }, 4000);
-      
-      // Initialize Lucide icons
       lucide.createIcons();
     });
 
@@ -1311,7 +1300,7 @@
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
         } else {
-          entry.target.style.opacity = 0.5;
+          entry.target.style.opacity = 1;
           entry.target.style.transform = 'translateY(40px)';
         }
       });
@@ -1351,7 +1340,6 @@
         this.reset();
       })
       .catch(error => console.error("Error:", error));
-    });
 
     // -----------------------------------
     // FAQ Accordion
@@ -1409,15 +1397,12 @@
     });
 
     // -----------------------------------
-    // NEW: Blitz Cursor
+    // Blitz Cursor
     // -----------------------------------
-    // Cursor-Position aktualisieren (nur Desktop)
     if (window.innerWidth > 768) {
       document.addEventListener('mousemove', (e) => {
         document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
         document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
-
-        // Blitz-Trail erstellen
         const trail = document.createElement('div');
         trail.className = 'blitz-trail';
         trail.style.left = `${e.clientX + (Math.random() * 10 - 5)}px`;
@@ -1433,7 +1418,6 @@
         }, 200);
       });
 
-      // Klick-Effekt (Blitzschlag)
       document.addEventListener('click', (e) => {
         for (let i = 0; i < 3; i++) {
           const spark = document.createElement('div');
@@ -1455,7 +1439,7 @@
     }
 
     // -----------------------------------
-    // NEW: Glitch-Effekt Easter Egg für Hero-Text
+    // Glitch-Effekt Easter Egg für Hero-Text
     // -----------------------------------
     let heroClickCount = 0;
     const heroTitle = document.querySelector('#heroTitle');
@@ -1465,7 +1449,7 @@
         heroTitle.classList.add('glitch');
         setTimeout(() => {
           heroTitle.classList.remove('glitch');
-        }, 1200); // Glitch für 1,2 Sekunden
+        }, 1200);
         heroClickCount = 0;
       }
     });
