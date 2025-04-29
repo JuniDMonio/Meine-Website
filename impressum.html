@@ -250,44 +250,16 @@
       width: 24px;
       height: 24px;
     }
-    @media (min-width: 769px) {
-      * {
-        cursor: none;
-      }
-      body::after {
-        content: '';
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: #facc15;
-        border-radius: 50%;
-        box-shadow: 0 0 8px rgba(250,204,21,0.8);
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s ease, box-shadow 0.2s ease;
-      }
-      .dark-mode body::after {
-        background: #ffffff;
-        box-shadow: 0 0 8px rgba(255,255,255,0.8);
-      }
-      body {
-        --mouse-x: 0;
-        --mouse-y: 0;
-      }
-      body::after {
-        left: var(--mouse-x);
-        top: var(--mouse-y);
-      }
-      a:hover ~ body::after, button:hover ~ body::after {
-        transform: translate(-50%, -50%) scale(1.8);
-        background: #1e3a8a;
-        box-shadow: 0 0 12px rgba(30,58,138,0.9);
-      }
-      .dark-mode a:hover ~ body::after, .dark-mode button:hover ~ body::after {
-        background: #facc15;
-        box-shadow: 0 0 12px rgba(250,204,21,0.9);
-      }
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #facc15;
+      z-index: 20;
+      transition: width 0.3s ease;
     }
     @media (max-width: 768px) {
       nav {
@@ -318,6 +290,8 @@
   </style>
 </head>
 <body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
   <div class="parallax-bg"></div>
   <nav>
     <ul>
@@ -378,12 +352,6 @@
         timeout = setTimeout(later, wait);
       };
     }
-    if (window.innerWidth > 768) {
-      document.addEventListener('mousemove', (e) => {
-        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
-      });
-    }
     window.addEventListener('scroll', debounce(() => {
       if (window.innerWidth > 768) {
         const parallax = document.querySelector('.parallax-bg');
@@ -394,6 +362,20 @@
       lucide.createIcons();
       const main = document.querySelector('main');
       main.classList.add('visible');
+    });
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      try {
+        requestAnimationFrame(() => {
+          const progressBar = document.querySelector('.progress-bar');
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          progressBar.style.width = scrollPercent + '%';
+        });
+      } catch (error) {
+        console.error("Fehler im Scroll-Handler:", error);
+      }
     });
   </script>
 </body>
