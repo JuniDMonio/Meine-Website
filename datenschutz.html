@@ -84,6 +84,14 @@
       font-weight: 500;
       font-size: 1.1rem;
       margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+    }
+
+    section.visible p {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ----------------------------------- */
@@ -220,6 +228,140 @@
     }
 
     /* ----------------------------------- */
+    /* Sections */
+    /* ----------------------------------- */
+    section {
+      margin: 4rem 0;
+      max-width: 900px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+      position: relative;
+      text-align: left;
+      padding-left: 1rem;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 5;
+    }
+
+    section h2 {
+      font-size: 2.8rem;
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+
+    section.visible h2 {
+      transform: scale(1.05);
+    }
+
+    /* ----------------------------------- */
+    /* FAQ (Akkordeon) Section */
+    /* ----------------------------------- */
+    .faq-section {
+      max-width: 900px;
+      margin: 4rem auto;
+      text-align: center;
+    }
+
+    .faq-section h2 {
+      text-align: center;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      margin-bottom: 1.2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+      text-align: left;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      border: 2px solid #facc15;
+    }
+
+    .faq-item.active {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #facc15;
+    }
+
+    .faq-title {
+      padding: 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      position: relative;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+    }
+
+    .faq-title svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-title svg {
+      transform: rotate(45deg);
+      color: #facc15;
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      padding: 0 1.5rem;
+      color: #6b7280;
+      opacity: 0;
+    }
+
+    .faq-item.active .faq-content {
+      max-height: 1000px;
+      padding: 1.5rem;
+      opacity: 1;
+    }
+
+    /* ----------------------------------- */
+    /* PDF Download Button */
+    /* ----------------------------------- */
+    .pdf-download {
+      display: inline-block;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .pdf-download:hover {
+      background: #facc15;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    .pdf-download svg {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+
+    /* ----------------------------------- */
     /* Footer */
     /* ----------------------------------- */
     footer {
@@ -343,7 +485,7 @@
     }
 
     .back-to-top svg {
-      width: 20px;
+     jni
       height: 20px;
       vertical-align: middle;
     }
@@ -412,12 +554,33 @@
       color: #ffffff;
     }
 
+    .dark-mode .faq-item {
+      background: rgba(17, 24, 39, 0.9);
+    }
+
+    .dark-mode .faq-item.active {
+      background: rgba(17, 24, 39, 0.95);
+      border: 2px solid #facc15;
+    }
+
+    .dark-mode .faq-title {
+      color: #ffffff;
+    }
+
     .dark-mode footer {
       background: linear-gradient(to bottom, #111827, #1e3a8a);
     }
 
     .dark-mode .scrolling-text-container {
       background: linear-gradient(to right, #111827, #1e3a8a);
+    }
+
+    .dark-mode .pdf-download {
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+    }
+
+    .dark-mode .pdf-download:hover {
+      background: #facc15;
     }
 
     /* ----------------------------------- */
@@ -449,6 +612,11 @@
 
       h2 {
         font-size: 1.9rem;
+      }
+
+      .pdf-download {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
       }
 
       footer {
@@ -503,20 +671,49 @@
   <!-- Main Content -->
   <div class="content-wrapper">
     <main>
-      <section>
+      <!-- Datenschutz Section -->
+      <section class="faq-section">
         <h1>Datenschutz</h1>
-        <h2>1. Datenschutz auf einen Blick</h2>
-        <p>Der Schutz deiner Daten ist mir wichtig. Diese Datenschutzerklärung erläutert, welche Daten ich erhebe und wie sie verwendet werden.</p>
-        <h2>2. Allgemeine Hinweise</h2>
-        <p>Die Nutzung meiner Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit personenbezogene Daten erhoben werden, erfolgt dies auf freiwilliger Basis.</p>
-        <h2>3. Kontaktformular</h2>
-        <p>Wenn du das Kontaktformular nutzt, werden dein Name, deine E-Mail-Adresse und deine Nachricht gespeichert, um deine Anfrage zu bearbeiten. Diese Daten werden nicht ohne deine Einwilligung weitergegeben.</p>
-        <h2>4. Cookies</h2>
-        <p>Meine Website verwendet keine Cookies.</p>
-        <h2>5. Deine Rechte</h2>
-        <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner personenbezogenen Daten.</p>
-        <h2>6. Kontakt</h2>
-        <p>Bei Fragen zum Datenschutz kannst du mich über das Kontaktformular auf der Hauptseite erreichen.</p>
+        <div class="faq-item">
+          <div class="faq-title"><i data-lucide="plus"></i> Datenschutz auf einen Blick</div>
+          <div class="faq-content">
+            <p>Der Schutz deiner Daten ist mir wichtig. Diese Datenschutzerklärung erläutert, welche Daten ich erhebe und wie sie verwendet werden.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-title"><i data-lucide="plus"></i> Allgemeine Hinweise</div>
+          <div class="faq-content">
+            <p>Die Nutzung meiner Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit personenbezogene Daten erhoben werden, erfolgt dies auf freiwilliger Basis.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-title"><i data-lucide="plus"></i> Kontaktformular</div>
+          <div class="faq-content">
+            <p>Wenn du das Kontaktformular nutzt, werden dein Name, deine E-Mail-Adresse und deine Nachricht gespeichert, um deine Anfrage zu bearbeiten. Diese Daten werden nicht ohne deine Einwilligung weitergegeben.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-title"><i data-lucide="plus"></i> Cookies</div>
+          <div class="faq-content">
+            <p>Meine Website verwendet keine Cookies.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-title"><i data-lucide="plus"></i> Deine Rechte</div>
+          <div class="faq-content">
+            <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner personenbezogenen Daten.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-title"><i data-lucide="plus"></i> Kontakt</div>
+          <div class="faq-content">
+            <p>Bei Fragen zum Datenschutz kannst du mich über das Kontaktformular auf der Hauptseite erreichen.</p>
+          </div>
+        </div>
+        <!-- PDF Download Button -->
+        <a href="datenschutz.pdf" class="pdf-download" download>
+          <i data-lucide="download"></i> Datenschutz-PDF herunterladen
+        </a>
       </section>
     </main>
   </div>
@@ -558,6 +755,48 @@
         console.error("Fehler bei der Initialisierung:", error);
       }
     });
+
+    // -----------------------------------
+    // Section Visibility Observer
+    // -----------------------------------
+    try {
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => observer.observe(section));
+    } catch (error) {
+      console.error("Fehler im Intersection Observer:", error);
+    }
+
+    // -----------------------------------
+    // FAQ Accordion
+    // -----------------------------------
+    try {
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-title').addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.faq-title svg').setAttribute('data-lucide', 'plus');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+            item.querySelector('.faq-title svg').setAttribute('data-lucide', 'minus');
+          }
+          if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+          }
+        });
+      });
+    } catch (error) {
+      console.error("Fehler im FAQ-Akkordeon:", error);
+    }
 
     // -----------------------------------
     // Toggle Dark Mode
