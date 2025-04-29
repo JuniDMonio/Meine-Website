@@ -26,6 +26,11 @@
       font-family: 'Inter', sans-serif;
     }
 
+    html {
+      scroll-padding-top: 80px; /* Für Navigation zu Überschriften */
+      scroll-behavior: smooth; /* Weiches Scrollen */
+    }
+
     body {
       background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
       color: #374151;
@@ -44,7 +49,6 @@
       font-weight: 800;
       letter-spacing: 0.03em;
       color: #111827;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
       position: relative;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       padding: 0.5rem 0;
@@ -72,14 +76,14 @@
     h3, h4 {
       font-family: 'Playfair Display', serif;
       font-weight: 500;
+      color: #111827;
     }
 
     p {
       line-height: 1.8;
-      color: #374151;
+      color: #111827;
       font-weight: 500;
       font-size: 1.1rem;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
       opacity: 0;
       transform: translateY(10px);
       transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
@@ -266,7 +270,7 @@
       font-size: 3.8rem;
       opacity: 0;
       animation: fadeInText 1s ease forwards, glowText 3s ease infinite;
-      cursor: pointer; /* NEW: Zeigt an, dass der Text klickbar ist */
+      cursor: pointer;
     }
 
     /* NEW: Glitch-Effekt für Hero-Text Easter Egg */
@@ -892,12 +896,14 @@
 
     .dark-mode h1, .dark-mode h2 {
       color: #ffffff;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .dark-mode h3, .dark-mode h4 {
+      color: #ffffff;
     }
 
     .dark-mode p {
-      color: #e5e7eb;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      color: #ffffff;
     }
 
     .dark-mode nav {
