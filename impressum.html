@@ -20,17 +20,7 @@
       color: #374151;
       min-height: 100vh;
       overflow-x: hidden;
-    }
-    .parallax-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(250,204,21,0.1), rgba(30,58,138,0.1));
-      z-index: -1;
-      will-change: transform;
-      backface-visibility: hidden;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
     }
     h1 {
       font-family: 'Playfair Display', serif;
@@ -188,9 +178,6 @@
       background: linear-gradient(to bottom, #111827, #1f2937);
       color: #ffffff;
     }
-    .dark-mode .parallax-bg {
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(30,58,138,0.1));
-    }
     .dark-mode h1 {
       color: #ffffff;
     }
@@ -273,10 +260,6 @@
       .dark-mode .mobile-nav {
         background: rgba(17,24,39,1);
       }
-      .parallax-bg {
-        transform: none !important;
-        background: none;
-      }
       main {
         padding: 2rem 1rem;
       }
@@ -292,7 +275,6 @@
 <body>
   <!-- Progress Bar -->
   <div class="progress-bar"></div>
-  <div class="parallax-bg"></div>
   <nav>
     <ul>
       <li><a href="index.html">Zurück zur Startseite</a></li>
@@ -341,23 +323,6 @@
       icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
       lucide.createIcons();
     }
-    function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-    window.addEventListener('scroll', debounce(() => {
-      if (window.innerWidth > 768) {
-        const parallax = document.querySelector('.parallax-bg');
-        parallax.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-      }
-    }, 16));
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       const main = document.querySelector('main');
