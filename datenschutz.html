@@ -238,6 +238,9 @@
     .dark-mode main {
       background: rgba(31,41,55,0.8);
     }
+    .dark-mode footer {
+      background: linear-gradient(to bottom, #111827, #1e3a8a);
+    }
     .dark-mode-toggle {
       position: fixed;
       top: 20px;
@@ -339,7 +342,7 @@
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">
     <i data-lucide="sun"></i>
   </button>
-  <main>
+  <main class="visible">
     <h1>Datenschutz</h1>
     <p>Herzlich willkommen zur Datenschutzrichtlinie von <strong>Projekt Univine</strong>. Wir nehmen den Schutz Ihrer Daten ernst. Hier erfahren Sie, wie wir Ihre personenbezogenen Daten erheben, verarbeiten und schützen – und welche Rechte Sie nach der Datenschutz-Grundverordnung (DSGVO) haben.</p>
     
@@ -356,7 +359,7 @@
       <div class="accordion-content">
         <p>Ihre Daten verarbeiten wir auf Basis Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) für das Kontaktformular oder unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) für technische Logs zur Sicherheit und Optimierung der Website.</p>
       </div>
-      <h2 onclick="toggleAccordion(this)"><i data-lucide="tool"></i>4. Datennutzung</h2>
+      <h2 onclick="toggleAccordion(this)"><i data-lucide="workflow"></i>4. Datennutzung</h2>
       <div class="accordion-content">
         <p>Ihre Daten dienen allein der Beantwortung Ihrer Anfragen und der Verbesserung unseres Angebots. Eine Weitergabe an Dritte erfolgt nur, wenn dies gesetzlich vorgeschrieben ist oder Sie zustimmen.</p>
       </div>
