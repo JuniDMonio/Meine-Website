@@ -125,7 +125,7 @@
     }
     nav {
       position: sticky;
-      top: 0;
+      top: 60px;
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
       width: 100%;
@@ -192,6 +192,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       position: relative;
       z-index: 5;
+      margin-top: 60px; /* Space for scrolling text */
     }
     footer {
       background: linear-gradient(to bottom, #111827, #1e3a8a);
@@ -264,7 +265,7 @@
     }
     .dark-mode-toggle {
       position: fixed;
-      top: 20px;
+      top: 70px;
       right: 20px;
       background: linear-gradient(to right, #1e3a8a, #2b6cb0);
       color: white;
@@ -288,44 +289,31 @@
       width: 24px;
       height: 24px;
     }
-    @media (min-width: 769px) {
-      * {
-        cursor: none;
-      }
-      body::after {
-        content: '';
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: #facc15;
-        border-radius: 50%;
-        box-shadow: 0 0 8px rgba(250,204,21,0.8);
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s ease, box-shadow 0.2s ease;
-      }
-      .dark-mode body::after {
-        background: #ffffff;
-        box-shadow: 0 0 8px rgba(255,255,255,0.8);
-      }
-      body {
-        --mouse-x: 0;
-        --mouse-y: 0;
-      }
-      body::after {
-        left: var(--mouse-x);
-        top: var(--mouse-y);
-      }
-      a:hover ~ body::after, button:hover ~ body::after {
-        transform: translate(-50%, -50%) scale(1.8);
-        background: #1e3a8a;
-        box-shadow: 0 0 12px rgba(30,58,138,0.9);
-      }
-      .dark-mode a:hover ~ body::after, .dark-mode button:hover ~ body::after {
-        background: #facc15;
-        box-shadow: 0 0 12px rgba(250,204,21,0.9);
-      }
+    /* Scrolling Text */
+    .scrolling-text-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #111827, #1e3a8a);
+      color: white;
+      padding: 0.6rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 15;
+    }
+    .scrolling-text {
+      display: inline-block;
+      animation: scroll-left 15s linear infinite;
+    }
+    @keyframes scroll-left {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+    .dark-mode .scrolling-text-container {
+      background: linear-gradient(to right, #111827, #1e3a8a);
     }
     @media (max-width: 768px) {
       nav {
@@ -356,6 +344,10 @@
   </style>
 </head>
 <body>
+  <!-- Scrolling Text -->
+  <div class="scrolling-text-container">
+    <div class="scrolling-text">Projekt Univine – Ich respektiere Ihre Privatsphäre. Ihre Daten gehören Ihnen – ich schütze sie mit Verantwortung und Transparenz.</div>
+  </div>
   <div class="parallax-bg"></div>
   <nav>
     <ul>
@@ -481,12 +473,6 @@
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
       };
-    }
-    if (window.innerWidth > 768) {
-      document.addEventListener('mousemove', (e) => {
-        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
-      });
     }
     window.addEventListener('scroll', debounce(() => {
       if (window.innerWidth > 768) {
