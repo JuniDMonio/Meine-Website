@@ -1,138 +1,178 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Impressum für Projekt Univine – Transparent und Professionell">
-  <meta name="author" content="M. Höpfler">
-  <title>Impressum – Projekt Univine</title>
+  <!-- Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Impressum für Projekt Univine – Angaben zum Betreiber." />
+  <meta name="author" content="M. Höpfler" />
+  <title>Impressum | Projekt Univine</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Styles -->
   <style>
+    /* ----------------------------------- */
+    /* General Styles */
+    /* ----------------------------------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
+
+    html {
+      scroll-padding-top: 80px;
+      scroll-behavior: smooth;
+    }
+
     body {
       background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
-      color: #374151;
-      min-height: 100vh;
+      color: #111827;
       overflow-x: hidden;
+      min-height: 100vh;
+      opacity: 1;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
     }
-    .parallax-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(250,204,21,0.1), rgba(30,58,138,0.1));
-      z-index: -1;
-      will-change: transform;
-      backface-visibility: hidden;
-    }
-    h1 {
+
+    /* ----------------------------------- */
+    /* Typography */
+    /* ----------------------------------- */
+    h1, h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 800;
+      letter-spacing: 0.03em;
       color: #111827;
-      font-size: 3.5rem;
-      text-align: center;
-      margin: 1rem 0;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 0.5rem 0;
     }
-    p, li {
+
+    h1 {
+      font-size: 3.8rem;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+    }
+
+    h2:hover::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(to right, #facc15, transparent);
+      transition: width 0.3s ease;
+    }
+
+    h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      color: #111827;
+    }
+
+    p {
       line-height: 1.8;
-      color: #374151;
+      color: #111827;
       font-weight: 500;
       font-size: 1.1rem;
-      margin: 1rem 0;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+      margin-bottom: 1rem;
     }
-    .visible h1, .visible p, .visible li {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .contact-box {
-      background: rgba(250,204,21,0.1);
-      border-radius: 8px;
-      padding: 1rem;
-      margin: 1rem 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .contact-box a, p a {
-      color: #1e3a8a;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .contact-box a:hover, p a:hover {
-      color: #facc15;
-    }
-    .back-button {
-      display: inline-block;
-      margin: 1rem 0;
-      padding: 0.8rem 2rem;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-    }
-    .back-button:hover {
-      background: #facc15;
-      color: #111827;
-      transform: scale(1.05);
-    }
+
+    /* ----------------------------------- */
+    /* Navigation */
+    /* ----------------------------------- */
     nav {
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.95);
+      position: fixed;
+      top: 60px;
+      left: 0;
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
-      width: 100%;
-      padding: 1rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      width: 200px;
+      height: calc(100vh - 60px);
+      padding: 2rem 1rem;
+      box-shadow: 2px 0 12px rgba(0,0,0,0.1);
       z-index: 10;
+      display: flex;
+      flex-direction: column;
     }
+
     nav ul {
       list-style: none;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
+      flex-direction: column;
+      gap: 1.8rem;
     }
+
     nav ul li a {
+      text-decoration: none;
       color: #111827;
       font-weight: 600;
       font-size: 1.1rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
+      position: relative;
+      transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
     }
+
     nav ul li a:hover {
       color: #facc15;
+      transform: translateX(10px);
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
     }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #facc15;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* ----------------------------------- */
+    /* Mobile Navigation */
+    /* ----------------------------------- */
     .mobile-nav {
       display: none;
       position: fixed;
       bottom: 0;
+      left: 0;
       width: 100%;
-      background: rgba(255,255,255,1);
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.1); 
-      padding: 0.6rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
       z-index: 12;
+      padding: 0.6rem 0;
+      animation: fadeInNav 0.5s ease;
     }
+
+    @keyframes fadeInNav {
+      from { opacity: 0; transform: translateY(100%); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .mobile-nav ul {
       display: flex;
       justify-content: space-around;
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
+
     .mobile-nav ul li a {
       display: flex;
       flex-direction: column;
@@ -141,259 +181,421 @@
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
       padding: 0.6rem;
-      transition: color 0.3s ease;
+      position: relative;
+      animation: pulseNav 3s ease infinite;
     }
+
     .mobile-nav ul li a:hover {
       color: #facc15;
+      transform: rotate(360deg);
     }
+
     .mobile-nav ul li svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       margin-bottom: 0.3rem;
     }
-    main {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-      background: rgba(255,255,255,0.8);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 5;
+
+    @keyframes pulseNav {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
+
+    /* ----------------------------------- */
+    /* Content Wrapper */
+    /* ----------------------------------- */
+    .content-wrapper {
+      margin-left: 220px;
+      width: calc(100% - 220px);
+      padding-top: 60px;
+      padding-bottom: 70px;
+    }
+
+    main {
+      padding: 3rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* ----------------------------------- */
+    /* Footer */
+    /* ----------------------------------- */
     footer {
       background: linear-gradient(to bottom, #111827, #1e3a8a);
-      padding: 3rem 2rem;
+      padding: 5rem 2rem;
       text-align: center;
       color: #ffffff;
       font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
     }
+
     footer .footer-links {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
       margin-bottom: 1rem;
     }
+
     footer a {
       color: #facc15;
       text-decoration: none;
-      font-weight: 600;
+      position: relative;
       transition: color 0.3s ease;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
     }
+
     footer a:hover {
       color: #ffffff;
     }
-    .dark-mode body {
-      background: linear-gradient(to bottom, #111827, #1f2937);
+
+    footer .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    footer .social-icons a {
       color: #ffffff;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
     }
-    .dark-mode .parallax-bg {
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(30,58,138,0.1));
-    }
-    .dark-mode h1 {
-      color: #ffffff;
-    }
-    .dark-mode p, .dark-mode li {
-      color: #ffffff;
-    }
-    .dark-mode .contact-box {
-      background: rgba(250,204,21,0.2);
-    }
-    .dark-mode .contact-box a, .dark-mode p a {
+
+    footer .social-icons a:hover {
+      transform: scale(1.2);
       color: #facc15;
     }
-    .dark-mode .contact-box a:hover, .dark-mode p a:hover {
-      color: #ffffff;
+
+    /* ----------------------------------- */
+    /* Scrolling Text */
+    /* ----------------------------------- */
+    .scrolling-text-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #111827, #1e3a8a);
+      color: white;
+      padding: 0.6rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 15;
     }
-    .dark-mode nav {
-      background: rgba(17,24,39,0.95);
+
+    .scrolling-text {
+      display: inline-block;
+      animation: scroll-left 12s linear infinite;
     }
-    .dark-mode nav ul li a {
-      color: #ffffff;
+
+    @keyframes scroll-left {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
     }
-    .dark-mode .mobile-nav {
-      background: rgba(17,24,39,1);
+
+    /* ----------------------------------- */
+    /* Progress Bar */
+    /* ----------------------------------- */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #facc15;
+      z-index: 20;
+      transition: width 0.3s ease;
     }
-    .dark-mode .mobile-nav ul li a {
-      color: #ffffff;
+
+    /* ----------------------------------- */
+    /* Back to Top */
+    /* ----------------------------------- */
+    .back-to-top {
+      position: fixed;
+      bottom: 90px;
+      right: 15px;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      padding: 0;
+      border-radius: 50%;
+      display: none;
+      z-index: 10;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-    .dark-mode main {
-      background: rgba(31,41,55,1);
+
+    .back-to-top.visible {
+      display: block;
+      opacity: 1;
     }
-    .dark-mode footer {
-      background: linear-gradient(to bottom, #111827, #1e3a8a);
+
+    .back-to-top:hover {
+      transform: scale(1.1);
     }
+
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+
+    /* ----------------------------------- */
+    /* Dark Mode Toggle */
+    /* ----------------------------------- */
     .dark-mode-toggle {
       position: fixed;
-      top: 20px;
+      top: 70px;
       right: 20px;
       background: linear-gradient(to right, #1e3a8a, #2b6cb0);
       color: white;
+      padding: 0.5rem;
       border: none;
       border-radius: 50%;
       cursor: pointer;
-      width: 48px;
-      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: background 0.3s ease, transform 0.5s ease;
-      z-index: 15;
+      height: 40px;
+      width: 40px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 10;
     }
+
     .dark-mode-toggle:hover {
       background: #facc15;
       transform: rotate(360deg);
     }
-    .dark-mode-toggle svg {
-      width: 24px;
-      height: 24px;
+
+    /* ----------------------------------- */
+    /* Dark Mode */
+    /* ----------------------------------- */
+    .dark-mode body {
+      background: linear-gradient(to bottom, #111827, #1f2937);
+      color: #ffffff;
     }
-    @media (min-width: 769px) {
-      * {
-        cursor: none;
-      }
-      body::after {
-        content: '';
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: #facc15;
-        border-radius: 50%;
-        box-shadow: 0 0 8px rgba(250,204,21,0.8);
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s ease, box-shadow 0.2s ease;
-      }
-      .dark-mode body::after {
-        background: #ffffff;
-        box-shadow: 0 0 8px rgba(255,255,255,0.8);
-      }
-      body {
-        --mouse-x: 0;
-        --mouse-y: 0;
-      }
-      body::after {
-        left: var(--mouse-x);
-        top: var(--mouse-y);
-      }
-      a:hover ~ body::after, button:hover ~ body::after {
-        transform: translate(-50%, -50%) scale(1.8);
-        background: #1e3a8a;
-        box-shadow: 0 0 12px rgba(30,58,138,0.9);
-      }
-      .dark-mode a:hover ~ body::after, .dark-mode button:hover ~ body::after {
-        background: #facc15;
-        box-shadow: 0 0 12px rgba(250,204,21,0.9);
-      }
+
+    .dark-mode h1, .dark-mode h2 {
+      color: #ffffff;
     }
+
+    .dark-mode h3, .dark-mode h4 {
+      color: #ffffff;
+    }
+
+    .dark-mode p {
+      color: #ffffff;
+    }
+
+    .dark-mode nav {
+      background: rgba(17, 24, 39, 0.9);
+    }
+
+    .dark-mode nav ul li a {
+      color: #ffffff;
+      text-shadow: 0 0 5px rgba(250, 204, 21, 0.3);
+    }
+
+    .dark-mode .mobile-nav {
+      background: rgba(17, 24, 39, 0.95);
+    }
+
+    .dark-mode .mobile-nav ul li a {
+      color: #ffffff;
+    }
+
+    .dark-mode footer {
+      background: linear-gradient(to bottom, #111827, #1e3a8a);
+    }
+
+    .dark-mode .scrolling-text-container {
+      background: linear-gradient(to right, #111827, #1e3a8a);
+    }
+
+    /* ----------------------------------- */
+    /* Media Queries */
+    /* ----------------------------------- */
     @media (max-width: 768px) {
       nav {
         display: none;
       }
+
       .mobile-nav {
         display: block;
-        backdrop-filter: none;
-        background: rgba(255,255,255,1);
       }
-      .dark-mode .mobile-nav {
-        background: rgba(17,24,39,1);
+
+      .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 60px;
+        padding-bottom: 70px;
       }
-      .parallax-bg {
-        transform: none !important;
-        background: none;
-      }
+
       main {
-        padding: 2rem 1rem;
+        padding: 1.5rem;
       }
+
       h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
-      p, li {
-        font-size: 1rem;
+
+      h2 {
+        font-size: 1.9rem;
+      }
+
+      footer {
+        font-size: 0.9rem;
+        line-height: 2;
+        padding: 4rem 1.5rem;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="parallax-bg"></div>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Scrolling Text -->
+  <div class="scrolling-text-container">
+    <div class="scrolling-text">Projekt Univine – Impressum</div>
+  </div>
+
+  <!-- Desktop Navigation -->
   <nav>
     <ul>
-      <li><a href="index.html">Zurück zur Startseite</a></li>
-      <li><a href="datenschutz.html">Datenschutz</a></li>
+      <li><a href="index.html#start">Start</a></li>
+      <li><a href="index.html#vision">Vision</a></li>
+      <li><a href="index.html#journey">Meine Reise</a></li>
+      <li><a href="index.html#projekt">Projekt</a></li>
+      <li><a href="index.html#faqs">FAQs</a></li>
+      <li><a href="index.html#partner">Partner</a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
     </ul>
   </nav>
+
+  <!-- Mobile Navigation -->
   <div class="mobile-nav">
     <ul>
-      <li><a href="index.html"><i data-lucide="home"></i>Start</a></li>
-      <li><a href="datenschutz.html"><i data-lucide="shield"></i>Datenschutz</a></li>
+      <li><a href="index.html#start"><i data-lucide="home"></i>Start</a></li>
+      <li><a href="index.html#vision"><i data-lucide="eye"></i>Vision</a></li>
+      <li><a href="index.html#journey"><i data-lucide="user"></i>Reise</a></li>
+      <li><a href="index.html#projekt"><i data-lucide="briefcase"></i>Projekt</a></li>
+      <li><a href="index.html#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
+      <li><a href="index.html#partner"><i data-lucide="users"></i>Partner</a></li>
+      <li><a href="index.html#kontakt"><i data-lucide="mail"></i>Kontakt</a></li>
     </ul>
   </div>
+
+  <!-- Dark Mode Toggle -->
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">
     <i data-lucide="sun"></i>
   </button>
-  <main class="visible">
-    <h1>Impressum</h1>
-    <p>Angaben gemäß § 5 TMG</p>
-    <ul>
-      <li><strong>Verantwortlicher</strong>: M. Höpfler</li>
-      <li><strong>Anschrift</strong>: Musterstraße 1, 12345 Musterstadt, Deutschland</li>
-      <li><strong>E-Mail</strong>: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a></li>
-    </ul>
-    <p><strong>Haftung für Inhalte</strong>: Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
-    <p><strong>Haftung für Links</strong>: Für Inhalte externer Links übernehmen wir keine Haftung. Für die Inhalte der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
-    <p><strong>Urheberrecht</strong>: Die Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Erstellers.</p>
-    <div class="contact-box">
-      <i data-lucide="mail"></i>
-      <p>Kontakt: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a></p>
-    </div>
-    <p>Weitere Informationen zum Datenschutz finden Sie in unserer <a href="datenschutz.html">Datenschutzrichtlinie</a>.</p>
-    <p><strong>Stand</strong>: April 2025</p>
-    <a href="index.html" class="back-button">Zurück zur Startseite</a>
-  </main>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <main>
+      <section>
+        <h1>Impressum</h1>
+        <h2>Angaben gemäß § 5 TMG</h2>
+        <p>M. Höpfler<br />
+           [Deine Adresse]<br />
+           [PLZ Ort]<br />
+           Deutschland</p>
+        <h2>Kontakt</h2>
+        <p>E-Mail: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a><br />
+           Telefon: [Deine Telefonnummer, falls gewünscht]</p>
+        <h2>Haftungsausschluss</h2>
+        <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehme ich jedoch keine Gewähr.</p>
+        <h2>Urheberrecht</h2>
+        <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-links">
-      <a href="index.html">Zurück</a>
+      <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
     </div>
-    <p>© 2025 M. Höpfler | Projekt Univine – Eine moderne Vision</p>
+    <div class="social-icons">
+      <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+    </div>
+    <p>© 2025 M. Höpfler | Projekt Univine – Meine Zukunftsvision</p>
   </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
   <script>
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark-mode');
-      const icon = document.querySelector('.dark-mode-toggle i');
-      icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
-      lucide.createIcons();
-    }
-    function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-    if (window.innerWidth > 768) {
-      document.addEventListener('mousemove', (e) => {
-        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
-      });
-    }
-    window.addEventListener('scroll', debounce(() => {
-      if (window.innerWidth > 768) {
-        const parallax = document.querySelector('.parallax-bg');
-        parallax.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+    // -----------------------------------
+    // Initialize Page
+    // -----------------------------------
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        // Lucide-Icons laden
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        } else {
+          console.error("Lucide-Bibliothek nicht geladen!");
+        }
+        
+        console.log("Seite initialisiert");
+      } catch (error) {
+        console.error("Fehler bei der Initialisierung:", error);
       }
-    }, 16));
-    document.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
-      const main = document.querySelector('main');
-      main.classList.add('visible');
+    });
+
+    // -----------------------------------
+    // Toggle Dark Mode
+    // -----------------------------------
+    function toggleDarkMode() {
+      try {
+        document.documentElement.classList.toggle('dark-mode');
+        const icon = document.querySelector('.dark-mode-toggle i');
+        icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      } catch (error) {
+        console.error("Fehler beim Umschalten des Dark Mode:", error);
+      }
+    }
+
+    // -----------------------------------
+    // Scroll Progress and Back-to-Top
+    // -----------------------------------
+    window.addEventListener('scroll', () => {
+      try {
+        requestAnimationFrame(() => {
+          const backToTop = document.querySelector('.back-to-top');
+          const progressBar = document.querySelector('.progress-bar');
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          progressBar.style.width = scrollPercent + '%';
+          if (scrollTop > 300) {
+            backToTop.classList.add('visible');
+          } else {
+            backToTop.classList.remove('visible');
+          }
+        });
+      } catch (error) {
+        console.error("Fehler im Scroll-Handler:", error);
+      }
     });
   </script>
 </body>
