@@ -318,7 +318,6 @@
       white-space: nowrap;
       overflow: hidden;
       z-index: 15;
-      border-bottom: 2px solid #facc15;
     }
     .scrolling-text {
       display: inline-block;
@@ -330,7 +329,17 @@
     }
     .dark-mode .scrolling-text-container {
       background: linear-gradient(to right, #111827, #1e3a8a);
-      border-bottom: 2px solid #facc15;
+    }
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #facc15;
+      z-index: 20;
+      transition: width 0.3s ease;
     }
     @media (max-width: 768px) {
       nav {
@@ -357,6 +366,8 @@
   </style>
 </head>
 <body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
   <!-- Scrolling Text -->
   <div class="scrolling-text-container">
     <div class="scrolling-text">Projekt Univine – Ihre Daten gehören Ihnen</div>
@@ -506,6 +517,20 @@
           lucide.createIcons();
         });
       });
+    });
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      try {
+        requestAnimationFrame(() => {
+          const progressBar = document.querySelector('.progress-bar');
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          progressBar.style.width = scrollPercent + '%';
+        });
+      } catch (error) {
+        console.error("Fehler im Scroll-Handler:", error);
+      }
     });
   </script>
 </body>
