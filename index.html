@@ -36,8 +36,7 @@
       color: #111827;
       overflow-x: hidden;
       min-height: 100vh;
-      opacity: 0;
-      transition: opacity 1.5s ease;
+      opacity: 1;
       box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
     }
 
@@ -769,14 +768,12 @@
       align-items: center;
       justify-content: center;
       z-index: 100;
-      opacity: 1;
       transition: opacity 1s ease;
       cursor: pointer;
     }
 
     #splash.hidden {
-      opacity: 0;
-      pointer-events: none;
+      display: none;
     }
 
     #splash h1 {
@@ -1126,7 +1123,7 @@
       <li><a href="#journey">Meine Reise</a></li>
       <li><a href="#projekt">Projekt</a></li>
       <li><a href="#faqs">FAQs</a></li>
-      <li><a href='#partner'>Partner</a></li>
+      <li><a href="#partner">Partner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
   </nav>
@@ -1283,176 +1280,230 @@
     // Initialize Page
     // -----------------------------------
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById('formSuccess').style.display = 'none';
-      setTimeout(() => {
-        document.getElementById('splash').classList.add('hidden');
-        document.body.style.opacity = 1;
-      }, 4000);
-      lucide.createIcons();
+      try {
+        // Formular-Success initial ausblenden
+        document.getElementById('formSuccess').style.display = 'none';
+        
+        // Splash-Screen ausblenden
+        const splash = document.getElementById('splash');
+        if (splash) {
+          splash.classList.add('hidden');
+        } else {
+          console.error("Splash-Element nicht gefunden!");
+        }
+        
+        // Lucide-Icons laden
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        } else {
+          console.error("Lucide-Bibliothek nicht geladen!");
+        }
+        
+        console.log("Seite initialisiert");
+      } catch (error) {
+        console.error("Fehler bei der Initialisierung:", error);
+      }
     });
 
     // -----------------------------------
     // Section Visibility Observer
     // -----------------------------------
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        } else {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(40px)';
-        }
-      });
-    }, { threshold: 0.1 });
+    try {
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
 
-    sections.forEach(section => observer.observe(section));
+      sections.forEach(section => observer.observe(section));
+    } catch (error) {
+      console.error("Fehler im Intersection Observer:", error);
+    }
 
     // -----------------------------------
     // Contact Form Submission
     // -----------------------------------
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const message = this.message.value.trim().toLowerCase();
-      const isSecretCode = message === 'univine';
-      fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: this.name.value,
-          email: this.email.value,
-          message: this.message.value
+    try {
+      document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const message = this.message.value.trim().toLowerCase();
+        const isSecretCode = message === 'univine';
+        fetch("https://formsubmit.co/ajax/mar.hoepfler@icloud.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: this.name.value,
+            email: this.email.value,
+            message: this.message.value
+          })
         })
-      })
-      .then(response => response.json())
-      .then(data => {
-        const success = document.getElementById("formSuccess");
-        const successMessage = document.getElementById("successMessage");
-        success.style.display = "flex";
-        if (isSecretCode) {
-          success.classList.add('secret');
-          successMessage.textContent = 'Herzlichen Glückwunsch! Du hast den Code geknackt!';
-        } else {
-          success.classList.remove('secret');
-          successMessage.textContent = 'Danke! Deine Nachricht wurde erfolgreich gesendet.';
-        }
-        setTimeout(() => { success.style.display = "none"; }, 6000);
-        this.reset();
-      })
-      .catch(error => console.error("Error:", error));
+        .then(response => response.json())
+        .then(data => {
+          const success = document.getElementById("formSuccess");
+          const successMessage = document.getElementById("successMessage");
+          success.style.display = "flex";
+          if (isSecretCode) {
+            success.classList.add('secret');
+            successMessage.textContent = 'Herzlichen Glückwunsch! Du hast den Code geknackt!';
+          } else {
+            success.classList.remove('secret');
+            successMessage.textContent = 'Danke! Deine Nachricht wurde erfolgreich gesendet.';
+          }
+          setTimeout(() => { success.style.display = "none"; }, 6000);
+          this.reset();
+        })
+        .catch(error => console.error("Fehler beim Formular:", error));
+      });
+    } catch (error) {
+      console.error("Fehler im Formular-Handler:", error);
+    }
 
     // -----------------------------------
     // FAQ Accordion
     // -----------------------------------
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.querySelector('.faq-title').addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(i => {
-          i.classList.remove('active');
-          i.querySelector('.faq-title svg').setAttribute('data-lucide', 'plus');
+    try {
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-title').addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.faq-title svg').setAttribute('data-lucide', 'plus');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+            item.querySelector('.faq-title svg').setAttribute('data-lucide', 'minus');
+          }
+          if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+          }
         });
-        if (!isActive) {
-          item.classList.add('active');
-          item.querySelector('.faq-title svg').setAttribute('data-lucide', 'minus');
-        }
-        lucide.createIcons();
       });
-    });
+    } catch (error) {
+      console.error("Fehler im FAQ-Akkordeon:", error);
+    }
 
     // -----------------------------------
     // Toggle Dark Mode
     // -----------------------------------
     function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark-mode');
-      const icon = document.querySelector('.dark-mode-toggle i');
-      icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
-      lucide.createIcons();
+      try {
+        document.documentElement.classList.toggle('dark-mode');
+        const icon = document.querySelector('.dark-mode-toggle i');
+        icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      } catch (error) {
+        console.error("Fehler beim Umschalten des Dark Mode:", error);
+      }
     }
 
     // -----------------------------------
     // Hide Splash Screen
     // -----------------------------------
     function hideSplash() {
-      document.getElementById('splash').classList.add('hidden');
-      document.body.style.opacity = 1;
+      try {
+        const splash = document.getElementById('splash');
+        if (splash) {
+          splash.classList.add('hidden');
+        }
+        console.log("Splash-Screen ausgeblendet");
+      } catch (error) {
+        console.error("Fehler beim Ausblenden des Splash-Screen:", error);
+      }
     }
 
     // -----------------------------------
     // Scroll Progress and Back-to-Top
     // -----------------------------------
     window.addEventListener('scroll', () => {
-      requestAnimationFrame(() => {
-        const backToTop = document.querySelector('.back-to-top');
-        const progressBar = document.querySelector('.progress-bar');
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        progressBar.style.width = scrollPercent + '%';
-        if (scrollTop > 300) {
-          backToTop.classList.add('visible');
-        } else {
-          backToTop.classList.remove('visible');
-        }
-      });
+      try {
+        requestAnimationFrame(() => {
+          const backToTop = document.querySelector('.back-to-top');
+          const progressBar = document.querySelector('.progress-bar');
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          progressBar.style.width = scrollPercent + '%';
+          if (scrollTop > 300) {
+            backToTop.classList.add('visible');
+          } else {
+            backToTop.classList.remove('visible');
+          }
+        });
+      } catch (error) {
+        console.error("Fehler im Scroll-Handler:", error);
+      }
     });
 
     // -----------------------------------
     // Blitz Cursor
     // -----------------------------------
     if (window.innerWidth > 768) {
-      document.addEventListener('mousemove', (e) => {
-        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
-        const trail = document.createElement('div');
-        trail.className = 'blitz-trail';
-        trail.style.left = `${e.clientX + (Math.random() * 10 - 5)}px`;
-        trail.style.top = `${e.clientY + (Math.random() * 10 - 5)}px`;
-        document.body.appendChild(trail);
-        setTimeout(() => {
-          trail.style.opacity = 1;
-          trail.style.transform = 'scale(0.5) rotate(45deg)';
-        }, 10);
-        setTimeout(() => {
-          trail.style.opacity = 0;
-          setTimeout(() => trail.remove(), 300);
-        }, 200);
-      });
-
-      document.addEventListener('click', (e) => {
-        for (let i = 0; i < 3; i++) {
-          const spark = document.createElement('div');
-          spark.className = 'blitz-spark';
-          spark.style.left = `${e.clientX + (Math.random() * 20 - 10)}px`;
-          spark.style.top = `${e.clientY + (Math.random() * 20 - 10)}px`;
-          document.body.appendChild(spark);
+      try {
+        document.addEventListener('mousemove', (e) => {
+          document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+          document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+          const trail = document.createElement('div');
+          trail.className = 'blitz-trail';
+          trail.style.left = `${e.clientX + (Math.random() * 10 - 5)}px`;
+          trail.style.top = `${e.clientY + (Math.random() * 10 - 5)}px`;
+          document.body.appendChild(trail);
           setTimeout(() => {
-            spark.style.opacity = 1;
-            spark.style.transform = 'scale(1.5)';
+            trail.style.opacity = 1;
+            trail.style.transform = 'scale(0.5) rotate(45deg)';
           }, 10);
           setTimeout(() => {
-            spark.style.opacity = 0;
-            spark.style.transform = 'scale(0.5) translateY(-20px)';
-            setTimeout(() => spark.remove(), 400);
+            trail.style.opacity = 0;
+            setTimeout(() => trail.remove(), 300);
           }, 200);
-        }
-      });
+        });
+
+        document.addEventListener('click', (e) => {
+          for (let i = 0; i < 3; i++) {
+            const spark = document.createElement('div');
+            spark.className = 'blitz-spark';
+            spark.style.left = `${e.clientX + (Math.random() * 20 - 10)}px`;
+            spark.style.top = `${e.clientY + (Math.random() * 20 - 10)}px`;
+            document.body.appendChild(spark);
+            setTimeout(() => {
+              spark.style.opacity = 1;
+              spark.style.transform = 'scale(1.5)';
+            }, 10);
+            setTimeout(() => {
+              spark.style.opacity = 0;
+              spark.style.transform = 'scale(0.5) translateY(-20px)';
+              setTimeout(() => spark.remove(), 400);
+            }, 200);
+          }
+        });
+      } catch (error) {
+        console.error("Fehler im Blitz-Cursor:", error);
+      }
     }
 
     // -----------------------------------
     // Glitch-Effekt Easter Egg für Hero-Text
     // -----------------------------------
-    let heroClickCount = 0;
-    const heroTitle = document.querySelector('#heroTitle');
-    heroTitle.addEventListener('click', () => {
-      heroClickCount++;
-      if (heroClickCount === 5) {
-        heroTitle.classList.add('glitch');
-        setTimeout(() => {
-          heroTitle.classList.remove('glitch');
-        }, 1200);
-        heroClickCount = 0;
-      }
-    });
+    try {
+      let heroClickCount = 0;
+      const heroTitle = document.querySelector('#heroTitle');
+      heroTitle.addEventListener('click', () => {
+        heroClickCount++;
+        if (heroClickCount === 5) {
+          heroTitle.classList.add('glitch');
+          setTimeout(() => {
+            heroTitle.classList.remove('glitch');
+          }, 1200);
+          heroClickCount = 0;
+        }
+      });
+    } catch (error) {
+      console.error("Fehler im Glitch-Effekt:", error);
+    }
   </script>
 </body>
 </html>
