@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Impressum für Projekt Univine – Transparent und Professionell">
+  <meta name="author" content="M. Höpfler">
+  <title>Impressum – Projekt Univine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
+      color: #374151;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(250,204,21,0.1), rgba(30,58,138,0.1));
+      z-index: -1;
+      transition: transform 0.1s ease;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      color: #111827;
+      font-size: 3.5rem;
+      text-align: center;
+      margin: 1rem 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    p, li {
+      line-height: 1.8;
+      color: #374151;
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin: 1rem 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+    }
+    .visible h1, .visible p, .visible li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .contact-box {
+      background: rgba(250,204,21,0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .contact-box a, p a {
+      color: #1e3a8a;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contact-box a:hover, p a:hover {
+      color: #facc15;
+    }
+    .back-button {
+      display: inline-block;
+      margin: 1rem 0;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .back-button:hover {
+      background: #facc15;
+      transform: scale(1.05);
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      width: 100%;
+      padding: 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav ul li a {
+      color: #111827;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #facc15;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+      padding: 0.6rem 0;
+      z-index: 12;
+    }
+    .mobile-nav ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+    }
+    .mobile-nav ul li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #111827;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.6rem;
+      transition: color 0.3s ease;
+    }
+    .mobile-nav ul li a:hover {
+      color: #facc15;
+    }
+    .mobile-nav ul li svg {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 0.3rem;
+    }
+    main {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(255,255,255,0.8);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: linear-gradient(to bottom, #111827, #1e3a8a);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    footer a {
+      color: #facc15;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #ffffff;
+    }
+    .dark-mode body {
+      background: linear-gradient(to bottom, #111827, #1f2937);
+      color: #e5e7eb;
+    }
+    .dark-mode .parallax-bg {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(30,58,138,0.1));
+    }
+    .dark-mode h1 {
+      color: #ffffff;
+    }
+    .dark-mode p, .dark-mode li {
+      color: #e5e7eb;
+    }
+    .dark-mode .contact-box {
+      background: rgba(250,204,21,0.2);
+    }
+    .dark-mode nav {
+      background: rgba(17,24,39,0.95);
+    }
+    .dark-mode nav ul li a {
+      color: #ffffff;
+    }
+    .dark-mode .mobile-nav {
+      background: rgba(17,24,39,0.95);
+    }
+    .dark-mode .mobile-nav ul li a {
+      color: #ffffff;
+    }
+    .dark-mode main {
+      background: rgba(31,41,55,0.8);
+    }
+    .dark-mode footer {
+      background: linear-gradient(to bottom, #111827, #1e3a8a);
+    }
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s ease, transform 0.5s ease;
+      z-index: 15;
+    }
+    .dark-mode-toggle:hover {
+      background: #facc15;
+      transform: rotate(360deg);
+    }
+    .dark-mode-toggle svg {
+      width: 24px;
+      height: 24px;
+    }
+    @media (min-width: 769px) {
+      * {
+        cursor: none;
+      }
+      body::after {
+        content: '';
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: #facc15;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(250,204,21,0.8);
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease, box-shadow 0.2s ease;
+      }
+      .dark-mode body::after {
+        background: #ffffff;
+        box-shadow: 0 0 8px rgba(255,255,255,0.8);
+      }
+      body {
+        --mouse-x: 0;
+        --mouse-y: 0;
+      }
+      body::after {
+        left: var(--mouse-x);
+        top: var(--mouse-y);
+      }
+      a:hover ~ body::after, button:hover ~ body::after {
+        transform: translate(-50%, -50%) scale(1.8);
+        background: #1e3a8a;
+        box-shadow: 0 0 12px rgba(30,58,138,0.9);
+      }
+      .dark-mode a:hover ~ body::after, .dark-mode button:hover ~ body::after {
+        background: #facc15;
+        box-shadow: 0 0 12px rgba(250,204,21,0.9);
+      }
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+      main {
+        padding: 2rem 1rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      p, li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax-bg"></div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Zurück zur Startseite</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="index.html"><i data-lucide="home"></i>Start</a></li>
+      <li><a href="datenschutz.html"><i data-lucide="shield"></i>Datenschutz</a></li>
+    </ul>
+  </div>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <i data-lucide="sun"></i>
+  </button>
+  <main class="visible">
+    <h1>Impressum</h1>
+    <p>Angaben gemäß § 5 TMG</p>
+    <ul>
+      <li><strong>Verantwortlicher</strong>: M. Höpfler</li>
+      <li><strong>Anschrift</strong>: Musterstraße 1, 12345 Musterstadt, Deutschland</li>
+      <li><strong>E-Mail</strong>: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a></li>
+    </ul>
+    <p><strong>Haftung für Inhalte</strong>: Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+    <p><strong>Haftung für Links</strong>: Für Inhalte externer Links übernehmen wir keine Haftung. Für die Inhalte der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+    <p><strong>Urheberrecht</strong>: Die Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Erstellers.</p>
+    <div class="contact-box">
+      <i data-lucide="mail"></i>
+      <p>Kontakt: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a></p>
+    </div>
+    <p>Weitere Informationen zum Datenschutz finden Sie in unserer <a href="datenschutz.html">Datenschutzrichtlinie</a>.</p>
+    <p><strong>Stand</strong>: April 2025</p>
+    <a href="index.html" class="back-button">Zurück zur Startseite</a>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Zurück</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p>© 2025 M. Höpfler | Projekt Univine – Eine moderne Vision</p>
+  </footer>
+  <script>
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark-mode');
+      const icon = document.querySelector('.dark-mode-toggle i');
+      icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
+      lucide.createIcons();
+    }
+    if (window.innerWidth > 768) {
+      document.addEventListener('mousemove', (e) => {
+        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+      });
+    }
+    window.addEventListener('scroll', () => {
+      const parallax = document.querySelector('.parallax-bg');
+      parallax.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      const main = document.querySelector('main');
+      setTimeout(() => main.classList.add('visible'), 100);
+    });
+  </script>
+</body>
+</html>
