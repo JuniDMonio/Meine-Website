@@ -138,32 +138,6 @@
       color: #111827;
       transform: scale(1.05);
     }
-    nav {
-      position: sticky;
-      top: 60px;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      width: 100%;
-      padding: 1rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-      z-index: 10;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-    }
-    nav ul li a {
-      color: #111827;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    nav ul li a:hover {
-      color: #facc15;
-    }
     .mobile-nav {
       display: none;
       position: fixed;
@@ -207,7 +181,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       position: relative;
       z-index: 5;
-      margin-top: 60px; /* Space for scrolling text */
+      margin-top: 40px; /* Angepasst, da nav weg ist */
     }
     footer {
       background: linear-gradient(to bottom, #111827, #1e3a8a);
@@ -260,12 +234,6 @@
     .dark-mode .contact-box a:hover, .dark-mode p a:hover {
       color: #ffffff;
     }
-    .dark-mode nav {
-      background: rgba(17,24,39,0.95);
-    }
-    .dark-mode nav ul li a {
-      color: #ffffff;
-    }
     .dark-mode .mobile-nav {
       background: rgba(17,24,39,1);
     }
@@ -280,7 +248,7 @@
     }
     .dark-mode-toggle {
       position: fixed;
-      top: 70px;
+      top: 48px; /* Angepasst wie impressum.html */
       right: 20px;
       background: linear-gradient(to right, #1e3a8a, #2b6cb0);
       color: white;
@@ -294,7 +262,7 @@
       justify-content: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: background 0.3s ease, transform 0.5s ease;
-      z-index: 15;
+      z-index: 16; /* Erhöht, um über Banner zu liegen */
     }
     .dark-mode-toggle:hover {
       background: #facc15;
@@ -342,9 +310,6 @@
       transition: width 0.3s ease;
     }
     @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
       .mobile-nav {
         display: block;
         backdrop-filter: none;
@@ -372,12 +337,6 @@
   <div class="scrolling-text-container">
     <div class="scrolling-text">Projekt Univine – Ihre Daten gehören Ihnen</div>
   </div>
-  <nav>
-    <ul>
-      <li><a href="index.html">Zurück zur Startseite</a></li>
-      <li><a href="impressum.html">Impressum</a></li>
-    </ul>
-  </nav>
   <div class="mobile-nav">
     <ul>
       <li><a href="index.html"><i data-lucide="home"></i>Start</a></li>
