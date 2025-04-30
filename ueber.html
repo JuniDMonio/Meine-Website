@@ -269,34 +269,40 @@
       background: linear-gradient(to bottom, rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.3)), url('https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png') center/contain no-repeat;
     }
 
-    .hero-text {
+    .hero-title {
       position: absolute;
-      top: 50%;
+      top: 10%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       color: #ffffff;
       text-align: center;
       text-shadow: 4px 4px 20px rgba(0,0,0,1), 0 0 15px rgba(250, 204, 21, 0.7);
-      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.65), rgba(17, 24, 39, 0.45));
-      padding: 2rem;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .hero-title h1 {
+      font-size: 3.8rem;
+      opacity: 0;
+      animation: fadeInText 1s ease forwards;
+    }
+
+    .hero-subtitle {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 4px 4px 20px rgba(0,0,0,1), 0 0 15px rgba(250, 204, 21, 0.7);
+      padding: 1rem;
       border-radius: 8px;
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
 
-    .dark-mode .hero-text {
-      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.3));
-    }
-
-    .hero-text h1 {
-      font-size: 3.8rem;
-      opacity: 0;
-      animation: fadeInText 1s ease forwards;
-    }
-
-    .hero-text p {
-      margin-top: 1rem;
+    .hero-subtitle p {
       font-size: 1.1rem;
       color: #ffffff;
       opacity: 0;
@@ -304,7 +310,7 @@
       line-height: 1.8;
     }
 
-    .hero-text .cta-button {
+    .hero-subtitle .cta-button {
       opacity: 0;
       animation: fadeInText 1s ease forwards 0.6s;
       padding: 1rem 2.5rem;
@@ -321,7 +327,7 @@
       animation: pulseButton 2s ease infinite;
     }
 
-    .hero-text .cta-button:hover {
+    .hero-subtitle .cta-button:hover {
       background: #facc15;
       transform: scale(1.05);
       box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
@@ -349,7 +355,7 @@
       transition: transform 0.3s ease;
     }
 
-    .about-image Народ: hover {
+    .about-image:hover {
       transform: scale(1.05);
     }
 
@@ -794,16 +800,16 @@
         height: 400px;
       }
 
-      .hero-text h1 {
+      .hero-title h1 {
         font-size: 2rem;
       }
 
-      .hero-text p {
+      .hero-subtitle p {
         font-size: 0.85rem;
         line-height: 1.8;
       }
 
-      .hero-text .cta-button {
+      .hero-subtitle .cta-button {
         font-size: 0.9rem;
         padding: 0.8rem 2rem;
       }
@@ -892,8 +898,10 @@
     <main>
       <!-- Hero Section -->
       <div class="hero-image">
-        <div class="hero-text">
+        <div class="hero-title">
           <h1>Über mich</h1>
+        </div>
+        <div class="hero-subtitle">
           <p>Meine Reise zur Fachinformatiker-Umschulung und die Geschichte hinter Projekt Univine.</p>
           <a href="index.html#kontakt" class="cta-button">Kontaktiere mich</a>
         </div>
@@ -924,7 +932,7 @@
           </div>
         </div>
         <div class="timeline-item">
-          <i data-lucide="palette"></i>
+          <i data-lucide=" Ascendancy </i>
           <div>
             <h3>CSS</h3>
             <p>Designe ästhetische, benutzerfreundliche Interfaces.</p>
