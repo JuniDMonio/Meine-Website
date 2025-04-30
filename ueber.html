@@ -13,7 +13,7 @@
   <title>Über mich – Projekt Univine</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/refs/heads/main/images/univine-logo.png" type="image/png">
+  <link rel="icon" href="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" type="image/png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
@@ -137,9 +137,9 @@
     }
 
     nav img {
-      max-width: 150px;
+      max-width: 200px;
       height: auto;
-      margin: 1rem 0;
+      margin: 1rem auto;
       display: block;
     }
 
@@ -367,733 +367,724 @@
     }
 
     .quote-block {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      padding: 2rem;
-      border-radius: 12px;
-      margin: 2rem 0;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      cursor: pointer;
-    }
-
-    .quote-block.glitch {
-      animation: glitch 0.4s ease-in-out 3;
-      position: relative;
-    }
-
-    .quote-block.glitch::before,
-    .quote-block.glitch::after {
-      content: '„Alles, was du träumen kannst, kannst du schaffen.“';
-      position: absolute;
-      top: 2rem;
-      left: 2rem;
-      width: calc(100% - 4rem);
-      height: calc(100% - 4rem);
-      clip: rect(0, 900px, 0, 0);
-    }
-
-    .quote-block.glitch::before {
-      color: #facc15;
-      left: 2.2rem;
-      text-shadow: -2px 0 #facc15;
-      animation: glitch-top 0.4s ease-in-out 3;
-    }
-
-    .quote-block.glitch::after {
-      color: #1e3a8a;
-      left: 1.8rem;
-      text-shadow: 2px 0 #1e3a8a;
-      animation: glitch-bottom 0.4s ease-in-out 3;
-    }
-
-    @keyframes glitch {
-      0%, 100% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(2px, -2px); }
-      60% { transform: translate(-2px, 0); }
-      80% { transform: translate(2px, 0); }
-    }
-
-    @keyframes glitch-top {
-      0%, 100% { clip: rect(0, 900px, 0, 0); }
-      20% { clip: rect(10px, 900px, 20px, 0); }
-      40% { clip: rect(30px, 900px, 40px, 0); }
-      60% { clip: rect(20px, 900px, 30px, 0); }
-      80% { clip: rect(0, 900px, 10px, 0); }
-    }
-
-    @keyframes glitch-bottom {
-      0%, 100% { clip: rect(0, 900px, 0, 0); }
-      20% { clip: rect(50px, 900px, 60px, 0); }
-      40% { clip: rect(70px, 900px, 80px, 0); }
-      60% { clip: rect(60px, 900px, 70px, 0); }
-      80% { clip: rect(40px, 900px, 50px, 0); }
-    }
-
-    .quote-block p {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-style: italic;
-      color: #1e3a8a;
-    }
-
-    .quote-block cite {
-      display: block;
-      margin-top: 1rem;
-      font-size: 1rem;
-      color: #6b7280;
-      font-style: normal;
-    }
-
-    .dark-mode .quote-block {
-      background: rgba(17, 24, 39, 0.9);
-    }
-
-    .dark-mode .quote-block p {
-      color: #facc15;
-      text-shadow: 0 0 5px rgba(250, 204, 21, 0.5);
-    }
-
-    /* ----------------------------------- */
-    /* Skills Timeline */
-    /* ----------------------------------- */
-    .skills-timeline {
-      margin: 2rem 0;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .timeline-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid #facc15;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .timeline-item:hover {
-      transform: translateX(10px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .timeline-item svg {
-      width: 24px;
-      height: 24px;
-      color: #1e3a8a;
-    }
-
-    .timeline-item h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .timeline-item p {
-      font-size: 1rem;
-      color: #6b7280;
-    }
-
-    .dark-mode .skills-timeline {
-      background: rgba(17, 24, 39, 0.9);
-    }
-
-    .dark-mode .timeline-item p {
-      color: #d1d5db;
-    }
-
-    .dark-mode .timeline-item svg {
-      color: #facc15;
-    }
-
-    /* ----------------------------------- */
-    /* Footer */
-    /* ----------------------------------- */
-    footer {
-      background: linear-gradient(to bottom, #111827, #1e3a8a);
-      padding: 5rem 2rem;
-      text-align: center;
-      color: #ffffff;
-      font-size: 0.9rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    footer .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    footer a {
-      color: #facc15;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: #ffffff;
-    }
-
-    footer .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    footer .social-icons a {
-      color: #ffffff;
-      font-size: 1.2rem;
-      transition: transform 0.27s ease;
-    }
-
-    footer .social-icons a:hover {
-      transform: scale(1.2);
-      color: #facc15;
-    }
-
-    /* ----------------------------------- */
-    /* Scrolling Text */
-    /* ----------------------------------- */
-    .scrolling-text-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(to right, #111827, #1e3a8a);
-      color: white;
-      padding: 0.6rem 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      z-index: 15;
-    }
-
-    .scrolling-text {
-      display: inline-block;
-      animation: scroll-left 12s linear infinite;
-    }
-
-    @keyframes scroll-left {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
-
-    /* ----------------------------------- */
-    /* Splash Screen */
-    /* ----------------------------------- */
-    #splash {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #1e3a8a, #111827);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      transition: opacity 1s ease;
-      cursor: pointer;
-    }
-
-    #splash.hidden {
-      display: none;
-    }
-
-    #splash h1 {
-      font-size: 3rem;
-      opacity: 0;
-      animation: fadeInText 1s ease forwards;
-    }
-
-    #splash p {
-      font-size: 1.2rem;
-      opacity: 0;
-      animation: fadeInText 1s ease forwards 0.5s;
-      margin-bottom: 2rem;
-    }
-
-    #splash .loader {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #facc15;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      opacity: 0;
-      animation: fadeInText 1s ease forwards 1s;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* ----------------------------------- */
-    /* Progress Bar */
-    /* ----------------------------------- */
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: #facc15;
-      z-index: 20;
-      transition: width 0.3s ease;
-    }
-
-    /* ----------------------------------- */
-    /* Back to Top */
-    /* ----------------------------------- */
-    .back-to-top {
-      position: fixed;
-      bottom: 90px;
-      right: 15px;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
-      padding: 0;
-      border-radius: 50%;
-      display: none;
-      z-index: 10;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      width: 32px;
-      height: 32px;
-      line-height: 32px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .back-to-top.visible {
-      display: block;
-      opacity: 1;
-    }
-
-    .back-to-top:hover {
-      transform: scale(1.1);
-    }
-
-    .back-to-top svg {
-      width: 20px;
-      height: 20px;
-      vertical-align: middle;
-    }
-
-    /* ----------------------------------- */
-    /* Dark Mode Toggle */
-    /* ----------------------------------- */
-    .dark-mode-toggle {
-      position: fixed;
-      top: 70px;
-      right: 20px;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
-      padding: 0.5rem;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-      width: 40px;
-      transition: transform 0.3s ease, background 0.3s ease;
-      z-index: 10;
-    }
-
-    .dark-mode-toggle:hover {
-      background: #facc15;
-      transform: rotate(360deg);
-    }
-
-    /* ----------------------------------- */
-    /* Dark Mode */
-    /* ----------------------------------- */
-    .dark-mode body {
-      background: linear-gradient(to bottom, #111827, #1f2937);
-      color: #ffffff;
-    }
-
-    .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4 {
-      color: #ffffff;
-    }
-
-    .dark-mode p {
-      color: #ffffff;
-    }
-
-    .dark-mode nav {
-      background: rgba(17, 24, 39, 0.9);
-    }
-
-    .dark-mode nav ul li a {
-      color: #ffffff;
-      text-shadow: 0 0 5px rgba(250, 204, 21, 0.3);
-    }
-
-    .dark-mode .mobile-nav {
-      background: rgba(17, 24, 39, 0.95);
-    }
-
-    .dark-mode .mobile-nav ul li a {
-      color: #ffffff;
-    }
-
-    .dark-mode footer {
-      background: linear-gradient(to bottom, #111827, #1e3a8a);
-    }
-
-    .dark-mode .scrolling-text-container {
-      background: linear-gradient(to right, #111827, #1e3a8a);
-    }
-
-    .dark-mode .about-image {
-      box-shadow: 0 4px 12px rgba(250, 204, 21, 0.2);
-    }
-
-    /* ----------------------------------- */
-    /* Animations */
-    /* ----------------------------------- */
-    @keyframes fadeInText {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulseButton {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-    }
-
-    /* ----------------------------------- */
-    /* Media Queries */
-    /* ----------------------------------- */
-    @media (max-width: 768px) {
-      nav {
-        display: none;
+      background: rgba(255, 255, 255, 0.9 | 2rem | 12px | center | 0 4px 12px rgba(0,0,0,0.1) | pointer
+      .quote-block.glitch {
+        animation: glitch 0.4s ease-in-out 3;
+        position: relative;
       }
 
-      .mobile-nav {
-        display: block;
+      .quote-block.glitch::before,
+      .quote-block.glitch::after {
+        content: '„Alles, was du träumen kannst, kannst du schaffen.“';
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        width: calc(100% - 4rem);
+        height: calc(100% - 4rem);
+        clip: rect(0, 900px, 0, 0);
       }
 
-      .content-wrapper {
-        margin-left: 0;
-        width: 100%;
-        padding-top: 60px;
-        padding-bottom: 70px;
+      .quote-block.glitch::before {
+        color: #facc15;
+        left: 2.2rem;
+        text-shadow: -2px 0 #facc15;
+        animation: glitch-top 0.4s ease-in-out 3;
       }
 
-      main {
-        padding: 1.5rem;
+      .quote-block.glitch::after {
+        color: #1e3a8a;
+        left: 1.8rem;
+        text-shadow: 2px 0 #1e3a8a;
+        animation: glitch-bottom 0.4s ease-in-out 3;
       }
 
-      .hero-image {
-        height: 400px;
+      @keyframes glitch {
+        0%, 100% { transform: translate(0); }
+        20% { transform: translate(-2px, 2px); }
+        40% { transform: translate(2px, -2px); }
+        60% { transform: translate(-2px, 0); }
+        80% { transform: translate(2px, 0); }
       }
 
-      .hero-text h1 {
-        font-size: 2rem;
+      @keyframes glitch-top {
+        0%, 100% { clip: rect(0, 900px, 0, 0); }
+        20% { clip: rect(10px, 900px, 20px, 0); }
+        40% { clip: rect(30px, 900px, 40px, 0); }
+        60% { clip: rect(20px, 900px, 30px, 0); }
+        80% { clip: rect(0, 900px, 10px, 0); }
       }
 
-      .hero-text p {
-        font-size: 0.85rem;
-        line-height: 1.8;
-      }
-
-      .hero-text .cta-button {
-        font-size: 0.9rem;
-        padding: 0.8rem 2rem;
-      }
-
-      .about-image {
-        max-width: 200px;
-      }
-
-      section h2 {
-        font-size: 1.9rem;
-      }
-
-      .timeline-item h3 {
-        font-size: 1rem;
-      }
-
-      .timeline-item p {
-        font-size: 0.9rem;
+      @keyframes glitch-bottom {
+        0%, 100% { clip: rect(0, 900px, 0, 0); }
+        20% { clip: rect(50px, 900px, 60px, 0); }
+        40% { clip: rect(70px, 900px, 80px, 0); }
+        60% { clip: rect(60px, 900px, 70px, 0); }
+        80% { clip: rect(40px, 900px, 50px, 0); }
       }
 
       .quote-block p {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-style: italic;
+        color: #1e3a8a;
+      }
+
+      .quote-block cite {
+        display: block;
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: #6b7280;
+        font-style: normal;
+      }
+
+      .dark-mode .quote-block {
+        background: rgba(17, 24, 39, 0.9);
+      }
+
+      .dark-mode .quote-block p {
+        color: #facc15;
+        text-shadow: 0 0 5px rgba(250, 204, 21, 0.5);
+      }
+
+      /* ----------------------------------- */
+      /* Skills Timeline */
+      /* ----------------------------------- */
+      .skills-timeline {
+        margin: 2rem 0;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+
+      .timeline-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid #facc15;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .timeline-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      .timeline-item svg {
+        width: 24px;
+        height: 24px;
+        color: #1e3a8a;
+      }
+
+      .timeline-item h3 {
         font-size: 1.2rem;
+        font-weight: 600;
       }
 
+      .timeline-item p {
+        font-size: 1rem;
+        color: #6b7280;
+      }
+
+      .dark-mode .skills-timeline {
+        background: rgba(17, 24, 39, 0.9);
+      }
+
+      .dark-mode .timeline-item p {
+        color: #d1d5db;
+      }
+
+      .dark-mode .timeline-item svg {
+        color: #facc15;
+      }
+
+      /* ----------------------------------- */
+      /* Footer */
+      /* ----------------------------------- */
       footer {
+        background: linear-gradient(to bottom, #111827, #1e3a8a);
+        padding: 5rem 2rem;
+        text-align: center;
+        color: #ffffff;
         font-size: 0.9rem;
-        line-height: 2;
-        padding: 4rem 1.5rem;
+        position: relative;
+        overflow: hidden;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <!-- Progress Bar -->
-  <div class="progress-bar"></div>
+      footer .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
 
-  <!-- Splash Screen -->
-  <div id="splash" onclick="hideSplash()">
-    <div class="splash-bg"></div>
-    <h1>Über mich</h1>
-    <p>Meine Reise mit Projekt Univine</p>
-    <div class="loader"></div>
-  </div>
+      footer a {
+        color: #facc15;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
 
-  <!-- Scrolling Text -->
-  <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine – Meine Vision für die Zukunft</div>
-  </div>
+      footer a:hover {
+        color: #ffffff;
+      }
 
-  <!-- Desktop Navigation -->
-  <nav>
-    <img src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/refs/heads/main/images/univine-logo.png" alt="Projekt Univine Logo" style="max-width: 300px; height: auto; margin: 1rem 0;" />
-    <ul>
-      <li><a href="index.html#start">Start</a></li>
-      <li><a href="index.html#vision">Vision</a></li>
-      <li><a href="index.html#journey">Meine Reise</a></li>
-      <li><a href="index.html#projekt">Projekt</a></li>
-      <li><a href="index.html#faqs">FAQs</a></li>
-      <li><a href="index.html#partner">Partner</a></li>
-      <li><a href="index.html#kontakt">Kontakt</a></li>
-      <li><a href="ueber.html">Über mich</a></li>
-    </ul>
-  </nav>
+      footer .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
 
-  <!-- Mobile Navigation -->
-  <div class="mobile-nav">
-    <ul>
-      <li><a href="index.html#start"><i data-lucide="home"></i>Start</a></li>
-      <li><a href="index.html#vision"><i data-lucide="eye"></i>Vision</a></li>
-      <li><a href="index.html#journey"><i data-lucide="user"></i>Reise</a></li>
-      <li><a href="index.html#projekt"><i data-lucide="briefcase"></i>Projekt</a></li>
-      <li><a href="index.html#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
-      <li><a href="index.html#partner"><i data-lucide="users"></i>Partner</a></li>
-      <li><a href="index.html#kontakt"><i data-lucide="mail"></i>Kontakt</a></li>
-      <li><a href="ueber.html"><i data-lucide="user"></i>Über</a></li>
-    </ul>
-  </div>
+      footer .social-icons a {
+        color: #ffffff;
+        font-size: 1.2rem;
+        transition: transform 0.27s ease;
+      }
 
-  <!-- Dark Mode Toggle -->
-  <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-    <i data-lucide="sun"></i>
-  </button>
+      footer .social-icons a:hover {
+        transform: scale(1.2);
+        color: #facc15;
+      }
 
-  <!-- Main Content -->
-  <div class="content-wrapper">
-    <main>
-      <!-- Hero Section -->
-      <div class="hero-image">
-        <div class="hero-text">
-          <h1>Über mich</h1>
-          <p>Meine Reise zur Fachinformatiker-Umschulung und die Geschichte hinter Projekt Univine.</p>
-          <a href="index.html#kontakt" class="cta-button">Kontaktiere mich</a>
+      /* ----------------------------------- */
+      /* Scrolling Text */
+      /* ----------------------------------- */
+      .scrolling-text-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to right, #111827, #1e3a8a);
+        color: white;
+        padding: 0.6rem 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        z-index: 15;
+      }
+
+      .scrolling-text {
+        display: inline-block;
+        animation: scroll-left 12s linear infinite;
+      }
+
+      @keyframes scroll-left {
+        from { transform: translateX(100%); }
+        to { transform: translateX(-100%); }
+      }
+
+      /* ----------------------------------- */
+      /* Splash Screen */
+      /* ----------------------------------- */
+      #splash {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, #1e3a8a, #111827);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        transition: opacity 1s ease;
+        cursor: pointer;
+      }
+
+      #splash.hidden {
+        display: none;
+      }
+
+      #splash h1 {
+        font-size: 3rem;
+        opacity: 0;
+        animation: fadeInText 1s ease forwards;
+      }
+
+      #splash p {
+        font-size: 1.2rem;
+        opacity: 0;
+        animation: fadeInText 1s ease forwards 0.5s;
+        margin-bottom: 2rem;
+      }
+
+      #splash .loader {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #facc15;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        opacity: 0;
+        animation: fadeInText 1s ease forwards 1s;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      /* ----------------------------------- */
+      /* Progress Bar */
+      /* ----------------------------------- */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: #facc15;
+        z-index: 20;
+        transition: width 0.3s ease;
+      }
+
+      /* ----------------------------------- */
+      /* Back to Top */
+      /* ----------------------------------- */
+      .back-to-top {
+        position: fixed;
+        bottom: 90px;
+        right: 15px;
+        background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+        color: white;
+        padding: 0;
+        border-radius: 50%;
+        display: none;
+        z-index: 10;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+
+      .back-to-top.visible {
+        display: block;
+        opacity: 1;
+      }
+
+      .back-to-top:hover {
+        transform: scale(1.1);
+      }
+
+      .back-to-top svg {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+      }
+
+      /* ----------------------------------- */
+      /* Dark Mode Toggle */
+      /* ----------------------------------- */
+      .dark-mode-toggle {
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        background: linear-gradient(to right, #1e3a8a, #2b6cb0);
+        color: white;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 40px;
+        transition: transform 0.3s ease, background 0.3s ease;
+        z-index: 10;
+      }
+
+      .dark-mode-toggle:hover {
+        background: #facc15;
+        transform: rotate(360deg);
+      }
+
+      /* ----------------------------------- */
+      /* Dark Mode */
+      /* ----------------------------------- */
+      .dark-mode body {
+        background: linear-gradient(to bottom, #111827, #1f2937);
+        color: #ffffff;
+      }
+
+      .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4 {
+        color: #ffffff;
+      }
+
+      .dark-mode p {
+        color: #ffffff;
+      }
+
+      .dark-mode nav {
+        background: rgba(17, 24, 39, 0.9);
+      }
+
+      .dark-mode nav ul li a {
+        color: #ffffff;
+        text-shadow: 0 0 5px rgba(250, 204, 21, 0.3);
+      }
+
+      .dark-mode .mobile-nav {
+        background: rgba(17, 24, 39, 0.95);
+      }
+
+      .dark-mode .mobile-nav ul li a {
+        color: #ffffff;
+      }
+
+      .dark-mode footer {
+        background: linear-gradient(to bottom, #111827, #1e3a8a);
+      }
+
+      .dark-mode .scrolling-text-container {
+        background: linear-gradient(to right, #111827, #1e3a8a);
+      }
+
+      .dark-mode .about-image {
+        box-shadow: 0 4px 12px rgba(250, 204, 21, 0.2);
+      }
+
+      /* ----------------------------------- */
+      /* Animations */
+      /* ----------------------------------- */
+      @keyframes fadeInText {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes pulseButton {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.02); }
+      }
+
+      /* ----------------------------------- */
+      /* Media Queries */
+      /* ----------------------------------- */
+      @media (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        .mobile-nav {
+          display: block;
+        }
+
+        .content-wrapper {
+          margin-left: 0;
+          width: 100%;
+          padding-top: 60px;
+          padding-bottom: 70px;
+        }
+
+        main {
+          padding: 1.5rem;
+        }
+
+        .hero-image {
+          height: 400px;
+        }
+
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+
+        .hero-text p {
+          font-size: 0.85rem;
+          line-height: 1.8;
+        }
+
+        .hero-text .cta-button {
+          font-size: 0.9rem;
+          padding: 0.8rem 2rem;
+        }
+
+        .about-image {
+          max-width: 200px;
+        }
+
+        section h2 {
+          font-size: 1.9rem;
+        }
+
+        .timeline-item h3 {
+          font-size: 1rem;
+        }
+
+        .timeline-item p {
+          font-size: 0.9rem;
+        }
+
+        .quote-block p {
+          font-size: 1.2rem;
+        }
+
+        footer {
+          font-size: 0.9rem;
+          line-height: 2;
+          padding: 4rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Splash Screen -->
+    <div id="splash" onclick="hideSplash()">
+      <div class="splash-bg"></div>
+      <h1>Über mich</h1>
+      <p>Meine Reise mit Projekt Univine</p>
+      <div class="loader"></div>
+    </div>
+
+    <!-- Scrolling Text -->
+    <div class="scrolling-text-container">
+      <div class="scrolling-text">Projekt Univine – Meine Vision für die Zukunft</div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+      <img src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" alt="Projekt Univine Logo" style="max-width: 200px; height: auto; margin: 1rem auto;" />
+      <ul>
+        <li><a href="index.html#start">Start</a></li>
+        <li><a href="index.html#vision">Vision</a></li>
+        <li><a href="index.html#journey">Meine Reise</a></li>
+        <li><a href="index.html#projekt">Projekt</a></li>
+        <li><a href="index.html#faqs">FAQs</a></li>
+        <li><a href="index.html#partner">Partner</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="ueber.html">Über mich</a></li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+      <ul>
+        <li><a href="index.html#start"><i data-lucide="home"></i>Start</a></li>
+        <li><a href="index.html#vision"><i data-lucide="eye"></i>Vision</a></li>
+        <li><a href="index.html#journey"><i data-lucide="user"></i>Reise</a></li>
+        <li><a href="index.html#projekt"><i data-lucide="briefcase"></i>Projekt</a></li>
+        <li><a href="index.html#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
+        <li><a href="index.html#partner"><i data-lucide="users"></i>Partner</a></li>
+        <li><a href="index.html#kontakt"><i data-lucide="mail"></i>Kontakt</a></li>
+        <li><a href="ueber.html"><i data-lucide="user"></i>Über</a></li>
+      </ul>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+      <i data-lucide="sun"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+      <main>
+        <!-- Hero Section -->
+        <div class="hero-image">
+          <div class="hero-text">
+            <h1>Über mich</h1>
+            <p>Meine Reise zur Fachinformatiker-Umschulung und die Geschichte hinter Projekt Univine.</p>
+            <a href="index.html#kontakt" class="cta-button">Kontaktiere mich</a>
+          </div>
         </div>
+
+        <!-- About Section -->
+        <section id="about" class="about-section visible">
+          <h2>Meine Geschichte</h2>
+          <img src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/me.jpg" alt="M. Höpfler" class="about-image" loading="lazy" />
+          <div class="about-text">
+            <p>Hi, ich bin M. Höpfler, und Projekt Univine ist mein Sprungbrett in die Welt der Technologie. Gerade starte ich meine Umschulung zum Fachinformatiker für Anwendungsentwicklung – ein Weg, der mich mit Leidenschaft und Entschlossenheit antreibt. Mein Ziel? Innovative Lösungen schaffen, die Technologie und Design vereinen. Univine ist mein erster Schritt, diese Vision lebendig zu machen.</p>
+            <p>Vor meiner Umschulung habe ich in verschiedenen Bereichen gearbeitet, doch die Faszination für Code und digitale Kreativität hat mich nie losgelassen. Jetzt, mit Unterstützung von Mentoren wie John H. und Vionic, lerne ich jeden Tag, wie ich meine Ideen in die Tat umsetze.</p>
+          </div>
+          <div class="quote-block">
+            <p>„Alles, was du träumen kannst, kannst du schaffen.“</p>
+            <cite>– M. Höpfler</cite>
+          </div>
+        </section>
+
+        <!-- Skills Timeline -->
+        <section id="skills" class="skills-timeline visible">
+          <h2>Meine Skills</h2>
+          <div class="timeline-item">
+            <i data-lucide="code"></i>
+            <div>
+              <h3>HTML</h3>
+              <p>Erstelle strukturierte, responsive Webseiten wie Univine.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <i data-lucide="palette"></i>
+            <div>
+              <h3>CSS</h3>
+              <p>Designe ästhetische, benutzerfreundliche Interfaces.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <i data-lucide="zap"></i>
+            <div>
+              <h3>JavaScript (Lernphase)</h3>
+              <p>Baue interaktive Features – mein nächster Meilenstein.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <i data-lucide="target"></i>
+            <div>
+              <h3>Zukunft: Full-Stack</h3>
+              <p>Plane, Backend-Technologien wie Node.js zu lernen.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-links">
+        <a href="ueber.html">Über</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
       </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/markus-junior-höpfler-ab2814361/" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+        <a href="https://github.com/hoepfler-m" aria-label="GitHub"><i data-lucide="github"></i></a>
+      </div>
+      <p>©️ 2025 M. Höpfler | Projekt Univine – Meine Zukunftsvision</p>
+    </footer>
 
-      <!-- About Section -->
-      <section id="about" class="about-section visible">
-        <h2>Meine Geschichte</h2>
-        <img src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/me.jpg" alt="M. Höpfler" class="about-image" loading="lazy" />
-        <div class="about-text">
-          <p>Hi, ich bin M. Höpfler, und Projekt Univine ist mein Sprungbrett in die Welt der Technologie. Gerade starte ich meine Umschulung zum Fachinformatiker für Anwendungsentwicklung – ein Weg, der mich mit Leidenschaft und Entschlossenheit antreibt. Mein Ziel? Innovative Lösungen schaffen, die Technologie und Design vereinen. Univine ist mein erster Schritt, diese Vision lebendig zu machen.</p>
-          <p>Vor meiner Umschulung habe ich in verschiedenen Bereichen gearbeitet, doch die Faszination für Code und digitale Kreativität hat mich nie losgelassen. Jetzt, mit Unterstützung von Mentoren wie John H. und Vionic, lerne ich jeden Tag, wie ich meine Ideen in die Tat umsetze.</p>
-        </div>
-        <div class="quote-block">
-          <p>„Alles, was du träumen kannst, kannst du schaffen.“</p>
-          <cite>– M. Höpfler</cite>
-        </div>
-      </section>
+    <!-- Back to Top -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <i data-lucide="arrow-up"></i>
+    </button>
 
-      <!-- Skills Timeline -->
-      <section id="skills" class="skills-timeline visible">
-        <h2>Meine Skills</h2>
-        <div class="timeline-item">
-          <i data-lucide="code"></i>
-          <div>
-            <h3>HTML</h3>
-            <p>Erstelle strukturierte, responsive Webseiten wie Univine.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <i data-lucide="palette"></i>
-          <div>
-            <h3>CSS</h3>
-            <p>Designe ästhetische, benutzerfreundliche Interfaces.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <i data-lucide="zap"></i>
-          <div>
-            <h3>JavaScript (Lernphase)</h3>
-            <p>Baue interaktive Features – mein nächster Meilenstein.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <i data-lucide="target"></i>
-          <div>
-            <h3>Zukunft: Full-Stack</h3>
-            <p>Plane, Backend-Technologien wie Node.js zu lernen.</p>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-links">
-      <a href="ueber.html">Über</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-    </div>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/markus-junior-höpfler-ab2814361/" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-      <a href="https://github.com/hoepfler-m" aria-label="GitHub"><i data-lucide="github"></i></a>
-    </div>
-    <p>© 2025 M. Höpfler | Projekt Univine – Meine Zukunftsvision</p>
-  </footer>
-
-  <!-- Back to Top -->
-  <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-    <i data-lucide="arrow-up"></i>
-  </button>
-
-  <!-- JavaScript -->
-  <script>
-    // -----------------------------------
-    // Initialize Page
-    // -----------------------------------
-    document.addEventListener("DOMContentLoaded", () => {
-      try {
-        // Splash-Screen ausblenden
-        const splash = document.getElementById('splash');
-        if (splash) {
-          splash.classList.add('hidden');
-        } else {
-          console.error("Splash-Element nicht gefunden!");
-        }
-        
-        // Lucide-Icons laden
-        if (typeof lucide !== 'undefined') {
-          lucide.createIcons();
-        } else {
-          console.error("Lucide-Bibliothek nicht geladen!");
-        }
-        
-        console.log("Über-Seite initialisiert");
-      } catch (error) {
-        console.error("Fehler bei der Initialisierung:", error);
-      }
-    });
-
-    // -----------------------------------
-    // Section Visibility Observer
-    // -----------------------------------
-    try {
-      const sections = document.querySelectorAll("section");
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.1 });
-
-      sections.forEach(section => observer.observe(section));
-    } catch (error) {
-      console.error("Fehler im Intersection Observer:", error);
-    }
-
-    // -----------------------------------
-    // Toggle Dark Mode
-    // -----------------------------------
-    function toggleDarkMode() {
-      try {
-        document.documentElement.classList.toggle('dark-mode');
-        const icon = document.querySelector('.dark-mode-toggle i');
-        icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
-        if (typeof lucide !== 'undefined') {
-          lucide.createIcons();
-        }
-      } catch (error) {
-        console.error("Fehler beim Umschalten des Dark Mode:", error);
-      }
-    }
-
-    // -----------------------------------
-    // Hide Splash Screen
-    // -----------------------------------
-    function hideSplash() {
-      try {
-        const splash = document.getElementById('splash');
-        if (splash) {
-          splash.classList.add('hidden');
-        }
-        console.log("Splash-Screen ausgeblendet");
-      } catch (error) {
-        console.error("Fehler beim Ausblenden des Splash-Screen:", error);
-      }
-    }
-
-    // -----------------------------------
-    // Scroll Progress and Back-to-Top
-    // -----------------------------------
-    window.addEventListener('scroll', () => {
-      try {
-        requestAnimationFrame(() => {
-          const backToTop = document.querySelector('.back-to-top');
-          const progressBar = document.querySelector('.progress-bar');
-          const scrollTop = window.scrollY;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const scrollPercent = (scrollTop / docHeight) * 100;
-          progressBar.style.width = scrollPercent + '%';
-          if (scrollTop > 300) {
-            backToTop.classList.add('visible');
+    <!-- JavaScript -->
+    <script>
+      // -----------------------------------
+      // Initialize Page
+      // -----------------------------------
+      document.addEventListener("DOMContentLoaded", () => {
+        try {
+          // Splash-Screen ausblenden
+          const splash = document.getElementById('splash');
+          if (splash) {
+            splash.classList.add('hidden');
           } else {
-            backToTop.classList.remove('visible');
+            console.error("Splash-Element nicht gefunden!");
           }
-        });
-      } catch (error) {
-        console.error("Fehler im Scroll-Handler:", error);
-      }
-    });
-
-    // -----------------------------------
-    // Glitch Easter Egg for Quote
-    // -----------------------------------
-    try {
-      let quoteClickCount = 0;
-      const quoteBlock = document.querySelector('.quote-block');
-      quoteBlock.addEventListener('click', () => {
-        quoteClickCount++;
-        if (quoteClickCount === 5) {
-          quoteBlock.classList.add('glitch');
-          setTimeout(() => {
-            quoteBlock.classList.remove('glitch');
-          }, 1200);
-          quoteClickCount = 0;
+          
+          // Lucide-Icons laden
+          if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+          } else {
+            console.error("Lucide-Bibliothek nicht geladen!");
+          }
+          
+          console.log("Über-Seite initialisiert");
+        } catch (error) {
+          console.error("Fehler bei der Initialisierung:", error);
         }
       });
-    } catch (error) {
-      console.error("Fehler im Glitch-Effekt:", error);
-    }
-  </script>
-</body>
+
+      // -----------------------------------
+      // Section Visibility Observer
+      // -----------------------------------
+      try {
+        const sections = document.querySelectorAll("section");
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+      } catch (error) {
+        console.error("Fehler im Intersection Observer:", error);
+      }
+
+      // -----------------------------------
+      // Toggle Dark Mode
+      // -----------------------------------
+      function toggleDarkMode() {
+        try {
+          document.documentElement.classList.toggle('dark-mode');
+          const icon = document.querySelector('.dark-mode-toggle i');
+          icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
+          if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+          }
+        } catch (error) {
+          console.error("Fehler beim Umschalten des Dark Mode:", error);
+        }
+      }
+
+      // -----------------------------------
+      // Hide Splash Screen
+      // -----------------------------------
+      function hideSplash() {
+        try {
+          const splash = document.getElementById('splash');
+          if (splash) {
+            splash.classList.add('hidden');
+          }
+          console.log("Splash-Screen ausgeblendet");
+        } catch (error) {
+          console.error("Fehler beim Ausblenden des Splash-Screen:", error);
+        }
+      }
+
+      // -----------------------------------
+      // Scroll Progress and Back-to-Top
+      // -----------------------------------
+      window.addEventListener('scroll', () => {
+        try {
+          requestAnimationFrame(() => {
+            const backToTop = document.querySelector('.back-to-top');
+            const progressBar = document.querySelector('.progress-bar');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+            if (scrollTop > 300) {
+              backToTop.classList.add('visible');
+            } else {
+              backToTop.classList.remove('visible');
+            }
+          });
+        } catch (error) {
+          console.error("Fehler im Scroll-Handler:", error);
+        }
+      });
+
+      // -----------------------------------
+      // Glitch Easter Egg for Quote
+      // -----------------------------------
+      try {
+        let quoteClickCount = 0;
+        const quoteBlock = document.querySelector('.quote-block');
+        quoteBlock.addEventListener('click', () => {
+          quoteClickCount++;
+          if (quoteClickCount === 5) {
+            quoteBlock.classList.add('glitch');
+            setTimeout(() => {
+              quoteBlock.classList.remove('glitch');
+            }, 1200);
+            quoteClickCount = 0;
+          }
+        });
+      } catch (error) {
+        console.error("Fehler im Glitch-Effekt:", error);
+      }
+    </script>
+  </body>
 </html>
