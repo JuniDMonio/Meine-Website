@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Impressum für Projekt Univine – Transparent und Professionell">
+  <meta name="description" content="Impressum für Univine – Transparent und Professionell">
   <meta name="author" content="M. Höpfler">
-  <title>Impressum – Projekt Univine</title>
+  <title>Impressum – Univine</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -48,7 +48,7 @@
       transform: translateY(0);
     }
     .contact-box {
-      background: rgba(250,204,21,0.1);
+      background: rgba(192,192,192,0.1);
       border-radius: 8px;
       padding: 1rem;
       margin: 1rem 0;
@@ -64,7 +64,7 @@
       transition: color 0.3s ease;
     }
     .contact-box a:hover, p a:hover {
-      color: #facc15;
+      color: #c0c0c0;
     }
     .back-button {
       display: inline-block;
@@ -78,43 +78,9 @@
       transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
     }
     .back-button:hover {
-      background: #facc15;
+      background: linear-gradient(to right, #c0c0c0, #d3d3d3);
       color: #111827;
       transform: scale(1.05);
-    }
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: rgba(255,255,255,1);
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.1); 
-      padding: 0.6rem 0;
-      z-index: 12;
-    }
-    .mobile-nav ul {
-      display: flex;
-      justify-content: space-around;
-      list-style: none;
-    }
-    .mobile-nav ul li a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #111827;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      padding: 0.6rem;
-      transition: color 0.3s ease;
-    }
-    .mobile-nav ul li a:hover {
-      color: #facc15;
-    }
-    .mobile-nav ul li svg {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 0.3rem;
     }
     main {
       padding: 3rem 2rem;
@@ -125,7 +91,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       position: relative;
       z-index: 5;
-      margin-top: 40px; /* Hinzugefügt für Banner-Abstand */
+      margin-top: 40px;
     }
     footer {
       background: linear-gradient(to bottom, #111827, #1e3a8a);
@@ -141,13 +107,29 @@
       margin-bottom: 1rem;
     }
     footer a {
-      color: #facc15;
+      color: #c0c0c0;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
     }
     footer a:hover {
       color: #ffffff;
+    }
+    footer .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    footer .social-icons a {
+      color: #ffffff;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    footer .social-icons a:hover {
+      transform: scale(1.2);
+      color: #c0c0c0;
     }
     .dark-mode body {
       background: linear-gradient(to bottom, #111827, #1f2937);
@@ -160,18 +142,12 @@
       color: #ffffff;
     }
     .dark-mode .contact-box {
-      background: rgba(250,204,21,0.2);
+      background: rgba(192,192,192,0.2);
     }
     .dark-mode .contact-box a, .dark-mode p a {
-      color: #facc15;
+      color: #c0c0c0;
     }
     .dark-mode .contact-box a:hover, .dark-mode p a:hover {
-      color: #ffffff;
-    }
-    .dark-mode .mobile-nav {
-      background: rgba(17,24,39,1);
-    }
-    .dark-mode .mobile-nav ul li a {
       color: #ffffff;
     }
     .dark-mode main {
@@ -199,25 +175,23 @@
       z-index: 16;
     }
     .dark-mode-toggle:hover {
-      background: #facc15;
+      background: linear-gradient(to right, #c0c0c0, #d3d3d3);
       transform: rotate(360deg);
     }
     .dark-mode-toggle svg {
       width: 24px;
       height: 24px;
     }
-    /* Progress Bar */
     .progress-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 0;
       height: 3px;
-      background: #facc15;
+      background: linear-gradient(to right, #c0c0c0, #d3d3d3);
       z-index: 20;
       transition: width 0.3s ease;
     }
-    /* Scrolling Text */
     .scrolling-text-container {
       position: fixed;
       top: 0;
@@ -244,14 +218,6 @@
       background: linear-gradient(to right, #111827, #1e3a8a);
     }
     @media (max-width: 768px) {
-      .mobile-nav {
-        display: block;
-        backdrop-filter: none;
-        background: rgba(255,255,255,1);
-      }
-      .dark-mode .mobile-nav {
-        background: rgba(17,24,39,1);
-      }
       main {
         padding: 2rem 1rem;
       }
@@ -265,17 +231,9 @@
   </style>
 </head>
 <body>
-  <!-- Progress Bar -->
   <div class="progress-bar"></div>
-  <!-- Scrolling Text -->
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine – Gemeinsam wachsen. Offen handeln</div>
-  </div>
-  <div class="mobile-nav">
-    <ul>
-      <li><a href="index.html"><i data-lucide="home"></i>Start</a></li>
-      <li><a href="datenschutz.html"><i data-lucide="shield"></i>Datenschutz</a></li>
-    </ul>
+    <div class="scrolling-text">Univine – Gemeinsam wachsen. Offen handeln</div>
   </div>
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">
     <i data-lucide="sun"></i>
@@ -303,8 +261,13 @@
     <div class="footer-links">
       <a href="index.html">Zurück</a>
       <a href="datenschutz.html">Datenschutz</a>
+      <a href="ueber.html">Über</a>
     </div>
-    <p>© 2025 M. Höpfler | Projekt Univine – Eine moderne Vision</p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/markus-junior-höpfler-ab2814361/" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      <a href="https://github.com/hoepfler-m" aria-label="GitHub"><i data-lucide="github"></i></a>
+    </div>
+    <p>©️ 2025 M. Höpfler | Univine – Eine moderne Vision</p>
   </footer>
   <script>
     function toggleDarkMode() {
@@ -318,7 +281,6 @@
       const main = document.querySelector('main');
       main.classList.add('visible');
     });
-    // Scroll Progress
     window.addEventListener('scroll', () => {
       try {
         requestAnimationFrame(() => {
