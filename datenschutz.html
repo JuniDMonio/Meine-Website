@@ -47,7 +47,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Akkordeon-Styles (angepasst an index.html) */
+    /* Akkordeon-Styles */
     .faq-item {
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
@@ -61,11 +61,11 @@
     .faq-item:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      border: 2px solid #facc15;
+      border: 2px solid #c0c0c0;
     }
     .faq-item.active {
       background: rgba(255, 255, 255, 0.95);
-      border: 2px solid #facc15;
+      border: 2px solid #c0c0c0;
     }
     .faq-title {
       padding: 1.5rem;
@@ -86,7 +86,7 @@
     }
     .faq-item.active .faq-title svg {
       transform: rotate(45deg);
-      color: #facc15;
+      color: #c0c0c0;
     }
     .faq-content {
       max-height: 0;
@@ -102,7 +102,7 @@
       opacity: 1;
     }
     .contact-box {
-      background: rgba(250,204,21,0.1);
+      background: rgba(192,192,192,0.1);
       border-radius: 8px;
       padding: 1rem;
       margin: 1rem 0;
@@ -114,7 +114,7 @@
       text-decoration: none;
     }
     .contact-box a:hover, p a:hover {
-      color: #facc15;
+      color: #c0c0c0;
     }
     .button-container {
       display: flex;
@@ -134,43 +134,9 @@
       transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
     }
     .download-button:hover, .back-button:hover {
-      background: #facc15;
+      background: linear-gradient(to right, #c0c0c0, #d3d3d3);
       color: #111827;
       transform: scale(1.05);
-    }
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: rgba(255,255,255,1);
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-      padding: 0.6rem 0;
-      z-index: 12;
-    }
-    .mobile-nav ul {
-      display: flex;
-      justify-content: space-around;
-      list-style: none;
-    }
-    .mobile-nav ul li a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #111827;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      padding: 0.6rem;
-      transition: color 0.3s ease;
-    }
-    .mobile-nav ul li a:hover {
-      color: #facc15;
-    }
-    .mobile-nav ul li svg {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 0.3rem;
     }
     main {
       padding: 3rem 2rem;
@@ -181,7 +147,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       position: relative;
       z-index: 5;
-      margin-top: 40px; /* Angepasst, da nav weg ist */
+      margin-top: 40px;
     }
     footer {
       background: linear-gradient(to bottom, #111827, #1e3a8a);
@@ -197,13 +163,29 @@
       margin-bottom: 1rem;
     }
     footer a {
-      color: #facc15;
+      color: #c0c0c0;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
     }
     footer a:hover {
       color: #ffffff;
+    }
+    footer .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    footer .social-icons a {
+      color: #ffffff;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    footer .social-icons a:hover {
+      transform: scale(1.2);
+      color: #c0c0c0;
     }
     .dark-mode body {
       background: linear-gradient(to bottom, #111827, #1f2937);
@@ -220,24 +202,18 @@
     }
     .dark-mode .faq-item.active {
       background: rgba(17, 24, 39, 0.95);
-      border: 2px solid #facc15;
+      border: 2px solid #c0c0c0;
     }
     .dark-mode .faq-title {
       color: #ffffff;
     }
     .dark-mode .contact-box {
-      background: rgba(250,204,21,0.2);
+      background: rgba(192,192,192,0.2);
     }
     .dark-mode .contact-box a, .dark-mode p a {
-      color: #facc15;
+      color: #c0c0c0;
     }
     .dark-mode .contact-box a:hover, .dark-mode p a:hover {
-      color: #ffffff;
-    }
-    .dark-mode .mobile-nav {
-      background: rgba(17,24,39,1);
-    }
-    .dark-mode .mobile-nav ul li a {
       color: #ffffff;
     }
     .dark-mode main {
@@ -248,7 +224,7 @@
     }
     .dark-mode-toggle {
       position: fixed;
-      top: 48px; /* Angepasst wie impressum.html */
+      top: 48px;
       right: 20px;
       background: linear-gradient(to right, #1e3a8a, #2b6cb0);
       color: white;
@@ -262,17 +238,16 @@
       justify-content: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: background 0.3s ease, transform 0.5s ease;
-      z-index: 16; /* Erhöht, um über Banner zu liegen */
+      z-index: 16;
     }
     .dark-mode-toggle:hover {
-      background: #facc15;
+      background: linear-gradient(to right, #c0c0c0, #d3d3d3);
       transform: rotate(360deg);
     }
     .dark-mode-toggle svg {
       width: 24px;
       height: 24px;
     }
-    /* Scrolling Text */
     .scrolling-text-container {
       position: fixed;
       top: 0;
@@ -298,26 +273,17 @@
     .dark-mode .scrolling-text-container {
       background: linear-gradient(to right, #111827, #1e3a8a);
     }
-    /* Progress Bar */
     .progress-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 0;
       height: 3px;
-      background: #facc15;
+      background: linear-gradient(to right, #c0c0c0, #d3d3d3);
       z-index: 20;
       transition: width 0.3s ease;
     }
     @media (max-width: 768px) {
-      .mobile-nav {
-        display: block;
-        backdrop-filter: none;
-        background: rgba(255,255,255,1);
-      }
-      .dark-mode .mobile-nav {
-        background: rgba(17,24,39,1);
-      }
       main {
         padding: 2rem 1rem;
       }
@@ -331,24 +297,16 @@
   </style>
 </head>
 <body>
-  <!-- Progress Bar -->
   <div class="progress-bar"></div>
-  <!-- Scrolling Text -->
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Projekt Univine – Ihre Daten gehören Ihnen</div>
-  </div>
-  <div class="mobile-nav">
-    <ul>
-      <li><a href="index.html"><i data-lucide="home"></i>Start</a></li>
-      <li><a href="impressum.html"><i data-lucide="info"></i>Impressum</a></li>
-    </ul>
+    <div class="scrolling-text">Univine – Ihre Daten gehören Ihnen</div>
   </div>
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">
     <i data-lucide="sun"></i>
   </button>
   <main class="visible">
     <h1>Datenschutz</h1>
-    <p>Herzlich willkommen zur Datenschutzrichtlinie von <strong>Projekt Univine</strong>. Wir nehmen den Schutz Ihrer Daten ernst. Hier erfahren Sie, wie wir Ihre personenbezogenen Daten erheben, verarbeiten und schützen – und welche Rechte Sie nach der Datenschutz-Grundverordnung (DSGVO) haben.</p>
+    <p>Herzlich willkommen zur Datenschutzrichtlinie von <strong>Univine</strong>. Wir nehmen den Schutz Ihrer Daten ernst. Hier erfahren Sie, wie wir Ihre personenbezogenen Daten erheben, verarbeiten und schützen – und welche Rechte Sie nach der Datenschutz-Grundverordnung (DSGVO) haben.</p>
     
     <div class="faq-section">
       <div class="faq-item">
@@ -378,7 +336,7 @@
       <div class="faq-item">
         <div class="faq-title"><i data-lucide="cookie"></i>5. Cookies</div>
         <div class="faq-content">
-          <p><strong>Projekt Univine</strong> setzt keine eigenen Cookies ein. Externe Dienste wie Formsubmit.co könnten Cookies verwenden – Details finden Sie in deren Datenschutzrichtlinien.</p>
+          <p><strong>Univine</strong> setzt keine eigenen Cookies ein. Externe Dienste wie Formsubmit.co könnten Cookies verwenden – Details finden Sie in deren Datenschutzrichtlinien.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -447,8 +405,13 @@
     <div class="footer-links">
       <a href="index.html">Zurück</a>
       <a href="impressum.html">Impressum</a>
+      <a href="ueber.html">Über</a>
     </div>
-    <p>© 2025 M. Höpfler | Projekt Univine – Eine moderne Vision</p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/markus-junior-höpfler-ab2814361/" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      <a href="https://github.com/hoepfler-m" aria-label="GitHub"><i data-lucide="github"></i></a>
+    </div>
+    <p>©️ 2025 M. Höpfler | Univine – Eine moderne Vision</p>
   </footer>
   <script>
     function toggleDarkMode() {
@@ -461,10 +424,9 @@
       lucide.createIcons();
       const main = document.querySelector('main');
       main.classList.add('visible');
-      // FAQ Accordion
       document.querySelectorAll('.faq-item').forEach(item => {
         item.querySelector('.faq-title').addEventListener('click', () => {
-          const isActive = item.classList.contains('active');
+          const isActive = allerleiitem.classList.contains('active');
           document.querySelectorAll('.faq-item').forEach(i => {
             i.classList.remove('active');
             i.querySelector('.faq-title svg').setAttribute('data-lucide', 'plus');
@@ -477,7 +439,6 @@
         });
       });
     });
-    // Scroll Progress
     window.addEventListener('scroll', () => {
       try {
         requestAnimationFrame(() => {
