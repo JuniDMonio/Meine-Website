@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <!-- Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Erlebe meine Reise in die Webentwicklung und die Entstehung von Projekt Univine." />
+  <meta name="description" content="Ein interdimensionaler Blog über die Zukunftsvision von Univine." />
   <meta name="author" content="M. Höpfler" />
-  <meta property="og:title" content="Reise in die Zukunft – Projekt Univine" />
-  <meta property="og:description" content="Mein Blog über Umschulung, Webentwicklung und die Vision hinter Univine." />
+  <meta property="og:title" content="Univine – Portal zur Zukunft" />
+  <meta property="og:description" content="Tauche ein in die nächste Dimension der Webentwicklung." />
   <meta property="og:image" content="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" />
   <meta property="og:url" content="https://hoepfler-m.github.io/projekt-univine/blog.html" />
-  <title>Reise in die Zukunft – Projekt Univine</title>
+  <title>Univine – Portal zur Zukunft</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
@@ -23,8 +22,8 @@
     {
       "@context": "https://schema.org",
       "@type": "Blog",
-      "name": "M. Höpfler Blog",
-      "description": "Ein Blog über meine Umschulung und Projekt Univine.",
+      "name": "Univine Blog",
+      "description": "Ein interdimensionaler Blog über die Zukunftsvision von Univine.",
       "url": "https://hoepfler-m.github.io/projekt-univine/blog.html",
       "author": {
         "@type": "Person",
@@ -35,9 +34,6 @@
 
   <!-- Styles -->
   <style>
-    /* ----------------------------------- */
-    /* General Styles */
-    /* ----------------------------------- */
     * {
       margin: 0;
       padding: 0;
@@ -51,27 +47,31 @@
     }
 
     body {
-      background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
-      color: #111827;
+      background: #0a0a23;
+      color: #ffffff;
       overflow-x: hidden;
       min-height: 100vh;
-      opacity: 1;
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+      position: relative;
     }
 
-    /* ----------------------------------- */
-    /* Typography */
-    /* ----------------------------------- */
+    canvas#bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
       font-weight: 800;
       letter-spacing: 0.03em;
-      color: #111827;
-      position: relative;
+      color: #ffffff;
     }
 
     h1 {
-      font-size: 3.8rem;
+      font-size: 4rem;
     }
 
     h2 {
@@ -82,25 +82,13 @@
       font-size: 1.8rem;
     }
 
-    h2:hover::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 50%;
-      height: 2px;
-      background: linear-gradient(to right, #c0c0c0, transparent);
-      transition: width 0.3s ease;
-    }
-
     p {
       line-height: 1.8;
-      color: #111827;
       font-weight: 500;
       font-size: 1.1rem;
       opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
     section.visible p {
@@ -108,19 +96,16 @@
       transform: translateY(0);
     }
 
-    /* ----------------------------------- */
-    /* Navigation */
-    /* ----------------------------------- */
     nav {
       position: fixed;
       top: 60px;
       left: 0;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(10, 10, 35, 0.8);
       backdrop-filter: blur(12px);
       width: 200px;
       height: calc(100vh - 60px);
       padding: 2rem 1rem;
-      box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+      box-shadow: 2px 0 12px rgba(0,0,0,0.3);
       z-index: 10;
       display: flex;
       flex-direction: column;
@@ -135,61 +120,33 @@
 
     nav ul li a {
       text-decoration: none;
-      color: #111827;
+      color: #ffffff;
       font-weight: 600;
       font-size: 1.1rem;
       position: relative;
-      transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     nav ul li a:hover {
-      color: #c0c0c0;
+      color: #4ade80;
       transform: translateX(10px);
-      text-shadow: 0 0 10px rgba(192, 192, 192, 0.6);
     }
 
     nav ul li a.active {
-      color: #c0c0c0;
-      text-shadow: 0 0 5px rgba(192, 192, 192, 0.3);
+      color: #4ade80;
     }
 
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: #c0c0c0;
-      transition: width 0.3s ease, left 0.3s ease;
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-      left: 0;
-    }
-
-    /* ----------------------------------- */
-    /* Mobile Navigation */
-    /* ----------------------------------- */
     .mobile-nav {
       display: none;
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(10, 10, 35, 0.9);
       backdrop-filter: blur(12px);
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
       z-index: 12;
       padding: 0.6rem 0;
-      animation: fadeInNav 0.5s ease;
-    }
-
-    @keyframes fadeInNav {
-      from { opacity: 0; transform: translateY(100%); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .mobile-nav ul {
@@ -205,34 +162,27 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: #111827;
+      color: #ffffff;
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 500;
       transition: color 0.3s ease, transform 0.3s ease;
       padding: 0.4rem;
-      position: relative;
-      animation: pulseNav 3s ease infinite;
     }
 
     .mobile-nav ul li a:hover {
-      color: #c0c0c0;
-      transform: rotate(360deg);
+      color: #4ade80;
+      transform: scale(1.1);
     }
 
     .mobile-nav ul li a.active {
-      color: #c0c0c0;
+      color: #4ade80;
     }
 
     .mobile-nav ul li svg {
       width: 28px;
       height: 28px;
       margin-bottom: 0.3rem;
-    }
-
-    @keyframes pulseNav {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
     }
 
     .mobile-nav .hamburger {
@@ -244,15 +194,14 @@
       position: absolute;
       bottom: 100%;
       right: 0;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(10, 10, 35, 0.9);
       backdrop-filter: blur(12px);
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       list-style: none;
       padding: 0.5rem;
       width: 140px;
       z-index: 13;
-      animation: slideInMenu 0.3s ease;
     }
 
     .mobile-nav .hamburger-menu.show {
@@ -271,18 +220,6 @@
       margin-right: 0.5rem;
     }
 
-    .dark-mode .mobile-nav .hamburger-menu {
-      background: rgba(17, 24, 39, 0.95);
-    }
-
-    @keyframes slideInMenu {
-      from { transform: translateY(10px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* ----------------------------------- */
-    /* Content Wrapper */
-    /* ----------------------------------- */
     .content-wrapper {
       margin-left: 220px;
       width: calc(100% - 220px);
@@ -294,57 +231,29 @@
       padding: 3rem;
       max-width: 1100px;
       margin: auto;
-    }
-
-    /* ----------------------------------- */
-    /* Hero Section */
-    /* ----------------------------------- */
-    .hero-image {
-      width: 100%;
-      height: 450px;
-      background: linear-gradient(to bottom, #111827, #1e3a8a);
       position: relative;
-      border-radius: 20px;
+    }
+
+    .hero-section {
+      width: 100%;
+      height: 600px;
+      position: relative;
       overflow: hidden;
+      border-radius: 20px;
       margin-bottom: 3rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
     }
 
-    .hero-image img {
-      width: 80%;
-      max-width: 600px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.8));
-      transition: transform 0.3s ease;
-    }
-
-    .hero-image img:hover {
-      transform: scale(1.05);
-    }
-
-    .hero-slogan {
+    .hero-logo {
       position: absolute;
-      bottom: 2rem;
-      color: #ffffff;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInText 1s ease forwards 0.5s;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      max-width: 800px;
+      filter: drop-shadow(0 0 30px rgba(74, 222, 128, 0.8));
+      transition: transform 0.5s ease;
     }
 
-    .dark-mode .hero-image {
-      background: linear-gradient(to bottom, #1f2937, #111827);
-    }
-
-    /* ----------------------------------- */
-    /* Blog Section */
-    /* ----------------------------------- */
     .blog-section {
       max-width: 900px;
       margin: 4rem auto;
@@ -352,125 +261,79 @@
     }
 
     .blog-grid {
-      column-count: 2;
-      column-gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .blog-grid {
-        column-count: 1;
-      }
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
     }
 
     .blog-card {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
       border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      break-inside: avoid;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-      text-align: left;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: slideInCard 0.8s ease forwards;
-    }
-
-    .blog-card:nth-child(1) { animation-delay: 0.2s; }
-    .blog-card:nth-child(2) { animation-delay: 0.4s; }
-
-    @keyframes slideInCard {
-      to { opacity: 1; transform: translateY(0); }
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .blog-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      border: 2px solid #c0c0c0;
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: 0 8px 30px rgba(74, 222, 128, 0.5);
     }
 
     .blog-card img {
       width: 100%;
-      height: 300px;
+      height: 250px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 1rem;
+      transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover img {
+      transform: scale(1.1);
     }
 
     .blog-card h3 {
-      font-family: 'Playfair Display', serif;
-      color: #111827;
+      color: #ffffff;
       margin-bottom: 0.5rem;
     }
 
     .blog-meta {
       font-size: 0.9rem;
-      color: #6b7280;
+      color: #d1d5db;
       margin-bottom: 0.5rem;
     }
 
     .blog-card p {
       font-size: 1rem;
-      color: #6b7280;
+      color: #d1d5db;
       margin-bottom: 1rem;
     }
 
     .blog-link {
       display: inline-block;
-      color: #1e3a8a;
+      color: #4ade80;
       font-weight: 600;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .blog-link:hover {
-      color: #c0c0c0;
-    }
-
-    .dark-mode .blog-card {
-      background: rgba(17, 24, 39, 0.9);
-    }
-
-    .dark-mode .blog-card h3 {
       color: #ffffff;
     }
 
-    .dark-mode .blog-card p,
-    .dark-mode .blog-meta {
-      color: #d1d5db;
-    }
-
-    .dark-mode .blog-link {
-      color: #c0c0c0;
-    }
-
-    .dark-mode .blog-link:hover {
-      color: #ffffff;
-    }
-
-    /* Logo Pulse Easter Egg */
-    .hero-image img.pulse {
-      animation: pulseLogo 1s ease;
-    }
-
-    @keyframes pulseLogo {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    /* ----------------------------------- */
-    /* Footer */
-    /* ----------------------------------- */
     footer {
-      background: linear-gradient(to bottom, #111827, #1e3a8a);
+      background: linear-gradient(to bottom, #0a0a23, #1e3a8a);
       padding: 5rem 2rem;
       text-align: center;
       color: #ffffff;
       font-size: 0.9rem;
       position: relative;
-      overflow: hidden;
     }
 
     footer .footer-links {
@@ -481,7 +344,7 @@
     }
 
     footer a {
-      color: #c0c0c0;
+      color: #4ade80;
       text-decoration: none;
       transition: color 0.3s ease;
     }
@@ -506,19 +369,16 @@
 
     footer .social-icons a:hover {
       transform: scale(1.2);
-      color: #c0c0c0;
+      color: #4ade80;
     }
 
-    /* ----------------------------------- */
-    /* Scrolling Text */
-    /* ----------------------------------- */
     .scrolling-text-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: linear-gradient(to right, #111827, #1e3a8a);
-      color: white;
+      background: rgba(10, 10, 35, 0.8);
+      color: #4ade80;
       padding: 0.6rem 0;
       font-size: 1.1rem;
       font-weight: 600;
@@ -537,17 +397,14 @@
       to { transform: translateX(-100%); }
     }
 
-    /* ----------------------------------- */
-    /* Splash Screen */
-    /* ----------------------------------- */
     #splash {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, #1e3a8a, #111827);
-      color: white;
+      background: #0a0a23;
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -577,7 +434,7 @@
     #splash .loader {
       width: 50px;
       height: 50px;
-      border: 5px solid #c0c0c0;
+      border: 5px solid #4ade80;
       border-top-color: transparent;
       border-radius: 50%;
       animation: spin 1s linear infinite;
@@ -589,29 +446,23 @@
       to { transform: rotate(360deg); }
     }
 
-    /* ----------------------------------- */
-    /* Progress Bar */
-    /* ----------------------------------- */
     .progress-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 0;
       height: 3px;
-      background: linear-gradient(to right, #c0c0c0, #d3d3d3);
+      background: linear-gradient(to right, #4ade80, #ffffff);
       z-index: 20;
       transition: width 0.3s ease;
     }
 
-    /* ----------------------------------- */
-    /* Back to Top */
-    /* ----------------------------------- */
     .back-to-top {
       position: fixed;
       bottom: 90px;
       right: 15px;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
+      background: linear-gradient(to right, #1e3a8a, #4ade80);
+      color: #ffffff;
       padding: 0;
       border-radius: 50%;
       display: none;
@@ -639,15 +490,12 @@
       vertical-align: middle;
     }
 
-    /* ----------------------------------- */
-    /* Dark Mode Toggle */
-    /* ----------------------------------- */
     .dark-mode-toggle {
       position: fixed;
       top: 70px;
       right: 20px;
-      background: linear-gradient(to right, #1e3a8a, #2b6cb0);
-      color: white;
+      background: linear-gradient(to right, #1e3a8a, #4ade80);
+      color: #ffffff;
       padding: 0.5rem;
       border: none;
       border-radius: 50%;
@@ -662,67 +510,15 @@
     }
 
     .dark-mode-toggle:hover {
-      background: linear-gradient(to right, #c0c0c0, #d3d3d3);
+      background: linear-gradient(to right, #4ade80, #ffffff);
       transform: rotate(360deg);
     }
 
-    /* ----------------------------------- */
-    /* Dark Mode */
-    /* ----------------------------------- */
-    .dark-mode body {
-      background: linear-gradient(to bottom, #111827, #1f2937);
-      color: #ffffff;
-    }
-
-    .dark-mode h1, .dark-mode h2, .dark-mode h3 {
-      color: #ffffff;
-    }
-
-    .dark-mode p {
-      color: #ffffff;
-    }
-
-    .dark-mode nav {
-      background: rgba(17, 24, 39, 0.9);
-    }
-
-    .dark-mode nav ul li a {
-      color: #ffffff;
-      text-shadow: 0 0 5px rgba(192, 192, 192, 0.3);
-    }
-
-    .dark-mode .mobile-nav {
-      background: rgba(17, 24, 39, 0.95);
-    }
-
-    .dark-mode .mobile-nav ul li a {
-      color: #ffffff;
-    }
-
-    .dark-mode footer {
-      background: linear-gradient(to bottom, #111827, #1e3a8a);
-    }
-
-    .dark-mode .scrolling-text-container {
-      background: linear-gradient(to right, #111827, #1e3a8a);
-    }
-
-    /* ----------------------------------- */
-    /* Animations */
-    /* ----------------------------------- */
     @keyframes fadeInText {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes pulseButton {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-    }
-
-    /* ----------------------------------- */
-    /* Media Queries */
-    /* ----------------------------------- */
     @media (max-width: 768px) {
       nav {
         display: none;
@@ -743,24 +539,21 @@
         padding: 1.5rem;
       }
 
-      .hero-image {
-        height: 300px;
+      .hero-section {
+        height: 400px;
       }
 
-      .hero-image img {
+      .hero-logo {
         width: 90%;
       }
 
-      .hero-slogan {
-        font-size: 1.4rem;
+      .blog-grid {
+        flex-direction: column;
+        align-items: center;
       }
 
-      .blog-section h2 {
-        font-size: 1.9rem;
-      }
-
-      .blog-card h3 {
-        font-size: 1.5rem;
+      .blog-card {
+        max-width: 100%;
       }
 
       .blog-card img {
@@ -768,8 +561,6 @@
       }
 
       footer {
-        font-size: 0.9rem;
-        line-height: 2;
         padding: 4rem 1.5rem;
       }
     }
@@ -777,23 +568,19 @@
 </head>
 
 <body>
-  <!-- Progress Bar -->
+  <canvas id="bgCanvas"></canvas>
   <div class="progress-bar"></div>
 
-  <!-- Splash Screen -->
   <div id="splash" onclick="hideSplash()">
-    <div class="splash-bg"></div>
-    <h1>Reise in die Zukunft</h1>
-    <p>Meine Vision mit Univine</p>
+    <h1>Univine Portal</h1>
+    <p>Betrete die nächste Dimension</p>
     <div class="loader"></div>
   </div>
 
-  <!-- Scrolling Text -->
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Code trifft Vision – Univine</div>
+    <div class="scrolling-text">Univine – Dein Tor zur Zukunft</div>
   </div>
 
-  <!-- Desktop Navigation -->
   <nav>
     <ul>
       <li><a href="index.html#start">Start</a></li>
@@ -808,7 +595,6 @@
     </ul>
   </nav>
 
-  <!-- Mobile Navigation -->
   <div class="mobile-nav">
     <ul>
       <li><a href="index.html#start"><i data-lucide="home"></i>Start</a></li>
@@ -821,51 +607,45 @@
         <a href="#" onclick="toggleHamburgerMenu()"><i data-lucide="menu"></i>Mehr</a>
         <ul class="hamburger-menu">
           <li><a href="index.html#journey"><i data-lucide="user"></i>Reise</a></li>
-          <li><a href="index.html Sedimentäres Gestein#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
+          <li><a href="index.html#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
           <li><a href="index.html#partner"><i data-lucide="users"></i>Partner</a></li>
         </ul>
       </li>
     </ul>
   </div>
 
-  <!-- Dark Mode Toggle -->
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">
     <i data-lucide="sun"></i>
   </button>
 
-  <!-- Main Content -->
   <div class="content-wrapper">
     <main>
-      <!-- Hero Section -->
-      <div class="hero-image">
-        <img src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" alt="Univine Logo">
-        <div class="hero-slogan">Reise in die Zukunft</div>
-      </div>
+      <section class="hero-section">
+        <img class="hero-logo" src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" alt="Univine Logo">
+      </section>
 
-      <!-- Blog Section -->
       <section id="blog" class="blog-section visible">
-        <h2>Meine Beiträge</h2>
+        <h2>Dimensionen des Wissens</h2>
         <div class="blog-grid">
           <article class="blog-card">
             <img src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-screenshot.jpg" alt="Univine Screenshot" loading="lazy">
-            <h3>Wie ich Univine gebaut habe</h3>
+            <h3>Das Univine-Universum</h3>
             <p class="blog-meta">01.05.2025 | 5 Min. Lesezeit</p>
-            <p>Mein erstes Projekt: Von der Idee zu einer responsiven Website mit HTML, CSS und einem Hauch von JavaScript...</p>
-            <a href="blogpost1.html" class="blog-link">Weiterlesen</a>
+            <p>Ein Blick hinter die Kulissen meiner interdimensionalen Schöpfung...</p>
+            <a href="blogpost1.html" class="blog-link">Durch das Portal</a>
           </article>
           <article class="blog-card">
             <img src="https://images.unsplash.com/photo-1516321318428-4f65ca0e66be?q=80&w=1170&auto=format&fit=crop" alt="Umschulung" loading="lazy">
-            <h3>Erste Woche in der Umschulung</h3>
+            <h3>Erste Schritte im Code-Kosmos</h3>
             <p class="blog-meta">08.05.2025 | 3 Min. Lesezeit</p>
-            <p>Was ich in Woche 1 gelernt habe und wie Mentoren wie John H. mich inspirieren...</p>
-            <a href="blogpost2.html" class="blog-link">Weiterlesen</a>
+            <p>Meine Reise in die Tiefen der Webentwicklung beginnt...</p>
+            <a href="blogpost2.html" class="blog-link">Durch das Portal</a>
           </article>
         </div>
       </section>
     </main>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-links">
       <a href="impressum.html">Impressum</a>
@@ -876,116 +656,52 @@
       <a href="https://www.linkedin.com/in/hoepfler-m" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
       <a href="https://github.com/hoepfler-m" aria-label="GitHub"><i data-lucide="github"></i></a>
     </div>
-    <p>©️ 2025 M. Höpfler | Univine – Meine Zukunftsvision</p>
+    <p>©️ 2025 M. Höpfler | Univine – Interdimensionale Vision</p>
   </footer>
 
-  <!-- Back to Top -->
   <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
     <i data-lucide="arrow-up"></i>
   </button>
 
-  <!-- JavaScript -->
   <script>
-    // -----------------------------------
-    // Scroll Fix
-    // -----------------------------------
     history.scrollRestoration = 'manual';
 
-    // -----------------------------------
-    // Initialize Page
-    // -----------------------------------
     document.addEventListener("DOMContentLoaded", () => {
-      try {
-        // Scroll to top on page load
-        window.scrollTo(0, 0);
-
-        // Splash-Screen ausblenden
-        const splash = document.getElementById('splash');
-        if (splash) {
-          splash.classList.add('hidden');
-        } else {
-          console.error("Splash-Element nicht gefunden!");
-        }
-        
-        // Lucide-Icons laden
-        if (typeof lucide !== 'undefined') {
-          lucide.createIcons();
-        } else {
-          console.error("Lucide-Bibliothek nicht geladen!");
-        }
-        
-        console.log("Blog-Seite initialisiert");
-      } catch (error) {
-        console.error("Fehler bei der Initialisierung:", error);
-      }
+      window.scrollTo(0, 0);
+      const splash = document.getElementById('splash');
+      if (splash) splash.classList.add('hidden');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     });
 
-    // Fallback for older browsers
     window.onload = () => {
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }, 0);
     };
 
-    // -----------------------------------
-    // Section Visibility Observer
-    // -----------------------------------
-    try {
-      const sections = document.querySelectorAll("section");
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.1 });
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
 
-      sections.forEach(section => observer.observe(section));
-    } catch (error) {
-      console.error("Fehler im Intersection Observer:", error);
-    }
-
-    // -----------------------------------
-    // Toggle Dark Mode
-    // -----------------------------------
     function toggleDarkMode() {
-      try {
-        document.documentElement.classList.toggle('dark-mode');
-        const icon = document.querySelector('.dark-mode-toggle i');
-        icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
-        if (typeof lucide !== 'undefined') {
-          lucide.createIcons();
-        }
-      } catch (error) {
-        console.error("Fehler beim Umschalten des Dark Mode:", error);
-      }
+      document.documentElement.classList.toggle('dark-mode');
+      const icon = document.querySelector('.dark-mode-toggle i');
+      icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
-    // -----------------------------------
-    // Hide Splash Screen
-    // -----------------------------------
     function hideSplash() {
-      try {
-        const splash = document.getElementById('splash');
-        if (splash) {
-          splash.classList.add('hidden');
-        }
-        console.log("Splash-Screen ausgeblendet");
-      } catch (error) {
-        console.error("Fehler beim Ausblenden des Splash-Screen:", error);
-      }
+      const splash = document.getElementById('splash');
+      if (splash) splash.classList.add('hidden');
     }
 
-    // -----------------------------------
-    // Hamburger Menu Toggle
-    // -----------------------------------
     function toggleHamburgerMenu() {
-      try {
-        const menu = document.querySelector('.hamburger-menu');
-        menu.classList.toggle('show');
-      } catch (error) {
-        console.error("Fehler beim Umschalten des Hamburger-Menüs:", error);
-      }
+      const menu = document.querySelector('.hamburger-menu');
+      menu.classList.toggle('show');
     }
 
     document.addEventListener('click', (e) => {
@@ -995,48 +711,118 @@
       }
     });
 
-    // -----------------------------------
-    // Scroll Progress and Back-to-Top
-    // -----------------------------------
     window.addEventListener('scroll', () => {
-      try {
-        requestAnimationFrame(() => {
-          const backToTop = document.querySelector('.back-to-top');
-          const progressBar = document.querySelector('.progress-bar');
-          const scrollTop = window.scrollY;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const scrollPercent = (scrollTop / docHeight) * 100;
-          progressBar.style.width = scrollPercent + '%';
-          if (scrollTop > 300) {
-            backToTop.classList.add('visible');
-          } else {
-            backToTop.classList.remove('visible');
-          }
-        });
-      } catch (error) {
-        console.error("Fehler im Scroll-Handler:", error);
+      requestAnimationFrame(() => {
+        const backToTop = document.querySelector('.back-to-top');
+        const progressBar = document.querySelector('.progress-bar');
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+        if (scrollTop > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+    });
+
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 5 + 1,
+        speedX: Math.random() * 2 - 1,
+        speedY: Math.random() * 2 - 1
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(74, 222, 128, 0.5)';
+        ctx.fill();
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const logo = document.querySelector('.hero-logo');
+    let clickCount = 0;
+    logo.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount === 3) {
+        document.body.classList.add('easter-egg');
+        setTimeout(() => {
+          document.body.classList.remove('easter-egg');
+        }, 3000);
+        clickCount = 0;
       }
     });
 
-    // -----------------------------------
-    // Logo Pulse Easter Egg
-    // -----------------------------------
-    try {
-      const logo = document.querySelector('.hero-image img');
-      let clickCount = 0;
-      logo.addEventListener('click', () => {
-        clickCount++;
-        if (clickCount === 3) {
-          logo.classList.add('pulse');
-          setTimeout(() => {
-            logo.classList.remove('pulse');
-          }, 1000);
-          clickCount = 0;
-        }
+    const cards = document.querySelectorAll('.blog-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
       });
-    } catch (error) {
-      console.error("Fehler im Logo Pulse-Effekt:", error);
-    }
+    });
   </script>
+
+  <style>
+    .easter-egg .blog-card {
+      animation: glitch 0.5s linear infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-5px, 5px); }
+      40% { transform: translate(5px, -5px); }
+      60% { transform: translate(-5px, 5px); }
+      80% { transform: translate(5px, -5px); }
+      100% { transform: translate(0); }
+    }
+
+    .blog-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(74, 222, 128, 0.3) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .blog-card:hover::before {
+      opacity: 1;
+    }
+  </style>
 </body>
 </html>
