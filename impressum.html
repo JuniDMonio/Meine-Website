@@ -270,6 +270,7 @@
     <p>©️ 2025 M. Höpfler | Univine – Eine moderne Vision</p>
   </footer>
   <script>
+    history.scrollRestoration = 'manual';
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark-mode');
       const icon = document.querySelector('.dark-mode-toggle i');
@@ -278,6 +279,7 @@
     }
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
+      window.scrollTo(0, 0);
       const main = document.querySelector('main');
       main.classList.add('visible');
     });
@@ -294,6 +296,11 @@
         console.error("Fehler im Scroll-Handler:", error);
       }
     });
+    window.onload = () => {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }, 0);
+    };
   </script>
 </body>
 </html>
