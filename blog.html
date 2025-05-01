@@ -4,13 +4,13 @@
   <!-- Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mein Blog über meine Umschulung zum Fachinformatiker und die Entwicklung von Projekt Univine." />
+  <meta name="description" content="Erlebe meine Reise in die Webentwicklung und die Entstehung von Projekt Univine." />
   <meta name="author" content="M. Höpfler" />
-  <meta property="og:title" content="Mein Blog – Projekt Univine" />
-  <meta property="og:description" content="Erfahre mehr über meine Reise in die Webentwicklung und die Entstehung von Univine." />
+  <meta property="og:title" content="Reise in die Zukunft – Projekt Univine" />
+  <meta property="og:description" content="Mein Blog über Umschulung, Webentwicklung und die Vision hinter Univine." />
   <meta property="og:image" content="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" />
   <meta property="og:url" content="https://hoepfler-m.github.io/projekt-univine/blog.html" />
-  <title>Mein Blog – Projekt Univine</title>
+  <title>Reise in die Zukunft – Projekt Univine</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "M. Höpfler Blog",
-      "description": "Ein Blog über meine Umschulung zum Fachinformatiker und Projekt Univine.",
+      "description": "Ein Blog über meine Umschulung und Projekt Univine.",
       "url": "https://hoepfler-m.github.io/projekt-univine/blog.html",
       "author": {
         "@type": "Person",
@@ -62,14 +62,12 @@
     /* ----------------------------------- */
     /* Typography */
     /* ----------------------------------- */
-    h1, h2 {
+    h1, h2, h3 {
       font-family: 'Playfair Display', serif;
       font-weight: 800;
       letter-spacing: 0.03em;
       color: #111827;
       position: relative;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 0.5rem 0;
     }
 
     h1 {
@@ -78,6 +76,10 @@
 
     h2 {
       font-size: 2.8rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
     }
 
     h2:hover::after {
@@ -89,12 +91,6 @@
       height: 2px;
       background: linear-gradient(to right, #c0c0c0, transparent);
       transition: width 0.3s ease;
-    }
-
-    h3, h4 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
-      color: #111827;
     }
 
     p {
@@ -150,6 +146,11 @@
       color: #c0c0c0;
       transform: translateX(10px);
       text-shadow: 0 0 10px rgba(192, 192, 192, 0.6);
+    }
+
+    nav ul li a.active {
+      color: #c0c0c0;
+      text-shadow: 0 0 5px rgba(192, 192, 192, 0.3);
     }
 
     nav ul li a::after {
@@ -219,9 +220,13 @@
       transform: rotate(360deg);
     }
 
+    .mobile-nav ul li a.active {
+      color: #c0c0c0;
+    }
+
     .mobile-nav ul li svg {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       margin-bottom: 0.3rem;
     }
 
@@ -296,34 +301,45 @@
     /* ----------------------------------- */
     .hero-image {
       width: 100%;
-      height: 400px;
-      padding-top: 80px;
-      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.65), rgba(17, 24, 39, 0.45)), url('https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png') center/150% no-repeat;
+      height: 450px;
+      background: linear-gradient(to bottom, #111827, #1e3a8a);
       position: relative;
       border-radius: 20px;
       overflow: hidden;
       margin-bottom: 3rem;
       box-shadow: 0 8px 24px rgba(0,0,0,0.15);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #ffffff;
     }
 
-    .hero-image h1 {
-      font-size: 3rem;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-
-    .hero-image p {
-      font-size: 1.2rem;
+    .hero-image img {
+      width: 80%;
       max-width: 600px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.8));
+      transition: transform 0.3s ease;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.05);
+    }
+
+    .hero-slogan {
+      position: absolute;
+      bottom: 2rem;
+      color: #ffffff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInText 1s ease forwards 0.5s;
     }
 
     .dark-mode .hero-image {
-      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.3)), url('https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png') center/150% no-repeat;
+      background: linear-gradient(to bottom, #1f2937, #111827);
     }
 
     /* ----------------------------------- */
@@ -336,10 +352,15 @@
     }
 
     .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      column-count: 2;
+      column-gap: 2rem;
       margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid {
+        column-count: 1;
+      }
     }
 
     .blog-card {
@@ -348,18 +369,31 @@
       border-radius: 12px;
       padding: 1.5rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+      break-inside: avoid;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
       text-align: left;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideInCard 0.8s ease forwards;
+    }
+
+    .blog-card:nth-child(1) { animation-delay: 0.2s; }
+    .blog-card:nth-child(2) { animation-delay: 0.4s; }
+
+    @keyframes slideInCard {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .blog-card:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      border: 2px solid #c0c0c0;
     }
 
     .blog-card img {
       width: 100%;
-      height: 200px;
+      height: 300px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 1rem;
@@ -367,7 +401,6 @@
 
     .blog-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
       color: #111827;
       margin-bottom: 0.5rem;
     }
@@ -417,18 +450,14 @@
       color: #ffffff;
     }
 
-    /* Glitch Effect for Easter Egg */
-    .blog-card.glitch {
-      animation: glitch 0.3s linear infinite;
+    /* Logo Pulse Easter Egg */
+    .hero-image img.pulse {
+      animation: pulseLogo 1s ease;
     }
 
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(-2px, -2px); }
-      60% { transform: translate(2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-      100% { transform: translate(0); }
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     /* ----------------------------------- */
@@ -645,7 +674,7 @@
       color: #ffffff;
     }
 
-    .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4 {
+    .dark-mode h1, .dark-mode h2, .dark-mode h3 {
       color: #ffffff;
     }
 
@@ -716,12 +745,14 @@
 
       .hero-image {
         height: 300px;
-        padding-top: 50px;
-        background: linear-gradient(to bottom, rgba(17, 24, 39, 0.65), rgba(17, 24, 39, 0.45)), url('https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png') center/120% no-repeat;
       }
 
-      .dark-mode .hero-image {
-        background: linear-gradient(to bottom, rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.3)), url('https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png') center/120% no-repeat;
+      .hero-image img {
+        width: 90%;
+      }
+
+      .hero-slogan {
+        font-size: 1.4rem;
       }
 
       .blog-section h2 {
@@ -733,7 +764,7 @@
       }
 
       .blog-card img {
-        height: 150px;
+        height: 200px;
       }
 
       footer {
@@ -752,14 +783,14 @@
   <!-- Splash Screen -->
   <div id="splash" onclick="hideSplash()">
     <div class="splash-bg"></div>
-    <h1>Mein Blog</h1>
-    <p>Meine Reise mit Univine</p>
+    <h1>Reise in die Zukunft</h1>
+    <p>Meine Vision mit Univine</p>
     <div class="loader"></div>
   </div>
 
   <!-- Scrolling Text -->
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Mein Lernweg mit Univine</div>
+    <div class="scrolling-text">Code trifft Vision – Univine</div>
   </div>
 
   <!-- Desktop Navigation -->
@@ -773,7 +804,7 @@
       <li><a href="index.html#partner">Partner</a></li>
       <li><a href="index.html#kontakt">Kontakt</a></li>
       <li><a href="ueber.html">Über mich</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
     </ul>
   </nav>
 
@@ -785,12 +816,12 @@
       <li><a href="index.html#projekt"><i data-lucide="briefcase"></i>Projekt</a></li>
       <li><a href="index.html#kontakt"><i data-lucide="mail"></i>Kontakt</a></li>
       <li><a href="ueber.html"><i data-lucide="info"></i>Info</a></li>
-      <li><a href="blog.html"><i data-lucide="book"></i>Blog</a></li>
+      <li><a href="blog.html" class="active"><i data-lucide="book-open"></i>Blog</a></li>
       <li class="hamburger">
         <a href="#" onclick="toggleHamburgerMenu()"><i data-lucide="menu"></i>Mehr</a>
         <ul class="hamburger-menu">
           <li><a href="index.html#journey"><i data-lucide="user"></i>Reise</a></li>
-          <li><a href="index.html#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
+          <li><a href="index.html Sedimentäres Gestein#faqs"><i data-lucide="help-circle"></i>FAQs</a></li>
           <li><a href="index.html#partner"><i data-lucide="users"></i>Partner</a></li>
         </ul>
       </li>
@@ -807,8 +838,8 @@
     <main>
       <!-- Hero Section -->
       <div class="hero-image">
-        <h1>Mein Blog</h1>
-        <p>Meine Reise als Fachinformatiker und die Geschichte von Univine</p>
+        <img src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" alt="Univine Logo">
+        <div class="hero-slogan">Reise in die Zukunft</div>
       </div>
 
       <!-- Blog Section -->
@@ -988,25 +1019,23 @@
     });
 
     // -----------------------------------
-    // Glitch Easter Egg for Blog Cards
+    // Logo Pulse Easter Egg
     // -----------------------------------
     try {
-      const blogCards = document.querySelectorAll('.blog-card');
-      blogCards.forEach(card => {
-        let clickCount = 0;
-        card.addEventListener('click', () => {
-          clickCount++;
-          if (clickCount === 5) {
-            card.classList.add('glitch');
-            setTimeout(() => {
-              card.classList.remove('glitch');
-            }, 1200);
-            clickCount = 0;
-          }
-        });
+      const logo = document.querySelector('.hero-image img');
+      let clickCount = 0;
+      logo.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount === 3) {
+          logo.classList.add('pulse');
+          setTimeout(() => {
+            logo.classList.remove('pulse');
+          }, 1000);
+          clickCount = 0;
+        }
       });
     } catch (error) {
-      console.error("Fehler im Glitch-Effekt:", error);
+      console.error("Fehler im Logo Pulse-Effekt:", error);
     }
   </script>
 </body>
