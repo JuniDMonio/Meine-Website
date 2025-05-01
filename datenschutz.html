@@ -422,7 +422,7 @@
     }
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
-      window.scrollTo(0, 0); // Neue Zeile
+      window.scrollTo(0, 0);
       const main = document.querySelector('main');
       main.classList.add('visible');
       document.querySelectorAll('.faq-item').forEach(item => {
@@ -453,6 +453,9 @@
         console.error("Fehler im Scroll-Handler:", error);
       }
     });
+    window.onload = () => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    };
   </script>
 </body>
 </html>
