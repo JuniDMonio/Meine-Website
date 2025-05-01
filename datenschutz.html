@@ -258,17 +258,19 @@
       padding: 0.6rem 0;
       font-size: 1.1rem;
       font-weight: 600;
-      white-space: nowrap;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
       z-index: 15;
     }
     .scrolling-text {
       display: inline-block;
-      animation: scroll-left 15s linear infinite;
+      animation: scroll-left 20s linear infinite;
     }
     @keyframes scroll-left {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
     .dark-mode .scrolling-text-container {
       background: linear-gradient(to right, #111827, #1e3a8a);
@@ -299,7 +301,7 @@
 <body>
   <div class="progress-bar"></div>
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Univine – Ihre Daten gehören Ihnen</div>
+    <div class="scrolling-text">Univine – Ihre Daten gehören Ihnen. Sicher gespeichert. Klar geregelt. Kontrollierbar.</div>
   </div>
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">
     <i data-lucide="sun"></i>
@@ -380,38 +382,38 @@
     <h1>Häufige Fragen (FAQ)</h1>
     <div class="faq-section">
       <div class="faq-item">
-        <div class="faq-title"><i data-lucide="help-circle"></i>Was passiert mit meinen Daten?</div>
+        <div class="faq-title"><i data-lucide="help-circle"></i>What happens to my data?</div>
         <div class="faq-content">
-          <p>Ihre Daten nutzen wir nur, um Ihre Anfragen zu beantworten. Sie werden sicher gespeichert und nicht weitergegeben.</p>
+          <p>We only use your data to respond to your inquiries. It is securely stored and not shared with third parties.</p>
         </div>
       </div>
       <div class="faq-item">
-        <div class="faq-title"><i data-lucide="clock"></i>Wie lange speichern Sie meine Daten?</div>
+        <div class="faq-title"><i data-lucide="clock"></i>How long do you store my data?</div>
         <div class="faq-content">
-          <p>Wir speichern Ihre Daten nur so lange, wie es nötig ist – in der Regel bis Ihre Anfrage vollständig bearbeitet ist.</p>
+          <p>We store your data only as long as necessary – typically until your inquiry is fully processed.</p>
         </div>
       </div>
     </div>
 
     <div class="contact-box">
-      <p>Fragen zum Datenschutz? Schreiben Sie uns: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a>.</p>
+      <p>Questions about data protection? Write to us: <a href="mailto:mar.hoepfler@icloud.com">mar.hoepfler@icloud.com</a>.</p>
     </div>
     <div class="button-container">
-      <a href="datenschutz.pdf" class="download-button" download>Datenschutz als PDF herunterladen</a>
-      <a href="index.html" class="back-button">Zurück zur Startseite</a>
+      <a href="datenschutz.pdf" class="download-button" download>Download Privacy Policy as PDF</a>
+      <a href="index.html" class="back-button">Back to Homepage</a>
     </div>
   </main>
   <footer>
     <div class="footer-links">
-      <a href="index.html">Zurück</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="ueber.html">Über</a>
+      <a href="index.html">Back</a>
+      <a href="impressum.html">Imprint</a>
+      <a href="ueber.html">About</a>
     </div>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/markus-junior-höpfler-ab2814361/" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
       <a href="https://github.com/hoepfler-m" aria-label="GitHub"><i data-lucide="github"></i></a>
     </div>
-    <p>©️ 2025 M. Höpfler | Univine – Eine moderne Vision</p>
+    <p>©️ 2025 M. Höpfler | Univine – A modern vision</p>
   </footer>
   <script>
     history.scrollRestoration = 'manual';
@@ -421,7 +423,9 @@
       icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark-mode') ? 'moon' : 'sun');
       lucide.createIcons();
     }
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener(' =
+
+DOMContentLoaded', () => {
       lucide.createIcons();
       window.scrollTo(0, 0);
       const main = document.querySelector('main');
