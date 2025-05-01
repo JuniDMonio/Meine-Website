@@ -421,7 +421,8 @@
       lucide.createIcons();
     }
     document.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();      
+      lucide.createIcons();
+      window.scrollTo(0, 0); // Neue Zeile
       const main = document.querySelector('main');
       main.classList.add('visible');
       document.querySelectorAll('.faq-item').forEach(item => {
