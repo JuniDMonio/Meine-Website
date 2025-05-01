@@ -322,7 +322,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <div class="faq-title"><i data-lucide="scale"></i>3. Rechtsgrundlage</div>
+        <div class="faq-title"><i data-lucide="scale"></i>3. Rechtgrundlage</div>
         <div class="faq-content">
           <p>Ihre Daten verarbeiten wir auf Basis Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) für das Kontaktformular oder unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) für technische Logs zur Sicherheit und Optimierung der Website.</p>
         </div>
@@ -414,6 +414,7 @@
     <p>©️ 2025 M. Höpfler | Univine – Eine moderne Vision</p>
   </footer>
   <script>
+    history.scrollRestoration = 'manual';
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark-mode');
       const icon = document.querySelector('.dark-mode-toggle i');
@@ -454,7 +455,9 @@
       }
     });
     window.onload = () => {
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }, 0);
     };
   </script>
 </body>
