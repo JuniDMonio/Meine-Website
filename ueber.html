@@ -508,19 +508,21 @@
       padding: 0.6rem 0;
       font-size: 1.1rem;
       font-weight: 600;
-      white-space: nowrap;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
       z-index: 15;
     }
 
     .scrolling-text {
       display: inline-block;
-      animation: scroll-left 12s linear infinite;
+      animation: scroll-left 20s linear infinite;
     }
 
     @keyframes scroll-left {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
     /* ----------------------------------- */
@@ -901,6 +903,11 @@ Aktuell beginne ich meine Umschulung zum Fachinformatiker für Anwendungsentwick
   <!-- JavaScript -->
   <script>
     // -----------------------------------
+    // Scroll Fix
+    // -----------------------------------
+    history.scrollRestoration = 'manual';
+
+    // -----------------------------------
     // Initialize Page
     // -----------------------------------
     document.addEventListener("DOMContentLoaded", () => {
@@ -916,6 +923,7 @@ Aktuell beginne ich meine Umschulung zum Fachinformatiker für Anwendungsentwick
         // Lucide-Icons laden
         if (typeof lucide !== 'undefined') {
           lucide.createIcons();
+          window.scrollTo(0, 0);
         } else {
           console.error("Lucide-Bibliothek nicht geladen!");
         }
@@ -1017,6 +1025,15 @@ Aktuell beginne ich meine Umschulung zum Fachinformatiker für Anwendungsentwick
     } catch (error) {
       console.error("Fehler im Glitch-Effekt:", error);
     }
+
+    // -----------------------------------
+    // Ensure Scroll to Top on Load
+    // -----------------------------------
+    window.onload = () => {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }, 0);
+    };
   </script>
 </body>
 </html>
