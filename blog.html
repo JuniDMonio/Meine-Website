@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Ein interdimensionaler Blog über die Zukunftsvision von Univine." />
+  <meta name="description" content="Ein einzigartiger Blog über die Zukunft von Univine und meine Reise in die Webentwicklung." />
   <meta name="author" content="M. Höpfler" />
-  <meta property="og:title" content="Univine – Portal zur Zukunft" />
-  <meta property="og:description" content="Tauche ein in die nächste Dimension der Webentwicklung." />
+  <meta property="og:title" content="Univine – Der Code der Zukunft" />
+  <meta property="og:description" content="Ein interdimensionaler Blog, der die Grenzen des Möglichen sprengt." />
   <meta property="og:image" content="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" />
   <meta property="og:url" content="https://hoepfler-m.github.io/projekt-univine/blog.html" />
-  <title>Univine – Portal zur Zukunft</title>
+  <title>Univine – Der Code der Zukunft</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "Univine Blog",
-      "description": "Ein interdimensionaler Blog über die Zukunftsvision von Univine.",
+      "description": "Ein einzigartiger Blog über die Zukunft von Univine.",
       "url": "https://hoepfler-m.github.io/projekt-univine/blog.html",
       "author": {
         "@type": "Person",
@@ -61,6 +61,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      opacity: 0.7;
     }
 
     h1, h2, h3 {
@@ -76,6 +77,7 @@
 
     h2 {
       font-size: 2.8rem;
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
     }
 
     h3 {
@@ -100,12 +102,12 @@
       position: fixed;
       top: 60px;
       left: 0;
-      background: rgba(10, 10, 35, 0.8);
+      background: rgba(10, 10, 35, 0.85);
       backdrop-filter: blur(12px);
       width: 200px;
       height: calc(100vh - 60px);
       padding: 2rem 1rem;
-      box-shadow: 2px 0 12px rgba(0,0,0,0.3);
+      box-shadow: 2px 0 12px rgba(0,0,0,0.4);
       z-index: 10;
       display: flex;
       flex-direction: column;
@@ -134,6 +136,7 @@
 
     nav ul li a.active {
       color: #4ade80;
+      text-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
     }
 
     .mobile-nav {
@@ -236,22 +239,34 @@
 
     .hero-section {
       width: 100%;
-      height: 600px;
+      height: 700px;
       position: relative;
       overflow: hidden;
       border-radius: 20px;
       margin-bottom: 3rem;
+      perspective: 1000px;
     }
 
     .hero-logo {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      width: 70%;
-      max-width: 800px;
-      filter: drop-shadow(0 0 30px rgba(74, 222, 128, 0.8));
+      transform: translate(-50%, -50%) rotateY(0deg);
+      width: 80%;
+      max-width: 900px;
+      filter: drop-shadow(0 0 40px rgba(74, 222, 128, 0.9));
       transition: transform 0.5s ease;
+      z-index: 5;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(10, 10, 35, 0.5), rgba(30, 58, 138, 0.7));
+      z-index: 2;
     }
 
     .blog-section {
@@ -268,9 +283,9 @@
     }
 
     .blog-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
       padding: 1.5rem;
       width: 100%;
       max-width: 400px;
@@ -278,11 +293,12 @@
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       position: relative;
       overflow: hidden;
+      transform: translateZ(0);
     }
 
     .blog-card:hover {
-      transform: translateY(-10px) rotateX(5deg);
-      box-shadow: 0 8px 30px rgba(74, 222, 128, 0.5);
+      transform: translateY(-15px) translateZ(50px);
+      box-shadow: 0 8px 40px rgba(74, 222, 128, 0.7);
     }
 
     .blog-card img {
@@ -295,12 +311,13 @@
     }
 
     .blog-card:hover img {
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
 
     .blog-card h3 {
       color: #ffffff;
       margin-bottom: 0.5rem;
+      text-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
     }
 
     .blog-meta {
@@ -321,6 +338,22 @@
       font-weight: 600;
       text-decoration: none;
       transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .blog-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #4ade80;
+      transition: width 0.3s ease;
+    }
+
+    .blog-link:hover::after {
+      width: 100%;
     }
 
     .blog-link:hover {
@@ -519,6 +552,37 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .blog-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(74, 222, 128, 0.4) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .blog-card:hover::before {
+      opacity: 1;
+    }
+
+    .easter-egg .hero-logo {
+      animation: warp 2s ease infinite;
+    }
+
+    @keyframes warp {
+      0%, 100% { transform: translate(-50%, -50%) rotateY(0deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotateY(10deg) scale(1.1); }
+    }
+
     @media (max-width: 768px) {
       nav {
         display: none;
@@ -540,7 +604,7 @@
       }
 
       .hero-section {
-        height: 400px;
+        height: 500px;
       }
 
       .hero-logo {
@@ -572,13 +636,13 @@
   <div class="progress-bar"></div>
 
   <div id="splash" onclick="hideSplash()">
-    <h1>Univine Portal</h1>
-    <p>Betrete die nächste Dimension</p>
+    <h1>Univine Matrix</h1>
+    <p>Entschlüssle die Zukunft</p>
     <div class="loader"></div>
   </div>
 
   <div class="scrolling-text-container">
-    <div class="scrolling-text">Univine – Dein Tor zur Zukunft</div>
+    <div class="scrolling-text">Univine – Der Code der Zukunft</div>
   </div>
 
   <nav>
@@ -621,25 +685,26 @@
   <div class="content-wrapper">
     <main>
       <section class="hero-section">
+        <div class="hero-overlay"></div>
         <img class="hero-logo" src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-logo.png" alt="Univine Logo">
       </section>
 
       <section id="blog" class="blog-section visible">
-        <h2>Dimensionen des Wissens</h2>
+        <h2>Entschlüsselte Visionen</h2>
         <div class="blog-grid">
           <article class="blog-card">
             <img src="https://raw.githubusercontent.com/hoepfler-m/projekt-univine/main/images/univine-screenshot.jpg" alt="Univine Screenshot" loading="lazy">
-            <h3>Das Univine-Universum</h3>
+            <h3>Die Matrix von Univine</h3>
             <p class="blog-meta">01.05.2025 | 5 Min. Lesezeit</p>
-            <p>Ein Blick hinter die Kulissen meiner interdimensionalen Schöpfung...</p>
-            <a href="blogpost1.html" class="blog-link">Durch das Portal</a>
+            <p>Ein tiefes Eintauchen in die Konstruktion meiner digitalen Zukunft...</p>
+            <a href="blogpost1.html" class="blog-link">Entschlüsseln</a>
           </article>
           <article class="blog-card">
             <img src="https://images.unsplash.com/photo-1516321318428-4f65ca0e66be?q=80&w=1170&auto=format&fit=crop" alt="Umschulung" loading="lazy">
-            <h3>Erste Schritte im Code-Kosmos</h3>
+            <h3>Erste Signale im Code</h3>
             <p class="blog-meta">08.05.2025 | 3 Min. Lesezeit</p>
-            <p>Meine Reise in die Tiefen der Webentwicklung beginnt...</p>
-            <a href="blogpost2.html" class="blog-link">Durch das Portal</a>
+            <p>Wie ich die ersten Schritte in die Webentwicklung wagte...</p>
+            <a href="blogpost2.html" class="blog-link">Entschlüsseln</a>
           </article>
         </div>
       </section>
@@ -656,7 +721,7 @@
       <a href="https://www.linkedin.com/in/hoepfler-m" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
       <a href="https://github.com/hoepfler-m" aria-label="GitHub"><i data-lucide="github"></i></a>
     </div>
-    <p>©️ 2025 M. Höpfler | Univine – Interdimensionale Vision</p>
+    <p>©️ 2025 M. Höpfler | Univine – Der Code der Zukunft</p>
   </footer>
 
   <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
@@ -732,32 +797,43 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const particles = [];
-    for (let i = 0; i < 100; i++) {
-      particles.push({
+    const nodes = [];
+    for (let i = 0; i < 50; i++) {
+      nodes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 5 + 1,
-        speedX: Math.random() * 2 - 1,
-        speedY: Math.random() * 2 - 1
+        size: Math.random() * 4 + 2,
+        speedX: (Math.random() - 0.5) * 1.5,
+        speedY: (Math.random() - 0.5) * 1.5
       });
     }
 
-    function animateParticles() {
+    function animateNodes() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
+      nodes.forEach((node, i) => {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(74, 222, 128, 0.5)';
+        ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(74, 222, 128, 0.8)';
         ctx.fill();
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        node.x += node.speedX;
+        node.y += node.speedY;
+        if (node.x < 0 || node.x > canvas.width) node.speedX *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.speedY *= -1;
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dist = Math.hypot(nodes[j].x - node.x, nodes[j].y - node.y);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = `rgba(74, 222, 128, ${1 - dist / 100})`;
+            ctx.stroke();
+          }
+        }
       });
-      requestAnimationFrame(animateParticles);
+      requestAnimationFrame(animateNodes);
     }
-    animateParticles();
+    animateNodes();
 
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
@@ -768,11 +844,11 @@
     let clickCount = 0;
     logo.addEventListener('click', () => {
       clickCount++;
-      if (clickCount === 3) {
+      if (clickCount === 4) {
         document.body.classList.add('easter-egg');
         setTimeout(() => {
           document.body.classList.remove('easter-egg');
-        }, 3000);
+        }, 5000);
         clickCount = 0;
       }
     });
@@ -786,42 +862,66 @@
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
       });
+
+      card.addEventListener('click', () => {
+        const ripple = document.createElement('div');
+        ripple.style.position = 'absolute';
+        ripple.style.background = 'rgba(74, 222, 128, 0.5)';
+        ripple.style.borderRadius = '50%';
+        ripple.style.width = '100px';
+        ripple.style.height = '100px';
+        ripple.style.left = `50%`;
+        ripple.style.top = `50%`;
+        ripple.style.transform = 'translate(-50%, -50%)';
+        ripple.style.animation = 'ripple 1s ease-out';
+        card.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 1000);
+      });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      const logo = document.querySelector('.hero-logo');
+      const rect = logo.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const angleX = (e.clientY - centerY) / 100;
+      const angleY = (e.clientX - centerX) / 100;
+      logo.style.transform = `translate(-50%, -50%) rotateY(${angleY}deg) rotateX(${-angleX}deg)`;
+    });
+
+    let typedText = '';
+    document.addEventListener('keydown', (e) => {
+      if (e.key.length === 1) {
+        typedText += e.key;
+        if (typedText.toLowerCase().includes('univine')) {
+          document.body.classList.add('secret-mode');
+          setTimeout(() => {
+            document.body.classList.remove('secret-mode');
+            typedText = '';
+          }, 6000);
+        }
+      }
     });
   </script>
 
   <style>
-    .easter-egg .blog-card {
-      animation: glitch 0.5s linear infinite;
+    @keyframes ripple {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
     }
 
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-5px, 5px); }
-      40% { transform: translate(5px, -5px); }
-      60% { transform: translate(-5px, 5px); }
-      80% { transform: translate(5px, -5px); }
-      100% { transform: translate(0); }
+    .secret-mode .blog-card {
+      animation: pulse 1s ease infinite;
+      border: 2px solid #4ade80;
     }
 
-    .blog-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(
-        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(74, 222, 128, 0.3) 0%,
-        transparent 70%
-      );
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
+    @keyframes pulse {
+      0%, 100% { transform: translateY(-15px) translateZ(50px) scale(1); }
+      50% { transform: translateY(-15px) translateZ(50px) scale(1.05); }
     }
 
-    .blog-card:hover::before {
-      opacity: 1;
+    .secret-mode canvas#bgCanvas {
+      filter: hue-rotate(90deg);
     }
   </style>
 </body>
